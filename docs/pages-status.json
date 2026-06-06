@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T20:13:11.329907+00:00",
+  "updated_at": "2026-06-06T20:29:16.887464+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -98,7 +98,7 @@
       "generated": true,
       "staged": true,
       "approved_file": true,
-      "netlify_url": "",
+      "netlify_url": "https://ubiquitous-salmiakki-865b3a.netlify.app/fx-copy-trade-mt4/",
       "spec": {
         "title": "MT4コピートレード完全ガイド",
         "meta_description": "MetaTrader4（MT4）でのコピートレード設定から運用まで。XMの人気シグナルプロバイダー一覧。",
@@ -162,7 +162,7 @@
       "generated": true,
       "staged": true,
       "approved_file": true,
-      "netlify_url": "",
+      "netlify_url": "https://ubiquitous-salmiakki-865b3a.netlify.app/fx-copy-trade-lp/",
       "spec": {
         "title": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開",
         "meta_description": "16ヶ月ロスカットゼロ・累計+1,029%。myfxbook第三者検証済みのFXコピートレード戦略を全公開。",

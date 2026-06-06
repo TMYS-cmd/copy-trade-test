@@ -201,6 +201,34 @@ button{font-family:inherit;cursor:pointer}
 .empty .icon{font-size:2rem;margin-bottom:12px}
 .empty p{font-size:.83rem;line-height:1.75}
 @media(max-width:600px){.hdr,.main,.tabs-bar{padding-left:16px;padding-right:16px}.hdr-sub{display:none}.form-row{grid-template-columns:1fr}}
+
+/* ── design patterns ── */
+.dp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px}
+.dp-card{border:2px solid var(--border);border-radius:var(--rl);cursor:pointer;overflow:hidden;transition:border-color .15s;background:var(--surface)}
+.dp-card:hover{border-color:#94a3b8}
+.dp-card.sel{border-color:var(--violet);box-shadow:0 0 0 3px rgba(124,58,237,.12)}
+.dp-preview{height:60px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;letter-spacing:.04em;padding:6px;text-align:center;line-height:1.3}
+.dp-label{font-size:.7rem;font-weight:600;color:var(--text-dim);padding:5px 8px;border-top:1px solid var(--border);background:var(--surface2)}
+
+/* ── media upload ── */
+.media-drop{border:2px dashed var(--border);border-radius:var(--rl);padding:20px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;background:var(--surface2);position:relative}
+.media-drop:hover,.media-drop.drag{border-color:#94a3b8;background:#f1f5f9}
+.media-drop input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.media-drop-txt{font-size:.78rem;color:var(--text-muted);pointer-events:none}
+.media-list{display:flex;flex-direction:column;gap:5px;margin-top:8px}
+.media-item{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:6px 10px}
+.mi-name{flex:1;font-size:.74rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mi-size{font-size:.68rem;color:var(--text-muted);flex-shrink:0}
+.mi-type{padding:2px 6px;border-radius:3px;font-size:.63rem;font-weight:700;flex-shrink:0;letter-spacing:.03em}
+.mi-img{background:rgba(37,99,235,.1);color:#1d4ed8}
+.mi-vid{background:rgba(220,38,38,.08);color:#b91c1c}
+.mi-rm{background:transparent;border:none;color:#94a3b8;cursor:pointer;padding:2px 4px;border-radius:3px;font-size:.78rem;line-height:1}
+.mi-rm:hover{background:rgba(220,38,38,.08);color:#b91c1c}
+.video-tip{background:rgba(220,38,38,.05);border:1px solid rgba(220,38,38,.15);border-radius:var(--r);padding:10px 12px;font-size:.72rem;color:var(--text-dim);line-height:1.7;margin-top:8px}
+
+/* ── status-specific buttons ── */
+.abtn-unpublish{background:rgba(245,158,11,.1);color:#92400e;border:1px solid rgba(245,158,11,.25)}
+.abtn-delete{background:rgba(220,38,38,.06);color:#991b1b;border:1px solid rgba(220,38,38,.16)}
 </style>
 </head>
 <body>
@@ -345,6 +373,51 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </div>
 
+<!-- Unpublish Confirm Modal -->
+<div class="overlay" id="ov-unpublish" onclick="closeModal('ov-unpublish')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:480px">
+    <div class="modal-hdr"><h3>📴 非公開にする</h3><button class="modal-x" onclick="closeModal('ov-unpublish')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:.78rem;color:#92400e;line-height:1.65">
+        ⚠️ <strong>_approved/</strong> からファイルを削除し、Netlifyから非公開にします。<br>ページデータ（pages/・_staging/）は保持されます。
+      </div>
+      <div class="slug-box"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">対象 slug:</div><span class="slug-val" id="unpub-slug-val">—</span></div><button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('unpub-slug-val').textContent)">📋 コピー</button></div>
+      <div class="step-list">
+        <div class="step-item"><div class="step-num">1</div><div class="step-txt">上のスラッグをコピー</div></div>
+        <div class="step-item"><div class="step-num">2</div><div class="step-txt">GitHub Actions で <strong>unpublish-page.yml</strong> を実行</div></div>
+        <div class="step-item"><div class="step-num">3</div><div class="step-txt">完了後「🔄 更新」で確認</div></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="icon-btn" onclick="closeModal('ov-unpublish')">キャンセル</button>
+      <a id="unpub-wf-btn" href="#" target="_blank" class="open-wf-btn" style="background:#d97706" onclick="cpMark(this,document.getElementById('unpub-slug-val').textContent)">GitHub Actions を開く →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Confirm Modal -->
+<div class="overlay" id="ov-delete" onclick="closeModal('ov-delete')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:480px">
+    <div class="modal-hdr"><h3 style="color:var(--red)">🗑 LP を削除</h3><button class="modal-x" onclick="closeModal('ov-delete')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:.78rem;color:#b91c1c;line-height:1.65">
+        ⛔ <strong>pages/ · _staging/ · _approved/</strong> のすべてのファイルを削除します。<br>この操作は取り消せません。YAML定義（copy-trade-core）は残ります。
+      </div>
+      <div class="slug-box"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">対象 slug:</div><span class="slug-val" id="del-slug-val">—</span></div><button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('del-slug-val').textContent)">📋 コピー</button></div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;font-size:.76rem;color:var(--text-dim);line-height:1.8;margin-top:12px">
+        <strong>手動手順（ターミナル）:</strong><br>
+        <code style="font-size:.72rem;background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:2px 6px" id="del-cmd-1">cd copy-trade-test</code><br>
+        <code style="font-size:.72rem;background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:2px 6px" id="del-cmd-2">rm -rf pages/SLUG _staging/SLUG _approved/SLUG</code><br>
+        <code style="font-size:.72rem;background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:2px 6px">git add -A && git commit -m "Delete: SLUG" && git push</code>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="icon-btn" onclick="closeModal('ov-delete')">キャンセル</button>
+      <button class="cp-slug-btn" style="background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.25);color:#b91c1c" onclick="copyDeleteCmds()">📋 コマンドをコピー</button>
+    </div>
+  </div>
+</div>
+
 <!-- Associate Sites Modal -->
 <div class="overlay" id="ov-assoc" onclick="closeModal('ov-assoc')">
   <div class="modal" onclick="event.stopPropagation()">
@@ -411,6 +484,54 @@ button{font-family:inherit;cursor:pointer}
         <div class="fg">
           <label class="fl">参考URL<span class="fl-hint">内容を参考にしたいWebページ（複数は改行区切り）</span></label>
           <textarea class="fta" id="nlp-ref-urls" rows="3" placeholder="https://&#10;https://"></textarea>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🎨 デザインパターン<span class="fl-hint" style="font-weight:400">ベースデザインを選択（後から変更可）</span></div>
+        <div class="dp-grid" id="nlp-dp-grid">
+          <div class="dp-card" data-dpid="dark-impact" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#0a0a0a;color:#ef4444">DARK<br>IMPACT</div>
+            <div class="dp-label">ダーク・インパクト</div>
+          </div>
+          <div class="dp-card" data-dpid="blue-tech" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#0f172a;color:#60a5fa">BLUE<br>TECH</div>
+            <div class="dp-label">ブルー・テック</div>
+          </div>
+          <div class="dp-card" data-dpid="green-trust" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#f0fdf4;color:#15803d;border-bottom:1px solid #e2e8f0">GREEN<br>TRUST</div>
+            <div class="dp-label">グリーン・トラスト</div>
+          </div>
+          <div class="dp-card" data-dpid="gold-premium" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#0a0a0a;color:#f59e0b">GOLD<br>PREMIUM</div>
+            <div class="dp-label">ゴールド・プレミアム</div>
+          </div>
+          <div class="dp-card" data-dpid="minimal-white" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#ffffff;color:#1e293b;border-bottom:1px solid #e2e8f0">MINIMAL<br>CLEAN</div>
+            <div class="dp-label">ミニマル・クリーン</div>
+          </div>
+        </div>
+        <div style="margin-top:8px">
+          <div id="nlp-dp-desc" style="font-size:.73rem;color:var(--text-muted);min-height:18px"></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🖼 画像・動画ファイル<span class="fl-hint" style="font-weight:400">LP内で使用する素材</span></div>
+        <div class="media-drop" id="nlp-media-drop" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="handleMediaDrop(event)">
+          <input type="file" id="nlp-media-input" multiple accept="image/*,video/mp4,video/webm" onchange="handleMediaFiles(this.files)">
+          <div class="media-drop-txt">
+            <div style="font-size:1.2rem;margin-bottom:6px">📁</div>
+            クリックまたはドラッグ&ドロップで画像・動画を追加<br>
+            <span style="font-size:.68rem">PNG / JPG / WebP / MP4 / WebM</span>
+          </div>
+        </div>
+        <div class="media-list" id="nlp-media-list"></div>
+        <div class="video-tip" id="nlp-video-tip" style="display:none">
+          <strong>📹 動画について:</strong> Netlifyは1GB = 20クレジット消費。自動再生動画（ヒーロー背景など）は<br>
+          ・MP4形式、H.264コーデック推奨（HandBrakeで圧縮）<br>
+          ・<strong>30MB以下</strong>を目安に（ループ動画は5〜15秒で十分）<br>
+          ・HTMLは <code style="font-size:.68rem;background:#f1f5f9;border:1px solid var(--border);border-radius:2px;padding:1px 4px">&lt;video autoplay muted loop playsinline&gt;</code> を使用
         </div>
       </div>
 
@@ -549,9 +670,10 @@ function fc(ok,label){
 }
 function buildBtns(p){
   const b=[];
-  b.push(`<button class="abtn abtn-gen" onclick="openGenerate('${p.id}')">🔧 生成</button>`);
-  if(p.generated||p.status==='review'||p.staged)
-    b.push(`<button class="abtn abtn-stage" onclick="openWf('stage','${p.slug}')">📤 Staging転送</button>`);
+  const genLabel=p.generated?'🔧 再生成':'🔧 生成';
+  b.push(`<button class="abtn abtn-gen" onclick="openGenerate('${p.id}')">${genLabel}</button>`);
+  if(p.generated||p.status==='review'||p.status==='approved')
+    b.push(`<button class="abtn abtn-stage" onclick="openWf('stage','${p.slug}')">📤 Staging</button>`);
   if(p.staged){
     const prev=`https://htmlpreview.github.io/?https://github.com/${OWNER}/${REPO}/blob/main/_staging/${p.slug}/index.html`;
     b.push(`<a href="${prev}" target="_blank" class="abtn abtn-preview">👁 プレビュー</a>`);
@@ -560,6 +682,9 @@ function buildBtns(p){
   }
   if(p.approved_file&&p.netlify_url)
     b.push(`<a href="${esc(p.netlify_url)}" target="_blank" class="abtn abtn-live">🌐 公開LP</a>`);
+  if(p.approved_file)
+    b.push(`<button class="abtn abtn-unpublish" onclick="openUnpublish('${p.slug}')">📴 非公開</button>`);
+  b.push(`<button class="abtn abtn-delete" onclick="openDelete('${p.slug}')">🗑 削除</button>`);
   return b.join('');
 }
 
@@ -574,6 +699,23 @@ const WF={
     desc:'フィードバックを _feedback/[slug]-latest.yaml に保存します。次回生成時に反映されます。',
     steps:['<strong>「👁 プレビュー」</strong>で問題点を確認','下の<strong>スラッグをコピー</strong>する','GitHub Actions で reject-page.yml を実行','<strong>reason フィールド</strong>に却下理由を入力して実行','修正後: Claude Code に再生成依頼 → <code>bash scripts/post-generate.sh [id]</code>']}
 };
+
+function openUnpublish(slug){
+  document.getElementById('unpub-slug-val').textContent=slug;
+  document.getElementById('unpub-wf-btn').href=`https://github.com/${OWNER}/${CORE}/actions/workflows/unpublish-page.yml`;
+  openModal('ov-unpublish');
+}
+function openDelete(slug){
+  document.getElementById('del-slug-val').textContent=slug;
+  document.getElementById('del-cmd-2').textContent=`rm -rf pages/${slug} _staging/${slug} _approved/${slug}`;
+  openModal('ov-delete');
+}
+function copyDeleteCmds(){
+  const slug=document.getElementById('del-slug-val').textContent;
+  const cmds=`cd copy-trade-test\nrm -rf pages/${slug} _staging/${slug} _approved/${slug}\ngit add -A && git commit -m "Delete: ${slug}" && git push`;
+  navigator.clipboard?.writeText(cmds);
+  showToast('削除コマンドをコピーしました');
+}
 
 let curWfSlug='';
 function openWf(type,slug){
@@ -652,12 +794,92 @@ function nlpTitleChanged(){
   for(const[jp,en]of map){if(t.includes(jp)){seg=en;break;}}
   document.getElementById('nlp-slug').value='fx-copy-trade-'+seg;
 }
+/* ── design patterns ── */
+const DP_PATTERNS={
+  'dark-impact':{
+    label:'ダーク・インパクト',
+    desc:'黒背景・赤アクセント・Sofia Sans Condensed。実績重視・インパクト型。',
+    instruct:'- 背景: #0a0a0a（ほぼ黒）、アクセント: #dc2626（赤）\n- 見出しフォント: Sofia Sans Condensed（Google Fonts）\n- 数値・実績を大きく目立たせる\n- CTAボタンは赤（#dc2626）\n- 縦グリッドで一気に読めるレイアウト'
+  },
+  'blue-tech':{
+    label:'ブルー・テック',
+    desc:'ダークネイビー・青アクセント。MT4/MT5向けプロフェッショナル。',
+    instruct:'- 背景: #0f172a（ダークネイビー）、アクセント: #1e40af（青）\n- フォント: Noto Sans JP\n- ターミナル・UIモックアップをCSSで表現する\n- バッジ・チップ多用でスペック感を出す\n- グリッド構成でデータ比較しやすい設計'
+  },
+  'green-trust':{
+    label:'グリーン・トラスト',
+    desc:'白背景・緑CTA。初心者向け・信頼感重視・読みやすい。',
+    instruct:'- 背景: #ffffff（白）、アクセント: #22c55e（緑）\n- フォント: Noto Sans JP\n- モバイルファースト設計\n- CTAボタンは目立つ緑（#22c55e）\n- 専門用語を避け、やさしい言葉で説明する\n- ヒーローは大きくシンプルに'
+  },
+  'gold-premium':{
+    label:'ゴールド・プレミアム',
+    desc:'黒背景・ゴールドアクセント。高級感・限定感を演出。',
+    instruct:'- 背景: #0a0a0a（黒）、アクセント: #f59e0b（ゴールド）\n- 見出しフォント: Sofia Sans Condensed（Google Fonts）\n- 高級感・限定感・希少性を訴求するコピー\n- CTA周辺にカウントダウンや限定感の演出を追加\n- 細いボーダー・繊細なデザインで上品さを表現'
+  },
+  'minimal-white':{
+    label:'ミニマル・クリーン',
+    desc:'白背景・シンプル。読みやすさ重視・ブログ的LP。',
+    instruct:'- 背景: #ffffff（白）、テキスト: #1e293b\n- フォント: Noto Sans JP\n- 余白を大きく取り、テキストを読ませる設計\n- 装飾を最小限に、コンテンツで説得する\n- セクション区切りはシンプルな横線のみ\n- 写真・画像のインパクトで訴求する'
+  }
+};
+let nlpSelectedDP='';
+let nlpMediaFiles=[];
+
+function selectDP(card){
+  document.querySelectorAll('#nlp-dp-grid .dp-card').forEach(c=>c.classList.remove('sel'));
+  card.classList.add('sel');
+  nlpSelectedDP=card.dataset.dpid;
+  const pat=DP_PATTERNS[nlpSelectedDP];
+  document.getElementById('nlp-dp-desc').textContent=pat?pat.desc:'';
+  // pre-fill instructions if empty
+  const inst=document.getElementById('nlp-instructions');
+  if(pat&&!inst.value.trim()) inst.value=pat.instruct;
+}
+
+function handleMediaFiles(files){
+  for(const f of files){
+    if(nlpMediaFiles.find(m=>m.name===f.name&&m.size===f.size))continue;
+    nlpMediaFiles.push(f);
+  }
+  renderMediaList();
+}
+function handleMediaDrop(e){
+  e.preventDefault();
+  document.getElementById('nlp-media-drop').classList.remove('drag');
+  handleMediaFiles(e.dataTransfer.files);
+}
+function removeMedia(idx){
+  nlpMediaFiles.splice(idx,1);
+  renderMediaList();
+}
+function renderMediaList(){
+  const list=document.getElementById('nlp-media-list');
+  const tip=document.getElementById('nlp-video-tip');
+  const hasVideo=nlpMediaFiles.some(f=>f.type.startsWith('video/'));
+  tip.style.display=hasVideo?'block':'none';
+  if(!nlpMediaFiles.length){list.innerHTML='';return;}
+  list.innerHTML=nlpMediaFiles.map((f,i)=>{
+    const isVid=f.type.startsWith('video/');
+    const sz=f.size>1024*1024?(f.size/1024/1024).toFixed(1)+'MB':(f.size/1024).toFixed(0)+'KB';
+    const warn=isVid&&f.size>30*1024*1024?' ⚠️':'';
+    return`<div class="media-item">
+      <span class="mi-type ${isVid?'mi-vid':'mi-img'}">${isVid?'動画':'画像'}</span>
+      <span class="mi-name">${esc(f.name)}</span>
+      <span class="mi-size">${sz}${warn}</span>
+      <button class="mi-rm" onclick="removeMedia(${i})" title="削除">✕</button>
+    </div>`;
+  }).join('');
+}
+
 function openNewLP(){
   document.getElementById('nlp-id').value=genNextId();
   ['nlp-title','nlp-slug','nlp-headline','nlp-subheadline','nlp-cta','nlp-cta-sub',
    'nlp-content','nlp-ref-urls','nlp-instructions','nlp-notes'].forEach(id=>document.getElementById(id).value='');
   document.getElementById('nlp-broker').value='XM';
   document.getElementById('nlp-variant').value='beginner';
+  document.querySelectorAll('#nlp-dp-grid .dp-card').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('nlp-dp-desc').textContent='';
+  nlpSelectedDP='';nlpMediaFiles=[];renderMediaList();
   renderNewLPRefs();
   showNewLPForm();
   openModal('ov-new-lp');
@@ -738,14 +960,27 @@ function generateLPSpec(){
   if(ctaSub) req+=`- CTA補足: ${ctaSub}\n`;
   req+='\n';
   if(content) req+=`## コンテンツ要件\n${content}\n\n`;
+  if(nlpSelectedDP&&DP_PATTERNS[nlpSelectedDP]){
+    req+=`## デザインパターン\n${DP_PATTERNS[nlpSelectedDP].label}（${DP_PATTERNS[nlpSelectedDP].desc}）\n\n`;
+  }
   if(instruct) req+=`## デザイン・コンテンツ指示\n${instruct}\n\n`;
   if(refUrls) req+=`## 参考URL（コンテンツ参照）\n${refUrls}\n\n`;
   if(selSites.length){req+=`## デザイン参考サイト\n`;selSites.forEach(s=>{req+=`- ${s.title}: ${s.url}\n`;});req+='\n';}
+  if(nlpMediaFiles.length){
+    req+=`## 添付メディアファイル（copy-trade-test/pages/${slug}/assets/ に配置済みとして参照）\n`;
+    nlpMediaFiles.forEach(f=>{
+      const isVid=f.type.startsWith('video/');
+      req+=`- ${f.name}（${isVid?'動画':'画像'}）\n`;
+    });
+    req+=`HTMLでは <img src="assets/ファイル名"> または <video autoplay muted loop playsinline src="assets/ファイル名"> で参照してください。\n\n`;
+  }
   req+=`## 法的要件（必須）\n- 免責事項: 本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。\n`;
   req+=`- リスク警告: FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。\n`;
   req+=`- 規制情報: XMTradingはASIC・CySEC・IFSCの規制を受けています。\n\n`;
   req+=`## 参照ファイル\n- content/landing-pages.yaml（完全な仕様）\n- links/page-registry.yaml（アフィリエイトリンク）\n- links/broker-specs.yaml（ブローカー詳細情報）\n\n`;
-  req+=`HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）。Noto Sans JP使用。免責事項は全ページ必須。」`;
+  req+=`HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）。Noto Sans JP使用。免責事項は全ページ必須。`;
+  if(nlpMediaFiles.length) req+=`\n\n⚠️ メディアファイル（${nlpMediaFiles.map(f=>f.name).join('、')}）はユーザーが手動で copy-trade-test/pages/${slug}/assets/ に配置します。HTMLは assets/ への相対パスで参照してください。`;
+  req+='」';
 
   document.getElementById('nlp-yaml-out').textContent=yaml;
   document.getElementById('nlp-prompt-out').textContent=req;
