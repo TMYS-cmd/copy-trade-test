@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T19:20:07.693625+00:00",
+  "updated_at": "2026-06-06T19:21:28.391153+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -16,12 +16,12 @@
     {
       "id": "lp-002",
       "slug": "fx-copy-trade-mt4",
-      "status": "review",
+      "status": "draft",
       "variant": "mt4-focused",
       "broker": "XM",
       "headline": "MT4コピートレードで、プロの戦略をそのまま活用",
       "generated": true,
-      "staged": false,
+      "staged": true,
       "approved_file": false,
       "netlify_url": ""
     }
