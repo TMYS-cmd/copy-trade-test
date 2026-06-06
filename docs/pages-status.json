@@ -261,14 +261,14 @@
     },
     {
       "id": "lp-005",
-      "slug": "fx-copy-trade-lp",
+      "slug": "fx-myfxbook-verified",
       "status": "review",
       "variant": "intermediate",
       "broker": "",
       "headline": "my fx bookのリアル口座履歴を完全公開",
       "generated": true,
-      "staged": true,
-      "approved_file": true,
+      "staged": false,
+      "approved_file": false,
       "netlify_url": "",
       "spec": {
         "title": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。",
