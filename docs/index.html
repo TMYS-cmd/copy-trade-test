@@ -694,8 +694,8 @@ button{font-family:inherit;cursor:pointer}
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;font-size:.76rem;color:var(--text-dim);line-height:1.75">
         <strong>次のステップ:</strong><br>
         1. 上の依頼文をコピー → Claude Code に貼り付けて送信<br>
-        2. 生成完了後 <code style="font-size:.73rem">bash scripts/post-generate.sh [id]</code> を実行<br>
-        3. ダッシュボードで「🔄 更新」して確認
+        2. Claude がアセット配置・LP生成・post-generate.sh を自動実行します<br>
+        3. 完了後にダッシュボードで「🔄 更新」して確認
       </div>
     </div>
 
@@ -1403,13 +1403,20 @@ function generateLPSpec(){
     });
     req+=`HTMLでは <img src="assets/ファイル名"> または <video autoplay muted loop playsinline src="assets/ファイル名"> で参照してください。\n\n`;
   }
+  req+=`## ヒーロー・ファーストビューの要件（必須）\n`;
+  req+=`ファーストビューは訪問者に強いインパクトを与えること:\n`;
+  req+=`- 高さ: min-height:90vh以上でフルスクリーン表示\n`;
+  req+=`- 背景: 単色・単純グラデーション禁止。複数のradial-gradientを重ねた多層背景か、アセット画像を活かした奥行きある暗めの背景\n`;
+  req+=`- デスクトップ: CSS Grid 2カラム（左:キャッチコピー＋CTA、右:数値実績カード・UIモック・ビジュアル要素）\n`;
+  req+=`- ヘッドライン: font-size:clamp(32px,5vw,64px)以上、font-weight:900\n`;
+  req+=`- CTAボタン: hoverでtranslateY(-2px)＋box-shadow強調アニメーション\n`;
+  req+=`- スクロール前の段階で価値提案（数値・実績・キャッチ）が一目で伝わること\n\n`;
   req+=`## 法的要件（必須）\n- 免責事項: 本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。\n`;
   req+=`- リスク警告: FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。\n`;
   req+=`- 規制情報: XMTradingはASIC・CySEC・IFSCの規制を受けています。\n\n`;
   req+=`## 参照ファイル\n- content/landing-pages.yaml（完全な仕様）\n- links/page-registry.yaml（アフィリエイトリンク）\n- links/broker-specs.yaml（ブローカー詳細情報）\n\n`;
   const fontNote=selFont?`${selFont.name}（見出し）とNoto Sans JP（本文）を使用`:'Noto Sans JP使用';
   req+=`HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）。${fontNote}。免責事項は全ページ必須。`;
-  if(nlpMediaFiles.length) req+=`\n\n⚠️ メディアファイル（${nlpMediaFiles.map(f=>f.name).join('、')}）はユーザーが手動で copy-trade-test/pages/${slug}/assets/ に配置します。HTMLは assets/ への相対パスで参照してください。`;
   req+='」';
 
   // ── multi-variant prompts ──
@@ -1449,30 +1456,28 @@ function generateLPSpec(){
     if(variants.length>1) combined+='### '+(i+1)+'案目（'+v.slug+'）\n\n';
     combined+=v.req+'\n\n';
   });
-  // ③ Asset placement instructions when media files are attached
+  // ③ Asset placement — instruct Claude to execute via PowerShell tool
   if(nlpMediaFiles.length){
-    const imgs=nlpMediaFiles.filter(f=>!f.type.startsWith('video/'));
     const vids=nlpMediaFiles.filter(f=>f.type.startsWith('video/'));
-    combined+='## ③ アセットファイルの配置\n\n';
-    combined+='以下のコマンドでassetsフォルダを作成してください（LP生成前に実行）:\n';
-    combined+='```powershell\nNew-Item -ItemType Directory -Force "copy-trade-test\\pages\\'+slug+'\\assets"\n```\n\n';
-    combined+='次に、以下のファイルを上記フォルダにコピーしてください。\n';
-    combined+='ファイルの現在の場所（ダウンロードフォルダ・デスクトップ等）を確認してから実行:\n\n';
-    if(imgs.length){
-      combined+='【画像ファイル】\n';
-      imgs.forEach(f=>{combined+='- '+f.name+' → copy-trade-test/pages/'+slug+'/assets/'+f.name+'\n';});
-      combined+='\n';
-    }
+    combined+='## ③ アセットファイルの配置（PowerShellツールで実行してください）\n\n';
+    combined+='LP生成前に以下のPowerShellコマンドをPowerShellツールで実行してください:\n\n';
+    combined+='```powershell\n';
+    combined+='New-Item -ItemType Directory -Force "copy-trade-test\\pages\\'+slug+'\\assets"\n';
+    nlpMediaFiles.forEach(f=>{
+      combined+='Copy-Item "$env:USERPROFILE\\Downloads\\'+f.name+'" "copy-trade-test\\pages\\'+slug+'\\assets\\"\n';
+    });
+    combined+='```\n\n';
     if(vids.length){
-      combined+='【動画ファイル】\n';
-      vids.forEach(f=>{combined+='- '+f.name+' → copy-trade-test/pages/'+slug+'/assets/'+f.name+'\n';});
-      combined+='\n⚠️ 動画をHTMLに組み込む際は必ず以下の4属性を付けてください（ないとスマホで自動再生されません）:\n';
+      combined+='⚠️ 動画をHTMLに組み込む際は必ず以下の4属性を付けてください（ないとスマホで自動再生されません）:\n';
       combined+='<video autoplay muted loop playsinline src="assets/'+vids[0].name+'"></video>\n\n';
     }
-    combined+='ファイルコピー例（PowerShell / ファイル名・パスは実際のものに変更）:\n';
-    combined+='```powershell\nCopy-Item "$env:USERPROFILE\\Downloads\\'+nlpMediaFiles[0].name+'" "copy-trade-test\\pages\\'+slug+'\\assets\\"\n```\n\n';
+    combined+='※ ファイルが $env:USERPROFILE\\Downloads にない場合は、実際のパスに変更して実行してください。\n\n';
   }
-  combined+='---\n生成完了後にターミナルで実行:\nbash scripts/post-generate.sh '+id;
+  // ③ or ④ post-generate.sh — instruct Claude to execute via Bash tool
+  const postStep=nlpMediaFiles.length?'④':'③';
+  combined+='## '+postStep+' 後処理スクリプト（LP生成完了後にBashツールで実行してください）\n\n';
+  combined+='LP生成が完了したら、以下をBashツールで実行してください:\n\n';
+  combined+='```bash\nbash scripts/post-generate.sh '+id+'\n```';
 
   document.getElementById('nlp-combined-out').textContent=combined;
   clearDraft();
