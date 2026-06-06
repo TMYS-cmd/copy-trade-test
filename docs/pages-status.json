@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T22:03:20.756168+00:00",
+  "updated_at": "2026-06-06T22:19:32.853949+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -267,7 +267,7 @@
       "broker": "",
       "headline": "my fx bookのリアル口座履歴を完全公開",
       "generated": true,
-      "staged": false,
+      "staged": true,
       "approved_file": false,
       "netlify_url": "",
       "spec": {
