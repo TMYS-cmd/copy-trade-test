@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
@@ -203,12 +203,41 @@ button{font-family:inherit;cursor:pointer}
 @media(max-width:600px){.hdr,.main,.tabs-bar{padding-left:16px;padding-right:16px}.hdr-sub{display:none}.form-row{grid-template-columns:1fr}}
 
 /* ── design patterns ── */
-.dp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-top:8px}
-.dp-card{border:2px solid var(--border);border-radius:var(--rl);cursor:pointer;overflow:hidden;transition:border-color .15s;background:var(--surface)}
+.dp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px;margin-top:8px}
+.dp-card{border:2px solid var(--border);border-radius:var(--rl);cursor:pointer;overflow:hidden;transition:border-color .15s,box-shadow .15s;background:var(--surface)}
 .dp-card:hover{border-color:#94a3b8}
 .dp-card.sel{border-color:var(--violet);box-shadow:0 0 0 3px rgba(124,58,237,.12)}
-.dp-preview{height:60px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;letter-spacing:.04em;padding:6px;text-align:center;line-height:1.3}
-.dp-label{font-size:.7rem;font-weight:600;color:var(--text-dim);padding:5px 8px;border-top:1px solid var(--border);background:var(--surface2)}
+.dp-preview{height:72px;padding:5px;display:flex;flex-direction:column;gap:3px;overflow:hidden}
+.dp-ph{flex:0 0 26px;border-radius:2px;position:relative}
+.dp-ph::after{content:'';position:absolute;left:5px;right:35%;bottom:6px;height:2px;border-radius:1px;background:currentColor;opacity:.55}
+.dp-pf{display:flex;gap:2px;flex:1;margin-top:1px}
+.dp-pfb{flex:1;border-radius:2px;opacity:.75}
+.dp-pc{height:6px;width:36%;align-self:flex-end;border-radius:2px;margin:2px auto 0}
+.dp-ref{font-size:.56rem;font-weight:600;letter-spacing:.05em;color:#94a3b8;padding:0 7px 3px;text-align:right;opacity:.7}
+.dp-label{font-size:.68rem;font-weight:600;color:var(--text-dim);padding:4px 7px;border-top:1px solid var(--border);background:var(--surface2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* variant count */
+.variant-wrap{margin-top:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.variant-ck{display:flex;align-items:center;gap:5px;font-size:.78rem;cursor:pointer;color:var(--text-dim);font-weight:600}
+.variant-ck input{accent-color:var(--violet)}
+.variant-count-sel{border:1px solid var(--border);border-radius:var(--r);background:var(--surface);color:var(--text);font-size:.75rem;padding:3px 8px;cursor:pointer;display:none}
+.variant-extra{display:none;margin-top:10px}
+.variant-extra-title{font-size:.73rem;font-weight:700;color:var(--violet);margin-bottom:6px}
+/* workflow execution UI */
+.wf-token-row{display:flex;gap:6px;align-items:center;margin-top:10px}
+.wf-token-input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:6px 10px;font-size:.8rem;color:var(--text);font-family:monospace}
+.wf-token-save{padding:6px 12px;background:var(--violet);color:#fff;border:none;border-radius:var(--r);font-size:.75rem;font-weight:700;cursor:pointer;white-space:nowrap}
+.wf-token-ok{font-size:.73rem;color:#15803d;font-weight:700;display:none}
+.wf-exec-area{margin-top:12px}
+.del-exec-btn{width:100%;background:#dc2626;color:#fff;border:none;border-radius:var(--r);padding:10px;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s}
+.del-exec-btn:hover{background:#b91c1c}
+.del-exec-btn:disabled{background:#94a3b8;cursor:not-allowed}
+.unpub-exec-btn{width:100%;background:#d97706;color:#fff;border:none;border-radius:var(--r);padding:10px;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s}
+.unpub-exec-btn:hover{background:#b45309}
+.unpub-exec-btn:disabled{background:#94a3b8;cursor:not-allowed}
+.wf-status{margin-top:8px;font-size:.78rem;border-radius:var(--r);padding:8px 12px;display:none}
+.wf-status.loading{background:rgba(124,58,237,.07);border:1px solid rgba(124,58,237,.2);color:#5b21b6;display:block}
+.wf-status.success{background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.2);color:#15803d;display:block}
+.wf-status.error{background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);color:#b91c1c;display:block}
 
 /* ── media upload ── */
 .media-drop{border:2px dashed var(--border);border-radius:var(--rl);padding:20px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;background:var(--surface2);position:relative}
@@ -224,7 +253,10 @@ button{font-family:inherit;cursor:pointer}
 .mi-vid{background:rgba(220,38,38,.08);color:#b91c1c}
 .mi-rm{background:transparent;border:none;color:#94a3b8;cursor:pointer;padding:2px 4px;border-radius:3px;font-size:.78rem;line-height:1}
 .mi-rm:hover{background:rgba(220,38,38,.08);color:#b91c1c}
-.video-tip{background:rgba(220,38,38,.05);border:1px solid rgba(220,38,38,.15);border-radius:var(--r);padding:10px 12px;font-size:.72rem;color:var(--text-dim);line-height:1.7;margin-top:8px}
+.video-tip{background:rgba(37,99,235,.04);border:1px solid rgba(37,99,235,.15);border-radius:var(--r);padding:10px 14px;font-size:.73rem;color:var(--text-dim);line-height:1.8;margin-top:8px}
+.video-tip code{background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:.71rem;color:#1e40af}
+.video-tip .vt-title{font-weight:700;color:var(--text);margin-bottom:4px}
+.video-tip .vt-block{background:#0f172a;border-radius:4px;padding:7px 10px;margin:6px 0;font-family:monospace;font-size:.68rem;color:#a5f3fc;line-height:1.6;white-space:pre}
 
 /* ── font picker ── */
 .font-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:7px;margin-top:8px}
@@ -392,39 +424,52 @@ button{font-family:inherit;cursor:pointer}
       <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:.78rem;color:#92400e;line-height:1.65">
         ⚠️ <strong>_approved/</strong> からファイルを削除し、Netlifyから非公開にします。<br>ページデータ（pages/・_staging/）は保持されます。
       </div>
-      <div class="slug-box"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">対象 slug:</div><span class="slug-val" id="unpub-slug-val">—</span></div><button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('unpub-slug-val').textContent)">📋 コピー</button></div>
-      <div class="step-list">
-        <div class="step-item"><div class="step-num">1</div><div class="step-txt">上のスラッグをコピー</div></div>
-        <div class="step-item"><div class="step-num">2</div><div class="step-txt">GitHub Actions で <strong>unpublish-page.yml</strong> を実行</div></div>
-        <div class="step-item"><div class="step-num">3</div><div class="step-txt">完了後「🔄 更新」で確認</div></div>
+      <div class="slug-box" style="margin-bottom:12px"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">非公開対象 slug:</div><span class="slug-val" id="unpub-slug-val" style="font-weight:700;color:#92400e">—</span></div></div>
+      <div id="unpub-token-section">
+        <div style="font-size:.73rem;font-weight:600;color:var(--text-dim);margin-bottom:3px">🔑 GitHub Personal Access Token</div>
+        <div style="font-size:.69rem;color:var(--text-muted);margin-bottom:6px">削除モーダルで保存済みの場合は省略可。</div>
+        <div class="wf-token-row">
+          <input class="wf-token-input" type="password" id="unpub-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+          <button class="wf-token-save" onclick="saveGHToken('unpub-token-input')">保存</button>
+        </div>
+        <div class="wf-token-ok" id="unpub-token-ok">✅ Token設定済み</div>
+      </div>
+      <div style="margin-top:12px">
+        <button class="unpub-exec-btn" id="unpub-exec-btn" onclick="execUnpublish()">📴 非公開にする</button>
+        <div class="wf-status" id="unpub-wf-status"></div>
       </div>
     </div>
     <div class="modal-foot">
       <button class="icon-btn" onclick="closeModal('ov-unpublish')">キャンセル</button>
-      <a id="unpub-wf-btn" href="#" target="_blank" class="open-wf-btn" style="background:#d97706" onclick="cpMark(this,document.getElementById('unpub-slug-val').textContent)">GitHub Actions を開く →</a>
     </div>
   </div>
 </div>
 
 <!-- Delete Confirm Modal -->
 <div class="overlay" id="ov-delete" onclick="closeModal('ov-delete')">
-  <div class="modal" onclick="event.stopPropagation()" style="max-width:480px">
-    <div class="modal-hdr"><h3 style="color:var(--red)">🗑 LP を削除</h3><button class="modal-x" onclick="closeModal('ov-delete')">✕</button></div>
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:460px">
+    <div class="modal-hdr"><h3 style="color:var(--red)">🗑 LP を完全削除</h3><button class="modal-x" onclick="closeModal('ov-delete')">✕</button></div>
     <div class="modal-body">
-      <div style="background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:.78rem;color:#b91c1c;line-height:1.65">
-        ⛔ <strong>pages/ · _staging/ · _approved/</strong> のすべてのファイルを削除します。<br>この操作は取り消せません。YAML定義（copy-trade-core）は残ります。
+      <div style="background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:var(--r);padding:10px 14px;margin-bottom:12px;font-size:.78rem;color:#b91c1c;line-height:1.65">
+        ⛔ <strong>pages/ · _staging/ · _approved/ の全ファイル（assets含む）</strong>を削除します。<br>この操作は<strong>取り消せません</strong>。copy-trade-core の YAML 定義は残ります。
       </div>
-      <div class="slug-box"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">対象 slug:</div><span class="slug-val" id="del-slug-val">—</span></div><button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('del-slug-val').textContent)">📋 コピー</button></div>
-      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 12px;font-size:.76rem;color:var(--text-dim);line-height:1.8;margin-top:12px">
-        <strong>手動手順（ターミナル）:</strong><br>
-        <code style="font-size:.72rem;background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:2px 6px" id="del-cmd-1">cd copy-trade-test</code><br>
-        <code style="font-size:.72rem;background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:2px 6px" id="del-cmd-2">rm -rf pages/SLUG _staging/SLUG _approved/SLUG</code><br>
-        <code style="font-size:.72rem;background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:2px 6px">git add -A && git commit -m "Delete: SLUG" && git push</code>
+      <div class="slug-box" style="margin-bottom:12px"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">削除対象 slug:</div><span class="slug-val" id="del-slug-val" style="font-size:.9rem;font-weight:700;color:#b91c1c">—</span></div></div>
+      <div id="del-token-section">
+        <div style="font-size:.73rem;font-weight:600;color:var(--text-dim);margin-bottom:3px">🔑 GitHub Personal Access Token</div>
+        <div style="font-size:.69rem;color:var(--text-muted);margin-bottom:6px">workflow スコープ付きの PAT が必要。一度入力すると次回以降省略できます。</div>
+        <div class="wf-token-row">
+          <input class="wf-token-input" type="password" id="del-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+          <button class="wf-token-save" onclick="saveGHToken('del-token-input')">保存</button>
+        </div>
+        <div class="wf-token-ok" id="del-token-ok">✅ Token設定済み — 変更する場合は上に入力して「保存」</div>
+      </div>
+      <div style="margin-top:12px">
+        <button class="del-exec-btn" id="del-exec-btn" onclick="execDelete()">🗑 削除を実行する</button>
+        <div class="wf-status" id="del-wf-status"></div>
       </div>
     </div>
     <div class="modal-foot">
       <button class="icon-btn" onclick="closeModal('ov-delete')">キャンセル</button>
-      <button class="cp-slug-btn" style="background:rgba(220,38,38,.1);border-color:rgba(220,38,38,.25);color:#b91c1c" onclick="copyDeleteCmds()">📋 コマンドをコピー</button>
     </div>
   </div>
 </div>
@@ -512,29 +557,75 @@ button{font-family:inherit;cursor:pointer}
       <div class="form-section">
         <div class="form-section-title">🎨 デザインパターン<span class="fl-hint" style="font-weight:400">ベースデザインを選択（後から変更可）</span></div>
         <div class="dp-grid" id="nlp-dp-grid">
-          <div class="dp-card" data-dpid="dark-impact" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#0a0a0a;color:#ef4444">DARK<br>IMPACT</div>
-            <div class="dp-label">ダーク・インパクト</div>
+          <!-- Apple style -->
+          <div class="dp-card" data-dpid="apple-clean" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#f5f5f7">
+              <div class="dp-ph" style="background:#e5e5ea;color:#0071e3"></div>
+              <div class="dp-pf"><div class="dp-pfb" style="background:#e5e5ea"></div><div class="dp-pfb" style="background:#ececec"></div><div class="dp-pfb" style="background:#e5e5ea"></div></div>
+              <div class="dp-pc" style="background:#0071e3"></div>
+            </div>
+            <div class="dp-ref">ref: apple.com</div>
+            <div class="dp-label">Appleスタイル</div>
           </div>
-          <div class="dp-card" data-dpid="blue-tech" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#0f172a;color:#60a5fa">BLUE<br>TECH</div>
-            <div class="dp-label">ブルー・テック</div>
+          <!-- Stripe style -->
+          <div class="dp-card" data-dpid="stripe-fintech" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#0a2540">
+              <div class="dp-ph" style="background:linear-gradient(135deg,#0a2540,#3d1a7a);color:#a78bfa"></div>
+              <div class="dp-pf"><div class="dp-pfb" style="background:#0d2f55"></div><div class="dp-pfb" style="background:#1a3a5c"></div><div class="dp-pfb" style="background:#0d2f55"></div></div>
+              <div class="dp-pc" style="background:#625afa"></div>
+            </div>
+            <div class="dp-ref">ref: stripe.com</div>
+            <div class="dp-label">Stripeスタイル</div>
           </div>
-          <div class="dp-card" data-dpid="green-trust" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#f0fdf4;color:#15803d;border-bottom:1px solid #e2e8f0">GREEN<br>TRUST</div>
-            <div class="dp-label">グリーン・トラスト</div>
+          <!-- Tesla style -->
+          <div class="dp-card" data-dpid="tesla-dark" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#000">
+              <div class="dp-ph" style="background:#0d0d0d;color:#e82127"></div>
+              <div class="dp-pf"><div class="dp-pfb" style="background:#0a0a0a"></div><div class="dp-pfb" style="background:#111"></div><div class="dp-pfb" style="background:#0a0a0a"></div></div>
+              <div class="dp-pc" style="background:#e82127"></div>
+            </div>
+            <div class="dp-ref">ref: tesla.com</div>
+            <div class="dp-label">Teslaスタイル</div>
           </div>
-          <div class="dp-card" data-dpid="gold-premium" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#0a0a0a;color:#f59e0b">GOLD<br>PREMIUM</div>
-            <div class="dp-label">ゴールド・プレミアム</div>
+          <!-- Airbnb style -->
+          <div class="dp-card" data-dpid="airbnb-warm" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#fff">
+              <div class="dp-ph" style="background:#ff5a5f;color:#fff"></div>
+              <div class="dp-pf"><div class="dp-pfb" style="background:#f7f7f7"></div><div class="dp-pfb" style="background:#fff;border:1px solid #e5e5e5"></div><div class="dp-pfb" style="background:#f7f7f7"></div></div>
+              <div class="dp-pc" style="background:#ff5a5f"></div>
+            </div>
+            <div class="dp-ref">ref: airbnb.com</div>
+            <div class="dp-label">Airbnbスタイル</div>
           </div>
-          <div class="dp-card" data-dpid="minimal-white" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#ffffff;color:#1e293b;border-bottom:1px solid #e2e8f0">MINIMAL<br>CLEAN</div>
-            <div class="dp-label">ミニマル・クリーン</div>
+          <!-- Finance/Bloomberg style -->
+          <div class="dp-card" data-dpid="finance-navy" onclick="selectDP(this)">
+            <div class="dp-preview" style="background:#0b1f3a">
+              <div class="dp-ph" style="background:#0d2545;color:#c9a227"></div>
+              <div class="dp-pf"><div class="dp-pfb" style="background:#0d2545"></div><div class="dp-pfb" style="background:#142d5a"></div><div class="dp-pfb" style="background:#0d2545"></div></div>
+              <div class="dp-pc" style="background:#c9a227"></div>
+            </div>
+            <div class="dp-ref">ref: bloomberg.com</div>
+            <div class="dp-label">ファイナンス</div>
           </div>
         </div>
         <div style="margin-top:8px">
           <div id="nlp-dp-desc" style="font-size:.73rem;color:var(--text-muted);min-height:18px"></div>
+        </div>
+        <!-- multi-variant -->
+        <div class="variant-wrap">
+          <label class="variant-ck"><input type="checkbox" id="nlp-multi-ck" onchange="toggleMultiVariant()"> 複数案を生成する</label>
+          <select class="variant-count-sel" id="nlp-variant-count" onchange="updateVariantExtras()">
+            <option value="2">2案</option>
+            <option value="3">3案</option>
+          </select>
+        </div>
+        <div class="variant-extra" id="nlp-variant-v2">
+          <div class="variant-extra-title">2案目のデザインパターン（オプション）</div>
+          <div class="dp-grid" id="nlp-dp-grid-v2"></div>
+        </div>
+        <div class="variant-extra" id="nlp-variant-v3">
+          <div class="variant-extra-title">3案目のデザインパターン（オプション）</div>
+          <div class="dp-grid" id="nlp-dp-grid-v3"></div>
         </div>
       </div>
 
@@ -550,10 +641,22 @@ button{font-family:inherit;cursor:pointer}
         </div>
         <div class="media-list" id="nlp-media-list"></div>
         <div class="video-tip" id="nlp-video-tip" style="display:none">
-          <strong>📹 動画について:</strong> Netlifyは1GB = 20クレジット消費。自動再生動画（ヒーロー背景など）は<br>
-          ・MP4形式、H.264コーデック推奨（HandBrakeで圧縮）<br>
-          ・<strong>30MB以下</strong>を目安に（ループ動画は5〜15秒で十分）<br>
-          ・HTMLは <code style="font-size:.68rem;background:#f1f5f9;border:1px solid var(--border);border-radius:2px;padding:1px 4px">&lt;video autoplay muted loop playsinline&gt;</code> を使用
+          <div class="vt-title">📹 動画を自動再生するには？</div>
+          ブラウザのセキュリティ上、動画を<strong>音声なし・自動で流す</strong>には以下の4つの属性が必要です。<br>
+          これらがないとスマホ・Chromeでは止まってしまいます。
+          <div class="vt-block">&lt;video autoplay muted loop playsinline src="assets/hero.mp4"&gt;&lt;/video&gt;</div>
+          <div style="line-height:1.9">
+            ・<code>autoplay</code> — ページ読み込みと同時に再生<br>
+            ・<code>muted</code> — <strong>音消し（これがないと自動再生できない）</strong><br>
+            ・<code>loop</code> — 終わったら最初から繰り返す<br>
+            ・<code>playsinline</code> — iPhone で全画面にならず埋め込みで再生<br>
+            ・ファイルは <code>assets/</code> フォルダに置いてください
+          </div>
+          <div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(37,99,235,.12)">
+            ⚡ <strong>ファイルサイズを減らすには？</strong><br>
+            無料ソフト <strong>HandBrake</strong>（<a href="https://handbrake.fr" target="_blank" style="color:#1d4ed8">handbrake.fr</a>）で MP4 に変換・圧縮できます。<br>
+            ループ動画は <strong>5〜15秒・30MB以下</strong>が目安。Netlifyは1GB = 20クレジット消費します。
+          </div>
         </div>
       </div>
 
@@ -595,6 +698,8 @@ button{font-family:inherit;cursor:pointer}
         </div>
         <pre class="result-pre" id="nlp-prompt-out"></pre>
       </div>
+      <!-- extra variant prompts (2案目/3案目) -->
+      <div id="nlp-extra-prompts"></div>
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;font-size:.76rem;color:var(--text-dim);line-height:1.75">
         <strong>次のステップ:</strong><br>
         1. YAMLをコピー → <code style="font-size:.73rem">content/landing-pages.yaml</code> 末尾に追記 → 保存<br>
@@ -724,19 +829,17 @@ const WF={
 
 function openUnpublish(slug){
   document.getElementById('unpub-slug-val').textContent=slug;
-  document.getElementById('unpub-wf-btn').href=`https://github.com/${OWNER}/${CORE}/actions/workflows/unpublish-page.yml`;
+  document.getElementById('unpub-exec-btn').disabled=false;
+  setWfStatus('unpub-wf-status','','');
+  refreshTokenUI();
   openModal('ov-unpublish');
 }
 function openDelete(slug){
   document.getElementById('del-slug-val').textContent=slug;
-  document.getElementById('del-cmd-2').textContent=`rm -rf pages/${slug} _staging/${slug} _approved/${slug}`;
+  document.getElementById('del-exec-btn').disabled=false;
+  setWfStatus('del-wf-status','','');
+  refreshTokenUI();
   openModal('ov-delete');
-}
-function copyDeleteCmds(){
-  const slug=document.getElementById('del-slug-val').textContent;
-  const cmds=`cd copy-trade-test\nrm -rf pages/${slug} _staging/${slug} _approved/${slug}\ngit add -A && git commit -m "Delete: ${slug}" && git push`;
-  navigator.clipboard?.writeText(cmds);
-  showToast('削除コマンドをコピーしました');
 }
 
 let curWfSlug='';
@@ -883,46 +986,189 @@ function selectFont(card){
   saveRecentFont(fid);
 }
 
+/* ── GitHub token ── */
+const GH_TOKEN_KEY='copytrade_gh_token_v1';
+function getGHToken(){return localStorage.getItem(GH_TOKEN_KEY)||'';}
+function saveGHToken(inputId){
+  const v=document.getElementById(inputId).value.trim();
+  if(!v){showToast('Tokenを入力してください');return;}
+  localStorage.setItem(GH_TOKEN_KEY,v);
+  document.getElementById(inputId).value='';
+  showToast('✅ Token を保存しました');
+  refreshTokenUI();
+}
+function refreshTokenUI(){
+  const ok=!!getGHToken();
+  ['del','unpub'].forEach(pfx=>{
+    const input=document.getElementById(pfx+'-token-input');
+    const okEl=document.getElementById(pfx+'-token-ok');
+    if(!input||!okEl)return;
+    input.style.display=ok?'none':'block';
+    const saveBtn=input.parentElement?.querySelector('.wf-token-save');
+    if(saveBtn)saveBtn.style.display=ok?'none':'inline-block';
+    okEl.style.display=ok?'block':'none';
+  });
+}
+
+async function triggerWorkflow(workflow,slug){
+  const token=getGHToken();
+  if(!token)throw new Error('GitHub Token が未設定です。先に保存してください。');
+  const res=await fetch(
+    `https://api.github.com/repos/${OWNER}/${CORE}/actions/workflows/${workflow}/dispatches`,
+    {method:'POST',headers:{Authorization:`Bearer ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github+json'},
+     body:JSON.stringify({ref:'main',inputs:{slug}})}
+  );
+  if(res.status===204)return;
+  let msg=`HTTP ${res.status}`;
+  try{const b=await res.json();msg=b.message||msg;}catch{}
+  throw new Error(msg);
+}
+
+function setWfStatus(id,type,text){
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.className='wf-status'+' '+type;
+  el.textContent=text;
+}
+
+async function execDelete(){
+  const slug=document.getElementById('del-slug-val').textContent;
+  if(!slug||slug==='—')return;
+  const btn=document.getElementById('del-exec-btn');
+  btn.disabled=true;
+  setWfStatus('del-wf-status','loading','⏳ delete-page.yml を起動中...');
+  try{
+    await triggerWorkflow('delete-page.yml',slug);
+    setWfStatus('del-wf-status','success','✅ 削除ワークフローを起動しました！30〜60秒後に反映されます。「🔄 更新」で確認してください。');
+    setTimeout(()=>load(true),60000);
+  }catch(e){
+    setWfStatus('del-wf-status','error','❌ エラー: '+e.message);
+    btn.disabled=false;
+  }
+}
+
+async function execUnpublish(){
+  const slug=document.getElementById('unpub-slug-val').textContent;
+  if(!slug||slug==='—')return;
+  const btn=document.getElementById('unpub-exec-btn');
+  btn.disabled=true;
+  setWfStatus('unpub-wf-status','loading','⏳ unpublish-page.yml を起動中...');
+  try{
+    await triggerWorkflow('unpublish-page.yml',slug);
+    setWfStatus('unpub-wf-status','success','✅ 非公開ワークフローを起動しました！30〜60秒後に反映されます。「🔄 更新」で確認してください。');
+    setTimeout(()=>load(true),60000);
+  }catch(e){
+    setWfStatus('unpub-wf-status','error','❌ エラー: '+e.message);
+    btn.disabled=false;
+  }
+}
+
 /* ── design patterns ── */
 const DP_PATTERNS={
-  'dark-impact':{
-    label:'ダーク・インパクト',
-    desc:'黒背景・赤アクセント・Sofia Sans Condensed。実績重視・インパクト型。',
-    instruct:'- 背景: #0a0a0a（ほぼ黒）、アクセント: #dc2626（赤）\n- 見出しフォント: Sofia Sans Condensed（Google Fonts）\n- 数値・実績を大きく目立たせる\n- CTAボタンは赤（#dc2626）\n- 縦グリッドで一気に読めるレイアウト'
+  'apple-clean':{
+    label:'Appleスタイル',
+    ref:'apple.com',
+    desc:'白背景・大きな見出し・上品な余白。Apple.comの洗練されたミニマルデザイン。',
+    instruct:'参考: apple.com スタイル\n- 背景: #f5f5f7（薄グレー）、テキスト: #1d1d1f\n- アクセント: #0071e3（Appleブルー）\n- San Francisco / Noto Sans JP\n- 余白を大きく取り、コンテンツで語る\n- ヒーロー: 大きな1行見出し + 薄いサブコピー\n- 横並び特徴カード（3カラム）\n- CTAは青いシンプルボタン\n- アイコンや装飾は最小限、画像・数値で訴求'
   },
-  'blue-tech':{
-    label:'ブルー・テック',
-    desc:'ダークネイビー・青アクセント。MT4/MT5向けプロフェッショナル。',
-    instruct:'- 背景: #0f172a（ダークネイビー）、アクセント: #1e40af（青）\n- フォント: Noto Sans JP\n- ターミナル・UIモックアップをCSSで表現する\n- バッジ・チップ多用でスペック感を出す\n- グリッド構成でデータ比較しやすい設計'
+  'stripe-fintech':{
+    label:'Stripeスタイル',
+    ref:'stripe.com',
+    desc:'ダーク紫グラデーション・フィンテック感。Stripeの信頼性と先進性を表現。',
+    instruct:'参考: stripe.com スタイル\n- 背景: #0a2540（ダークネイビー）、アクセント: #625afa（紫）\n- フォント: Noto Sans JP\n- ヒーロー: 斜めグラデーション（#0a2540→#1a1150）\n- 「セキュリティ」「信頼性」「実績」を数値で表現\n- グリッドカードにアイコン+説明を並べる\n- グラデーションのCTAボタン（紫→青）\n- badge/chipで証明要素（〇ヶ月実績・第三者認定）を強調'
   },
-  'green-trust':{
-    label:'グリーン・トラスト',
-    desc:'白背景・緑CTA。初心者向け・信頼感重視・読みやすい。',
-    instruct:'- 背景: #ffffff（白）、アクセント: #22c55e（緑）\n- フォント: Noto Sans JP\n- モバイルファースト設計\n- CTAボタンは目立つ緑（#22c55e）\n- 専門用語を避け、やさしい言葉で説明する\n- ヒーローは大きくシンプルに'
+  'tesla-dark':{
+    label:'Teslaスタイル',
+    ref:'tesla.com',
+    desc:'ピュアブラック・インパクトヒーロー。Tesla.comの映画的なドラマチックデザイン。',
+    instruct:'参考: tesla.com スタイル\n- 背景: #000000（ピュアブラック）、アクセント: #e82127（赤）\n- 見出しフォント: Sofia Sans Condensed / Noto Sans JP\n- ヒーロー: 全幅暗い背景 + 超大型見出し（中央揃え）\n- 数値・実績・月次グラフを視覚的に表現\n- CTAを2つ横並び（メイン赤 + サブ白枠）\n- セクション境界は暗い色で自然につなぐ\n- スクロールで数値が「浮かび上がる」感覚を演出'
   },
-  'gold-premium':{
-    label:'ゴールド・プレミアム',
-    desc:'黒背景・ゴールドアクセント。高級感・限定感を演出。',
-    instruct:'- 背景: #0a0a0a（黒）、アクセント: #f59e0b（ゴールド）\n- 見出しフォント: Sofia Sans Condensed（Google Fonts）\n- 高級感・限定感・希少性を訴求するコピー\n- CTA周辺にカウントダウンや限定感の演出を追加\n- 細いボーダー・繊細なデザインで上品さを表現'
+  'airbnb-warm':{
+    label:'Airbnbスタイル',
+    ref:'airbnb.com',
+    desc:'ウォームカラー・人間味・親しみやすさ。Airbnbのコミュニティ感と安心感を演出。',
+    instruct:'参考: airbnb.com スタイル\n- 背景: #ffffff（白）、アクセント: #ff5a5f（コーラルレッド）\n- フォント: Noto Sans JP\n- ヒーロー: 鮮やかな画像（assets/利用）+ 中央コピー\n- 「〇〇さんの声」風の口コミを画像付きで\n- ソフトシャドウ付きカード\n- 数値は大きく、「16ヶ月」「1000%超」を印象的に\n- 全体的に柔らかい丸み・暖色系で信頼感と親しみを演出'
   },
-  'minimal-white':{
-    label:'ミニマル・クリーン',
-    desc:'白背景・シンプル。読みやすさ重視・ブログ的LP。',
-    instruct:'- 背景: #ffffff（白）、テキスト: #1e293b\n- フォント: Noto Sans JP\n- 余白を大きく取り、テキストを読ませる設計\n- 装飾を最小限に、コンテンツで説得する\n- セクション区切りはシンプルな横線のみ\n- 写真・画像のインパクトで訴求する'
+  'finance-navy':{
+    label:'ファイナンス',
+    ref:'bloomberg.com',
+    desc:'ネイビー×ゴールド・データ重視。Bloomberg/Goldman風の本格的金融デザイン。',
+    instruct:'参考: bloomberg.com / goldman sachs スタイル\n- 背景: #0b1f3a（ダークネイビー）、アクセント: #c9a227（ゴールド）\n- 見出しフォント: BIZ UDPGothic / Noto Sans JP\n- 月次パフォーマンステーブルを本格的な金融データ表として表現\n- ヒーローに実績数値を大きく並べる（+1029%など）\n- ゴールドの細いアクセントラインで区切り\n- プロフェッショナル・厳格・信頼性を最優先\n- 免責事項は目立つ場所に（法令遵守の観点）'
   }
 };
 let nlpSelectedDP='';
+let nlpSelectedDPv2='';
+let nlpSelectedDPv3='';
 let nlpMediaFiles=[];
 
-function selectDP(card){
-  document.querySelectorAll('#nlp-dp-grid .dp-card').forEach(c=>c.classList.remove('sel'));
+function selectDP(card,gridSuffix){
+  const gridId='nlp-dp-grid'+(gridSuffix||'');
+  document.querySelectorAll(`#${gridId} .dp-card`).forEach(c=>c.classList.remove('sel'));
   card.classList.add('sel');
-  nlpSelectedDP=card.dataset.dpid;
-  const pat=DP_PATTERNS[nlpSelectedDP];
-  document.getElementById('nlp-dp-desc').textContent=pat?pat.desc:'';
-  // pre-fill instructions if empty
-  const inst=document.getElementById('nlp-instructions');
-  if(pat&&!inst.value.trim()) inst.value=pat.instruct;
+  const dpid=card.dataset.dpid;
+  if(!gridSuffix){
+    nlpSelectedDP=dpid;
+    const pat=DP_PATTERNS[dpid];
+    document.getElementById('nlp-dp-desc').textContent=pat?`${pat.desc} (ref: ${pat.ref})`:'';
+    const inst=document.getElementById('nlp-instructions');
+    if(pat&&!inst.value.trim()) inst.value=pat.instruct;
+  }else if(gridSuffix==='-v2') nlpSelectedDPv2=dpid;
+  else if(gridSuffix==='-v3') nlpSelectedDPv3=dpid;
+}
+
+function buildDPCards(suffix){
+  return Object.entries(DP_PATTERNS).map(([id,p])=>{
+    const sfx=suffix||'';
+    return`<div class="dp-card" data-dpid="${id}" onclick="selectDP(this,'${sfx}')">
+      <div class="dp-preview" id="dp-prev-${id}${sfx.replace('-','')}"></div>
+      <div class="dp-ref">${esc(p.ref)}</div>
+      <div class="dp-label">${esc(p.label)}</div>
+    </div>`;
+  }).join('');
+}
+
+function initDPGrids(){
+  const g2=document.getElementById('nlp-dp-grid-v2');
+  const g3=document.getElementById('nlp-dp-grid-v3');
+  if(g2&&!g2.children.length) g2.innerHTML=buildDPCards('-v2');
+  if(g3&&!g3.children.length) g3.innerHTML=buildDPCards('-v3');
+  renderDPPreviews();
+}
+
+/* Inject CSS layout blocks into dp-preview divs */
+const DP_COLORS={
+  'apple-clean':  {bg:'#f5f5f7',h:'#e5e5ea',f:'#ececec',c:'#0071e3'},
+  'stripe-fintech':{bg:'#0a2540',h:'#1a1150',f:'#0d2f55',c:'#625afa'},
+  'tesla-dark':   {bg:'#000',   h:'#0d0d0d',f:'#111',   c:'#e82127'},
+  'airbnb-warm':  {bg:'#fff',   h:'#ff5a5f',f:'#f7f7f7',c:'#ff5a5f'},
+  'finance-navy': {bg:'#0b1f3a',h:'#0d2545',f:'#142d5a',c:'#c9a227'},
+};
+function renderDPPreviews(){
+  document.querySelectorAll('[id^="dp-prev-"]').forEach(el=>{
+    // extract dpid from element id: dp-prev-{dpid}{suffix}
+    const raw=el.id.replace('dp-prev-','');
+    const dpid=Object.keys(DP_COLORS).find(k=>raw.startsWith(k));
+    if(!dpid)return;
+    const clr=DP_COLORS[dpid];
+    el.style.cssText=`height:72px;padding:5px;display:flex;flex-direction:column;gap:3px;overflow:hidden;background:${clr.bg}`;
+    el.innerHTML=`<div style="flex:0 0 26px;border-radius:2px;background:${clr.h};position:relative"><span style="position:absolute;left:5px;right:35%;bottom:6px;height:2px;display:block;border-radius:1px;background:${clr.c};opacity:.8"></span></div>
+      <div style="display:flex;gap:2px;flex:1"><div style="flex:1;border-radius:2px;background:${clr.f};opacity:.8"></div><div style="flex:1;border-radius:2px;background:${clr.h};opacity:.8"></div><div style="flex:1;border-radius:2px;background:${clr.f};opacity:.8"></div></div>
+      <div style="height:6px;width:36%;border-radius:2px;background:${clr.c};margin:2px auto 0"></div>`;
+  });
+}
+
+/* multi-variant */
+function toggleMultiVariant(){
+  const on=document.getElementById('nlp-multi-ck').checked;
+  const sel=document.getElementById('nlp-variant-count');
+  sel.style.display=on?'inline-block':'none';
+  if(on){initDPGrids();updateVariantExtras();}
+  else{document.getElementById('nlp-variant-v2').style.display='none';document.getElementById('nlp-variant-v3').style.display='none';}
+}
+function updateVariantExtras(){
+  const n=parseInt(document.getElementById('nlp-variant-count').value)||2;
+  document.getElementById('nlp-variant-v2').style.display=n>=2?'block':'none';
+  document.getElementById('nlp-variant-v3').style.display=n>=3?'block':'none';
 }
 
 function handleMediaFiles(files){
@@ -968,10 +1214,17 @@ function openNewLP(){
   document.getElementById('nlp-variant').value='beginner';
   document.querySelectorAll('#nlp-dp-grid .dp-card').forEach(c=>c.classList.remove('sel'));
   document.getElementById('nlp-dp-desc').textContent='';
-  nlpSelectedDP='';nlpMediaFiles=[];renderMediaList();
+  nlpSelectedDP='';nlpSelectedDPv2='';nlpSelectedDPv3='';
+  nlpMediaFiles=[];renderMediaList();
+  document.getElementById('nlp-multi-ck').checked=false;
+  document.getElementById('nlp-variant-count').value='2';
+  document.getElementById('nlp-variant-count').style.display='none';
+  document.getElementById('nlp-variant-v2').style.display='none';
+  document.getElementById('nlp-variant-v3').style.display='none';
   document.querySelectorAll('.font-card').forEach(c=>c.classList.remove('sel'));
   document.getElementById('nlp-selected-font').value='';
   renderFontGrid();
+  renderDPPreviews();
   renderNewLPRefs();
   showNewLPForm();
   openModal('ov-new-lp');
@@ -1081,13 +1334,58 @@ function generateLPSpec(){
   if(nlpMediaFiles.length) req+=`\n\n⚠️ メディアファイル（${nlpMediaFiles.map(f=>f.name).join('、')}）はユーザーが手動で copy-trade-test/pages/${slug}/assets/ に配置します。HTMLは assets/ への相対パスで参照してください。`;
   req+='」';
 
-  document.getElementById('nlp-yaml-out').textContent=yaml;
-  document.getElementById('nlp-prompt-out').textContent=req;
+  // ── multi-variant prompts ──
+  const isMulti=document.getElementById('nlp-multi-ck').checked;
+  const variantCount=isMulti?parseInt(document.getElementById('nlp-variant-count').value)||2:1;
+  const variants=[{label:'1案目（メイン）',slug,req,yaml}];
+
+  const buildVariantReq=(vSlug,dpId)=>{
+    const pat=dpId&&DP_PATTERNS[dpId];
+    let r=`「${id}-variant (${vSlug}) のLPを以下の仕様に基づいて生成し、copy-trade-test/pages/${vSlug}/index.html に保存してください。\n\n`;
+    r+=`## タイトル\n${title}（バリアント）\n\n`;
+    r+=`## 基本情報\n- バリアント: ${variant}\n- ターゲットブローカー: ${broker}\n\n`;
+    r+=`## ヒーロー\n- ヘッドライン: ${headline||title}\n`;
+    if(sub) r+=`- サブヘッドライン: ${sub}\n`;
+    r+=`- CTAテキスト: ${cta}\n\n`;
+    if(content) r+=`## コンテンツ要件\n${content}\n\n`;
+    if(selFont) r+=`## フォント指定\n見出しに「${selFont.name}」を使用。本文はNoto Sans JP。\n\n`;
+    if(pat) r+=`## デザインパターン（このバリアント専用）\n${pat.label}（ref: ${pat.ref}）\n\n${pat.instruct}\n\n`;
+    if(nlpMediaFiles.length){
+      r+=`## 添付メディアファイル\n`;
+      nlpMediaFiles.forEach(f=>{r+=`- ${f.name}\n`;});
+      r+=`HTMLでは <img src="assets/ファイル名"> / <video autoplay muted loop playsinline src="assets/ファイル名"> で参照。\n\n`;
+    }
+    r+=`## 法的要件（必須）\n- 免責事項: 本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。\n- リスク警告: FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。\n\n`;
+    r+=`HTMLは純粋な静的HTML/CSS/JSのみ。免責事項必須。1案目（${slug}）と同じコンテンツ・違うデザインで生成してください。」`;
+    return r;
+  };
+  if(isMulti&&variantCount>=2) variants.push({label:'2案目',slug:slug+'-v2',req:buildVariantReq(slug+'-v2',nlpSelectedDPv2),yaml:`# ${slug}-v2 の仕様は 1案目と同じ（デザインパターンのみ異なる）`});
+  if(isMulti&&variantCount>=3) variants.push({label:'3案目',slug:slug+'-v3',req:buildVariantReq(slug+'-v3',nlpSelectedDPv3),yaml:`# ${slug}-v3 の仕様は 1案目と同じ（デザインパターンのみ異なる）`});
+
+  // Build result HTML
+  const resultEl=document.getElementById('new-lp-result');
+  if(variants.length===1){
+    document.getElementById('nlp-yaml-out').textContent=yaml;
+    document.getElementById('nlp-prompt-out').textContent=req;
+    const extraEl=document.getElementById('nlp-extra-prompts');
+    if(extraEl) extraEl.innerHTML='';
+  }else{
+    document.getElementById('nlp-yaml-out').textContent=variants.map(v=>`# === ${v.label} (${v.slug}) ===\n${v.yaml}`).join('\n\n');
+    document.getElementById('nlp-prompt-out').textContent=variants[0].req;
+    let extras='';
+    variants.slice(1).forEach(v=>{
+      extras+=`<div style="margin-top:14px"><div style="font-size:.73rem;font-weight:700;color:var(--violet);margin-bottom:5px">📋 ${v.label}（${v.slug}）</div>`;
+      extras+=`<textarea style="width:100%;min-height:160px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:8px;font-size:.72rem;font-family:monospace;resize:vertical" readonly>${esc(v.req)}</textarea></div>`;
+    });
+    const extraEl=document.getElementById('nlp-extra-prompts');
+    if(extraEl) extraEl.innerHTML=extras;
+  }
+
   document.getElementById('new-lp-form').style.display='none';
-  document.getElementById('new-lp-result').style.display='block';
+  resultEl.style.display='block';
   document.getElementById('new-lp-foot-form').style.display='none';
   document.getElementById('new-lp-foot-result').style.display='flex';
-  document.getElementById('new-lp-title').textContent='✨ 新規LP作成 — '+id;
+  document.getElementById('new-lp-title').textContent='✨ 新規LP作成 — '+id+(variants.length>1?' ('+variants.length+'案)':'');
 }
 
 /* ===== Refs ===== */
@@ -1190,6 +1488,8 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 
 load(false);
 setInterval(()=>load(false),60000);
+refreshTokenUI();
+renderDPPreviews();
 </script>
 </body>
 </html>
