@@ -1403,6 +1403,11 @@ function generateLPSpec(){
     });
     req+=`HTMLでは <img src="assets/ファイル名"> または <video autoplay muted loop playsinline src="assets/ファイル名"> で参照してください。\n\n`;
   }
+  req+=`## YouTube埋め込みの要件（YouTubeリンクが含まれる場合）\n`;
+  req+=`YouTubeのURLをiframeで埋め込む場合は必ず以下のパラメータを付与すること:\n`;
+  req+=`- src: https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID\n`;
+  req+=`- allow属性: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"\n`;
+  req+=`- loading="lazy" は付けない（autoplayと競合するため）\n\n`;
   req+=`## ヒーロー・ファーストビューの要件（必須）\n`;
   req+=`ファーストビューは訪問者に強いインパクトを与えること:\n`;
   req+=`- 高さ: min-height:90vh以上でフルスクリーン表示\n`;
