@@ -1,4 +1,4 @@
-{
+﻿{
   "updated_at": "2026-06-06T20:29:16.887464+00:00",
   "pages": [
     {
@@ -91,7 +91,7 @@
     {
       "id": "lp-002",
       "slug": "fx-copy-trade-mt4",
-      "status": "review",
+      "status": "approved",
       "variant": "mt4-focused",
       "broker": "XM",
       "headline": "MT4コピートレードで、プロの戦略をそのまま活用",
@@ -155,7 +155,7 @@
     {
       "id": "lp-003",
       "slug": "fx-copy-trade-lp",
-      "status": "review",
+      "status": "approved",
       "variant": "beginner",
       "broker": "XM",
       "headline": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開",

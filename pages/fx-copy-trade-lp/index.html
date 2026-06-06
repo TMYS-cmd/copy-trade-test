@@ -7,7 +7,7 @@
 <meta name="description" content="16ヶ月ロスカットゼロ・累計+1,029%。myfxbook第三者検証済みのFXコピートレード戦略を全公開。参加希望はLINEへ。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --red: #dc2626;
@@ -25,6 +25,7 @@
   --white-70: rgba(255,255,255,0.7);
   --white-40: rgba(255,255,255,0.4);
   --font: 'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;
+  --font-serif: 'Noto Serif JP','Georgia','Yu Mincho','Hiragino Mincho ProN',serif;
   --font-cond: 'Sofia Sans Condensed','Noto Sans JP',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -37,21 +38,27 @@ img{max-width:100%;height:auto;display:block}
 /* ── NAV ── */
 .nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(220,38,38,0.25);
-  height:62px;padding:0 24px;
+  background:rgba(6,6,6,0.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(220,38,38,0.3);
+  height:68px;padding:0 24px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
-.nav-brand{display:flex;align-items:center;gap:10px}
-.nav-badge{
-  background:rgba(220,38,38,0.15);border:1px solid rgba(220,38,38,0.4);
-  color:#ef4444;font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px;
-  letter-spacing:.06em;display:flex;align-items:center;gap:6px;
+.nav::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,#dc2626,#991b1b 40%,#dc2626 80%,#ef4444);
 }
-.nav-badge::before{content:'';width:7px;height:7px;background:#ef4444;border-radius:50%;animation:blink 2s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.nav-logo{font-family:var(--font-cond);font-size:18px;font-weight:800;letter-spacing:.03em;color:var(--white-70)}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo-block{display:flex;flex-direction:column;gap:1px}
+.nav-logo{font-family:var(--font-cond);font-size:20px;font-weight:900;letter-spacing:.04em;color:var(--white);line-height:1}
 .nav-logo span{color:#ef4444}
+.nav-logo-sub{font-size:9px;color:var(--white-40);letter-spacing:.12em;font-weight:500;text-transform:uppercase}
+.nav-badge{
+  background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.35);
+  color:#ef4444;font-size:10px;font-weight:700;padding:4px 10px;border-radius:4px;
+  letter-spacing:.06em;display:flex;align-items:center;gap:5px;
+}
+.nav-badge::before{content:'';width:6px;height:6px;background:#ef4444;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .nav-cta-line{
   display:inline-flex;align-items:center;gap:6px;
   background:var(--green);color:#fff;font-size:13px;font-weight:700;
@@ -64,7 +71,7 @@ img{max-width:100%;height:auto;display:block}
 .hero{
   position:relative;min-height:100vh;
   display:flex;align-items:center;justify-content:center;
-  padding:100px 24px 60px;
+  padding:106px 24px 60px;
   background:
     radial-gradient(ellipse 90% 60% at 50% -10%, rgba(220,38,38,0.18) 0%, transparent 65%),
     var(--black);
@@ -144,6 +151,16 @@ img{max-width:100%;height:auto;display:block}
 .section-label{font-size:11px;font-weight:700;letter-spacing:.15em;color:#ef4444;text-transform:uppercase;margin-bottom:10px}
 .section-title{font-family:var(--font-cond);font-size:clamp(24px,3.8vw,40px);font-weight:900;line-height:1.2;margin-bottom:16px;letter-spacing:.01em}
 .section-desc{font-size:15px;color:var(--white-70);max-width:640px;line-height:1.75}
+/* セクション背景バリエーション */
+.sec-a{background:#000}
+.sec-b{background:#070707}
+.sec-c{background:#0a0a0a}
+.sec-d{background:#060606;border-top:1px solid rgba(220,38,38,.12);border-bottom:1px solid rgba(220,38,38,.12)}
+.sec-e{background:#050505}
+.sec-f{background:linear-gradient(180deg,#000 0%,#08020a 50%,#000 100%)}
+/* 明朝体を使う本文エリア */
+.serif-body{font-family:var(--font-serif);font-size:15px;color:var(--white-70);line-height:2;letter-spacing:.03em}
+.serif-lead{font-family:var(--font-serif);font-size:clamp(14px,1.8vw,17px);color:var(--white-70);line-height:2;letter-spacing:.04em;font-style:italic}
 
 /* ── IMAGE BLOCK ── */
 .img-block{
@@ -223,7 +240,7 @@ img{max-width:100%;height:auto;display:block}
   font-size:21px;margin-bottom:14px;
 }
 .feat-title{font-family:var(--font-cond);font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:.01em}
-.feat-body{font-size:13px;color:var(--white-70);line-height:1.75}
+.feat-body{font-family:var(--font-serif);font-size:13px;color:var(--white-70);line-height:1.85;letter-spacing:.02em}
 
 /* ── HOW TO ── */
 .howto-section{background:var(--black-2);border-top:1px solid rgba(255,255,255,.05)}
@@ -233,7 +250,7 @@ img{max-width:100%;height:auto;display:block}
 .step:not(:last-child)::after{content:'';position:absolute;left:18px;top:38px;bottom:0;width:2px;background:rgba(220,38,38,.2)}
 .step-num{flex-shrink:0;width:38px;height:38px;background:var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-cond);font-size:18px;font-weight:900}
 .step-title{font-family:var(--font-cond);font-size:18px;font-weight:800;margin-bottom:5px;padding-top:6px;letter-spacing:.01em}
-.step-body{font-size:13px;color:var(--white-70);line-height:1.75}
+.step-body{font-family:var(--font-serif);font-size:13px;color:var(--white-70);line-height:1.9;letter-spacing:.025em}
 
 /* ── FAQ ── */
 .faq-list{margin-top:44px;display:flex;flex-direction:column;gap:10px}
@@ -303,8 +320,11 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-brand">
-    <div class="nav-badge">myfxbook 第三者検証済み</div>
-    <span class="nav-logo" style="display:none" id="nav-title-show">FX Copy <span>Pro</span></span>
+    <div class="nav-logo-block">
+      <div class="nav-logo">MSC <span>SUPERGOLD</span></div>
+      <div class="nav-logo-sub">FX Copy Trade Strategy</div>
+    </div>
+    <div class="nav-badge" id="nav-badge">myfxbook 第三者検証済み</div>
   </div>
   <a href="https://lin.ee/qjpV7zY" class="nav-cta-line" target="_blank" rel="noopener noreferrer">
     🔥 LINE で参加申込
@@ -349,7 +369,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
         <span class="fire">🔥</span> 参加希望はこちら（質問だけでもどうぞ）<span class="fire">🔥</span>
       </a>
       <a href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" class="cta-xm-btn" target="_blank" rel="noopener noreferrer">
-        📊 myfxbook で実績を直接確認する →
+        myfxbook で実績を直接確認する →
       </a>
     </div>
     <p class="hero-cta-note">※ myfxbook はリアル口座・第三者検証済みです</p>
@@ -357,7 +377,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
 </section>
 
 <!-- PROOF IMAGE BLOCK -->
-<section class="section" style="background:var(--black-2);padding:48px 24px">
+<section class="section sec-b" style="padding:48px 24px">
   <div class="section-inner">
     <div class="section-label">実績証拠</div>
     <h2 class="section-title">これが「証拠」です</h2>
@@ -367,7 +387,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
     <div class="img-block" style="margin-bottom:16px;min-height:300px">
       <!-- ↓ ここに myfxbook スクリーンショット画像を挿入 -->
       <!-- <img src="images/myfxbook-overview.png" alt="myfxbook 運用実績 概要"> -->
-      <div style="font-size:2rem">📊</div>
+      <div style="width:48px;height:48px;background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-cond);font-size:20px;font-weight:900;color:#ef4444">mfx</div>
       <div class="img-block-label">【画像①】myfxbook 概要スクリーンショット<br><span style="font-size:10px">（images/myfxbook-overview.png を配置）</span></div>
     </div>
 
@@ -375,7 +395,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
     <div class="img-block" style="min-height:240px">
       <!-- ↓ ここに月次リターンのグラフ画像を挿入 -->
       <!-- <img src="images/myfxbook-monthly.png" alt="myfxbook 月次リターン"> -->
-      <div style="font-size:2rem">📈</div>
+      <div style="width:48px;height:48px;background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-cond);font-size:14px;font-weight:900;color:#ef4444;letter-spacing:-.02em">CHART</div>
       <div class="img-block-label">【画像②】myfxbook 月次リターングラフ<br><span style="font-size:10px">（images/myfxbook-monthly.png を配置）</span></div>
     </div>
 
@@ -384,7 +404,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
          target="_blank" rel="noopener noreferrer"
          style="display:inline-flex;align-items:center;gap:8px;background:rgba(220,38,38,.14);border:1px solid rgba(220,38,38,.38);color:#ef4444;font-size:14px;font-weight:700;padding:12px 28px;border-radius:8px;transition:background .2s"
          onmouseover="this.style.background='rgba(220,38,38,.24)'" onmouseout="this.style.background='rgba(220,38,38,.14)'">
-        📊 myfxbook で全履歴を確認する（外部サイト）→
+        myfxbook で全履歴を確認する（外部サイト）→
       </a>
       <p style="font-size:11px;color:var(--white-40);margin-top:8px">100%改ざんできないリアル口座の取引履歴です</p>
     </div>
@@ -392,7 +412,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
 </section>
 
 <!-- PROOF NUMBERS + MONTHLY -->
-<section class="section proof-section">
+<section class="section sec-d proof-section">
   <div class="section-inner">
     <div class="section-label">パフォーマンス詳細</div>
     <h2 class="section-title">全16ヶ月の数字、すべて見せます</h2>
@@ -449,28 +469,28 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
 </section>
 
 <!-- FEATURES -->
-<section class="section" style="background:var(--black)">
+<section class="section sec-c">
   <div class="section-inner">
     <div class="section-label">選ばれる理由</div>
     <h2 class="section-title">なぜ「日本最高峰」なのか</h2>
     <div class="features-grid">
       <div class="feat-card">
-        <div class="feat-icon">✓</div>
+        <div class="feat-icon" style="font-size:16px;font-weight:900;font-family:var(--font-cond)">VRF</div>
         <div class="feat-title">myfxbook第三者検証済み</div>
         <p class="feat-body">口座とAPI直結で自動記録。数値の改ざん・修正は100%不可能。リアル口座の全履歴が公開されています。</p>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">🛡</div>
+        <div class="feat-icon" style="font-size:16px;font-weight:900;font-family:var(--font-cond)">SHD</div>
         <div class="feat-title">16ヶ月ロスカットゼロ</div>
         <p class="feat-body">運用開始から16ヶ月間、一度もロスカットなし。マイナス月も3回のみ（最大-11.55%）でリスク管理を徹底。</p>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">📈</div>
+        <div class="feat-icon" style="font-size:15px;font-weight:900;font-family:var(--font-cond)">ROI</div>
         <div class="feat-title">累計+1,029%の実績</div>
         <p class="feat-body">単利+1,029%、複利換算+8,227%。10万円を運用した場合、複利計算で理論上約822万円相当（過去実績・保証外）。</p>
       </div>
       <div class="feat-card">
-        <div class="feat-icon">👁</div>
+        <div class="feat-icon" style="font-size:14px;font-weight:900;font-family:var(--font-cond)">OPEN</div>
         <div class="feat-title">全成績完全公開</div>
         <p class="feat-body">良い月も悪い月も、16ヶ月すべての成績を公開。最大月次リターンは+107.29%（2026年3月）。</p>
       </div>
@@ -479,7 +499,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
     <!-- IMAGE PLACEHOLDER 3: Strategy/portfolio image -->
     <div class="img-block" style="margin-top:40px;min-height:220px">
       <!-- <img src="images/strategy-overview.png" alt="戦略概要"> -->
-      <div style="font-size:2rem">🎯</div>
+      <div style="width:48px;height:48px;background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:var(--font-cond);font-size:13px;font-weight:900;color:#ef4444;letter-spacing:-.02em">STRAT</div>
       <div class="img-block-label">【画像③】戦略・ポートフォリオ紹介画像<br><span style="font-size:10px">（images/strategy-overview.png を配置）</span></div>
     </div>
   </div>
@@ -517,7 +537,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
 </section>
 
 <!-- FAQ -->
-<section class="section" style="background:var(--black)">
+<section class="section sec-e">
   <div class="section-inner">
     <div class="section-label">よくある質問</div>
     <h2 class="section-title">FAQ</h2>
@@ -551,7 +571,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.05);paddin
 </section>
 
 <!-- LINE CTA SECTION -->
-<section class="section line-cta-section">
+<section class="section sec-f line-cta-section">
   <div class="section-inner">
     <div class="line-cta-box">
       <div class="section-label" style="text-align:center">参加申込</div>

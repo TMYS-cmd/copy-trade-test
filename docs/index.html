@@ -797,20 +797,29 @@ function fc(ok,label){
 }
 function buildBtns(p){
   const b=[];
+  // 生成: 常に表示 (ラベルは状態で切り替え)
   const genLabel=p.generated?'🔧 再生成':'🔧 生成';
   b.push(`<button class="abtn abtn-gen" onclick="openGenerate('${p.id}')">${genLabel}</button>`);
-  if(p.generated||p.status==='review'||p.status==='approved')
+  // Staging: 生成済み かつ まだStagingされていない場合のみ
+  if(p.generated&&!p.staged)
     b.push(`<button class="abtn abtn-stage" onclick="openWf('stage','${p.slug}')">📤 Staging</button>`);
+  // プレビュー: Staging済みなら常に表示
   if(p.staged){
     const prev=`https://htmlpreview.github.io/?https://github.com/${OWNER}/${REPO}/blob/main/_staging/${p.slug}/index.html`;
     b.push(`<a href="${prev}" target="_blank" class="abtn abtn-preview">👁 プレビュー</a>`);
+  }
+  // 承認/却下: Staging済み かつ まだ公開されていない場合のみ
+  if(p.staged&&!p.approved_file){
     b.push(`<button class="abtn abtn-approve" onclick="openWf('approve','${p.slug}')">✅ 承認</button>`);
     b.push(`<button class="abtn abtn-reject" onclick="openWf('reject','${p.slug}')">✕ 却下</button>`);
   }
+  // 公開LP: 承認済み
   if(p.approved_file&&p.netlify_url)
     b.push(`<a href="${esc(p.netlify_url)}" target="_blank" class="abtn abtn-live">🌐 公開LP</a>`);
+  // 非公開: 承認済みのみ
   if(p.approved_file)
     b.push(`<button class="abtn abtn-unpublish" onclick="openUnpublish('${p.slug}')">📴 非公開</button>`);
+  // 削除: 常に表示
   b.push(`<button class="abtn abtn-delete" onclick="openDelete('${p.slug}')">🗑 削除</button>`);
   return b.join('');
 }
