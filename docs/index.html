@@ -612,7 +612,9 @@ async function load(force){
       {headers:{Accept:'application/vnd.github+json'},cache:force?'no-store':'default'});
     if(!res.ok)throw new Error('GitHub API '+res.status);
     const api=await res.json();
-    render(JSON.parse(atob(api.content.replace(/\n/g,''))));
+    const raw=atob(api.content.replace(/\n/g,''));
+    const bytes=Uint8Array.from(raw,c=>c.charCodeAt(0));
+    render(JSON.parse(new TextDecoder('utf-8').decode(bytes)));
   }catch(e){
     try{render(await(await fetch('pages-status.json?t='+Date.now())).json())}
     catch{document.getElementById('lp-grid').innerHTML=`<div class="empty"><div class="icon">❌</div><p>データ取得失敗: ${esc(e.message)}</p></div>`}
