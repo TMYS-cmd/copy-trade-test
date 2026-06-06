@@ -104,9 +104,8 @@ a{color:inherit;text-decoration:none}
 
   <!-- Action Shortcuts -->
   <div class="shortcuts">
-    <span class="shortcuts-label">GitHub Actions:</span>
-    <a href="https://github.com/TMYS-cmd/copy-trade-core/actions/workflows/generate-page.yml"
-       target="_blank" class="sc-btn">🔧 ページ生成</a>
+    <span class="shortcuts-label">操作:</span>
+    <button class="sc-btn" onclick="openGenerate(null)">🔧 ページ生成（ローカル）</button>
     <a href="https://github.com/TMYS-cmd/copy-trade-core/actions/workflows/sync-page.yml"
        target="_blank" class="sc-btn">📤 Staging転送</a>
     <a href="https://github.com/TMYS-cmd/copy-trade-core/actions/workflows/approve-page.yml"
@@ -134,17 +133,38 @@ a{color:inherit;text-decoration:none}
   </div>
 </main>
 
+<!-- Generate (local) Modal -->
+<div class="ov" id="ov-gen" onclick="closeGenerate()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3>🔧 ページ生成（ローカル実行）</h3>
+    <p>Gemini CLIはOAuth認証のため、ページ生成はPC上のターミナルで実行します。</p>
+    <p style="margin-top:8px">①<strong> ターミナルでコマンドを実行：</strong></p>
+    <div style="background:#0f172a;border-radius:8px;padding:12px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;gap:8px">
+      <code id="gen-cmd" style="font-size:.85rem;color:#86efac;font-family:monospace">bash scripts/generate.sh lp-001</code>
+      <button class="btn-cp" onclick="cp(document.getElementById('gen-cmd').textContent)" style="flex-shrink:0">📋 コピー</button>
+    </div>
+    <p>② 実行完了後、このダッシュボードが自動更新されます（1分以内）。</p>
+    <p style="margin-top:8px;color:#64748b;font-size:.78rem">
+      ※ Gemini CLIの初回認証: <code>gemini</code> を実行してGoogleアカウントでログイン<br>
+      ※ 実行ディレクトリ: <code>C:\Users\kgtmy\Documents\copy-trade-core</code>
+    </p>
+    <div class="modal-act">
+      <button class="btn btn-g" onclick="closeGenerate()">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <!-- Setup Help Modal -->
 <div class="ov" id="ov-help" onclick="closeHelp()">
   <div class="modal" onclick="event.stopPropagation()">
     <h3>⚙️ 初回セットアップ手順</h3>
-    <p>GitHub Actionsワークフローを有効にするために以下の設定が必要です。</p>
+    <p>GitHub Actions（sync/approve/reject）を有効にするために以下の設定が必要です。</p>
 
     <div class="step">
       <div class="step-n">1</div>
       <div class="step-t">
-        <strong>Gemini API キーを取得</strong><br>
-        <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#60a5fa">Google AI Studio</a> でAPIキーを発行する
+        <strong>Gemini CLI を認証（PC上で1回だけ）</strong><br>
+        PowerShellで <code>gemini</code> を実行 → ブラウザでGoogleアカウント認証
       </div>
     </div>
 
@@ -160,26 +180,17 @@ a{color:inherit;text-decoration:none}
       <div class="step-n">3</div>
       <div class="step-t">
         <strong>copy-trade-core にシークレットを登録</strong><br>
-        <a href="https://github.com/TMYS-cmd/copy-trade-core/settings/secrets/actions" target="_blank" style="color:#60a5fa">Settings > Secrets > Actions</a> で以下を追加:<br>
-        <code>GEMINI_API_KEY</code> = Gemini APIキー<br>
-        <code>REPO_TOKEN</code> = GitHub PAT
+        <a href="https://github.com/TMYS-cmd/copy-trade-core/settings/secrets/actions" target="_blank" style="color:#60a5fa">Settings > Secrets > Actions</a> で追加:<br>
+        <code>REPO_TOKEN</code> = GitHub PAT（copy-trade-testへの書き込みに使用）
       </div>
     </div>
 
     <div class="step">
       <div class="step-n">4</div>
       <div class="step-t">
-        <strong>GitHub Pages を有効化</strong><br>
-        <a href="https://github.com/TMYS-cmd/copy-trade-test/settings/pages" target="_blank" style="color:#60a5fa">copy-trade-test > Settings > Pages</a><br>
-        Source: <code>Deploy from a branch</code> → Branch: <code>main</code> / <code>/docs</code>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-n">5</div>
-      <div class="step-t">
-        <strong>ワークフロー実行テスト</strong><br>
-        上部「🔧 ページ生成」→ Run workflow → page_id: <code>lp-001</code>
+        <strong>動作確認</strong><br>
+        「🔧 ページ生成」でローカル実行 → ダッシュボードにpages/が表示されたら<br>
+        「📤 Staging転送」ワークフローを実行してテスト
       </div>
     </div>
 
@@ -248,10 +259,9 @@ function previewUrl(slug) {
 function row(p) {
   const btns = [];
 
-  // 生成: 常に表示
+  // 生成: ローカル実行モーダルを開く
   btns.push(
-    `<a href="${wfUrl('generate-page')}" target="_blank" class="btn btn-p"
-        onclick="hintCopy('${p.id}','page_id')">🔧 生成</a>`
+    `<button class="btn btn-p" onclick="openGenerate('${p.id}')">🔧 生成</button>`
   );
 
   // staging転送: files生成済みまたはreview状態
@@ -319,9 +329,21 @@ function showToast(msg) {
   setTimeout(() => el.remove(), 3000);
 }
 
+function openGenerate(pageId) {
+  const cmd = pageId
+    ? `bash scripts/generate.sh ${pageId}`
+    : 'bash scripts/generate.sh lp-001';
+  document.getElementById('gen-cmd').textContent = cmd;
+  if (pageId) cp(cmd);
+  document.getElementById('ov-gen').classList.add('open');
+}
+function closeGenerate() { document.getElementById('ov-gen').classList.remove('open'); }
+
 function openHelp()  { document.getElementById('ov-help').classList.add('open'); }
 function closeHelp() { document.getElementById('ov-help').classList.remove('open'); }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeHelp(); });
+document.addEventListener('keydown', e => {
+  if(e.key==='Escape') { closeHelp(); closeGenerate(); }
+});
 
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
 
