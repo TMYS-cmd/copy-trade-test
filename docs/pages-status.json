@@ -290,6 +290,38 @@
           "show": false
         }
       }
+    },
+    {
+      "id": "lp-006",
+      "slug": "fx-copy-trade-lp-2",
+      "status": "review",
+      "variant": "intermediate",
+      "broker": "XM",
+      "headline": "バックテストが語る、約1年3ヶ月分の実績",
+      "generated": true,
+      "staged": false,
+      "approved_file": false,
+      "netlify_url": "",
+      "spec": {
+        "title": "\"溶けない\"損切EA | Asterion SONGIRI",
+        "meta_description": "約1年3ヶ月のバックテストが実証。10万円を77万円に。損切りで\"溶けない\"EAが公式LINEで無料配布中。",
+        "hero": {
+          "cta_text": "公式LINEはこちら",
+          "headline": "バックテストが語る、約1年3ヶ月分の実績",
+          "subheadline": "\"溶ける\"相場でも、損切りで生き残った"
+        },
+        "features": [],
+        "faq": [],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "フォント: Rampart One（見出し）+ Noto Sans JP\nAirbnbスタイル: 白背景 #fff、コーラルレッド #ff5a5f\nバックテストデータ: EURCHF / 10万→77万 / PF1.87 / 勝率73.12% / DD15.39%\nYouTube: https://youtu.be/dgGLV9i6J_E?si=LaVOters1U4pXGiS\n参考note: https://note.com/fx_engineer/n/n92852ffadb00\n",
+        "results_section": {
+          "show": false
+        }
+      }
     }
   ]
 }
