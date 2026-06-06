@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T21:31:10.846011+00:00",
+  "updated_at": "2026-06-06T21:36:49.894011+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -235,7 +235,7 @@
       "broker": "",
       "headline": "【履歴公開】8万円→200万超。最大ドローダウン-1.9%で「破綻ゼロ」を貫く。",
       "generated": true,
-      "staged": false,
+      "staged": true,
       "approved_file": false,
       "netlify_url": "",
       "spec": {
