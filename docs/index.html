@@ -219,6 +219,41 @@ button{font-family:inherit;cursor:pointer}
 .empty p{font-size:.83rem;line-height:1.75}
 
 @media(max-width:600px){.hdr,.main,.tabs-bar{padding-left:16px;padding-right:16px}.hdr-sub{display:none}}
+
+/* ===== Inner tabs (modal内) ===== */
+.inner-tabs{display:flex;gap:0;margin-bottom:14px;border-bottom:1px solid var(--border)}
+.inner-tab{padding:7px 14px;font-size:.77rem;font-weight:600;color:var(--text-muted);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .15s;margin-bottom:-1px}
+.inner-tab:hover{color:var(--text)}
+.inner-tab.active{color:var(--primary);border-bottom-color:var(--primary)}
+.inner-panel{display:none}
+.inner-panel.active{display:block}
+
+/* ===== Guide banner ===== */
+.guide-banner{background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.18);border-radius:var(--rl);padding:10px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.guide-banner-txt{font-size:.76rem;color:var(--text-dim);line-height:1.5;flex:1}
+.guide-banner-txt strong{color:var(--text)}
+
+/* ===== Alert box ===== */
+.alert-amber{background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.22);border-radius:var(--r);padding:8px 12px;font-size:.73rem;color:#fbbf24;line-height:1.55;margin-bottom:12px}
+.alert-amber code{background:rgba(0,0,0,.3);border-radius:3px;padding:1px 5px;font-family:'Consolas',monospace;font-size:.71rem;color:#fde68a}
+
+/* ===== Timeline (guide modal) ===== */
+.tl{display:flex;flex-direction:column}
+.tl-item{display:flex;gap:12px;padding-bottom:18px}
+.tl-item:last-child{padding-bottom:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;min-width:28px}
+.tl-num{width:28px;height:28px;background:var(--blue-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.73rem;font-weight:700;color:#fff;flex-shrink:0}
+.tl-line{flex:1;width:2px;background:var(--border);margin:3px 0}
+.tl-item:last-child .tl-line{display:none}
+.tl-right{flex:1;min-width:0;padding-top:4px}
+.tl-title{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.tl-body{font-size:.78rem;color:var(--text-dim);line-height:1.65}
+.tl-body strong{color:var(--text)}
+.tl-body code{background:rgba(0,0,0,.4);border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-family:'Consolas',monospace;font-size:.74rem;color:#86efac}
+.tl-sub{margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.tl-sub-item{background:rgba(0,0,0,.2);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;font-size:.74rem;color:var(--text-dim)}
+.tl-sub-item strong{color:var(--text)}
+.tl-sub-item .slug-box{margin-top:6px;margin-bottom:0}
 </style>
 </head>
 <body>
@@ -254,6 +289,12 @@ button{font-family:inherit;cursor:pointer}
 
   <!-- LP Tab -->
   <div class="tab-panel active" id="panel-lp">
+    <div class="guide-banner">
+      <div class="guide-banner-txt">
+        <strong>新規LP作成フロー:</strong> ① YAML仕様追加 → ② 生成（GitHub Actions または ローカル）→ ③ Staging転送 → ④ プレビュー確認 → ⑤ 承認 → Netlify公開
+      </div>
+      <button class="abtn abtn-gen" onclick="openGuide()">📋 全ステップガイド</button>
+    </div>
     <div class="lp-grid" id="lp-grid">
       <div class="empty"><div class="icon">⏳</div><p>データを読み込み中...</p></div>
     </div>
@@ -294,47 +335,193 @@ button{font-family:inherit;cursor:pointer}
 
 <!-- ===== Generate Modal ===== -->
 <div class="overlay" id="ov-gen" onclick="closeModal('ov-gen')">
-  <div class="modal" onclick="event.stopPropagation()">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:580px">
     <div class="modal-hdr">
-      <h3>🔧 ページ生成（ローカル実行）</h3>
+      <h3>🔧 LP生成 — <span id="gen-modal-id" style="font-family:monospace;font-size:.85rem;color:#86efac">lp-001</span></h3>
       <button class="modal-x" onclick="closeModal('ov-gen')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="wf-desc">generate.sh はPC上のターミナルで実行します。その後 Claude Code（または Gemini Code Assist）にHTMLを生成してもらい、post-generate.sh で後処理します。</div>
-      <div class="step-list">
-        <div class="step-item">
-          <div class="step-num">1</div>
-          <div class="step-txt"><strong>ターミナルで実行：</strong>
-            <div class="slug-box" style="margin-top:7px">
-              <span class="slug-val" id="gen-cmd1">bash scripts/generate.sh lp-001</span>
-              <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-cmd1').textContent)">📋 コピー</button>
+      <div class="inner-tabs">
+        <button class="inner-tab active" id="gtab-remote" onclick="switchInner('gtab-remote','ov-gen','ip-remote')">🌐 リモート実行（推奨）</button>
+        <button class="inner-tab" id="gtab-local" onclick="switchInner('gtab-local','ov-gen','ip-local')">💻 ローカル実行</button>
+      </div>
+
+      <!-- Remote panel -->
+      <div class="inner-panel active" id="ip-remote">
+        <div class="wf-desc">GitHub Actions がクラウドでHTMLを生成します。ローカルのターミナル操作不要。</div>
+        <div class="alert-amber">⚠️ 事前に <code>ANTHROPIC_API_KEY</code> シークレットを GitHub → Settings → Secrets に登録してください。</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-txt"><strong>ページIDをコピー：</strong>
+              <div class="slug-box" style="margin-top:7px">
+                <span class="slug-val" id="gen-page-id">lp-001</span>
+                <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-page-id').textContent)">📋 コピー</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="step-item">
-          <div class="step-num">2</div>
-          <div class="step-txt"><strong>Claude Code に依頼：</strong><br>
-            <code id="gen-req">「lp-001 のLPを生成して」</code>
-            <button class="copy-btn" style="margin-left:6px" onclick="cp(document.getElementById('gen-req').textContent)">📋</button>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-txt">「<strong>Generate LP を開く</strong>」ボタンをクリック</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-txt">右上の <strong>「Run workflow」</strong> → <strong>page_id フィールド</strong>にコピーしたIDを貼り付けて実行</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-txt">1〜2分後にダッシュボードを<strong>🔄 更新</strong>して <strong style="color:#4ade80">pages/ ●</strong> が緑になることを確認</div>
           </div>
         </div>
-        <div class="step-item">
-          <div class="step-num">3</div>
-          <div class="step-txt"><strong>生成完了後に実行：</strong>
-            <div class="slug-box" style="margin-top:7px">
-              <span class="slug-val" id="gen-cmd2">bash scripts/post-generate.sh lp-001</span>
-              <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-cmd2').textContent)">📋 コピー</button>
+      </div>
+
+      <!-- Local panel -->
+      <div class="inner-panel" id="ip-local">
+        <div class="wf-desc">VS Code のターミナル（<code>Ctrl+`</code>）でコマンドを実行してください。実行ディレクトリ: <code>copy-trade-core/</code></div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-txt"><strong>プロンプトを生成：</strong>
+              <div class="slug-box" style="margin-top:7px">
+                <span class="slug-val" id="gen-cmd1">bash scripts/generate.sh lp-001</span>
+                <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-cmd1').textContent)">📋 コピー</button>
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-txt"><strong>Claude Code に依頼（コピーして貼り付け）：</strong>
+              <div class="slug-box" style="margin-top:7px">
+                <span class="slug-val" id="gen-req" style="font-size:.78rem">「lp-001 のLPを生成して」</span>
+                <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-req').textContent)">📋 コピー</button>
+              </div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-txt"><strong>生成完了後に後処理：</strong>
+              <div class="slug-box" style="margin-top:7px">
+                <span class="slug-val" id="gen-cmd2">bash scripts/post-generate.sh lp-001</span>
+                <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-cmd2').textContent)">📋 コピー</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <p style="font-size:.71rem;color:var(--text-muted);line-height:1.75">
-        ※ 実行ディレクトリ: <code style="font-family:monospace;font-size:.73rem">C:\Users\kgtmy\Documents\copy-trade-core</code><br>
-        ※ Gemini Code Assist を使う場合: <code style="font-family:monospace;font-size:.73rem">prompts/gemini-tasks/</code> のプロンプトを読ませてHTML生成してください
-      </p>
     </div>
     <div class="modal-foot">
       <button class="icon-btn" onclick="closeModal('ov-gen')">閉じる</button>
+      <a id="gen-actions-btn" href="https://github.com/TMYS-cmd/copy-trade-core/actions/workflows/generate-page.yml" target="_blank" class="open-wf-btn" onclick="cpMark(document.getElementById('gen-page-id').nextElementSibling,document.getElementById('gen-page-id').textContent)">
+        Generate LP を開く →
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Full Guide Modal ===== -->
+<div class="overlay" id="ov-guide" onclick="closeModal('ov-guide')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:640px">
+    <div class="modal-hdr">
+      <h3>📋 新規LP作成 — 全ステップガイド</h3>
+      <button class="modal-x" onclick="closeModal('ov-guide')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="tl">
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">1</div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">ページ仕様を追加</div>
+            <div class="tl-body">
+              <strong>content/landing-pages.yaml</strong> を開き、新規ページのエントリーを追加します。<br>
+              必要項目: <code>id</code>, <code>slug</code>, <code>title</code>, <code>variant</code>, <code>hero</code>, <code>features</code>, <code>faq</code>, <code>legal</code>
+              <div class="tl-sub">
+                <div class="tl-sub-item">
+                  <strong>VS Code で開く:</strong> Explorer から <code>content/landing-pages.yaml</code> を選択<br>
+                  または Ctrl+P → ファイル名検索
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">2</div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">LP を生成</div>
+            <div class="tl-body">
+              カードの <strong>「🔧 生成」</strong> ボタンから実行します。2つの方法があります。
+              <div class="tl-sub">
+                <div class="tl-sub-item">
+                  <strong>🌐 リモート実行（推奨）:</strong> GitHub Actions が自動でHTMLを生成。ターミナル操作不要。<br>
+                  ※ 事前に <code>ANTHROPIC_API_KEY</code> シークレットの設定が必要
+                </div>
+                <div class="tl-sub-item">
+                  <strong>💻 ローカル実行:</strong> VS Codeターミナル（<code>Ctrl+`</code>）で<br>
+                  <code>bash scripts/generate.sh [page-id]</code> → Claude Code に依頼 → <code>bash scripts/post-generate.sh [page-id]</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">3</div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">ダッシュボードで生成確認</div>
+            <div class="tl-body">
+              右上の <strong>「🔄 更新」</strong> ボタンをクリックしてデータを更新します。<br>
+              LPカードの <strong style="color:#4ade80">pages/ ●（緑）</strong> になっていることを確認してください。
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">4</div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">Staging に転送</div>
+            <div class="tl-body">
+              カードの <strong>「📤 Staging転送」</strong> ボタンをクリック。<br>
+              ポップアップの手順に従って <strong>sync-page.yml</strong> を GitHub Actions で実行します。<br>
+              完了後: <strong style="color:#4ade80">_staging/ ●（緑）</strong> になります。
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">5</div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">プレビューで確認</div>
+            <div class="tl-body">
+              カードの <strong>「👁 プレビュー」</strong> ボタンでページを確認します。
+              <div class="tl-sub">
+                <div class="tl-sub-item">確認ポイント: ヘッドライン文言 / CTAボタンリンク / 実績数値の免責事項 / モバイル表示 / 免責事項・リスク警告の有無</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-left"><div class="tl-num">6</div><div class="tl-line"></div></div>
+          <div class="tl-right">
+            <div class="tl-title">承認 または 却下</div>
+            <div class="tl-body">
+              <div class="tl-sub">
+                <div class="tl-sub-item">
+                  <strong>✅ 承認:</strong> 「✅ 承認」ボタン → <strong>approve-page.yml</strong> を実行 → <strong>_approved/ に自動コピー → Netlify即時公開</strong>
+                </div>
+                <div class="tl-sub-item">
+                  <strong>✕ 却下:</strong> 「✕ 却下」ボタン → reject-page.yml を実行（理由を入力） → フィードバックYAML保存 → <strong>STEP 2 に戻って再生成</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="icon-btn" onclick="closeModal('ov-guide')">閉じる</button>
     </div>
   </div>
 </div>
@@ -573,16 +760,29 @@ function openWf(type,slug){
 }
 function onWfOpen(){cp(curWfSlug);showToast('「'+curWfSlug+'」をコピーしました')}
 
+// ===== Inner Tab Switcher =====
+function switchInner(activeBtnId, ovId, activePanelId){
+  const modal=document.getElementById(ovId);
+  modal.querySelectorAll('.inner-tab').forEach(b=>b.classList.remove('active'));
+  modal.querySelectorAll('.inner-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(activeBtnId).classList.add('active');
+  document.getElementById(activePanelId).classList.add('active');
+}
+
 // ===== Generate Modal =====
 function openGenerate(pageId){
   const id=pageId||'lp-001';
   const slug=pages.find(p=>p.id===id)?.slug||id;
+  document.getElementById('gen-modal-id').textContent=id;
+  document.getElementById('gen-page-id').textContent=id;
   document.getElementById('gen-cmd1').textContent='bash scripts/generate.sh '+id;
   document.getElementById('gen-req').textContent='「'+id+' ('+slug+') のLPを生成して」';
   document.getElementById('gen-cmd2').textContent='bash scripts/post-generate.sh '+id;
-  if(pageId)cp('bash scripts/generate.sh '+id);
   openModal('ov-gen');
 }
+
+// ===== Full Guide Modal =====
+function openGuide(){openModal('ov-guide')}
 
 // ===== Reference Sites =====
 function renderSites(){
