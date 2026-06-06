@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MT4コピートレード完全ガイド | XMTrading</title>
+  <meta name="description" content="MetaTrader4（MT4）でのコピートレード設定から運用まで。XMの人気シグナルプロバイダー一覧。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --primary-light: #dbeafe;
+      --primary-mid: #3b82f6;
+      --accent: #f59e0b;
+      --accent-dark: #d97706;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --surface2: #f1f5f9;
+      --border: #e2e8f0;
+      --green: #16a34a;
+      --red: #dc2626;
+      --font: 'Noto Sans JP','Hiragino Sans','Yu Gothic','Meiryo',sans-serif;
+      --max: 1100px;
+      --r: 0.5rem;
+      --rl: 1rem;
+      --shadow: 0 1px 3px rgba(0,0,0,.1);
+      --shadow-lg: 0 10px 30px rgba(30,64,175,.12);
+      --shadow-xl: 0 20px 40px rgba(30,64,175,.18);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; line-height: 1.75; }
+
+    .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 1.25rem; }
+    @media(min-width:768px){ .container { padding: 0 2rem; } }
+
+    /* ===== Header ===== */
+    .hdr { background: #0f172a; padding: 0.875rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,.3); }
+    .hdr-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .hdr-logo { font-size: 1.05rem; font-weight: 900; color: #fff; letter-spacing: -.01em; }
+    .hdr-logo span { color: #3b82f6; }
+    .hdr-cta { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1.25rem; background: var(--accent); color: #0f172a; font-size: 0.82rem; font-weight: 700; border-radius: 9999px; text-decoration: none; transition: background .15s, transform .1s; white-space: nowrap; }
+    .hdr-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    /* ===== Hero ===== */
+    .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%); padding: 5rem 0 4rem; overflow: hidden; position: relative; }
+    .hero::before { content:''; position:absolute; inset:0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+    .hero-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; align-items: center; position: relative; z-index: 1; }
+    @media(min-width:900px){ .hero-grid { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(59,130,246,.2); border: 1px solid rgba(59,130,246,.4); border-radius: 9999px; padding: 0.3rem 0.875rem; font-size: 0.72rem; font-weight: 700; color: #93c5fd; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 1.25rem; }
+    .hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: #60a5fa; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+
+    .hero-h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; color: #fff; line-height: 1.25; letter-spacing: -.02em; margin-bottom: 1rem; }
+    .hero-h1 em { font-style: normal; color: #60a5fa; }
+    .hero-sub { font-size: 1.05rem; color: #94a3b8; line-height: 1.8; margin-bottom: 2rem; }
+    .hero-badges { display: flex; gap: 0.625rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15); border-radius: 9999px; padding: 0.3rem 0.875rem; font-size: 0.74rem; color: #cbd5e1; font-weight: 500; }
+
+    .hero-btn-wrap { display: flex; flex-direction: column; gap: 0.75rem; }
+    @media(min-width:480px){ .hero-btn-wrap { flex-direction: row; align-items: center; } }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--accent); color: #0f172a; font-size: 1rem; font-weight: 900; border-radius: var(--rl); text-decoration: none; transition: all .15s; box-shadow: 0 4px 16px rgba(245,158,11,.4); white-space: nowrap; }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,.5); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.82rem; color: #94a3b8; text-decoration: none; }
+    .btn-secondary:hover { color: #cbd5e1; }
+
+    /* MT4 UI Mockup */
+    .mt4-mockup { background: #0f172a; border: 1px solid rgba(59,130,246,.25); border-radius: var(--rl); overflow: hidden; box-shadow: var(--shadow-xl); }
+    .mt4-titlebar { background: #1e2536; padding: 0.5rem 0.875rem; display: flex; align-items: center; gap: 0.625rem; border-bottom: 1px solid rgba(59,130,246,.15); }
+    .mt4-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mt4-dot.r { background: #ef4444; }
+    .mt4-dot.y { background: #f59e0b; }
+    .mt4-dot.g { background: #22c55e; }
+    .mt4-title-txt { font-size: 0.72rem; color: #64748b; font-family: 'Consolas',monospace; margin-left: 0.375rem; }
+    .mt4-body { padding: 1rem; }
+    .mt4-nav { display: flex; gap: 0.375rem; margin-bottom: 0.875rem; flex-wrap: wrap; }
+    .mt4-tab { padding: 0.25rem 0.75rem; border-radius: 3px; font-size: 0.68rem; font-family: 'Consolas',monospace; background: rgba(59,130,246,.1); color: #60a5fa; border: 1px solid rgba(59,130,246,.2); cursor: default; }
+    .mt4-tab.active { background: #1e40af; color: #fff; border-color: #3b82f6; }
+    .mt4-signal-list { display: flex; flex-direction: column; gap: 0.5rem; }
+    .mt4-signal { background: #1e2536; border: 1px solid rgba(59,130,246,.12); border-radius: 0.375rem; padding: 0.625rem 0.875rem; display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; align-items: center; }
+    .mt4-signal-name { font-size: 0.74rem; font-weight: 700; color: #e2e8f0; font-family: 'Consolas',monospace; }
+    .mt4-signal-stats { display: flex; gap: 0.875rem; margin-top: 0.2rem; }
+    .mt4-stat { font-size: 0.62rem; color: #64748b; }
+    .mt4-stat span { color: #22c55e; font-weight: 700; }
+    .mt4-stat span.neg { color: #f87171; }
+    .mt4-sub-btn { background: #1e40af; border: none; border-radius: 3px; padding: 0.3rem 0.75rem; font-size: 0.64rem; color: #fff; cursor: default; font-family: 'Consolas',monospace; white-space: nowrap; }
+    .mt4-footer-bar { background: #1e2536; padding: 0.375rem 0.875rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(59,130,246,.1); }
+    .mt4-footer-txt { font-size: 0.6rem; color: #475569; font-family: 'Consolas',monospace; }
+    .mt4-status { font-size: 0.6rem; color: #22c55e; }
+
+    /* ===== Stats Bar ===== */
+    .stats-bar { background: var(--primary); padding: 1.5rem 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; text-align: center; }
+    @media(min-width:600px){ .stats-grid { grid-template-columns: repeat(4, 1fr); } }
+    .stat-item .num { font-size: 1.75rem; font-weight: 900; color: #fff; line-height: 1; }
+    .stat-item .lbl { font-size: 0.72rem; color: #93c5fd; margin-top: 0.25rem; }
+    .stat-item .note { font-size: 0.62rem; color: #60a5fa; margin-top: 0.125rem; }
+
+    /* ===== Section ===== */
+    .section { padding: 5rem 0; }
+    .section.alt { background: var(--surface); }
+    .section-tag { display: inline-block; padding: 0.25rem 0.875rem; background: var(--primary-light); color: var(--primary); font-size: 0.72rem; font-weight: 700; border-radius: 9999px; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 0.875rem; }
+    .section-h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 900; line-height: 1.3; letter-spacing: -.01em; margin-bottom: 0.875rem; }
+    .section-lead { font-size: 1rem; color: var(--text-muted); max-width: 640px; line-height: 1.85; }
+    .section-hdr { margin-bottom: 3rem; }
+    .section-hdr.center { text-align: center; }
+    .section-hdr.center .section-lead { margin: 0 auto; }
+
+    /* ===== Features ===== */
+    .feat-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media(min-width:600px){ .feat-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width:900px){ .feat-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .feat-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--rl); padding: 1.75rem 1.5rem; transition: border-color .15s, box-shadow .15s, transform .15s; }
+    .feat-card:hover { border-color: #93c5fd; box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .feat-icon { width: 52px; height: 52px; background: var(--primary-light); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+    .feat-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.625rem; }
+    .feat-body { font-size: 0.875rem; color: var(--text-muted); line-height: 1.8; }
+
+    /* ===== Signal Provider Guide ===== */
+    .sp-intro { font-size: 0.95rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 2rem; }
+    .sp-criteria { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 3rem; }
+    @media(min-width:640px){ .sp-criteria { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width:900px){ .sp-criteria { grid-template-columns: repeat(3, 1fr); } }
+
+    .sp-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--rl); padding: 1.5rem; position: relative; overflow: hidden; }
+    .sp-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: var(--primary); }
+    .sp-num { font-size: 0.68rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 0.5rem; }
+    .sp-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .sp-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.75; }
+    .sp-body strong { color: var(--text); }
+
+    .sp-table-wrap { overflow-x: auto; }
+    .sp-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .sp-table th { background: var(--primary); color: #fff; padding: 0.75rem 1rem; text-align: left; font-weight: 700; white-space: nowrap; }
+    .sp-table td { padding: 0.75rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .sp-table tr:last-child td { border-bottom: none; }
+    .sp-table tr:nth-child(even) td { background: var(--surface); }
+    .sp-ok { color: var(--green); font-weight: 700; }
+    .sp-ng { color: var(--red); font-weight: 700; }
+    .sp-mid { color: var(--accent-dark); font-weight: 700; }
+    .sp-label { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.68rem; font-weight: 700; }
+    .sp-label-good { background: #dcfce7; color: #15803d; }
+    .sp-label-warn { background: #fef9c3; color: #92400e; }
+    .sp-label-bad { background: #fee2e2; color: #b91c1c; }
+
+    /* ===== CTA Section ===== */
+    .cta-section { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); padding: 5rem 0; text-align: center; }
+    .cta-h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: 900; color: #fff; margin-bottom: 1rem; }
+    .cta-sub { font-size: 1rem; color: #94a3b8; margin-bottom: 2.5rem; line-height: 1.8; }
+    .cta-steps { display: flex; flex-direction: column; gap: 0.75rem; max-width: 480px; margin: 0 auto 2.5rem; }
+    @media(min-width:600px){ .cta-steps { flex-direction: row; justify-content: center; } }
+    .cta-step { display: flex; align-items: center; gap: 0.625rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--rl); padding: 0.875rem 1.25rem; }
+    .cta-step-num { width: 28px; height: 28px; background: var(--primary-mid); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .cta-step-txt { font-size: 0.8rem; color: #cbd5e1; font-weight: 500; }
+    .cta-btn-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+    .btn-cta-main { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1.125rem 2.5rem; background: var(--accent); color: #0f172a; font-size: 1.1rem; font-weight: 900; border-radius: var(--rl); text-decoration: none; transition: all .15s; box-shadow: 0 4px 24px rgba(245,158,11,.45); }
+    .btn-cta-main:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(245,158,11,.55); }
+    .cta-note { font-size: 0.72rem; color: #475569; }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.25rem 0; cursor: pointer; user-select: none; }
+    .faq-q-txt { font-size: 0.95rem; font-weight: 700; line-height: 1.55; }
+    .faq-icon { width: 22px; height: 22px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--primary); flex-shrink: 0; margin-top: 1px; transition: transform .2s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 0 1.25rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.85; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== Disclaimer ===== */
+    .disclaimer { background: var(--surface2); border-top: 1px solid var(--border); padding: 2.5rem 0; }
+    .disclaimer-inner { max-width: 860px; margin: 0 auto; }
+    .disclaimer-title { font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin-bottom: 0.875rem; display: flex; align-items: center; gap: 0.5rem; }
+    .disclaimer-body { font-size: 0.75rem; color: var(--text-light); line-height: 1.9; }
+    .disclaimer-body p + p { margin-top: 0.625rem; }
+
+    /* ===== Footer ===== */
+    .footer { background: #0f172a; padding: 2rem 0; text-align: center; }
+    .footer-txt { font-size: 0.75rem; color: #334155; }
+
+    /* ===== Utility ===== */
+    .text-blue { color: var(--primary); }
+    .text-accent { color: var(--accent); }
+    .fw-9 { font-weight: 900; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+
+    @media(max-width:480px){
+      .hdr-logo { font-size: 0.9rem; }
+      .hdr-cta { font-size: 0.76rem; padding: 0.45rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="hdr">
+  <div class="container">
+    <div class="hdr-inner">
+      <div class="hdr-logo">MT4 <span>Copy</span>Trade</div>
+      <a href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0" target="_blank" rel="noopener sponsored" class="hdr-cta">
+        無料で口座開設 →
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="dot"></span>XMTrading × MT4 Signals</div>
+        <h1 class="hero-h1">MT4コピートレードで、<br><em>プロの戦略</em>をそのまま活用</h1>
+        <p class="hero-sub">世界中のトレーダーが使うMetaTrader4で、実績あるシグナルプロバイダーの取引を自動コピー。設定後は完全自動で稼働します。</p>
+        <div class="hero-badges">
+          <span class="hero-badge">📊 MT4 Signals 対応</span>
+          <span class="hero-badge">🔒 ゼロカット保護</span>
+          <span class="hero-badge">🇯🇵 日本語サポート</span>
+          <span class="hero-badge">⚡ 最大888倍レバレッジ</span>
+        </div>
+        <div class="hero-btn-wrap">
+          <a href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0" target="_blank" rel="noopener sponsored" class="btn-primary">
+            MT4で口座開設する →
+          </a>
+          <span class="btn-secondary">XMTrading - 日本語サポートあり</span>
+        </div>
+      </div>
+
+      <!-- MT4 UI Mockup -->
+      <div class="mt4-mockup" role="img" aria-label="MetaTrader4 コピートレード 画面">
+        <div class="mt4-titlebar">
+          <span class="mt4-dot r"></span>
+          <span class="mt4-dot y"></span>
+          <span class="mt4-dot g"></span>
+          <span class="mt4-title-txt">MetaTrader 4 — Signals</span>
+        </div>
+        <div class="mt4-body">
+          <div class="mt4-nav">
+            <span class="mt4-tab active">All Signals</span>
+            <span class="mt4-tab">Free</span>
+            <span class="mt4-tab">Paid</span>
+            <span class="mt4-tab">My Signals</span>
+          </div>
+          <div class="mt4-signal-list">
+            <div class="mt4-signal">
+              <div>
+                <div class="mt4-signal-name">AlphaEdge_Pro</div>
+                <div class="mt4-signal-stats">
+                  <div class="mt4-stat">ROI: <span>+127.4%</span></div>
+                  <div class="mt4-stat">DD: <span class="neg">8.2%</span></div>
+                  <div class="mt4-stat">Subs: <span>1,204</span></div>
+                </div>
+              </div>
+              <button class="mt4-sub-btn">Subscribe</button>
+            </div>
+            <div class="mt4-signal">
+              <div>
+                <div class="mt4-signal-name">StableGrowth_JP</div>
+                <div class="mt4-signal-stats">
+                  <div class="mt4-stat">ROI: <span>+84.1%</span></div>
+                  <div class="mt4-stat">DD: <span class="neg">5.7%</span></div>
+                  <div class="mt4-stat">Subs: <span>876</span></div>
+                </div>
+              </div>
+              <button class="mt4-sub-btn">Subscribe</button>
+            </div>
+            <div class="mt4-signal">
+              <div>
+                <div class="mt4-signal-name">TrendMaster_FX</div>
+                <div class="mt4-signal-stats">
+                  <div class="mt4-stat">ROI: <span>+61.8%</span></div>
+                  <div class="mt4-stat">DD: <span class="neg">11.3%</span></div>
+                  <div class="mt4-stat">Subs: <span>542</span></div>
+                </div>
+              </div>
+              <button class="mt4-sub-btn">Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <div class="mt4-footer-bar">
+          <span class="mt4-footer-txt">XMTrading — MT4 Signals Marketplace</span>
+          <span class="mt4-status">● Connected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stats Bar ===== -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="num">5,000+</div>
+        <div class="lbl">シグナルプロバイダー数</div>
+        <div class="note">MT4 Signals 登録数</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">888倍</div>
+        <div class="lbl">最大レバレッジ</div>
+        <div class="note">XMTrading 海外口座</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">$5</div>
+        <div class="lbl">最低入金額</div>
+        <div class="note">約750円〜</div>
+      </div>
+      <div class="stat-item">
+        <div class="num">24h</div>
+        <div class="lbl">完全自動稼働</div>
+        <div class="note">サブスクリプション中は</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Features ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-hdr center">
+      <div class="section-tag">Features</div>
+      <h2 class="section-h2">MT4コピートレードの4つの強み</h2>
+      <p class="section-lead">世界標準のプラットフォームと豊富なシグナルプロバイダーで、プロレベルの取引戦略を誰でも活用できます。</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3 class="feat-title">MT4完全対応</h3>
+        <p class="feat-body">MetaTrader4の全機能に対応。インジケーターやEA（自動売買）と組み合わせた高度な運用も可能です。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🌏</div>
+        <h3 class="feat-title">人気シグナルプロバイダー</h3>
+        <p class="feat-body">世界中の優秀なトレーダーが登録。実績・最大ドローダウン・フォロワー数で比較・選択できます。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🛡️</div>
+        <h3 class="feat-title">リスク管理機能</h3>
+        <p class="feat-body">最大ドローダウン設定やロットサイズ調整で、自分のリスク許容度に合わせてコントロールしながらコピーできます。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🇯🇵</div>
+        <h3 class="feat-title">日本語サポート</h3>
+        <p class="feat-body">XMTradingは日本語サポートに完全対応。口座開設からMT4設定まで安心してサポートを受けられます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Signal Provider Guide ===== -->
+<section class="section alt">
+  <div class="container">
+    <div class="section-hdr">
+      <div class="section-tag">Provider Guide</div>
+      <h2 class="section-h2">シグナルプロバイダーの<br>正しい選び方</h2>
+      <p class="section-lead">収益率（ROI）だけで選ぶのは危険です。長期的に安定して利益を出すプロバイダーを見極める6つのチェックポイントを解説します。</p>
+    </div>
+
+    <div class="sp-criteria">
+      <div class="sp-card">
+        <div class="sp-num">Check 01</div>
+        <h3 class="sp-title">最大ドローダウン（DD）</h3>
+        <p class="sp-body">口座残高が一時的にどこまで下落したかを示す指標。<strong>10%以下</strong>が理想。20%超は高リスクと判断してください。</p>
+      </div>
+      <div class="sp-card">
+        <div class="sp-num">Check 02</div>
+        <h3 class="sp-title">運用期間</h3>
+        <p class="sp-body">設立から<strong>6ヶ月以上</strong>の実績があるプロバイダーを選ぶこと。短期の高騰は偶然の可能性があります。</p>
+      </div>
+      <div class="sp-card">
+        <div class="sp-num">Check 03</div>
+        <h3 class="sp-title">フォロワー数・レビュー</h3>
+        <p class="sp-body">多くのフォロワーに支持されているプロバイダーは信頼性が高い傾向。<strong>コメント欄</strong>も必ずチェックしましょう。</p>
+      </div>
+      <div class="sp-card">
+        <div class="sp-num">Check 04</div>
+        <h3 class="sp-title">月次リターンの安定性</h3>
+        <p class="sp-body">毎月コンスタントに<strong>3〜8%</strong>を稼ぐプロバイダーが長期的に優秀。月100%超は持続不可能なことが多いです。</p>
+      </div>
+      <div class="sp-card">
+        <div class="sp-num">Check 05</div>
+        <h3 class="sp-title">取引通貨ペアの種類</h3>
+        <p class="sp-body">主要通貨ペア（USD/JPY, EUR/USD）中心のプロバイダーはスプレッドコストが低く、<strong>スリッページのリスク</strong>が少ない。</p>
+      </div>
+      <div class="sp-card">
+        <div class="sp-num">Check 06</div>
+        <h3 class="sp-title">サブスクリプション料金</h3>
+        <p class="sp-body">無料と有料の両方あり。有料でも<strong>月$30以下</strong>が相場。成績が良くてもコスト過多では利益が目減りします。</p>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h3 style="font-size:1.05rem;font-weight:700;margin-bottom:1.25rem;">プロバイダー選択：指標の目安</h3>
+    <div class="sp-table-wrap">
+      <table class="sp-table">
+        <thead>
+          <tr>
+            <th>指標</th>
+            <th>🟢 良好</th>
+            <th>🟡 要注意</th>
+            <th>🔴 危険</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>最大ドローダウン</strong></td>
+            <td><span class="sp-label sp-label-good">10%以下</span></td>
+            <td><span class="sp-label sp-label-warn">10〜20%</span></td>
+            <td><span class="sp-label sp-label-bad">20%超</span></td>
+          </tr>
+          <tr>
+            <td><strong>運用期間</strong></td>
+            <td><span class="sp-label sp-label-good">1年以上</span></td>
+            <td><span class="sp-label sp-label-warn">6〜12ヶ月</span></td>
+            <td><span class="sp-label sp-label-bad">6ヶ月未満</span></td>
+          </tr>
+          <tr>
+            <td><strong>月次リターン</strong></td>
+            <td><span class="sp-label sp-label-good">3〜8%</span></td>
+            <td><span class="sp-label sp-label-warn">8〜20%</span></td>
+            <td><span class="sp-label sp-label-bad">20%超</span></td>
+          </tr>
+          <tr>
+            <td><strong>フォロワー数</strong></td>
+            <td><span class="sp-label sp-label-good">500人以上</span></td>
+            <td><span class="sp-label sp-label-warn">100〜500人</span></td>
+            <td><span class="sp-label sp-label-bad">100人未満</span></td>
+          </tr>
+          <tr>
+            <td><strong>月額料金</strong></td>
+            <td><span class="sp-label sp-label-good">無料〜$15</span></td>
+            <td><span class="sp-label sp-label-warn">$15〜$30</span></td>
+            <td><span class="sp-label sp-label-bad">$30超</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA Section ===== -->
+<section class="cta-section">
+  <div class="container">
+    <div class="section-tag" style="background:rgba(59,130,246,.2);color:#93c5fd;margin-bottom:1rem;">今すぐ始める</div>
+    <h2 class="cta-h2">MT4コピートレードを<br>今日から始めよう</h2>
+    <p class="cta-sub">口座開設は最短5分。最低入金額は5ドル（約750円）から。<br>難しい設定はなく、シグナルを選んでクリックするだけです。</p>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <div class="cta-step-num">1</div>
+        <div class="cta-step-txt">無料口座開設<br><span style="font-size:.72rem;color:#64748b">最短5分・本人確認なし</span></div>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-num">2</div>
+        <div class="cta-step-txt">MT4をダウンロード<br><span style="font-size:.72rem;color:#64748b">PC・スマホ対応</span></div>
+      </div>
+      <div class="cta-step">
+        <div class="cta-step-num">3</div>
+        <div class="cta-step-txt">シグナルを選んで購読<br><span style="font-size:.72rem;color:#64748b">自動コピー開始</span></div>
+      </div>
+    </div>
+    <div class="cta-btn-wrap">
+      <a href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0" target="_blank" rel="noopener sponsored" class="btn-cta-main">
+        MT4で口座開設する（無料）→
+      </a>
+      <p class="cta-note">※ 口座開設・維持費用は無料。入金はいつでも可能です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-hdr center">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-h2">よくあるご質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-txt">MT4とMT5、コピートレードにはどちらを選べばいいですか？</span>
+          <span class="faq-icon">＋</span>
+        </div>
+        <div class="faq-a">コピートレード目的であればどちらでも問題ありません。シグナルプロバイダーの数と種類の豊富さではMT4が優勢です。すでにMT4に慣れている方や、既存のインジケーター・EAを活用したい方はMT4をおすすめします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-txt">コピー中でも自分で手動取引できますか？</span>
+          <span class="faq-icon">＋</span>
+        </div>
+        <div class="faq-a">はい、コピー取引と手動取引を同時に行うことができます。MT4はコピーポジションと手動ポジションを別々に管理できるため、混在して使用可能です。ただし、証拠金（マージン）の管理にはご注意ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-txt">コピー中にシグナルプロバイダーを変更できますか？</span>
+          <span class="faq-icon">＋</span>
+        </div>
+        <div class="faq-a">はい、いつでも変更可能です。現在購読中のシグナルを停止し、別のプロバイダーを選んで購読するだけです。停止時に既存のコピーポジションをどう扱うか（保持 or 決済）も選択できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-txt">XMTradingの口座開設に必要なものは？</span>
+          <span class="faq-icon">＋</span>
+        </div>
+        <div class="faq-a">メールアドレスと基本情報（氏名・住所・生年月日）のみで仮口座が開設できます。入金・出金には本人確認書類（パスポートまたは運転免許証）と住所確認書類が必要になります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-txt">元本割れのリスクはありますか？</span>
+          <span class="faq-icon">＋</span>
+        </div>
+        <div class="faq-a">はい、FX取引には元本割れのリスクがあります。シグナルプロバイダーの過去実績は将来の利益を保証するものではありません。XMTradingではゼロカットシステムを採用しているため、口座残高以上の損失は発生しませんが、投資は余裕資金の範囲内で行ってください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Disclaimer ===== -->
+<div class="disclaimer">
+  <div class="container">
+    <div class="disclaimer-inner">
+      <div class="disclaimer-title">
+        <span>⚠️</span> 重要な免責事項・リスク開示
+      </div>
+      <div class="disclaimer-body">
+        <p>本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。掲載している情報は情報提供を目的としており、投資助言を行うものではありません。</p>
+        <p>FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。過去の実績は将来の利益を保証するものではありません。レバレッジ取引では、証拠金を超える損失が生じる可能性があります（ゼロカット採用ブローカーを除く）。</p>
+        <p>XMTradingはASIC（オーストラリア）・CySEC（キプロス）・IFSC（ベリーズ）の規制を受けています。日本の金融庁（FSA）への登録はないため、日本の金融商品取引法の保護対象外となります。</p>
+        <p>掲載している数値（ROI、ドローダウン等）はシグナルプロバイダーの過去データを参考表示したものであり、将来の運用成績を示すものではありません。投資判断は必ずご自身でお行いください。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-txt">© 2026 MT4 CopyTrade Guide. All rights reserved. | 本サイトはアフィリエイト広告を含みます。</p>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
