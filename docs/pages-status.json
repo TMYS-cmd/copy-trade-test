@@ -229,14 +229,14 @@
     },
     {
       "id": "lp-004",
-      "slug": "fx-copy-trade-lp",
+      "slug": "fx-steady-compounding",
       "status": "review",
       "variant": "beginner",
       "broker": "",
       "headline": "【履歴公開】8万円→200万超。最大ドローダウン-1.9%で「破綻ゼロ」を貫く。",
       "generated": true,
-      "staged": true,
-      "approved_file": true,
+      "staged": false,
+      "approved_file": false,
       "netlify_url": "",
       "spec": {
         "title": "【履歴公開】8万円→200万超。",
