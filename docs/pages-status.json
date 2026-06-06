@@ -1,5 +1,5 @@
-﻿{
-  "updated_at": "2026-06-06T20:29:16.887464+00:00",
+{
+  "updated_at": "2026-06-06T21:31:10.846011+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -224,6 +224,38 @@
           "heading": "myfxbook検証済み 月次運用実績",
           "note": "※過去の実績は将来の利益を保証するものではありません。リアル口座での実績ですが、同等の成果を保証しません。",
           "show": true
+        }
+      }
+    },
+    {
+      "id": "lp-004",
+      "slug": "fx-copy-trade-lp",
+      "status": "review",
+      "variant": "beginner",
+      "broker": "",
+      "headline": "【履歴公開】8万円→200万超。最大ドローダウン-1.9%で「破綻ゼロ」を貫く。",
+      "generated": true,
+      "staged": true,
+      "approved_file": true,
+      "netlify_url": "",
+      "spec": {
+        "title": "【履歴公開】8万円→200万超。",
+        "meta_description": "",
+        "hero": {
+          "cta_text": "公式LINEはこちら",
+          "headline": "【履歴公開】8万円→200万超。最大ドローダウン-1.9%で「破綻ゼロ」を貫く。",
+          "subheadline": "海外トレーダー日本初上陸の神業JPコピトレの正体"
+        },
+        "features": [],
+        "faq": [],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "フォント: Kaisei Decol（見出しに使用）\n参考: bloomberg.com / goldman sachs スタイル\n- 背景: #0b1f3a（ダークネイビー）、アクセント: #c9a227（ゴールド）\n- ヒーローに実績数値を大きく並べる（26倍 / -1.9% / 9ヶ月 / 0回）\n- ゴールドの細いアクセントラインで区切り\n- プロフェッショナル・厳格・信頼性を最優先\n- FXBlue第三者検証を前面に出す\n- 参考: https://api.fxblue.com/users/steady_compounding\n",
+        "results_section": {
+          "show": false
         }
       }
     }
