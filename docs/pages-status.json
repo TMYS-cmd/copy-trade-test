@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T19:48:21.976564+00:00",
+  "updated_at": "2026-06-06T19:48:38.385778+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -97,7 +97,7 @@
       "headline": "MT4コピートレードで、プロの戦略をそのまま活用",
       "generated": true,
       "staged": true,
-      "approved_file": false,
+      "approved_file": true,
       "netlify_url": "",
       "spec": {
         "title": "MT4コピートレード完全ガイド",
