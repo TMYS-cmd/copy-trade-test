@@ -81,21 +81,57 @@ body{
 /* HERO */
 .hero{
   min-height:100vh;padding-top:64px;
-  background:var(--navy-2);
+  background:
+    radial-gradient(ellipse 120% 65% at 50% -5%,  rgba(201,162,39,.18) 0%, rgba(201,162,39,.06) 35%, transparent 62%),
+    radial-gradient(ellipse 55%  70% at -8%  95%,  rgba(9,50,110,.55) 0%, transparent 55%),
+    radial-gradient(ellipse 45%  55% at 108% -5%,  rgba(4,18,50,.85) 0%, transparent 50%),
+    linear-gradient(168deg, #03091a 0%, #071628 28%, #0b2040 58%, #060e1e 100%);
   display:flex;align-items:center;
   position:relative;overflow:hidden;
 }
+/* diagonal stripe texture */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    -52deg,
+    transparent,transparent 110px,
+    rgba(201,162,39,.018) 110px,
+    rgba(201,162,39,.018) 111px
+  );
+  pointer-events:none;z-index:0;
+}
+/* grid with radial fade */
 .hero-grid{
   position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(201,162,39,.04) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(201,162,39,.04) 1px,transparent 1px);
-  background-size:60px 60px;
+    linear-gradient(rgba(201,162,39,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,162,39,.07) 1px,transparent 1px);
+  background-size:64px 64px;
   pointer-events:none;
+  mask-image:radial-gradient(ellipse 85% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 85% 80% at 50% 50%, black 30%, transparent 100%);
 }
+/* gold horizon line bottom */
 .hero::after{
   content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
   background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent);
+}
+/* corner accent marks */
+.hero-inner::before{
+  content:'';position:absolute;
+  top:56px;left:20px;
+  width:28px;height:28px;
+  border-top:1.5px solid rgba(201,162,39,.5);
+  border-left:1.5px solid rgba(201,162,39,.5);
+  pointer-events:none;
+}
+.hero-inner::after{
+  content:'';position:absolute;
+  bottom:72px;right:20px;
+  width:28px;height:28px;
+  border-bottom:1.5px solid rgba(201,162,39,.5);
+  border-right:1.5px solid rgba(201,162,39,.5);
+  pointer-events:none;
 }
 .hero-inner{
   max-width:var(--inner);margin:0 auto;
