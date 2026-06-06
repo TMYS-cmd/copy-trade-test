@@ -9,86 +9,60 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-
 :root{
-  --bg:#f1f5f9;
-  --surface:#ffffff;
-  --surface2:#f8fafc;
-  --border:#e2e8f0;
-  --text:#1e293b;
-  --text-muted:#64748b;
-  --text-dim:#475569;
-  --primary:#16a34a;
-  --primary-dark:#15803d;
-  --blue:#2563eb;
-  --blue-dark:#1d4ed8;
-  --amber:#d97706;
-  --red:#dc2626;
-  --violet:#7c3aed;
-  --r:0.5rem;
-  --rl:0.75rem;
-  --shadow:0 1px 3px rgba(0,0,0,.08);
-  --shadow-lg:0 8px 24px rgba(0,0,0,.12);
+  --bg:#f1f5f9;--surface:#ffffff;--surface2:#f8fafc;--border:#e2e8f0;
+  --text:#1e293b;--text-muted:#64748b;--text-dim:#475569;
+  --primary:#16a34a;--primary-dark:#15803d;
+  --blue:#2563eb;--blue-dark:#1d4ed8;
+  --amber:#d97706;--red:#dc2626;--violet:#7c3aed;
+  --r:0.5rem;--rl:0.75rem;
+  --shadow:0 1px 3px rgba(0,0,0,.08);--shadow-lg:0 8px 24px rgba(0,0,0,.12)
 }
-
 html{font-size:14px}
 body{font-family:'Noto Sans JP','Meiryo','Yu Gothic',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
 
-/* ===== Header ===== */
 .hdr{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:50;box-shadow:var(--shadow)}
 .hdr-brand{display:flex;align-items:center;gap:10px}
-.hdr-brand h1{font-size:1rem;font-weight:700;color:var(--text)}
+.hdr-brand h1{font-size:1rem;font-weight:700}
 .hdr-sub{font-size:.72rem;color:var(--text-muted)}
 .hdr-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-
 .pill{padding:3px 10px;border-radius:9999px;font-size:.7rem;font-weight:600;white-space:nowrap}
 .pill-d{background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0}
 .pill-r{background:rgba(217,119,6,.12);color:#92400e;border:1px solid rgba(217,119,6,.25)}
 .pill-a{background:rgba(22,163,74,.12);color:#15803d;border:1px solid rgba(22,163,74,.25)}
-
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--primary);display:inline-block;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
 .icon-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:var(--r);font-size:.75rem;font-weight:500;border:1px solid var(--border);background:transparent;color:var(--text-dim);transition:all .15s}
 .icon-btn:hover{background:var(--surface2);color:var(--text);border-color:#cbd5e1}
 
-/* ===== Tabs ===== */
 .tabs-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;display:flex}
 .tab-btn{padding:12px 20px;font-size:.82rem;font-weight:500;color:var(--text-muted);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .15s;white-space:nowrap}
 .tab-btn:hover{color:var(--text)}
 .tab-btn.active{color:var(--primary);border-bottom-color:var(--primary);font-weight:700}
 
-/* ===== Main ===== */
 .main{flex:1;padding:24px}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 
-/* ===== LP Cards ===== */
 .lp-grid{display:flex;flex-direction:column;gap:12px}
-
 .lp-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--border);border-radius:var(--rl);padding:16px 20px;transition:border-color .15s,box-shadow .15s}
 .lp-card:hover{border-color:#cbd5e1;box-shadow:var(--shadow-lg)}
 .lp-card.status-approved{border-left-color:var(--primary)}
 .lp-card.status-review{border-left-color:var(--amber)}
 .lp-card.status-draft{border-left-color:#cbd5e1}
-
 .lp-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap}
 .lp-id-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-
 .badge{display:inline-block;padding:2px 8px;border-radius:9999px;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
 .badge-draft{background:#f1f5f9;color:#64748b;border:1px solid #e2e8f0}
 .badge-review{background:rgba(217,119,6,.12);color:#92400e;border:1px solid rgba(217,119,6,.22)}
 .badge-approved{background:rgba(22,163,74,.12);color:#15803d;border:1px solid rgba(22,163,74,.2)}
 .badge-deprecated{background:rgba(220,38,38,.1);color:#b91c1c;border:1px solid rgba(220,38,38,.2)}
-
-.lp-id{font-size:.82rem;font-weight:700;color:var(--text);font-family:'Consolas',monospace}
+.lp-id{font-size:.82rem;font-weight:700;font-family:'Consolas',monospace}
 .lp-slug{font-size:.72rem;color:var(--text-muted);font-family:'Consolas',monospace;margin-top:2px}
 .lp-headline{font-size:.8rem;color:var(--text-dim);margin-top:4px;line-height:1.5}
-
 .meta-tag{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:var(--r);background:var(--surface2);border:1px solid var(--border);font-size:.7rem;color:var(--text-muted)}
-
 .file-chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
 .fc{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--r);font-size:.7rem;font-weight:500}
 .fc-ok{background:rgba(22,163,74,.1);color:#15803d;border:1px solid rgba(22,163,74,.2)}
@@ -96,124 +70,108 @@ button{font-family:inherit;cursor:pointer}
 .fdot{width:5px;height:5px;border-radius:50%}
 .fdot-ok{background:var(--primary)}
 .fdot-ng{background:#cbd5e1}
-
 .ref-chips{display:flex;gap:5px;flex-wrap:wrap;margin:8px 0}
 .ref-chip{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:9999px;font-size:.68rem;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);color:#6d28d9;transition:background .1s}
 .ref-chip:hover{background:rgba(124,58,237,.15)}
 .ref-chip-add{background:transparent;border:1px dashed rgba(124,58,237,.3);color:rgba(109,40,217,.5);cursor:pointer}
 .ref-chip-add:hover{border-color:rgba(124,58,237,.5);color:#6d28d9;background:rgba(124,58,237,.06)}
-
 .act-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px solid var(--border);align-items:center}
-
 .abtn{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:var(--r);font-size:.74rem;font-weight:600;border:none;cursor:pointer;transition:all .15s;white-space:nowrap;text-decoration:none}
 .abtn:hover{opacity:.85;transform:translateY(-1px)}
 .abtn:active{transform:translateY(0)}
-.abtn:disabled{opacity:.3;cursor:not-allowed;transform:none}
 .abtn-gen{background:rgba(37,99,235,.1);color:#1d4ed8;border:1px solid rgba(37,99,235,.2)}
 .abtn-stage{background:rgba(217,119,6,.12);color:#92400e;border:1px solid rgba(217,119,6,.22)}
 .abtn-approve{background:rgba(22,163,74,.12);color:#15803d;border:1px solid rgba(22,163,74,.2)}
 .abtn-reject{background:rgba(220,38,38,.08);color:#b91c1c;border:1px solid rgba(220,38,38,.18)}
 .abtn-preview{background:rgba(14,165,233,.1);color:#0369a1;border:1px solid rgba(14,165,233,.2)}
 .abtn-live{background:rgba(22,163,74,.1);color:#15803d;border:1px solid rgba(22,163,74,.2)}
-.abtn-neutral{background:var(--surface2);color:var(--text-dim);border:1px solid var(--border)}
-
 .copy-btn{display:inline-flex;align-items:center;padding:1px 5px;border-radius:3px;background:transparent;border:1px solid var(--border);color:var(--text-muted);font-size:.65rem;cursor:pointer;transition:all .1s}
 .copy-btn:hover{background:var(--surface2);color:var(--text)}
 
-/* ===== Refs Tab ===== */
 .refs-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}
 .refs-hdr h2{font-size:1rem;font-weight:700}
 .refs-hdr p{font-size:.73rem;color:var(--text-muted);margin-top:3px}
-
 .primary-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:var(--r);background:var(--primary);color:#fff;font-size:.78rem;font-weight:700;border:none;cursor:pointer;transition:all .15s;white-space:nowrap}
 .primary-btn:hover{background:var(--primary-dark);transform:translateY(-1px)}
-
 .site-list{display:flex;flex-direction:column;gap:8px}
 .site-card{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:12px 16px;transition:border-color .15s}
 .site-card:hover{border-color:#cbd5e1}
-
 .priority-col{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:32px}
 .pnum{width:28px;height:28px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#6d28d9}
 .parr{display:flex;flex-direction:column;gap:2px}
 .arr-btn{width:22px;height:18px;background:transparent;border:1px solid var(--border);border-radius:3px;color:var(--text-muted);font-size:.58rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .1s}
 .arr-btn:hover:not(:disabled){background:var(--surface2);color:var(--text)}
 .arr-btn:disabled{opacity:.25;cursor:not-allowed}
-
 .site-info{flex:1;min-width:0}
-.site-title{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:2px}
+.site-title{font-size:.85rem;font-weight:700;margin-bottom:2px}
 .site-url{font-size:.72rem;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .site-url a{color:var(--blue)}
 .site-url a:hover{text-decoration:underline}
 .site-note{font-size:.7rem;color:var(--text-muted);margin-top:3px;font-style:italic}
-
 .cat-tag{padding:2px 8px;border-radius:9999px;font-size:.67rem;font-weight:600;background:rgba(37,99,235,.1);color:#1d4ed8;border:1px solid rgba(37,99,235,.2);white-space:nowrap}
 .lp-count-tag{padding:2px 7px;border-radius:9999px;font-size:.67rem;color:#6d28d9;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);white-space:nowrap}
-
 .site-acts{display:flex;gap:4px;flex-shrink:0}
 .sa-btn{padding:4px 8px;border-radius:var(--r);font-size:.7rem;font-weight:500;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .1s}
 .sa-btn:hover{background:var(--surface2);color:var(--text)}
 .sa-btn.del{color:#b91c1c;border-color:rgba(220,38,38,.25)}
 .sa-btn.del:hover{background:rgba(220,38,38,.06)}
 
-/* ===== Modals ===== */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:16px}
 .overlay.open{display:flex}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);width:100%;max-width:520px;max-height:88vh;overflow-y:auto;box-shadow:var(--shadow-lg)}
-.modal-hdr{padding:16px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.modal-hdr{padding:16px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--surface);z-index:1}
 .modal-hdr h3{font-size:.95rem;font-weight:700}
 .modal-x{width:28px;height:28px;background:transparent;border:1px solid var(--border);border-radius:var(--r);color:var(--text-muted);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .1s}
 .modal-x:hover{background:var(--surface2);color:var(--text)}
 .modal-body{padding:20px}
-.modal-foot{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
-
+.modal-foot{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;position:sticky;bottom:0;background:var(--surface)}
 .wf-desc{background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.15);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:.78rem;color:var(--text-dim);line-height:1.65}
 
 .slug-box{display:flex;align-items:center;justify-content:space-between;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;margin:10px 0;gap:8px}
 .slug-val{font-family:'Consolas',monospace;font-size:.92rem;color:#15803d;font-weight:700}
-
-.cp-slug-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:var(--r);background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.2);color:#15803d;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .15s;flex-shrink:0}
+.prompt-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;margin:10px 0;display:flex;flex-direction:column;gap:8px}
+.prompt-pre{font-family:'Consolas',monospace;font-size:.73rem;color:#15803d;white-space:pre-wrap;word-break:break-all;line-height:1.65;max-height:240px;overflow-y:auto;padding-right:4px}
+.prompt-pre::-webkit-scrollbar{width:4px}
+.prompt-pre::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
+.cp-slug-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:var(--r);background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.2);color:#15803d;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .15s;flex-shrink:0;align-self:flex-end}
 .cp-slug-btn:hover{background:rgba(22,163,74,.18)}
 .cp-slug-btn.done{background:rgba(22,163,74,.22)}
 
 .step-list{display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
 .step-item{display:flex;gap:10px;align-items:flex-start}
 .step-num{width:22px;height:22px;background:var(--blue-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:1px}
-.step-txt{font-size:.8rem;color:var(--text-dim);line-height:1.65}
+.step-txt{font-size:.8rem;color:var(--text-dim);line-height:1.65;flex:1}
 .step-txt strong{color:var(--text)}
 .step-txt code{background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-family:'Consolas',monospace;font-size:.76rem;color:#15803d}
-
 .open-wf-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 16px;border-radius:var(--r);background:var(--blue-dark);color:#fff;font-size:.8rem;font-weight:700;border:none;cursor:pointer;transition:all .15s;text-decoration:none}
 .open-wf-btn:hover{background:#1e40af;transform:translateY(-1px)}
 
-/* Form */
 .fg{margin-bottom:14px}
 .fl{display:block;font-size:.77rem;font-weight:600;color:var(--text-dim);margin-bottom:5px}
+.fl-hint{font-size:.68rem;color:var(--text-muted);font-weight:400;margin-left:5px}
 .fi,.fs,.fta{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;color:var(--text);font-family:inherit;font-size:.82rem;outline:none;transition:border-color .15s}
 .fi:focus,.fs:focus,.fta:focus{border-color:#94a3b8}
 .fs option{background:var(--surface)}
 .fta{resize:vertical;min-height:68px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-section{margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.form-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.form-section-title{font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:12px}
 
 .ck-list{display:flex;flex-direction:column;gap:7px}
 .ck-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--r);border:1px solid var(--border);cursor:pointer;transition:background .12s;user-select:none}
 .ck-item:hover{background:var(--surface2)}
 .ck-item.sel{border-color:rgba(124,58,237,.3);background:rgba(124,58,237,.05)}
 .ck-item input[type=checkbox]{accent-color:#7c3aed;width:14px;height:14px;flex-shrink:0;cursor:pointer}
-.ck-name{font-size:.82rem;font-weight:600;color:var(--text)}
+.ck-name{font-size:.82rem;font-weight:600}
 .ck-url{font-size:.68rem;color:var(--text-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);color:#fff;padding:9px 18px;border-radius:var(--rl);font-size:.8rem;z-index:999;pointer-events:none;box-shadow:var(--shadow-lg);animation:toastin .2s ease}
-@keyframes toastin{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.result-block{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:14px}
+.result-block-title{font-size:.76rem;font-weight:700;color:var(--text-dim);margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.result-pre{font-family:'Consolas',monospace;font-size:.72rem;color:#15803d;white-space:pre-wrap;line-height:1.65;max-height:200px;overflow-y:auto}
+.result-pre::-webkit-scrollbar{width:4px}
+.result-pre::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:2px}
 
-.empty{text-align:center;padding:48px 24px;color:var(--text-muted)}
-.empty .icon{font-size:2rem;margin-bottom:12px}
-.empty p{font-size:.83rem;line-height:1.75}
-
-/* ===== Guide banner ===== */
-.guide-banner{background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.15);border-radius:var(--rl);padding:10px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.guide-banner-txt{font-size:.76rem;color:var(--text-dim);line-height:1.5;flex:1}
-.guide-banner-txt strong{color:var(--text)}
-
-/* ===== Timeline (guide modal) ===== */
 .tl{display:flex;flex-direction:column}
 .tl-item{display:flex;gap:12px;padding-bottom:18px}
 .tl-item:last-child{padding-bottom:0}
@@ -222,7 +180,7 @@ button{font-family:inherit;cursor:pointer}
 .tl-line{flex:1;width:2px;background:var(--border);margin:3px 0}
 .tl-item:last-child .tl-line{display:none}
 .tl-right{flex:1;min-width:0;padding-top:4px}
-.tl-title{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:5px}
+.tl-title{font-size:.85rem;font-weight:700;margin-bottom:5px}
 .tl-body{font-size:.78rem;color:var(--text-dim);line-height:1.65}
 .tl-body strong{color:var(--text)}
 .tl-body code{background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-family:'Consolas',monospace;font-size:.74rem;color:#15803d}
@@ -230,7 +188,19 @@ button{font-family:inherit;cursor:pointer}
 .tl-sub-item{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:8px 12px;font-size:.74rem;color:var(--text-dim)}
 .tl-sub-item strong{color:var(--text)}
 
-@media(max-width:600px){.hdr,.main,.tabs-bar{padding-left:16px;padding-right:16px}.hdr-sub{display:none}}
+.guide-banner{background:rgba(37,99,235,.05);border:1px solid rgba(37,99,235,.15);border-radius:var(--rl);padding:10px 16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.guide-banner-txt{font-size:.76rem;color:var(--text-dim);line-height:1.5;flex:1}
+.guide-banner-txt strong{color:var(--text)}
+.guide-banner-btns{display:flex;gap:6px;flex-shrink:0;flex-wrap:wrap}
+.new-lp-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:var(--r);background:var(--primary);color:#fff;font-size:.78rem;font-weight:700;border:none;cursor:pointer;transition:all .15s;white-space:nowrap}
+.new-lp-btn:hover{background:var(--primary-dark);transform:translateY(-1px)}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);color:#fff;padding:9px 18px;border-radius:var(--rl);font-size:.8rem;z-index:999;pointer-events:none;box-shadow:var(--shadow-lg);animation:toastin .2s ease}
+@keyframes toastin{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.empty{text-align:center;padding:48px 24px;color:var(--text-muted)}
+.empty .icon{font-size:2rem;margin-bottom:12px}
+.empty p{font-size:.83rem;line-height:1.75}
+@media(max-width:600px){.hdr,.main,.tabs-bar{padding-left:16px;padding-right:16px}.hdr-sub{display:none}.form-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -238,18 +208,13 @@ button{font-family:inherit;cursor:pointer}
 <header class="hdr">
   <div class="hdr-brand">
     <span style="font-size:1.15rem">📊</span>
-    <div>
-      <h1>LP管理ダッシュボード</h1>
-      <span class="hdr-sub">FXコピートレード LP管理システム</span>
-    </div>
+    <div><h1>LP管理ダッシュボード</h1><span class="hdr-sub">FXコピートレード LP管理システム</span></div>
   </div>
   <div class="hdr-right">
     <span class="pill pill-d" id="sd">draft: —</span>
     <span class="pill pill-r" id="sr">review: —</span>
     <span class="pill pill-a" id="sa">approved: —</span>
-    <span style="font-size:.7rem;color:var(--text-muted);display:flex;align-items:center;gap:5px">
-      <span class="live-dot"></span><span id="upd-time">—</span>
-    </span>
+    <span style="font-size:.7rem;color:var(--text-muted);display:flex;align-items:center;gap:5px"><span class="live-dot"></span><span id="upd-time">—</span></span>
     <button class="icon-btn" onclick="load(true)">🔄 更新</button>
   </div>
 </header>
@@ -260,41 +225,30 @@ button{font-family:inherit;cursor:pointer}
 </nav>
 
 <main class="main">
-
   <div class="tab-panel active" id="panel-lp">
     <div class="guide-banner">
-      <div class="guide-banner-txt">
-        <strong>新規LP作成フロー:</strong> ① YAML仕様追加 → ② Claude Code で生成（2ステップ）→ ③ Staging転送 → ④ プレビュー確認 → ⑤ 承認 → Netlify公開
+      <div class="guide-banner-txt"><strong>LP作成フロー:</strong> ① 新規LP作成フォーム → ② YAML追記 → ③ Claude Code で生成 → ④ Staging転送 → ⑤ 承認 → Netlify公開</div>
+      <div class="guide-banner-btns">
+        <button class="new-lp-btn" onclick="openNewLP()">✨ 新規LP作成</button>
+        <button class="abtn abtn-gen" style="border:1px solid rgba(37,99,235,.2)" onclick="openGuide()">📋 全ステップガイド</button>
       </div>
-      <button class="abtn abtn-gen" onclick="openGuide()">📋 全ステップガイド</button>
     </div>
-    <div class="lp-grid" id="lp-grid">
-      <div class="empty"><div class="icon">⏳</div><p>データを読み込み中...</p></div>
-    </div>
+    <div class="lp-grid" id="lp-grid"><div class="empty"><div class="icon">⏳</div><p>データを読み込み中...</p></div></div>
   </div>
 
   <div class="tab-panel" id="panel-refs">
     <div class="refs-hdr">
-      <div>
-        <h2>参考サイト管理</h2>
-        <p>LP作成の参考にしたサイトを登録・優先順位付けできます。データはブラウザ（localStorage）に保存されます。</p>
-      </div>
+      <div><h2>参考サイト管理</h2><p>LP作成の参考にしたサイトを登録・優先順位付けできます。データはブラウザ（localStorage）に保存されます。</p></div>
       <button class="primary-btn" onclick="openAddSite()">＋ サイトを追加</button>
     </div>
-    <div class="site-list" id="site-list">
-      <div class="empty"><div class="icon">🔗</div><p>まだ参考サイトが登録されていません。<br>「＋ サイトを追加」から登録してください。</p></div>
-    </div>
+    <div class="site-list" id="site-list"><div class="empty"><div class="icon">🔗</div><p>まだ参考サイトが登録されていません。</p></div></div>
   </div>
-
 </main>
 
-<!-- ===== Workflow Modal ===== -->
+<!-- Workflow Modal -->
 <div class="overlay" id="ov-wf" onclick="closeModal('ov-wf')">
   <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-hdr">
-      <h3 id="wf-title">ワークフロー実行</h3>
-      <button class="modal-x" onclick="closeModal('ov-wf')">✕</button>
-    </div>
+    <div class="modal-hdr"><h3 id="wf-title">ワークフロー実行</h3><button class="modal-x" onclick="closeModal('ov-wf')">✕</button></div>
     <div class="modal-body" id="wf-body"></div>
     <div class="modal-foot">
       <button class="icon-btn" onclick="closeModal('ov-wf')">閉じる</button>
@@ -303,133 +257,86 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </div>
 
-<!-- ===== Generate Modal (2ステップ) ===== -->
+<!-- Generate Modal -->
 <div class="overlay" id="ov-gen" onclick="closeModal('ov-gen')">
-  <div class="modal" onclick="event.stopPropagation()">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:600px">
     <div class="modal-hdr">
       <h3>🔧 生成 — <span id="gen-modal-id" style="font-family:monospace;font-size:.85rem;color:#15803d">lp-001</span></h3>
       <button class="modal-x" onclick="closeModal('ov-gen')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="wf-desc">Claude Code に依頼してHTMLを生成します。<br>
-        ① 依頼文をコピーして Claude Code に貼り付け → ② 生成完了後にターミナルで後処理コマンドを実行
-      </div>
+      <div class="wf-desc">仕様が全て埋め込まれた依頼文です。そのまま Claude Code にコピー&amp;ペーストして送信してください。</div>
       <div class="step-list">
         <div class="step-item">
           <div class="step-num">1</div>
           <div class="step-txt"><strong>Claude Code に貼り付けて依頼：</strong>
-            <div class="slug-box" style="margin-top:7px">
-              <span class="slug-val" id="gen-req" style="font-size:.76rem;word-break:break-all;line-height:1.5">「lp-001 のLPを生成して」</span>
-              <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-req').textContent)">📋 コピー</button>
+            <div class="prompt-box" style="margin-top:7px">
+              <pre class="prompt-pre" id="gen-req">依頼文を生成中...</pre>
+              <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-req').textContent)">📋 依頼文をコピー</button>
             </div>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">2</div>
-          <div class="step-txt"><strong>生成完了後にターミナルで実行（VS Code: <code>Ctrl+`</code>）：</strong>
+          <div class="step-txt"><strong>生成完了後にターミナルで実行（<code>Ctrl+`</code>）：</strong>
             <div class="slug-box" style="margin-top:7px">
               <span class="slug-val" id="gen-cmd">bash scripts/post-generate.sh lp-001</span>
               <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('gen-cmd').textContent)">📋 コピー</button>
             </div>
-            <span style="font-size:.68rem;color:var(--text-muted)">実行ディレクトリ: <code style="font-size:.68rem">C:\Users\kgtmy\Documents\copy-trade-core</code></span>
+            <span style="font-size:.68rem;color:var(--text-muted)">実行ディレクトリ: <code style="font-size:.68rem">copy-trade-core/</code></span>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal-foot">
-      <button class="icon-btn" onclick="closeModal('ov-gen')">閉じる</button>
-    </div>
+    <div class="modal-foot"><button class="icon-btn" onclick="closeModal('ov-gen')">閉じる</button></div>
   </div>
 </div>
 
-<!-- ===== Full Guide Modal ===== -->
+<!-- Full Guide Modal -->
 <div class="overlay" id="ov-guide" onclick="closeModal('ov-guide')">
   <div class="modal" onclick="event.stopPropagation()" style="max-width:600px">
-    <div class="modal-hdr">
-      <h3>📋 新規LP作成 — 全ステップガイド</h3>
-      <button class="modal-x" onclick="closeModal('ov-guide')">✕</button>
-    </div>
+    <div class="modal-hdr"><h3>📋 新規LP作成 — 全ステップガイド</h3><button class="modal-x" onclick="closeModal('ov-guide')">✕</button></div>
     <div class="modal-body">
       <div class="tl">
-        <div class="tl-item">
-          <div class="tl-left"><div class="tl-num">1</div><div class="tl-line"></div></div>
-          <div class="tl-right">
-            <div class="tl-title">ページ仕様を追加</div>
-            <div class="tl-body"><strong>content/landing-pages.yaml</strong> を開き新規エントリーを追加。<br>必要項目: <code>id</code> <code>slug</code> <code>title</code> <code>variant</code> <code>hero</code> <code>features</code> <code>faq</code> <code>legal</code>
-              <div class="tl-sub"><div class="tl-sub-item">VS Code Explorer から <code>content/landing-pages.yaml</code> を選択、または Ctrl+P で検索</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left"><div class="tl-num">2</div><div class="tl-line"></div></div>
-          <div class="tl-right">
-            <div class="tl-title">LP を生成（2ステップ）</div>
-            <div class="tl-body">LPカードの <strong>「🔧 生成」</strong> ボタンをクリック。
+        <div class="tl-item"><div class="tl-left"><div class="tl-num">1</div><div class="tl-line"></div></div>
+          <div class="tl-right"><div class="tl-title">ページ仕様を作成</div>
+            <div class="tl-body"><strong>「✨ 新規LP作成」</strong>からフォームを入力してYAMLスペックを生成。出力されたYAMLを <code>content/landing-pages.yaml</code> に追記する。</div>
+          </div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-num">2</div><div class="tl-line"></div></div>
+          <div class="tl-right"><div class="tl-title">LP を生成（2ステップ）</div>
+            <div class="tl-body">LPカードの <strong>「🔧 生成」</strong> をクリック → 仕様が全て入った依頼文をコピー。
               <div class="tl-sub">
-                <div class="tl-sub-item"><strong>STEP 1:</strong> 表示される依頼文をコピー → Claude Code に貼り付けて送信</div>
-                <div class="tl-sub-item"><strong>STEP 2:</strong> 生成完了後 <code>bash scripts/post-generate.sh [page-id]</code> をターミナルで実行</div>
+                <div class="tl-sub-item"><strong>STEP 1:</strong> 依頼文を Claude Code に貼り付けて送信</div>
+                <div class="tl-sub-item"><strong>STEP 2:</strong> 生成完了後 <code>bash scripts/post-generate.sh [page-id]</code> を実行</div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left"><div class="tl-num">3</div><div class="tl-line"></div></div>
-          <div class="tl-right">
-            <div class="tl-title">生成確認</div>
-            <div class="tl-body">右上 <strong>「🔄 更新」</strong> をクリック。カードの <strong style="color:#15803d">pages/ ●（緑）</strong> を確認。</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left"><div class="tl-num">4</div><div class="tl-line"></div></div>
-          <div class="tl-right">
-            <div class="tl-title">Staging に転送</div>
-            <div class="tl-body"><strong>「📤 Staging転送」</strong> → ポップアップの手順で <strong>sync-page.yml</strong> を GitHub Actions で実行。完了後 <strong style="color:#15803d">_staging/ ●（緑）</strong>。</div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left"><div class="tl-num">5</div><div class="tl-line"></div></div>
-          <div class="tl-right">
-            <div class="tl-title">プレビューで確認</div>
-            <div class="tl-body"><strong>「👁 プレビュー」</strong> でページを確認。
-              <div class="tl-sub"><div class="tl-sub-item">確認ポイント: ヘッドライン / CTAリンク / 実績数値+免責事項 / モバイル表示</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-left"><div class="tl-num">6</div><div class="tl-line"></div></div>
-          <div class="tl-right">
-            <div class="tl-title">承認 または 却下</div>
-            <div class="tl-body">
-              <div class="tl-sub">
-                <div class="tl-sub-item"><strong>✅ 承認:</strong> approve-page.yml → _approved/ にコピー → <strong>Netlify即時公開</strong></div>
-                <div class="tl-sub-item"><strong>✕ 却下:</strong> reject-page.yml（理由を入力）→ フィードバック保存 → STEP 2 で再生成</div>
-              </div>
-            </div>
-          </div>
-        </div>
+            </div></div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-num">3</div><div class="tl-line"></div></div>
+          <div class="tl-right"><div class="tl-title">Staging に転送</div>
+            <div class="tl-body"><strong>「📤 Staging転送」</strong> → GitHub Actions で <strong>sync-page.yml</strong> を実行。</div>
+          </div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-num">4</div><div class="tl-line"></div></div>
+          <div class="tl-right"><div class="tl-title">承認 または 却下</div>
+            <div class="tl-body"><div class="tl-sub">
+              <div class="tl-sub-item"><strong>✅ 承認:</strong> approve-page.yml → _approved/ → Netlify即時公開</div>
+              <div class="tl-sub-item"><strong>✕ 却下:</strong> reject-page.yml（理由入力）→ 再生成</div>
+            </div></div>
+          </div></div>
       </div>
     </div>
-    <div class="modal-foot">
-      <button class="icon-btn" onclick="closeModal('ov-guide')">閉じる</button>
-    </div>
+    <div class="modal-foot"><button class="icon-btn" onclick="closeModal('ov-guide')">閉じる</button></div>
   </div>
 </div>
 
-<!-- ===== Add/Edit Site Modal ===== -->
+<!-- Add/Edit Site Modal -->
 <div class="overlay" id="ov-site" onclick="closeModal('ov-site')">
   <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-hdr">
-      <h3 id="site-ttl">🔗 参考サイトを追加</h3>
-      <button class="modal-x" onclick="closeModal('ov-site')">✕</button>
-    </div>
+    <div class="modal-hdr"><h3 id="site-ttl">🔗 参考サイトを追加</h3><button class="modal-x" onclick="closeModal('ov-site')">✕</button></div>
     <div class="modal-body">
       <input type="hidden" id="site-eid">
       <div class="fg"><label class="fl">サイト名 <span style="color:var(--red)">*</span></label><input class="fi" id="s-title" type="text" placeholder="例: XMTrading 公式LP"></div>
       <div class="fg"><label class="fl">URL <span style="color:var(--red)">*</span></label><input class="fi" id="s-url" type="url" placeholder="https://..."></div>
-      <div class="fg"><label class="fl">カテゴリ</label>
-        <select class="fs" id="s-cat"><option>LP参考</option><option>デザイン参考</option><option>競合サイト</option><option>業界情報</option><option>その他</option></select>
-      </div>
-      <div class="fg"><label class="fl">メモ（任意）</label><textarea class="fta" id="s-notes" placeholder="参考にした点、良かった点など..."></textarea></div>
+      <div class="fg"><label class="fl">カテゴリ</label><select class="fs" id="s-cat"><option>LP参考</option><option>デザイン参考</option><option>競合サイト</option><option>業界情報</option><option>その他</option></select></div>
+      <div class="fg"><label class="fl">メモ（任意）</label><textarea class="fta" id="s-notes" placeholder="参考にした点など..."></textarea></div>
     </div>
     <div class="modal-foot">
       <button class="icon-btn" onclick="closeModal('ov-site')">キャンセル</button>
@@ -438,20 +345,15 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </div>
 
-<!-- ===== Associate Sites Modal ===== -->
+<!-- Associate Sites Modal -->
 <div class="overlay" id="ov-assoc" onclick="closeModal('ov-assoc')">
   <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-hdr">
-      <h3>🔗 参考サイトを関連付け</h3>
-      <button class="modal-x" onclick="closeModal('ov-assoc')">✕</button>
-    </div>
+    <div class="modal-hdr"><h3>🔗 参考サイトを関連付け</h3><button class="modal-x" onclick="closeModal('ov-assoc')">✕</button></div>
     <div class="modal-body">
       <input type="hidden" id="assoc-lpid">
       <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:14px">このLPを作成する際に参考にしたサイトを選んでください。</p>
       <div class="ck-list" id="ck-list"></div>
-      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
-        <button class="icon-btn" onclick="switchTab('refs');closeModal('ov-assoc')">＋ 新しい参考サイトを追加</button>
-      </div>
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)"><button class="icon-btn" onclick="switchTab('refs');closeModal('ov-assoc')">＋ 新しい参考サイトを追加</button></div>
     </div>
     <div class="modal-foot">
       <button class="icon-btn" onclick="closeModal('ov-assoc')">キャンセル</button>
@@ -460,8 +362,118 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </div>
 
+<!-- New LP Modal -->
+<div class="overlay" id="ov-new-lp" onclick="closeModal('ov-new-lp')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:640px">
+    <div class="modal-hdr"><h3 id="new-lp-title">✨ 新規LP作成</h3><button class="modal-x" onclick="closeModal('ov-new-lp')">✕</button></div>
+
+    <!-- Form view -->
+    <div id="new-lp-form" class="modal-body">
+      <div class="form-section">
+        <div class="form-section-title">📋 基本情報</div>
+        <div class="form-row">
+          <div class="fg"><label class="fl">ページID <span style="color:var(--red)">*</span></label><input class="fi" id="nlp-id" type="text" placeholder="lp-003"></div>
+          <div class="fg"><label class="fl">スラッグ <span style="color:var(--red)">*</span><span class="fl-hint">URLになる英字</span></label><input class="fi" id="nlp-slug" type="text" placeholder="fx-copy-trade-mt5"></div>
+        </div>
+        <div class="fg"><label class="fl">タイトル <span style="color:var(--red)">*</span></label><input class="fi" id="nlp-title" type="text" placeholder="MT5コピートレード完全ガイド" oninput="nlpTitleChanged()"></div>
+        <div class="form-row">
+          <div class="fg"><label class="fl">ターゲットブローカー</label>
+            <select class="fs" id="nlp-broker"><option value="XM">XMTrading</option><option value="FXTF">FXTF</option><option value="Tradeview">Tradeview</option><option value="">その他</option></select>
+          </div>
+          <div class="fg"><label class="fl">バリアント</label>
+            <select class="fs" id="nlp-variant">
+              <option value="beginner">beginner（初心者向け）</option>
+              <option value="mt4-focused">mt4-focused（MT4）</option>
+              <option value="mt5-focused">mt5-focused（MT5）</option>
+              <option value="intermediate">intermediate（中級者）</option>
+              <option value="custom">custom（カスタム）</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🎯 ヒーローセクション</div>
+        <div class="fg"><label class="fl">ヘッドライン <span style="color:var(--red)">*</span><span class="fl-hint">最大2行・インパクト重視</span></label><input class="fi" id="nlp-headline" type="text" placeholder="MT5コピートレードで、次世代の資産運用を始めよう"></div>
+        <div class="fg"><label class="fl">サブヘッドライン</label><input class="fi" id="nlp-subheadline" type="text" placeholder="XMTrading MT5で実績あるシグナルを自動コピー。"></div>
+        <div class="form-row">
+          <div class="fg"><label class="fl">CTAテキスト</label><input class="fi" id="nlp-cta" type="text" placeholder="MT5で口座開設する"></div>
+          <div class="fg"><label class="fl">CTA補足テキスト</label><input class="fi" id="nlp-cta-sub" type="text" placeholder="XMTrading - 日本語サポートあり"></div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">📝 コンテンツ</div>
+        <div class="fg">
+          <label class="fl">コンテンツ説明<span class="fl-hint">掲載したい情報・特徴・セクション（自由記述）</span></label>
+          <textarea class="fta" id="nlp-content" rows="4" placeholder="例: MT5独自の特徴（ヘッジング可・板情報表示・EA対応）を前面に出す。シグナルプロバイダー比較表。初回入金ボーナスも訴求する。"></textarea>
+        </div>
+        <div class="fg">
+          <label class="fl">参考URL<span class="fl-hint">内容を参考にしたいWebページ（複数は改行区切り）</span></label>
+          <textarea class="fta" id="nlp-ref-urls" rows="3" placeholder="https://&#10;https://"></textarea>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🎨 デザイン参考サイト<span class="fl-hint" style="font-weight:400">登録済みサイトから選択</span></div>
+        <div id="nlp-design-refs"><p style="font-size:.78rem;color:var(--text-muted)">参考サイト管理タブからサイトを追加すると選択できます。</p></div>
+        <div style="margin-top:10px"><button class="icon-btn" style="font-size:.72rem" onclick="switchTab('refs');closeModal('ov-new-lp')">＋ 参考サイトを追加してから戻る</button></div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">⚙️ デザイン・AI指示と備考</div>
+        <div class="fg">
+          <label class="fl">デザイン・コンテンツ指示<span class="fl-hint">Claude への補足（配色・スタイル・特別な要件）</span></label>
+          <textarea class="fta" id="nlp-instructions" rows="4" placeholder="例:&#10;- 青緑グラデーション（#0891b2）のプロフェッショナル配色&#10;- MT5独自のヘッジング機能をセクションで詳解する&#10;- スマホファーストで設計する&#10;- 実績数値は免責事項と組み合わせて表示する"></textarea>
+        </div>
+        <div class="fg">
+          <label class="fl">備考・メモ</label>
+          <textarea class="fta" id="nlp-notes" rows="2" placeholder="このLPに関するメモ、注意点など..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result view -->
+    <div id="new-lp-result" class="modal-body" style="display:none">
+      <div style="background:rgba(22,163,74,.06);border:1px solid rgba(22,163,74,.15);border-radius:var(--r);padding:10px 14px;margin-bottom:16px;font-size:.78rem;color:var(--text-dim)">
+        ✅ スペックを生成しました。以下の2つを順番に実行してください。
+      </div>
+      <div class="result-block">
+        <div class="result-block-title">
+          <span>① <code style="background:#f1f5f9;border:1px solid var(--border);border-radius:3px;padding:1px 5px;font-size:.7rem">content/landing-pages.yaml</code> に追記するYAML</span>
+          <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('nlp-yaml-out').textContent)">📋 コピー</button>
+        </div>
+        <pre class="result-pre" id="nlp-yaml-out"></pre>
+      </div>
+      <div class="result-block">
+        <div class="result-block-title">
+          <span>② Claude Code への依頼文</span>
+          <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('nlp-prompt-out').textContent)">📋 コピー</button>
+        </div>
+        <pre class="result-pre" id="nlp-prompt-out"></pre>
+      </div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:10px 14px;font-size:.76rem;color:var(--text-dim);line-height:1.75">
+        <strong>次のステップ:</strong><br>
+        1. YAMLをコピー → <code style="font-size:.73rem">content/landing-pages.yaml</code> 末尾に追記 → 保存<br>
+        2. 依頼文をコピー → Claude Code に貼り付けて送信<br>
+        3. 生成完了後 <code style="font-size:.73rem">bash scripts/post-generate.sh [id]</code> を実行<br>
+        4. ダッシュボードで「🔄 更新」して確認
+      </div>
+    </div>
+
+    <div class="modal-foot" id="new-lp-foot-form">
+      <button class="icon-btn" onclick="closeModal('ov-new-lp')">キャンセル</button>
+      <button class="primary-btn" onclick="generateLPSpec()">スペックを生成 →</button>
+    </div>
+    <div class="modal-foot" id="new-lp-foot-result" style="display:none">
+      <button class="icon-btn" onclick="showNewLPForm()">← 戻って修正</button>
+      <button class="icon-btn" onclick="closeModal('ov-new-lp')">閉じる</button>
+    </div>
+  </div>
+</div>
+
 <script>
-const OWNER='TMYS-cmd', REPO='copy-trade-test', CORE='copy-trade-core', DATA='docs/pages-status.json';
+const OWNER='TMYS-cmd',REPO='copy-trade-test',CORE='copy-trade-core',DATA='docs/pages-status.json';
 const LS='copytrade_refs_v1';
 let pages=[];
 
@@ -501,7 +513,7 @@ function render(data){
   document.getElementById('sr').textContent='review: '+cnt.review;
   document.getElementById('sa').textContent='approved: '+cnt.approved;
   const g=document.getElementById('lp-grid');
-  if(!pages.length){g.innerHTML='<div class="empty"><div class="icon">📄</div><p>ページがありません。<br>content/landing-pages.yaml にページ仕様を追加してください。</p></div>';return;}
+  if(!pages.length){g.innerHTML='<div class="empty"><div class="icon">📄</div><p>ページがありません。<br>「✨ 新規LP作成」からページ仕様を追加してください。</p></div>';return;}
   g.innerHTML=pages.map(lpCard).join('');
 }
 
@@ -510,15 +522,13 @@ function lpCard(p){
   const assocIds=refs.lp_sites[p.id]||[];
   const assoc=assocIds.map(id=>refs.sites.find(s=>s.id===id)).filter(Boolean);
   const refHtml=assoc.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" class="ref-chip" title="${esc(s.url)}">🔗 ${esc(s.title)}</a>`).join('');
-  const addChip=`<button class="ref-chip ref-chip-add" onclick="openAssoc('${p.id}')">＋ 参考サイト</button>`;
   const chips=[fc(p.generated,'pages/'),fc(p.staged,'_staging/'),fc(p.approved_file,'_approved/')].join('');
-  const btns=buildBtns(p);
   return `<div class="lp-card status-${p.status}">
     <div class="lp-top">
       <div class="lp-id-group">
         <span class="badge badge-${p.status}">${p.status}</span>
         <span class="lp-id">${esc(p.id)}</span>
-        <button class="copy-btn" onclick="cp('${p.id}')" title="IDをコピー">📋</button>
+        <button class="copy-btn" onclick="cp('${p.id}')">📋</button>
       </div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
         <span class="meta-tag">🎨 ${esc(p.variant||'—')}</span>
@@ -528,8 +538,8 @@ function lpCard(p){
     <div class="lp-slug">${esc(p.slug)} <button class="copy-btn" onclick="cp('${p.slug}')">📋</button></div>
     ${p.headline?`<div class="lp-headline">${esc(p.headline)}</div>`:''}
     <div class="file-chips">${chips}</div>
-    <div class="ref-chips">${refHtml}${addChip}</div>
-    <div class="act-row">${btns}</div>
+    <div class="ref-chips">${refHtml}<button class="ref-chip ref-chip-add" onclick="openAssoc('${p.id}')">＋ 参考サイト</button></div>
+    <div class="act-row">${buildBtns(p)}</div>
   </div>`;
 }
 
@@ -537,57 +547,44 @@ function fc(ok,label){
   return ok?`<span class="fc fc-ok"><span class="fdot fdot-ok"></span>${label}</span>`
            :`<span class="fc fc-ng"><span class="fdot fdot-ng"></span>${label}</span>`;
 }
-
 function buildBtns(p){
-  const btns=[];
-  btns.push(`<button class="abtn abtn-gen" onclick="openGenerate('${p.id}')">🔧 生成</button>`);
+  const b=[];
+  b.push(`<button class="abtn abtn-gen" onclick="openGenerate('${p.id}')">🔧 生成</button>`);
   if(p.generated||p.status==='review'||p.staged)
-    btns.push(`<button class="abtn abtn-stage" onclick="openWf('stage','${p.slug}')">📤 Staging転送</button>`);
+    b.push(`<button class="abtn abtn-stage" onclick="openWf('stage','${p.slug}')">📤 Staging転送</button>`);
   if(p.staged){
     const prev=`https://htmlpreview.github.io/?https://github.com/${OWNER}/${REPO}/blob/main/_staging/${p.slug}/index.html`;
-    btns.push(`<a href="${prev}" target="_blank" class="abtn abtn-preview">👁 プレビュー</a>`);
-    btns.push(`<button class="abtn abtn-approve" onclick="openWf('approve','${p.slug}')">✅ 承認</button>`);
-    btns.push(`<button class="abtn abtn-reject" onclick="openWf('reject','${p.slug}')">✕ 却下</button>`);
+    b.push(`<a href="${prev}" target="_blank" class="abtn abtn-preview">👁 プレビュー</a>`);
+    b.push(`<button class="abtn abtn-approve" onclick="openWf('approve','${p.slug}')">✅ 承認</button>`);
+    b.push(`<button class="abtn abtn-reject" onclick="openWf('reject','${p.slug}')">✕ 却下</button>`);
   }
   if(p.approved_file&&p.netlify_url)
-    btns.push(`<a href="${esc(p.netlify_url)}" target="_blank" class="abtn abtn-live">🌐 公開LP</a>`);
-  return btns.join('');
+    b.push(`<a href="${esc(p.netlify_url)}" target="_blank" class="abtn abtn-live">🌐 公開LP</a>`);
+  return b.join('');
 }
 
 const WF={
-  stage:{
-    title:'📤 Staging転送 — sync-page.yml',
-    url:`https://github.com/${OWNER}/${CORE}/actions/workflows/sync-page.yml`,
-    desc:'pages/ のHTMLを _staging/ にコピーし、レビュー待ち状態にします。Netlifyへの公開は行われません。',
-    steps:['下の<strong>スラッグをコピー</strong>する','<strong>「GitHub Actions を開く」</strong>ボタンでワークフローページへ移動','右上の<strong>「Run workflow」</strong>ドロップダウンをクリック','<strong>slug フィールド</strong>にコピーしたスラッグを貼り付け','<strong>「Run workflow」</strong>ボタンを押して実行（緑）','30〜60秒後に🔄更新して <strong>_staging/ ●（緑）</strong> を確認']
-  },
-  approve:{
-    title:'✅ 承認 — approve-page.yml',
-    url:`https://github.com/${OWNER}/${CORE}/actions/workflows/approve-page.yml`,
-    desc:'_staging/ のHTMLを _approved/ にコピーし、Netlifyへ即時デプロイします。⚠️ 承認後は即公開されます。プレビューで内容を確認してから実行してください。',
-    steps:['<strong>「👁 プレビュー」</strong>で表示内容・リンク・免責事項を確認','下の<strong>スラッグをコピー</strong>する','<strong>「GitHub Actions を開く」</strong>ボタンでワークフローページへ移動','右上の<strong>「Run workflow」</strong>ドロップダウンをクリック','<strong>slug フィールド</strong>にコピーしたスラッグを貼り付け','<strong>「Run workflow」</strong>ボタンを押して実行','完了後: <strong>「🌐 公開LP」</strong>でNetlifyのページを確認']
-  },
-  reject:{
-    title:'✕ 却下 — reject-page.yml',
-    url:`https://github.com/${OWNER}/${CORE}/actions/workflows/reject-page.yml`,
-    desc:'フィードバックを _feedback/[slug]-latest.yaml に保存します。次回の生成時にフィードバックが自動反映されます。',
-    steps:['<strong>「👁 プレビュー」</strong>で問題点を確認','下の<strong>スラッグをコピー</strong>する','<strong>「GitHub Actions を開く」</strong>ボタンでワークフローページへ移動','右上の<strong>「Run workflow」</strong>ドロップダウンをクリック','<strong>slug フィールド</strong>にコピーしたスラッグを貼り付け','<strong>reason フィールド</strong>に却下理由を日本語で入力','<strong>「Run workflow」</strong>ボタンを押して実行','修正: Claude Code に再生成依頼後 <code>bash scripts/post-generate.sh [page-id]</code> を実行']
-  }
+  stage:{title:'📤 Staging転送 — sync-page.yml',url:`https://github.com/${OWNER}/${CORE}/actions/workflows/sync-page.yml`,
+    desc:'pages/ のHTMLを _staging/ にコピーし、レビュー待ち状態にします。',
+    steps:['下の<strong>スラッグをコピー</strong>する','<strong>「GitHub Actions を開く」</strong>ボタンへ移動','右上の<strong>「Run workflow」</strong>ドロップダウンをクリック','<strong>slug フィールド</strong>にコピーしたスラッグを貼り付け','<strong>「Run workflow」</strong>ボタンを押す','30〜60秒後に🔄更新して <strong>_staging/ ●</strong> を確認']},
+  approve:{title:'✅ 承認 — approve-page.yml',url:`https://github.com/${OWNER}/${CORE}/actions/workflows/approve-page.yml`,
+    desc:'_staging/ のHTMLを _approved/ にコピーしNetlifyへ即時デプロイします。⚠️ 承認後は即公開されます。',
+    steps:['<strong>「👁 プレビュー」</strong>で内容・リンク・免責事項を確認','下の<strong>スラッグをコピー</strong>する','GitHub Actions で approve-page.yml を実行','slug を貼り付けて「Run workflow」','完了後: <strong>「🌐 公開LP」</strong>でNetlifyを確認']},
+  reject:{title:'✕ 却下 — reject-page.yml',url:`https://github.com/${OWNER}/${CORE}/actions/workflows/reject-page.yml`,
+    desc:'フィードバックを _feedback/[slug]-latest.yaml に保存します。次回生成時に反映されます。',
+    steps:['<strong>「👁 プレビュー」</strong>で問題点を確認','下の<strong>スラッグをコピー</strong>する','GitHub Actions で reject-page.yml を実行','<strong>reason フィールド</strong>に却下理由を入力して実行','修正後: Claude Code に再生成依頼 → <code>bash scripts/post-generate.sh [id]</code>']}
 };
 
 let curWfSlug='';
 function openWf(type,slug){
-  const c=WF[type]; curWfSlug=slug;
+  const c=WF[type];curWfSlug=slug;
   document.getElementById('wf-title').textContent=c.title;
   document.getElementById('wf-open-btn').href=c.url;
   const steps=c.steps.map((s,i)=>`<div class="step-item"><div class="step-num">${i+1}</div><div class="step-txt">${s}</div></div>`).join('');
-  document.getElementById('wf-body').innerHTML=`
-    <div class="wf-desc">${c.desc}</div>
-    <div class="slug-box">
-      <div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">slug（貼り付ける値）:</div>
-      <span class="slug-val">${esc(slug)}</span></div>
-      <button class="cp-slug-btn" onclick="cpMark(this,'${slug}')">📋 コピー</button>
-    </div>
+  document.getElementById('wf-body').innerHTML=`<div class="wf-desc">${c.desc}</div>
+    <div class="slug-box"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">slug:</div>
+    <span class="slug-val">${esc(slug)}</span></div>
+    <button class="cp-slug-btn" onclick="cpMark(this,'${slug}')">📋 コピー</button></div>
     <div class="step-list">${steps}</div>`;
   openModal('ov-wf');
 }
@@ -595,29 +592,183 @@ function onWfOpen(){cp(curWfSlug);showToast('「'+curWfSlug+'」をコピーし�
 
 function openGenerate(pageId){
   const id=pageId||'lp-001';
-  const slug=pages.find(p=>p.id===id)?.slug||id;
+  const page=pages.find(p=>p.id===id);
+  const slug=page?.slug||id;
+  const spec=page?.spec||{};
+
+  let req='「'+id+' ('+slug+') のLPを以下の仕様に基づいて生成し、'
+    +'copy-trade-test/pages/'+slug+'/index.html に保存してください。\n\n';
+
+  if(spec.title) req+='## タイトル\n'+spec.title+'\n\n';
+  req+='## 基本情報\n- バリアント: '+(page?.variant||'—')+'\n- ターゲットブローカー: '+(page?.broker||'—')+'\n\n';
+
+  if(spec.hero&&Object.keys(spec.hero).length){
+    req+='## ヒーロー\n';
+    if(spec.hero.headline) req+='- ヘッドライン: '+spec.hero.headline+'\n';
+    if(spec.hero.subheadline) req+='- サブヘッドライン: '+spec.hero.subheadline+'\n';
+    if(spec.hero.cta_text) req+='- CTAテキスト: '+spec.hero.cta_text+'\n';
+    if(spec.hero.cta_sub_text) req+='- CTA補足: '+spec.hero.cta_sub_text+'\n';
+    req+='\n';
+  }
+  if(spec.features&&spec.features.length){
+    req+='## 特徴セクション\n';
+    spec.features.forEach(f=>{req+='- 【'+f.title+'】 '+f.body+'\n';});
+    req+='\n';
+  }
+  if(spec.faq&&spec.faq.length){
+    req+='## FAQ\n';
+    spec.faq.forEach(f=>{req+='Q: '+f.q+'\nA: '+f.a+'\n';});
+    req+='\n';
+  }
+  if(spec.gemini_instructions) req+='## デザイン・コンテンツ指示\n'+spec.gemini_instructions+'\n\n';
+  if(spec.legal&&Object.keys(spec.legal).length){
+    req+='## 法的要件（必須）\n';
+    if(spec.legal.disclaimer) req+='- 免責事項: '+spec.legal.disclaimer+'\n';
+    if(spec.legal.risk_warning) req+='- リスク警告: '+spec.legal.risk_warning+'\n';
+    if(spec.legal.regulated_note) req+='- 規制情報: '+spec.legal.regulated_note+'\n';
+    req+='\n';
+  }
+  req+='## 参照ファイル\n- content/landing-pages.yaml（完全な仕様）\n- links/page-registry.yaml（アフィリエイトリンク）\n- links/broker-specs.yaml（ブローカー詳細情報）\n\n';
+  req+='HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）。Noto Sans JP使用。免責事項は全ページ必須。」';
+
   document.getElementById('gen-modal-id').textContent=id;
-  document.getElementById('gen-req').textContent='「'+id+' ('+slug+') のLPを content/landing-pages.yaml の仕様に基づいて生成し、copy-trade-test/pages/'+slug+'/index.html に保存してください。」';
+  document.getElementById('gen-req').textContent=req;
   document.getElementById('gen-cmd').textContent='bash scripts/post-generate.sh '+id;
   openModal('ov-gen');
 }
 
 function openGuide(){openModal('ov-guide')}
 
+/* ===== New LP ===== */
+function genNextId(){
+  if(!pages.length)return'lp-001';
+  const nums=pages.map(p=>{const m=p.id.match(/lp-(\d+)/);return m?parseInt(m[1]):0;});
+  return'lp-'+String(Math.max(...nums)+1).padStart(3,'0');
+}
+function nlpTitleChanged(){
+  const t=document.getElementById('nlp-title').value;
+  const map=[['MT5','mt5'],['MT4','mt4'],['初心者','beginner'],['中級','intermediate'],['上級','advanced']];
+  let seg='lp';
+  for(const[jp,en]of map){if(t.includes(jp)){seg=en;break;}}
+  document.getElementById('nlp-slug').value='fx-copy-trade-'+seg;
+}
+function openNewLP(){
+  document.getElementById('nlp-id').value=genNextId();
+  ['nlp-title','nlp-slug','nlp-headline','nlp-subheadline','nlp-cta','nlp-cta-sub',
+   'nlp-content','nlp-ref-urls','nlp-instructions','nlp-notes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('nlp-broker').value='XM';
+  document.getElementById('nlp-variant').value='beginner';
+  renderNewLPRefs();
+  showNewLPForm();
+  openModal('ov-new-lp');
+}
+function renderNewLPRefs(){
+  const refs=lsLoad();const el=document.getElementById('nlp-design-refs');
+  if(!refs.sites.length){el.innerHTML='<p style="font-size:.78rem;color:var(--text-muted)">参考サイト管理タブからサイトを追加すると選択できます。</p>';return;}
+  el.innerHTML='<div class="ck-list">'+refs.sites.map(s=>`
+    <label class="ck-item" onclick="this.classList.toggle('sel',this.querySelector('input').checked)">
+      <input type="checkbox" name="nlp-design-ref" value="${s.id}">
+      <div style="flex:1;min-width:0"><div class="ck-name">${esc(s.title)}</div><div class="ck-url">${esc(s.url)}</div></div>
+      <span class="cat-tag">${esc(s.category||'LP参考')}</span>
+    </label>`).join('')+'</div>';
+}
+function showNewLPForm(){
+  document.getElementById('new-lp-form').style.display='block';
+  document.getElementById('new-lp-result').style.display='none';
+  document.getElementById('new-lp-foot-form').style.display='flex';
+  document.getElementById('new-lp-foot-result').style.display='none';
+  document.getElementById('new-lp-title').textContent='✨ 新規LP作成';
+}
+function generateLPSpec(){
+  const id=document.getElementById('nlp-id').value.trim();
+  const slug=document.getElementById('nlp-slug').value.trim();
+  const title=document.getElementById('nlp-title').value.trim();
+  if(!id||!slug||!title){showToast('ページID・スラッグ・タイトルは必須です');return;}
+  const broker=document.getElementById('nlp-broker').value;
+  const variant=document.getElementById('nlp-variant').value;
+  const headline=document.getElementById('nlp-headline').value.trim();
+  const sub=document.getElementById('nlp-subheadline').value.trim();
+  const cta=document.getElementById('nlp-cta').value.trim()||'無料で口座開設する';
+  const ctaSub=document.getElementById('nlp-cta-sub').value.trim();
+  const content=document.getElementById('nlp-content').value.trim();
+  const refUrls=document.getElementById('nlp-ref-urls').value.trim();
+  const instruct=document.getElementById('nlp-instructions').value.trim();
+  const notes=document.getElementById('nlp-notes').value.trim();
+  const selIds=[...document.querySelectorAll('input[name="nlp-design-ref"]:checked')].map(cb=>cb.value);
+  const selSites=selIds.map(id=>lsLoad().sites.find(s=>s.id===id)).filter(Boolean);
+
+  // Build YAML
+  const L=[];
+  L.push(`- id: "${id}"`);
+  L.push(`  slug: "${slug}"`);
+  L.push(`  title: "${title}"`);
+  L.push(`  status: draft`);
+  L.push(`  variant: "${variant}"`);
+  L.push(`  target_broker: "${broker}"`);
+  L.push(`  hero:`);
+  L.push(`    headline: "${headline||title}"`);
+  if(sub) L.push(`    subheadline: "${sub}"`);
+  L.push(`    cta_text: "${cta}"`);
+  if(ctaSub) L.push(`    cta_sub_text: "${ctaSub}"`);
+  L.push(`  features: []`);
+  L.push(`  faq: []`);
+  L.push(`  legal:`);
+  L.push(`    disclaimer: "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。"`);
+  L.push(`    risk_warning: "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"`);
+  L.push(`    regulated_note: "XMTradingはASIC・CySEC・IFSCの規制を受けています。"`);
+  if(instruct||content||refUrls||selSites.length){
+    L.push(`  gemini_instructions: |`);
+    if(instruct) instruct.split('\n').forEach(l=>L.push(`    ${l}`));
+    if(content){L.push(`    # --- コンテンツ要件 ---`);content.split('\n').forEach(l=>L.push(`    # ${l}`));}
+    if(refUrls){L.push(`    # --- 参考URL ---`);refUrls.split('\n').filter(l=>l.trim()).forEach(l=>L.push(`    # - ${l.trim()}`));}
+    if(selSites.length){L.push(`    # --- デザイン参考サイト ---`);selSites.forEach(s=>L.push(`    # - ${s.title}: ${s.url}`));}
+  }
+  L.push(`  results_section:`);
+  L.push(`    show: false`);
+  if(notes) L.push(`  # メモ: ${notes}`);
+  const yaml=L.join('\n');
+
+  // Build Claude prompt
+  let req=`「${id} (${slug}) のLPを以下の仕様に基づいて生成し、copy-trade-test/pages/${slug}/index.html に保存してください。\n\n`;
+  req+=`## タイトル\n${title}\n\n`;
+  req+=`## 基本情報\n- バリアント: ${variant}\n- ターゲットブローカー: ${broker}\n\n`;
+  req+=`## ヒーロー\n- ヘッドライン: ${headline||title}\n`;
+  if(sub) req+=`- サブヘッドライン: ${sub}\n`;
+  req+=`- CTAテキスト: ${cta}\n`;
+  if(ctaSub) req+=`- CTA補足: ${ctaSub}\n`;
+  req+='\n';
+  if(content) req+=`## コンテンツ要件\n${content}\n\n`;
+  if(instruct) req+=`## デザイン・コンテンツ指示\n${instruct}\n\n`;
+  if(refUrls) req+=`## 参考URL（コンテンツ参照）\n${refUrls}\n\n`;
+  if(selSites.length){req+=`## デザイン参考サイト\n`;selSites.forEach(s=>{req+=`- ${s.title}: ${s.url}\n`;});req+='\n';}
+  req+=`## 法的要件（必須）\n- 免責事項: 本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。\n`;
+  req+=`- リスク警告: FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。\n`;
+  req+=`- 規制情報: XMTradingはASIC・CySEC・IFSCの規制を受けています。\n\n`;
+  req+=`## 参照ファイル\n- content/landing-pages.yaml（完全な仕様）\n- links/page-registry.yaml（アフィリエイトリンク）\n- links/broker-specs.yaml（ブローカー詳細情報）\n\n`;
+  req+=`HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）。Noto Sans JP使用。免責事項は全ページ必須。」`;
+
+  document.getElementById('nlp-yaml-out').textContent=yaml;
+  document.getElementById('nlp-prompt-out').textContent=req;
+  document.getElementById('new-lp-form').style.display='none';
+  document.getElementById('new-lp-result').style.display='block';
+  document.getElementById('new-lp-foot-form').style.display='none';
+  document.getElementById('new-lp-foot-result').style.display='flex';
+  document.getElementById('new-lp-title').textContent='✨ 新規LP作成 — '+id;
+}
+
+/* ===== Refs ===== */
 function renderSites(){
-  const refs=lsLoad(); const c=document.getElementById('site-list');
-  if(!refs.sites.length){c.innerHTML='<div class="empty"><div class="icon">🔗</div><p>まだ参考サイトが登録されていません。<br>「＋ サイトを追加」から登録してください。</p></div>';return;}
+  const refs=lsLoad();const c=document.getElementById('site-list');
+  if(!refs.sites.length){c.innerHTML='<div class="empty"><div class="icon">🔗</div><p>まだ参考サイトが登録されていません。</p></div>';return;}
   const lpCnt={};
   Object.values(refs.lp_sites).forEach(ids=>ids.forEach(id=>{lpCnt[id]=(lpCnt[id]||0)+1}));
   c.innerHTML=refs.sites.map((s,i)=>`
     <div class="site-card">
-      <div class="priority-col">
-        <div class="pnum">${i+1}</div>
+      <div class="priority-col"><div class="pnum">${i+1}</div>
         <div class="parr">
           <button class="arr-btn" onclick="moveSite('${s.id}',-1)" ${i===0?'disabled':''}>▲</button>
           <button class="arr-btn" onclick="moveSite('${s.id}',1)" ${i===refs.sites.length-1?'disabled':''}>▼</button>
-        </div>
-      </div>
+        </div></div>
       <div class="site-info">
         <div class="site-title">${esc(s.title)}</div>
         <div class="site-url"><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.url)}</a></div>
@@ -631,7 +782,6 @@ function renderSites(){
       </div>
     </div>`).join('');
 }
-
 function openAddSite(){
   document.getElementById('site-ttl').textContent='🔗 参考サイトを追加';
   ['site-eid','s-title','s-url','s-notes'].forEach(id=>document.getElementById(id).value='');
@@ -639,7 +789,7 @@ function openAddSite(){
   openModal('ov-site');
 }
 function openEditSite(id){
-  const s=lsLoad().sites.find(s=>s.id===id); if(!s)return;
+  const s=lsLoad().sites.find(s=>s.id===id);if(!s)return;
   document.getElementById('site-ttl').textContent='🔗 参考サイトを編集';
   document.getElementById('site-eid').value=id;
   document.getElementById('s-title').value=s.title;
@@ -651,15 +801,11 @@ function openEditSite(id){
 function saveSite(){
   const title=document.getElementById('s-title').value.trim();
   const url=document.getElementById('s-url').value.trim();
-  if(!title||!url){showToast('サイト名とURLは必須です');return}
-  const refs=lsLoad(); const eid=document.getElementById('site-eid').value;
-  if(eid){
-    const i=refs.sites.findIndex(s=>s.id===eid);
-    if(i>=0)refs.sites[i]={...refs.sites[i],title,url,category:document.getElementById('s-cat').value,notes:document.getElementById('s-notes').value.trim()};
-  }else{
-    refs.sites.push({id:'rs-'+Date.now(),title,url,category:document.getElementById('s-cat').value,notes:document.getElementById('s-notes').value.trim(),added:new Date().toISOString().slice(0,10)});
-  }
-  lsSave(refs); closeModal('ov-site'); renderSites();
+  if(!title||!url){showToast('サイト名とURLは必須です');return;}
+  const refs=lsLoad();const eid=document.getElementById('site-eid').value;
+  if(eid){const i=refs.sites.findIndex(s=>s.id===eid);if(i>=0)refs.sites[i]={...refs.sites[i],title,url,category:document.getElementById('s-cat').value,notes:document.getElementById('s-notes').value.trim()};}
+  else{refs.sites.push({id:'rs-'+Date.now(),title,url,category:document.getElementById('s-cat').value,notes:document.getElementById('s-notes').value.trim(),added:new Date().toISOString().slice(0,10)});}
+  lsSave(refs);closeModal('ov-site');renderSites();
   if(pages.length)document.getElementById('lp-grid').innerHTML=pages.map(lpCard).join('');
   showToast(eid?'サイトを更新しました':'サイトを追加しました');
 }
@@ -668,37 +814,33 @@ function deleteSite(id){
   const refs=lsLoad();
   refs.sites=refs.sites.filter(s=>s.id!==id);
   Object.keys(refs.lp_sites).forEach(lid=>{refs.lp_sites[lid]=refs.lp_sites[lid].filter(sid=>sid!==id)});
-  lsSave(refs); renderSites();
+  lsSave(refs);renderSites();
   if(pages.length)document.getElementById('lp-grid').innerHTML=pages.map(lpCard).join('');
   showToast('サイトを削除しました');
 }
 function moveSite(id,dir){
-  const refs=lsLoad(); const i=refs.sites.findIndex(s=>s.id===id); const ni=i+dir;
+  const refs=lsLoad();const i=refs.sites.findIndex(s=>s.id===id);const ni=i+dir;
   if(ni<0||ni>=refs.sites.length)return;
   [refs.sites[i],refs.sites[ni]]=[refs.sites[ni],refs.sites[i]];
-  lsSave(refs); renderSites();
+  lsSave(refs);renderSites();
 }
-
 function openAssoc(lpId){
-  const refs=lsLoad(); const cur=refs.lp_sites[lpId]||[];
+  const refs=lsLoad();const cur=refs.lp_sites[lpId]||[];
   document.getElementById('assoc-lpid').value=lpId;
   const cl=document.getElementById('ck-list');
-  if(!refs.sites.length){
-    cl.innerHTML='<p style="color:var(--text-muted);font-size:.8rem">参考サイトが未登録です。「参考サイト管理」タブから追加してください。</p>';
-  }else{
-    cl.innerHTML=refs.sites.map(s=>`
-      <label class="ck-item${cur.includes(s.id)?' sel':''}" onclick="this.classList.toggle('sel',this.querySelector('input').checked)">
-        <input type="checkbox" value="${s.id}" ${cur.includes(s.id)?'checked':''}>
-        <div style="flex:1;min-width:0"><div class="ck-name">${esc(s.title)}</div><div class="ck-url">${esc(s.url)}</div></div>
-        <span class="cat-tag">${esc(s.category||'LP参考')}</span>
-      </label>`).join('');
-  }
+  if(!refs.sites.length){cl.innerHTML='<p style="color:var(--text-muted);font-size:.8rem">参考サイトが未登録です。</p>';}
+  else{cl.innerHTML=refs.sites.map(s=>`
+    <label class="ck-item${cur.includes(s.id)?' sel':''}" onclick="this.classList.toggle('sel',this.querySelector('input').checked)">
+      <input type="checkbox" value="${s.id}" ${cur.includes(s.id)?'checked':''}>
+      <div style="flex:1;min-width:0"><div class="ck-name">${esc(s.title)}</div><div class="ck-url">${esc(s.url)}</div></div>
+      <span class="cat-tag">${esc(s.category||'LP参考')}</span>
+    </label>`).join('');}
   openModal('ov-assoc');
 }
 function saveAssoc(){
   const lpId=document.getElementById('assoc-lpid').value;
   const checked=[...document.querySelectorAll('#ck-list input:checked')].map(cb=>cb.value);
-  const refs=lsLoad(); refs.lp_sites[lpId]=checked; lsSave(refs);
+  const refs=lsLoad();refs.lp_sites[lpId]=checked;lsSave(refs);
   closeModal('ov-assoc');
   if(pages.length)document.getElementById('lp-grid').innerHTML=pages.map(lpCard).join('');
   showToast('参考サイトの関連付けを保存しました');
@@ -707,18 +849,9 @@ function saveAssoc(){
 function openModal(id){document.getElementById(id).classList.add('open')}
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.overlay.open').forEach(o=>o.classList.remove('open'))});
-
 function cp(t){navigator.clipboard?.writeText(t).catch(()=>{})}
-function cpMark(btn,t){
-  cp(t);const o=btn.textContent;btn.textContent='✅ コピー済';btn.classList.add('done');
-  setTimeout(()=>{btn.textContent=o;btn.classList.remove('done')},2000);
-}
-
-function showToast(msg){
-  const el=document.createElement('div');el.className='toast';el.textContent=msg;
-  document.body.appendChild(el);setTimeout(()=>el.remove(),2500);
-}
-
+function cpMark(btn,t){cp(t);const o=btn.textContent;btn.textContent='✅ コピー済';btn.classList.add('done');setTimeout(()=>{btn.textContent=o;btn.classList.remove('done')},2000);}
+function showToast(msg){const el=document.createElement('div');el.className='toast';el.textContent=msg;document.body.appendChild(el);setTimeout(()=>el.remove(),2500);}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
 load(false);

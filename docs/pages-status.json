@@ -1,17 +1,92 @@
 {
-  "updated_at": "2026-06-06T19:20:07.693625+00:00",
+  "updated_at": "2026-06-06T19:23:49.902267+00:00",
   "pages": [
     {
       "id": "lp-001",
       "slug": "fx-copy-trade-beginner",
-      "status": "review",
+      "status": "approved",
       "variant": "beginner",
       "broker": "XM",
       "headline": "プロの取引を自動コピー。寝ている間も資産を育てる。",
       "generated": true,
       "staged": true,
       "approved_file": true,
-      "netlify_url": "https://ubiquitous-salmiakki-865b3a.netlify.app/fx-copy-trade-beginner/"
+      "netlify_url": "https://ubiquitous-salmiakki-865b3a.netlify.app/fx-copy-trade-beginner/",
+      "spec": {
+        "title": "初心者でも始められるFXコピートレード",
+        "meta_description": "プロトレーダーの取引をそのままコピー。MT4/MT5対応。難しい知識不要で資産運用を始めよう。",
+        "hero": {
+          "cta_sub_text": "所要時間：約5分",
+          "cta_text": "無料で口座開設する",
+          "headline": "プロの取引を自動コピー。寝ている間も資産を育てる。",
+          "hero_image_alt": "FXコピートレード 操作画面イメージ",
+          "subheadline": "FXコピートレードで始める、かんたん資産運用。難しい知識は一切不要。"
+        },
+        "features": [
+          {
+            "body": "過去パフォーマンスが透明公開されたトレーダーのみ掲載。安心してコピーできます。",
+            "icon": "shield",
+            "title": "実績あるトレーダーのみ"
+          },
+          {
+            "body": "あなたが寝ていても、働いていても、システムが自動でコピー取引します。",
+            "icon": "clock",
+            "title": "24時間完全自動"
+          },
+          {
+            "body": "業界標準のMT4・MT5プラットフォームに完全対応。スマホからも管理できます。",
+            "icon": "chart",
+            "title": "MT4/MT5対応"
+          },
+          {
+            "body": "最小100ドル（約15,000円）から始めることができます。",
+            "icon": "yen",
+            "title": "少額から始められる"
+          }
+        ],
+        "faq": [
+          {
+            "a": "はい。コピートレードはプロの取引を自動でコピーするため、FXの知識がなくても始められます。",
+            "q": "FXの知識がなくても始められますか？"
+          },
+          {
+            "a": "XMTradingでは最低5ドルから口座開設できます。コピートレードは100ドル（約15,000円）が目安です。",
+            "q": "最低いくらから始められますか？"
+          },
+          {
+            "a": "はい、FX取引には元本割れのリスクがあります。余裕資金での運用を推奨します。",
+            "q": "リスクはありますか？"
+          },
+          {
+            "a": "はい、コピーの停止・再開はいつでも自由に行えます。",
+            "q": "いつでも止められますか？"
+          }
+        ],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "掲載しているFX会社は各国金融当局の規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。過去の実績は将来の利益を保証しません。"
+        },
+        "gemini_instructions": "このページは初心者向けです。\n- 専門用語（レバレッジ、スプレッド等）は使わないか、使う場合は必ず説明を添える\n- CTAボタンは目立つ緑色（#22c55e）にする\n- モバイルファーストで設計する\n- ヒーローセクションのヘッドラインは最大2行に収める\n- 実績数値は必ず免責事項と組み合わせて表示する\n- フォントは \"Noto Sans JP\" を優先する\n",
+        "results_section": {
+          "disclaimer_required": true,
+          "heading": "実際の運用実績（参考）",
+          "note": "※過去の実績は将来の利益を保証するものではありません",
+          "sample_data": [
+            {
+              "max_drawdown": "8.2%",
+              "period": "2024年通年",
+              "roi": "+42.3%"
+            },
+            {
+              "max_drawdown": "11.4%",
+              "period": "2023年通年",
+              "roi": "+31.7%"
+            }
+          ],
+          "show": true
+        }
+      }
     },
     {
       "id": "lp-002",
@@ -23,7 +98,59 @@
       "generated": true,
       "staged": false,
       "approved_file": false,
-      "netlify_url": ""
+      "netlify_url": "",
+      "spec": {
+        "title": "MT4コピートレード完全ガイド",
+        "meta_description": "MetaTrader4（MT4）でのコピートレード設定から運用まで。XMの人気シグナルプロバイダー一覧。",
+        "hero": {
+          "cta_sub_text": "XMTrading - 日本語サポートあり",
+          "cta_text": "MT4で口座開設する",
+          "headline": "MT4コピートレードで、プロの戦略をそのまま活用",
+          "hero_image_alt": "MetaTrader4 コピートレード 画面",
+          "subheadline": "世界中のトレーダーが使うMT4で、実績あるシグナルプロバイダーの取引を自動コピー。"
+        },
+        "features": [
+          {
+            "body": "MetaTrader4の全機能に対応。インジケーターやEAと組み合わせた高度な運用も可能。",
+            "icon": "mt4",
+            "title": "MT4完全対応"
+          },
+          {
+            "body": "世界中の優秀なトレーダーが登録。実績・ドローダウン・フォロワー数で比較できます。",
+            "icon": "signal",
+            "title": "人気シグナルプロバイダー"
+          },
+          {
+            "body": "最大ドローダウン設定やロットサイズ調整で、リスクをコントロールしながらコピー。",
+            "icon": "shield",
+            "title": "リスク管理機能"
+          },
+          {
+            "body": "XMTradingは日本語サポートに対応。口座開設から設定まで安心してサポートを受けられます。",
+            "icon": "support",
+            "title": "日本語サポート"
+          }
+        ],
+        "faq": [
+          {
+            "a": "コピートレード目的であればどちらでも問題ありません。シグナルプロバイダーの多さではMT4が優勢です。",
+            "q": "MT4とMT5、どちらを選べばいいですか？"
+          },
+          {
+            "a": "はい、コピー取引と手動取引を同時に行うことができます。",
+            "q": "コピー中でも自分で取引できますか？"
+          }
+        ],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "このページはMT4経験者・中級者向けです。\n- MT4の具体的な機能名を積極的に使う\n- 青系のプロフェッショナルな配色（#1e40af）\n- シグナルプロバイダーの選び方についてのセクションを追加する\n- スクリーンショット的なUIモックアップをCSSで表現する\n",
+        "results_section": {
+          "show": false
+        }
+      }
     }
   ]
 }
