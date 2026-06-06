@@ -1,15 +1,15 @@
 {
-  "updated_at": "2026-06-06T18:06:04.655910+00:00",
+  "updated_at": "2026-06-06T18:07:20.992509+00:00",
   "pages": [
     {
       "id": "lp-001",
       "slug": "fx-copy-trade-beginner",
-      "status": "review",
+      "status": "draft",
       "variant": "beginner",
       "broker": "XM",
       "headline": "プロの取引を自動コピー。寝ている間も資産を育てる。",
       "generated": true,
-      "staged": false,
+      "staged": true,
       "approved_file": false,
       "netlify_url": ""
     },
