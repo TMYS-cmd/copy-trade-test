@@ -76,7 +76,11 @@ body{
 /* ── HERO ── */
 .hero{
   min-height:100vh;padding-top:60px;
-  background:linear-gradient(152deg,#0a2540 0%,#1a1150 52%,#071e40 100%);
+  background:
+    radial-gradient(ellipse 72% 90% at -6% 50%, rgba(98,90,250,.26) 0%, transparent 55%),
+    radial-gradient(ellipse 48% 55% at 108% 8%,  rgba(0,115,230,.2)  0%, transparent 52%),
+    radial-gradient(ellipse 60% 60% at 50% 105%, rgba(30,10,80,.45)   0%, transparent 55%),
+    linear-gradient(152deg,#04101f 0%,#1a1150 46%,#060f1e 100%);
   display:flex;align-items:center;
   position:relative;overflow:hidden;
 }
@@ -303,6 +307,37 @@ details[open] summary.faq-q::after{content:'−'}
 .legal-box strong{color:var(--text-md);font-weight:700}
 .legal-copy{margin-top:20px;font-size:10px;color:var(--text-sm);text-align:center;letter-spacing:.05em}
 
+/* ── HERO 2-COL ── */
+@media(min-width:760px){
+  .hero-inner{display:grid;grid-template-columns:1fr 390px;gap:56px;text-align:left;align-items:center}
+  .chips{justify-content:flex-start}
+  .h-stats{justify-content:flex-start}
+}
+/* myfxbook mock card */
+.hero-mock{background:rgba(4,10,24,.92);border:1px solid rgba(98,90,250,.3);border-radius:14px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.65),0 0 0 1px rgba(98,90,250,.08);display:none}
+@media(min-width:760px){.hero-mock{display:block}}
+.mock-bar{background:rgba(3,8,18,.98);padding:10px 14px;display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(255,255,255,.07)}
+.mock-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.mock-dot:nth-child(1){background:#ff5f56}.mock-dot:nth-child(2){background:#ffbd2e}.mock-dot:nth-child(3){background:#27c93f}
+.mock-url{font-size:9px;color:#3a4e64;flex:1;text-align:center;font-family:monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;letter-spacing:.02em}
+.mock-body{padding:18px 16px}
+.mock-ttl{font-size:9px;font-weight:700;color:var(--purp-lt);letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.mock-ttl::before{content:'';width:6px;height:6px;border-radius:50%;background:#27c93f;animation:blink 2s infinite}
+.mock-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:14px}
+.mock-s{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 6px;text-align:center}
+.mock-sv{font-size:15px;font-weight:900;line-height:1.1;margin-bottom:3px;color:var(--text)}
+.mock-sl{font-size:8px;color:var(--text-md);letter-spacing:.05em;text-transform:uppercase}
+.mock-sv.green{background:linear-gradient(135deg,#4ade80,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mock-chart-lbl{font-size:8px;color:var(--text-md);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.mock-months{display:flex;align-items:flex-end;gap:3px;height:58px;margin-bottom:14px}
+.mock-m{flex:1;border-radius:2px 2px 0 0;transition:opacity .15s}
+.mock-m:hover{opacity:.75}
+.mock-m.pos{background:linear-gradient(0deg,rgba(34,197,94,.55),rgba(74,222,128,.75))}
+.mock-m.neg{background:linear-gradient(180deg,rgba(220,38,38,.55),rgba(248,113,113,.75));border-radius:0 0 2px 2px}
+.mock-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;font-size:9px;font-weight:700;padding:5px 11px;border-radius:999px;letter-spacing:.07em}
+.mock-link-btn{display:block;text-align:center;margin-top:12px;font-size:10px;color:rgba(139,127,255,.7);border:1px solid rgba(98,90,250,.22);border-radius:6px;padding:7px 12px;transition:all .15s;letter-spacing:.02em}
+.mock-link-btn:hover{color:var(--purp-lt);border-color:rgba(98,90,250,.45);background:rgba(98,90,250,.07)}
+
 /* ── RESPONSIVE ── */
 @media(max-width:640px){
   .h-stats{flex-direction:column;align-items:center}
@@ -330,35 +365,78 @@ details[open] summary.faq-q::after{content:'−'}
   <div class="h-dot-grid" aria-hidden="true"></div>
   <div class="hero-inner">
 
-    <div class="chips">
-      <span class="chip"><span class="chip-dot"></span>16ヶ月ロスカットゼロ</span>
-      <span class="chip">myfxbook 第三者認定</span>
-      <span class="chip">累計 +1,029%</span>
+    <!-- LEFT: text content -->
+    <div class="hero-left">
+      <div class="chips">
+        <span class="chip"><span class="chip-dot"></span>16ヶ月ロスカットゼロ</span>
+        <span class="chip">myfxbook 第三者認定</span>
+        <span class="chip">累計 +1,029%</span>
+      </div>
+
+      <h1 class="h1">
+        my fx bookのリアル口座履歴を<br><span class="g">完全公開</span>
+      </h1>
+      <p class="h-sub">有名海外トレーダーの取引を完全無料でコピー</p>
+
+      <div class="h-stats">
+        <div class="hs">
+          <div class="hs-n">16<span class="hs-u">ヶ月</span></div>
+          <div class="hs-l">ロスカットゼロ</div>
+        </div>
+        <div class="hs">
+          <div class="hs-n">+1,029<span class="hs-u">%</span></div>
+          <div class="hs-l">累計収益率</div>
+        </div>
+        <div class="hs">
+          <div class="hs-n">0<span class="hs-u">回</span></div>
+          <div class="hs-l">ロスカット</div>
+        </div>
+      </div>
+
+      <a href="https://lin.ee/qjpV7zY" class="h-btn">公式LINEはこちら</a>
+      <div class="h-disc">
+        ※ myfxbookリアル口座実績（2024年11月〜2026年3月）。過去の成果は将来の利益を保証しません。
+      </div>
     </div>
 
-    <h1 class="h1">
-      my fx bookのリアル口座履歴を<span class="g">完全公開</span>
-    </h1>
-    <p class="h-sub">有名海外トレーダーの取引を完全無料でコピー</p>
-
-    <div class="h-stats">
-      <div class="hs">
-        <div class="hs-n">16<span class="hs-u">ヶ月</span></div>
-        <div class="hs-l">ロスカットゼロ</div>
+    <!-- RIGHT: myfxbook mock UI -->
+    <div class="hero-mock" aria-hidden="true">
+      <div class="mock-bar">
+        <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+        <span class="mock-url">myfxbook.com · MSC SUPERGOLD PRO</span>
       </div>
-      <div class="hs">
-        <div class="hs-n">+1,029<span class="hs-u">%</span></div>
-        <div class="hs-l">累計収益率</div>
+      <div class="mock-body">
+        <div class="mock-ttl">Verified Real Account · Live</div>
+        <div class="mock-stats">
+          <div class="mock-s"><div class="mock-sv green">+1,029%</div><div class="mock-sl">Gain</div></div>
+          <div class="mock-s"><div class="mock-sv">16</div><div class="mock-sl">Months</div></div>
+          <div class="mock-s"><div class="mock-sv green">0</div><div class="mock-sl">Losscut</div></div>
+        </div>
+        <div class="mock-chart-lbl">Monthly Performance</div>
+        <div class="mock-months">
+          <div class="mock-m pos" style="height:6px"  title="24/11: +12.5%"></div>
+          <div class="mock-m pos" style="height:9px"  title="24/12: +18.3%"></div>
+          <div class="mock-m pos" style="height:15px" title="25/01: +31.2%"></div>
+          <div class="mock-m pos" style="height:41px" title="25/02: +83.4%"></div>
+          <div class="mock-m pos" style="height:12px" title="25/03: +24.1%"></div>
+          <div class="mock-m pos" style="height:20px" title="25/04: +41.6%"></div>
+          <div class="mock-m pos" style="height:10px" title="25/05: +19.8%"></div>
+          <div class="mock-m neg" style="height:4px"  title="25/06: -1.86%"></div>
+          <div class="mock-m neg" style="height:6px"  title="25/07: -11.6%"></div>
+          <div class="mock-m pos" style="height:25px" title="25/08: +52.3%"></div>
+          <div class="mock-m pos" style="height:19px" title="25/09: +38.7%"></div>
+          <div class="mock-m pos" style="height:33px" title="25/10: +67.2%"></div>
+          <div class="mock-m neg" style="height:5px"  title="25/11: -4.84%"></div>
+          <div class="mock-m pos" style="height:35px" title="25/12: +71.8%"></div>
+          <div class="mock-m pos" style="height:43px" title="26/01: +86.9%"></div>
+          <div class="mock-m pos" style="height:53px" title="26/03: +107.3%"></div>
+        </div>
+        <div class="mock-badge">✓ 第三者検証済み · リアル口座</div>
+        <a href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504"
+           target="_blank" rel="noopener" class="mock-link-btn">
+          myfxbook で実績を直接確認する →
+        </a>
       </div>
-      <div class="hs">
-        <div class="hs-n">0<span class="hs-u">回</span></div>
-        <div class="hs-l">ロスカット</div>
-      </div>
-    </div>
-
-    <a href="https://lin.ee/qjpV7zY" class="h-btn">公式LINEはこちら</a>
-    <div class="h-disc">
-      ※ myfxbookリアル口座実績（2024年11月〜2026年3月）。過去の成果は将来の利益を保証しません。
     </div>
 
   </div>
@@ -390,6 +468,22 @@ details[open] summary.faq-q::after{content:'−'}
         </div>
       </div>
     </div>
+
+    <div style="text-align:center;margin-top:28px">
+      <a href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504"
+         target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;
+                padding:11px 24px;border-radius:8px;
+                background:rgba(98,90,250,.12);border:1px solid rgba(98,90,250,.32);
+                color:var(--purp-lt);font-size:13px;font-weight:700;
+                letter-spacing:.03em;transition:all .18s">
+        myfxbook で全実績を直接確認する →
+      </a>
+      <div style="margin-top:8px;font-size:10px;color:var(--text-sm)">
+        ※ 外部サービス（myfxbook.com）のリアル口座検証ページに移動します
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -537,7 +631,7 @@ details[open] summary.faq-q::after{content:'−'}
     {m:'25/11',v:-4.84},{m:'25/12',v:71.8},{m:'26/01',v:86.92},
     {m:'26/03',v:107.29}
   ];
-  var POS_H=185, NEG_H=55, CHART_H=POS_H+NEG_H;
+  var POS_H=168, NEG_H=52, CHART_H=POS_H+NEG_H;
   var maxPos=Math.max.apply(null,DATA.map(function(d){return d.v}));
   var maxNeg=Math.abs(Math.min.apply(null,DATA.map(function(d){return d.v})));
 
@@ -547,15 +641,16 @@ details[open] summary.faq-q::after{content:'−'}
 
     /* zero line */
     var zl=document.createElement('div');
-    zl.style.cssText='position:absolute;left:0;right:0;top:'+POS_H+'px;height:1px;background:rgba(255,255,255,.18);z-index:1;pointer-events:none;';
-    chart.style.cssText='display:flex;gap:5px;min-width:600px;position:relative;height:'+(CHART_H+28)+'px;';
+    zl.style.cssText='position:absolute;left:0;right:0;top:'+POS_H+'px;height:1px;background:rgba(255,255,255,.22);z-index:1;pointer-events:none;';
+    chart.style.cssText='display:flex;gap:5px;min-width:600px;position:relative;height:'+(CHART_H+44)+'px;padding-top:22px;';
     chart.appendChild(zl);
 
     DATA.forEach(function(d){
       var isPos=d.v>=0;
+      /* scale to 90% so label always fits above bar */
       var barH=isPos
-        ? Math.max(4,Math.round((d.v/maxPos)*POS_H))
-        : Math.max(4,Math.round((Math.abs(d.v)/maxNeg)*NEG_H));
+        ? Math.max(4,Math.round((d.v/maxPos)*POS_H*0.90))
+        : Math.max(4,Math.round((Math.abs(d.v)/maxNeg)*NEG_H*0.92));
 
       var col=document.createElement('div');
       col.style.cssText='flex:1;min-width:26px;position:relative;height:'+CHART_H+'px;';
@@ -567,28 +662,26 @@ details[open] summary.faq-q::after{content:'−'}
         'position:absolute;width:100%;text-align:center;',
         'font-size:7.5px;font-weight:700;white-space:nowrap;',
         'color:'+(isPos?'#4ade80':'#f87171')+';',
-        isPos?'bottom:'+(NEG_H+barH+4)+'px;':'top:'+(POS_H+barH+4)+'px;'
+        isPos?'bottom:'+(NEG_H+barH+3)+'px;':'top:'+(POS_H+barH+3)+'px;'
       ].join('');
 
-      /* bar */
+      /* bar — flat solid color, no 3D gradient */
       var bar=document.createElement('div');
       bar.style.cssText=[
         'position:absolute;width:75%;left:12.5%;',
         'min-height:4px;height:'+barH+'px;',
-        'border-radius:'+(isPos?'4px 4px 0 0':'0 0 4px 4px')+';',
-        'background:'+(isPos
-          ?'linear-gradient(0deg,#16a34a,#4ade80)'
-          :'linear-gradient(180deg,#dc2626,#f87171)')+';',
+        'border-radius:'+(isPos?'3px 3px 0 0':'0 0 3px 3px')+';',
+        'background:'+(isPos?'rgba(74,222,128,.82)':'rgba(248,113,113,.82)')+';',
         isPos?'bottom:'+NEG_H+'px;':'top:'+POS_H+'px;',
-        'transition:opacity .15s;'
+        'transition:opacity .15s,background .15s;'
       ].join('');
-      bar.onmouseenter=function(){this.style.opacity='.75'};
-      bar.onmouseleave=function(){this.style.opacity='1'};
+      bar.onmouseenter=function(){this.style.background=isPos?'rgba(74,222,128,1)':'rgba(248,113,113,1)'};
+      bar.onmouseleave=function(){this.style.background=isPos?'rgba(74,222,128,.82)':'rgba(248,113,113,.82)'};
 
       /* month label */
       var lbl=document.createElement('div');
       lbl.textContent=d.m;
-      lbl.style.cssText='position:absolute;bottom:-20px;width:100%;text-align:center;font-size:8px;color:#4a5e75;white-space:nowrap;';
+      lbl.style.cssText='position:absolute;bottom:-22px;width:100%;text-align:center;font-size:8px;color:#4a5e75;white-space:nowrap;';
 
       col.appendChild(val);
       col.appendChild(bar);

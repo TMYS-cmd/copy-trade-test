@@ -1449,6 +1449,29 @@ function generateLPSpec(){
     if(variants.length>1) combined+='### '+(i+1)+'案目（'+v.slug+'）\n\n';
     combined+=v.req+'\n\n';
   });
+  // ③ Asset placement instructions when media files are attached
+  if(nlpMediaFiles.length){
+    const imgs=nlpMediaFiles.filter(f=>!f.type.startsWith('video/'));
+    const vids=nlpMediaFiles.filter(f=>f.type.startsWith('video/'));
+    combined+='## ③ アセットファイルの配置\n\n';
+    combined+='以下のコマンドでassetsフォルダを作成してください（LP生成前に実行）:\n';
+    combined+='```powershell\nNew-Item -ItemType Directory -Force "copy-trade-test\\pages\\'+slug+'\\assets"\n```\n\n';
+    combined+='次に、以下のファイルを上記フォルダにコピーしてください。\n';
+    combined+='ファイルの現在の場所（ダウンロードフォルダ・デスクトップ等）を確認してから実行:\n\n';
+    if(imgs.length){
+      combined+='【画像ファイル】\n';
+      imgs.forEach(f=>{combined+='- '+f.name+' → copy-trade-test/pages/'+slug+'/assets/'+f.name+'\n';});
+      combined+='\n';
+    }
+    if(vids.length){
+      combined+='【動画ファイル】\n';
+      vids.forEach(f=>{combined+='- '+f.name+' → copy-trade-test/pages/'+slug+'/assets/'+f.name+'\n';});
+      combined+='\n⚠️ 動画をHTMLに組み込む際は必ず以下の4属性を付けてください（ないとスマホで自動再生されません）:\n';
+      combined+='<video autoplay muted loop playsinline src="assets/'+vids[0].name+'"></video>\n\n';
+    }
+    combined+='ファイルコピー例（PowerShell / ファイル名・パスは実際のものに変更）:\n';
+    combined+='```powershell\nCopy-Item "$env:USERPROFILE\\Downloads\\'+nlpMediaFiles[0].name+'" "copy-trade-test\\pages\\'+slug+'\\assets\\"\n```\n\n';
+  }
   combined+='---\n生成完了後にターミナルで実行:\nbash scripts/post-generate.sh '+id;
 
   document.getElementById('nlp-combined-out').textContent=combined;
