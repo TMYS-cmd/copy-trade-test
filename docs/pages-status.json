@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-06-06T18:16:01.749003+00:00",
+  "updated_at": "2026-06-07T00:00:00.000000+00:00",
   "pages": [
     {
       "id": "lp-001",
       "slug": "fx-copy-trade-beginner",
-      "status": "draft",
+      "status": "approved",
       "variant": "beginner",
       "broker": "XM",
       "headline": "プロの取引を自動コピー。寝ている間も資産を育てる。",
       "generated": true,
       "staged": true,
       "approved_file": true,
-      "netlify_url": ""
+      "netlify_url": "https://ubiquitous-salmiakki-865b3a.netlify.app/fx-copy-trade-beginner/"
     },
     {
       "id": "lp-002",
