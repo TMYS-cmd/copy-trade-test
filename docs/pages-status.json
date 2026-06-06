@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T21:36:49.894011+00:00",
+  "updated_at": "2026-06-06T22:03:20.756168+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -254,6 +254,38 @@
           "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
         },
         "gemini_instructions": "フォント: Kaisei Decol（見出しに使用）\n参考: bloomberg.com / goldman sachs スタイル\n- 背景: #0b1f3a（ダークネイビー）、アクセント: #c9a227（ゴールド）\n- ヒーローに実績数値を大きく並べる（26倍 / -1.9% / 9ヶ月 / 0回）\n- ゴールドの細いアクセントラインで区切り\n- プロフェッショナル・厳格・信頼性を最優先\n- FXBlue第三者検証を前面に出す\n- 参考: https://api.fxblue.com/users/steady_compounding\n",
+        "results_section": {
+          "show": false
+        }
+      }
+    },
+    {
+      "id": "lp-005",
+      "slug": "fx-copy-trade-lp",
+      "status": "review",
+      "variant": "intermediate",
+      "broker": "",
+      "headline": "my fx bookのリアル口座履歴を完全公開",
+      "generated": true,
+      "staged": true,
+      "approved_file": true,
+      "netlify_url": "",
+      "spec": {
+        "title": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。",
+        "meta_description": "",
+        "hero": {
+          "cta_text": "公式LINEはこちら",
+          "headline": "my fx bookのリアル口座履歴を完全公開",
+          "subheadline": "有名海外トレーダーの取引を完全無料でコピー"
+        },
+        "features": [],
+        "faq": [],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "フォント: Noto Sans JP\n参考: stripe.com スタイル\n- 背景: #0a2540（ダークネイビー）、アクセント: #625afa（紫）\n- ヒーロー: 斜めグラデーション（#0a2540→#1a1150）\n- badge/chipで証明要素を強調\n- 月次収益率バーチャート（JS生成）\n- 添付画像: assets/a.jpg, b.jpg, c.jpg, d.jpg\n",
         "results_section": {
           "show": false
         }
