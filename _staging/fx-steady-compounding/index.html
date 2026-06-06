@@ -82,10 +82,10 @@ body{
 .hero{
   min-height:100vh;padding-top:64px;
   background:
-    radial-gradient(ellipse 120% 65% at 50% -5%,  rgba(201,162,39,.18) 0%, rgba(201,162,39,.06) 35%, transparent 62%),
-    radial-gradient(ellipse 55%  70% at -8%  95%,  rgba(9,50,110,.55) 0%, transparent 55%),
-    radial-gradient(ellipse 45%  55% at 108% -5%,  rgba(4,18,50,.85) 0%, transparent 50%),
-    linear-gradient(168deg, #03091a 0%, #071628 28%, #0b2040 58%, #060e1e 100%);
+    radial-gradient(ellipse 75% 55% at 50% 0%,   rgba(201,162,39,.45) 0%, rgba(201,162,39,.14) 42%, transparent 65%),
+    radial-gradient(ellipse 60% 65% at -5% 100%,  rgba(14,70,150,.55) 0%, transparent 52%),
+    radial-gradient(ellipse 45% 50% at 105% 15%,  rgba(0,5,20,.75)    0%, transparent 50%),
+    linear-gradient(165deg, #00060f 0%, #05162e 28%, #0e2c55 58%, #030b1a 100%);
   display:flex;align-items:center;
   position:relative;overflow:hidden;
 }
@@ -95,8 +95,8 @@ body{
   background:repeating-linear-gradient(
     -52deg,
     transparent,transparent 110px,
-    rgba(201,162,39,.018) 110px,
-    rgba(201,162,39,.018) 111px
+    rgba(201,162,39,.038) 110px,
+    rgba(201,162,39,.038) 111px
   );
   pointer-events:none;z-index:0;
 }
@@ -104,12 +104,12 @@ body{
 .hero-grid{
   position:absolute;inset:0;
   background-image:
-    linear-gradient(rgba(201,162,39,.07) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(201,162,39,.07) 1px,transparent 1px);
+    linear-gradient(rgba(201,162,39,.11) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,162,39,.11) 1px,transparent 1px);
   background-size:64px 64px;
   pointer-events:none;
-  mask-image:radial-gradient(ellipse 85% 80% at 50% 50%, black 30%, transparent 100%);
-  -webkit-mask-image:radial-gradient(ellipse 85% 80% at 50% 50%, black 30%, transparent 100%);
+  mask-image:radial-gradient(ellipse 88% 82% at 50% 50%, black 25%, transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 88% 82% at 50% 50%, black 25%, transparent 100%);
 }
 /* gold horizon line bottom */
 .hero::after{
