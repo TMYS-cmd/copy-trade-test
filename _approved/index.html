@@ -1,26 +1,109 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>承認済みランディングページ一覧</title>
-  <style>
-    body { font-family: 'Noto Sans JP', sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #1e293b; }
-    h1 { font-size: 1.5rem; border-bottom: 2px solid #22c55e; padding-bottom: 0.5rem; }
-    ul { list-style: none; padding: 0; }
-    li { padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0; }
-    a { color: #1e40af; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .meta { font-size: 0.75rem; color: #64748b; margin-top: 1rem; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP管理 — 承認済みページ一覧</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP','Hiragino Sans',sans-serif;background:#f1f5f9;color:#1e293b;min-height:100vh;display:flex;align-items:center;justify-content:center;-webkit-font-smoothing:antialiased}
+
+/* ── password gate ── */
+#gate{width:100%;max-width:360px;padding:24px}
+.gate-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:32px 28px;box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.gate-logo{font-size:1.6rem;font-weight:900;color:#16a34a;margin-bottom:4px;letter-spacing:-.01em}
+.gate-sub{font-size:.75rem;color:#64748b;margin-bottom:24px}
+.gate-label{display:block;font-size:.78rem;font-weight:600;color:#475569;margin-bottom:6px}
+.gate-input{width:100%;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;font-size:.9rem;color:#1e293b;outline:none;transition:border-color .15s}
+.gate-input:focus{border-color:#94a3b8}
+.gate-btn{width:100%;margin-top:14px;background:#16a34a;color:#fff;font-size:.9rem;font-weight:700;padding:11px;border-radius:8px;border:none;cursor:pointer;transition:background .15s}
+.gate-btn:hover{background:#15803d}
+.gate-err{margin-top:10px;font-size:.75rem;color:#dc2626;display:none;text-align:center}
+
+/* ── content ── */
+#content{display:none;width:100%;max-width:760px;padding:32px 24px}
+.hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:12px;flex-wrap:wrap}
+.hdr h1{font-size:1.15rem;font-weight:700}
+.logout-btn{background:transparent;border:1px solid #e2e8f0;border-radius:6px;padding:5px 12px;font-size:.74rem;color:#64748b;cursor:pointer;transition:all .15s}
+.logout-btn:hover{background:#f1f5f9;color:#1e293b}
+.lp-list{background:#fff;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden}
+.lp-list ul{list-style:none;padding:0}
+.lp-list li{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #f1f5f9;gap:12px}
+.lp-list li:last-child{border-bottom:none}
+.lp-list a{font-size:.9rem;font-weight:600;color:#1e40af;font-family:'Consolas',monospace}
+.lp-list a:hover{text-decoration:underline}
+.lp-badge{display:inline-block;background:rgba(22,163,74,.1);border:1px solid rgba(22,163,74,.2);color:#15803d;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.04em}
+.empty-item{color:#94a3b8;font-size:.85rem;padding:24px 20px!important;text-align:center}
+.meta{font-size:.72rem;color:#94a3b8;margin-top:14px;text-align:right}
+</style>
 </head>
 <body>
-  <h1>承認済みランディングページ一覧</h1>
-  <ul>
-      <li><a href="./fx-copy-trade-beginner/">fx-copy-trade-beginner</a></li>
-      <li><a href="./fx-copy-trade-lp/">fx-copy-trade-lp</a></li>
-      <li><a href="./fx-copy-trade-mt4/">fx-copy-trade-mt4</a></li>
-  </ul>
-  <p class="meta">最終更新: 2026年06月06日 19:54</p>
+
+<!-- Password Gate -->
+<div id="gate">
+  <div class="gate-card">
+    <div class="gate-logo">📊 LP管理</div>
+    <div class="gate-sub">承認済みランディングページ一覧</div>
+    <label class="gate-label" for="pw-input">パスワード</label>
+    <input class="gate-input" type="password" id="pw-input" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')checkPw()">
+    <button class="gate-btn" onclick="checkPw()">ログイン</button>
+    <div class="gate-err" id="pw-err">パスワードが違います</div>
+  </div>
+</div>
+
+<!-- Authenticated Content -->
+<div id="content">
+  <div class="hdr">
+    <h1>承認済みランディングページ一覧</h1>
+    <button class="logout-btn" onclick="logout()">🔒 ログアウト</button>
+  </div>
+  <div class="lp-list">
+    <ul>
+        <li>
+          <a href="./fx-copy-trade-beginner/" target="_blank">fx-copy-trade-beginner</a>
+          <span class="lp-badge">公開中</span>
+        </li>
+        <li>
+          <a href="./fx-copy-trade-lp/" target="_blank">fx-copy-trade-lp</a>
+          <span class="lp-badge">公開中</span>
+        </li>
+        <li>
+          <a href="./fx-copy-trade-mt4/" target="_blank">fx-copy-trade-mt4</a>
+          <span class="lp-badge">公開中</span>
+        </li>
+    </ul>
+  </div>
+  <p class="meta">最終更新: 2026年06月07日 05:32</p>
+</div>
+
+<script>
+const HASH='66fee9b5ca0d133470956a0346c598bf0c1d6cea1148964c78946a956d3644e7';
+const KEY='lp_auth_v1';
+
+async function sha256(s){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function checkPw(){
+  const v=document.getElementById('pw-input').value;
+  const h=await sha256(v);
+  if(h===HASH){
+    sessionStorage.setItem(KEY,'1');
+    showContent();
+  }else{
+    const err=document.getElementById('pw-err');
+    err.style.display='block';
+    setTimeout(()=>err.style.display='none',2500);
+    document.getElementById('pw-input').value='';
+  }
+}
+function showContent(){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('content').style.display='block';
+  document.body.style.alignItems='flex-start';
+}
+function logout(){sessionStorage.removeItem(KEY);location.reload()}
+if(sessionStorage.getItem(KEY)==='1')showContent();
+</script>
 </body>
 </html>

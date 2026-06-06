@@ -226,6 +226,17 @@ button{font-family:inherit;cursor:pointer}
 .mi-rm:hover{background:rgba(220,38,38,.08);color:#b91c1c}
 .video-tip{background:rgba(220,38,38,.05);border:1px solid rgba(220,38,38,.15);border-radius:var(--r);padding:10px 12px;font-size:.72rem;color:var(--text-dim);line-height:1.7;margin-top:8px}
 
+/* ── font picker ── */
+.font-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:7px;margin-top:8px}
+.font-card{border:2px solid var(--border);border-radius:var(--rl);padding:10px 12px;cursor:pointer;transition:border-color .15s;background:var(--surface);position:relative;overflow:hidden}
+.font-card:hover{border-color:#94a3b8}
+.font-card.sel{border-color:var(--violet);background:rgba(124,58,237,.04)}
+.font-card.recently::after{content:'使用済';position:absolute;top:5px;right:6px;font-size:.57rem;background:rgba(22,163,74,.1);color:#15803d;border:1px solid rgba(22,163,74,.2);padding:1px 5px;border-radius:3px;font-weight:700}
+.fc-sample{font-size:13px;font-weight:700;margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:1.4}
+.fc-name{font-size:.65rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fc-desc{font-size:.61rem;color:var(--text-muted);margin-top:2px}
+.font-sec-lbl{font-size:.7rem;font-weight:700;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin:8px 0 4px}
+
 /* ── status-specific buttons ── */
 .abtn-unpublish{background:rgba(245,158,11,.1);color:#92400e;border:1px solid rgba(245,158,11,.25)}
 .abtn-delete{background:rgba(220,38,38,.06);color:#991b1b;border:1px solid rgba(220,38,38,.16)}
@@ -485,6 +496,17 @@ button{font-family:inherit;cursor:pointer}
           <label class="fl">参考URL<span class="fl-hint">内容を参考にしたいWebページ（複数は改行区切り）</span></label>
           <textarea class="fta" id="nlp-ref-urls" rows="3" placeholder="https://&#10;https://"></textarea>
         </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-section-title">🔤 フォント選択<span class="fl-hint" style="font-weight:400">見出し・本文に使用するフォント</span></div>
+        <div id="nlp-font-recently-wrap">
+          <div class="font-sec-lbl" id="nlp-font-recent-lbl" style="display:none">最近使用</div>
+          <div class="font-grid" id="nlp-font-recent-grid"></div>
+          <div class="font-sec-lbl" style="margin-top:10px">全フォント</div>
+        </div>
+        <div class="font-grid" id="nlp-font-all-grid"></div>
+        <input type="hidden" id="nlp-selected-font">
       </div>
 
       <div class="form-section">
@@ -794,6 +816,73 @@ function nlpTitleChanged(){
   for(const[jp,en]of map){if(t.includes(jp)){seg=en;break;}}
   document.getElementById('nlp-slug').value='fx-copy-trade-'+seg;
 }
+/* ── fonts ── */
+const FONT_LIST=[
+  {id:'noto-sans-jp',    name:'Noto Sans JP',         gf:'Noto+Sans+JP:wght@400;500;700;900', sample:'あいうえお ABCDE', desc:'標準・読みやすい'},
+  {id:'sofia-condensed', name:'Sofia Sans Condensed', gf:'Sofia+Sans+Condensed:wght@400;700;900', sample:'IMPACT BOLD', desc:'英字見出し・インパクト'},
+  {id:'mplus-1p',        name:'M PLUS 1p',            gf:'M+PLUS+1p:wght@400;700;900', sample:'あいうえお', desc:'クリーン・モダン'},
+  {id:'zen-kaku',        name:'Zen Kaku Gothic New',  gf:'Zen+Kaku+Gothic+New:wght@400;700;900', sample:'ゼン角ゴシック', desc:'シャープ・現代的'},
+  {id:'biz-udp',         name:'BIZ UDPGothic',        gf:'BIZ+UDPGothic', sample:'ビジネス体', desc:'ビジネス・プロ向け'},
+  {id:'rampart-one',     name:'Rampart One',           gf:'Rampart+One', sample:'太字タイトル', desc:'太字・強調・インパクト'},
+  {id:'kaisei-decol',    name:'Kaisei Decol',          gf:'Kaisei+Decol', sample:'明朝系フォント', desc:'エレガント・高級感'},
+];
+const FONT_LS_KEY='copytrade_fonts_v1';
+
+function getRecentFontIds(){
+  // scan existing pages for font mentions
+  const usedNames=new Set();
+  (pages||[]).forEach(p=>{
+    const inst=(p.spec?.gemini_instructions||'').toLowerCase();
+    FONT_LIST.forEach(f=>{
+      if(inst.includes(f.name.toLowerCase())) usedNames.add(f.id);
+    });
+  });
+  // also check localStorage
+  try{const s=localStorage.getItem(FONT_LS_KEY);if(s)JSON.parse(s).forEach(id=>usedNames.add(id));}catch{}
+  return [...usedNames];
+}
+function saveRecentFont(fid){
+  try{
+    let arr=[];try{arr=JSON.parse(localStorage.getItem(FONT_LS_KEY)||'[]');}catch{}
+    if(!arr.includes(fid))arr.unshift(fid);
+    arr=arr.slice(0,5);
+    localStorage.setItem(FONT_LS_KEY,JSON.stringify(arr));
+  }catch{}
+}
+
+function renderFontGrid(){
+  const recentIds=getRecentFontIds();
+  const recentFonts=FONT_LIST.filter(f=>recentIds.includes(f.id));
+  const allFonts=FONT_LIST;
+
+  const buildCard=(f,isRecent)=>{
+    const cls=isRecent?'font-card recently':'font-card';
+    return`<div class="${cls}" data-fid="${f.id}" onclick="selectFont(this)" title="${esc(f.desc)}">
+      <div class="fc-sample">${esc(f.sample)}</div>
+      <div class="fc-name">${esc(f.name)}</div>
+      <div class="fc-desc">${esc(f.desc)}</div>
+    </div>`;
+  };
+
+  const rg=document.getElementById('nlp-font-recent-grid');
+  const rl=document.getElementById('nlp-font-recent-lbl');
+  if(recentFonts.length){
+    rl.style.display='block';
+    rg.innerHTML=recentFonts.map(f=>buildCard(f,true)).join('');
+  }else{
+    rl.style.display='none';
+    rg.innerHTML='';
+  }
+  document.getElementById('nlp-font-all-grid').innerHTML=allFonts.map(f=>buildCard(f,recentIds.includes(f.id))).join('');
+}
+function selectFont(card){
+  document.querySelectorAll('.font-card').forEach(c=>c.classList.remove('sel'));
+  card.classList.add('sel');
+  const fid=card.dataset.fid;
+  document.getElementById('nlp-selected-font').value=fid;
+  saveRecentFont(fid);
+}
+
 /* ── design patterns ── */
 const DP_PATTERNS={
   'dark-impact':{
@@ -880,6 +969,9 @@ function openNewLP(){
   document.querySelectorAll('#nlp-dp-grid .dp-card').forEach(c=>c.classList.remove('sel'));
   document.getElementById('nlp-dp-desc').textContent='';
   nlpSelectedDP='';nlpMediaFiles=[];renderMediaList();
+  document.querySelectorAll('.font-card').forEach(c=>c.classList.remove('sel'));
+  document.getElementById('nlp-selected-font').value='';
+  renderFontGrid();
   renderNewLPRefs();
   showNewLPForm();
   openModal('ov-new-lp');
@@ -918,6 +1010,8 @@ function generateLPSpec(){
   const notes=document.getElementById('nlp-notes').value.trim();
   const selIds=[...document.querySelectorAll('input[name="nlp-design-ref"]:checked')].map(cb=>cb.value);
   const selSites=selIds.map(id=>lsLoad().sites.find(s=>s.id===id)).filter(Boolean);
+  const selFontId=document.getElementById('nlp-selected-font').value;
+  const selFont=FONT_LIST.find(f=>f.id===selFontId);
 
   // Build YAML
   const L=[];
@@ -938,8 +1032,9 @@ function generateLPSpec(){
   L.push(`    disclaimer: "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。"`);
   L.push(`    risk_warning: "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"`);
   L.push(`    regulated_note: "XMTradingはASIC・CySEC・IFSCの規制を受けています。"`);
-  if(instruct||content||refUrls||selSites.length){
+  if(instruct||content||refUrls||selSites.length||selFont){
     L.push(`  gemini_instructions: |`);
+    if(selFont) L.push(`    フォント: ${selFont.name}（見出しに使用）`);
     if(instruct) instruct.split('\n').forEach(l=>L.push(`    ${l}`));
     if(content){L.push(`    # --- コンテンツ要件 ---`);content.split('\n').forEach(l=>L.push(`    # ${l}`));}
     if(refUrls){L.push(`    # --- 参考URL ---`);refUrls.split('\n').filter(l=>l.trim()).forEach(l=>L.push(`    # - ${l.trim()}`));}
@@ -960,6 +1055,9 @@ function generateLPSpec(){
   if(ctaSub) req+=`- CTA補足: ${ctaSub}\n`;
   req+='\n';
   if(content) req+=`## コンテンツ要件\n${content}\n\n`;
+  if(selFont){
+    req+=`## フォント指定\n見出しに「${selFont.name}」を使用してください（Google Fonts: https://fonts.google.com/specimen/${selFont.gf.split(':')[0].replace(/\+/g,' ')} ）。本文はNoto Sans JPで補完。\n\n`;
+  }
   if(nlpSelectedDP&&DP_PATTERNS[nlpSelectedDP]){
     req+=`## デザインパターン\n${DP_PATTERNS[nlpSelectedDP].label}（${DP_PATTERNS[nlpSelectedDP].desc}）\n\n`;
   }
@@ -978,7 +1076,8 @@ function generateLPSpec(){
   req+=`- リスク警告: FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。\n`;
   req+=`- 規制情報: XMTradingはASIC・CySEC・IFSCの規制を受けています。\n\n`;
   req+=`## 参照ファイル\n- content/landing-pages.yaml（完全な仕様）\n- links/page-registry.yaml（アフィリエイトリンク）\n- links/broker-specs.yaml（ブローカー詳細情報）\n\n`;
-  req+=`HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）。Noto Sans JP使用。免責事項は全ページ必須。`;
+  const fontNote=selFont?`${selFont.name}（見出し）とNoto Sans JP（本文）を使用`:'Noto Sans JP使用';
+  req+=`HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）。${fontNote}。免責事項は全ページ必須。`;
   if(nlpMediaFiles.length) req+=`\n\n⚠️ メディアファイル（${nlpMediaFiles.map(f=>f.name).join('、')}）はユーザーが手動で copy-trade-test/pages/${slug}/assets/ に配置します。HTMLは assets/ への相対パスで参照してください。`;
   req+='」';
 
