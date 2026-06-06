@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP管理ダッシュボード</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Meiryo','Yu Gothic','Segoe UI',sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh;display:flex;flex-direction:column;font-size:14px}
+a{color:inherit;text-decoration:none}
+
+.hdr{background:#1e293b;border-bottom:1px solid #334155;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hdr-left h1{font-size:1.1rem;font-weight:700;color:#f1f5f9}
+.hdr-sub{font-size:.72rem;color:#64748b;margin-left:10px}
+.hdr-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.upd{font-size:.72rem;color:#64748b}
+.stat{padding:3px 10px;border-radius:20px;font-size:.72rem;font-weight:600}
+.stat-d{background:#334155;color:#94a3b8}
+.stat-r{background:#78350f;color:#fcd34d}
+.stat-a{background:#14532d;color:#86efac}
+
+.main{flex:1;padding:20px 24px}
+
+/* Action shortcuts */
+.shortcuts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;padding:14px 16px;background:#1e293b;border-radius:10px;border:1px solid #334155}
+.shortcuts-label{font-size:.72rem;color:#64748b;align-self:center;white-space:nowrap}
+.sc-btn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:7px;font-size:.78rem;font-weight:500;cursor:pointer;border:1px solid #334155;transition:background .15s;color:#e2e8f0}
+.sc-btn:hover{border-color:#64748b;background:#334155}
+
+/* Table */
+.tbl-wrap{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;font-size:.82rem}
+.tbl th{background:#1e293b;color:#64748b;text-align:left;padding:9px 14px;font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #334155;white-space:nowrap}
+.tbl td{padding:11px 14px;border-bottom:1px solid #1a2740;vertical-align:middle}
+.tbl tr:hover td{background:#172033}
+.tbl .empty{text-align:center;color:#64748b;padding:40px}
+
+.mono{font-family:'Consolas','Courier New',monospace;font-size:.8rem}
+.mono-sm{font-family:'Consolas','Courier New',monospace;font-size:.72rem;color:#64748b}
+
+.bdg{display:inline-block;padding:2px 9px;border-radius:20px;font-size:.7rem;font-weight:600}
+.bdg-draft{background:#334155;color:#94a3b8}
+.bdg-review{background:#78350f;color:#fcd34d}
+.bdg-approved{background:#14532d;color:#86efac}
+.bdg-deprecated{background:#450a0a;color:#fca5a5}
+
+.files{display:flex;flex-direction:column;gap:3px}
+.file-row{display:flex;align-items:center;gap:5px;font-size:.72rem}
+.dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-ok{background:#22c55e}
+.dot-ng{background:#334155}
+.file-lbl{color:#64748b}
+
+.acts{display:flex;gap:5px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:3px;padding:4px 10px;border-radius:6px;border:none;cursor:pointer;font-size:.72rem;font-weight:500;transition:opacity .15s;white-space:nowrap}
+.btn:hover{opacity:.8}
+.btn-p{background:#2563eb;color:#fff}
+.btn-s{background:#16a34a;color:#fff}
+.btn-w{background:#d97706;color:#fff}
+.btn-d{background:#dc2626;color:#fff}
+.btn-i{background:#0891b2;color:#fff}
+.btn-g{background:#334155;color:#e2e8f0}
+.btn-cp{background:transparent;border:1px solid #334155;color:#94a3b8;padding:2px 6px;font-size:.68rem;cursor:pointer;border-radius:4px}
+.btn-cp:hover{background:#334155}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;border:1px solid #334155;color:#e2e8f0;padding:10px 20px;border-radius:8px;font-size:.82rem;z-index:999;animation:fadeup .2s ease}
+@keyframes fadeup{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* Instructions modal */
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:100;align-items:center;justify-content:center}
+.ov.open{display:flex}
+.modal{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:24px;width:480px;max-width:92vw;max-height:80vh;overflow-y:auto}
+.modal h3{font-size:.95rem;color:#f1f5f9;margin-bottom:12px}
+.modal p{font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:8px}
+.modal .step{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.modal .step-n{background:#2563eb;color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:1px}
+.modal .step-t{font-size:.82rem;color:#cbd5e1;line-height:1.6}
+.modal code{background:#0f172a;padding:2px 6px;border-radius:4px;font-family:monospace;font-size:.8rem;color:#86efac}
+.modal-act{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+
+/* Refresh indicator */
+.refresh-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;margin-right:4px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-left">
+    <h1>📊 LP管理ダッシュボード<span class="hdr-sub">FXコピートレード LP管理システム</span></h1>
+  </div>
+  <div class="hdr-right">
+    <span class="stat stat-d" id="sd">draft: —</span>
+    <span class="stat stat-r" id="sr">review: —</span>
+    <span class="stat stat-a" id="sa">approved: —</span>
+    <span class="upd"><span class="refresh-dot"></span>最終更新: <span id="upd-time">—</span></span>
+    <button class="btn btn-g" onclick="load(true)">🔄 更新</button>
+    <button class="btn btn-g" onclick="openHelp()">❓ セットアップ</button>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- Action Shortcuts -->
+  <div class="shortcuts">
+    <span class="shortcuts-label">GitHub Actions:</span>
+    <a href="https://github.com/TMYS-cmd/copy-trade-core/actions/workflows/generate-page.yml"
+       target="_blank" class="sc-btn">🔧 ページ生成</a>
+    <a href="https://github.com/TMYS-cmd/copy-trade-core/actions/workflows/sync-page.yml"
+       target="_blank" class="sc-btn">📤 Staging転送</a>
+    <a href="https://github.com/TMYS-cmd/copy-trade-core/actions/workflows/approve-page.yml"
+       target="_blank" class="sc-btn">✅ 承認</a>
+    <a href="https://github.com/TMYS-cmd/copy-trade-core/actions/workflows/reject-page.yml"
+       target="_blank" class="sc-btn">✕ 却下</a>
+  </div>
+
+  <!-- Pages Table -->
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead>
+        <tr>
+          <th>ステータス</th>
+          <th>ID / スラッグ</th>
+          <th>バリアント / ブローカー</th>
+          <th>ファイル状態</th>
+          <th>アクション</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr><td colspan="5" class="empty">データを読み込み中...</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- Setup Help Modal -->
+<div class="ov" id="ov-help" onclick="closeHelp()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h3>⚙️ 初回セットアップ手順</h3>
+    <p>GitHub Actionsワークフローを有効にするために以下の設定が必要です。</p>
+
+    <div class="step">
+      <div class="step-n">1</div>
+      <div class="step-t">
+        <strong>Gemini API キーを取得</strong><br>
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#60a5fa">Google AI Studio</a> でAPIキーを発行する
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">2</div>
+      <div class="step-t">
+        <strong>GitHub PAT（Personal Access Token）を作成</strong><br>
+        <a href="https://github.com/settings/tokens/new" target="_blank" style="color:#60a5fa">GitHub Settings > Tokens</a> で <code>repo</code> スコープのTokenを作成する
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">3</div>
+      <div class="step-t">
+        <strong>copy-trade-core にシークレットを登録</strong><br>
+        <a href="https://github.com/TMYS-cmd/copy-trade-core/settings/secrets/actions" target="_blank" style="color:#60a5fa">Settings > Secrets > Actions</a> で以下を追加:<br>
+        <code>GEMINI_API_KEY</code> = Gemini APIキー<br>
+        <code>REPO_TOKEN</code> = GitHub PAT
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">4</div>
+      <div class="step-t">
+        <strong>GitHub Pages を有効化</strong><br>
+        <a href="https://github.com/TMYS-cmd/copy-trade-test/settings/pages" target="_blank" style="color:#60a5fa">copy-trade-test > Settings > Pages</a><br>
+        Source: <code>Deploy from a branch</code> → Branch: <code>main</code> / <code>/docs</code>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-n">5</div>
+      <div class="step-t">
+        <strong>ワークフロー実行テスト</strong><br>
+        上部「🔧 ページ生成」→ Run workflow → page_id: <code>lp-001</code>
+      </div>
+    </div>
+
+    <div class="modal-act">
+      <button class="btn btn-g" onclick="closeHelp()">閉じる</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const OWNER = 'TMYS-cmd';
+const REPO  = 'copy-trade-test';
+const CORE  = 'copy-trade-core';
+const DATA  = 'docs/pages-status.json';
+
+async function load(force) {
+  try {
+    // GitHub Contents API (bypasses CDN cache, no auth needed for public repo)
+    const res = await fetch(
+      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${DATA}`,
+      { headers: { 'Accept': 'application/vnd.github+json' }, cache: force ? 'no-store' : 'default' }
+    );
+    if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+    const api = await res.json();
+    const data = JSON.parse(atob(api.content.replace(/\n/g, '')));
+    render(data);
+  } catch(e) {
+    // Fallback: same-origin fetch (works when loaded from GitHub Pages)
+    try {
+      const r = await fetch(`pages-status.json?t=${Date.now()}`);
+      const data = await r.json();
+      render(data);
+    } catch(e2) {
+      document.getElementById('tbody').innerHTML =
+        `<tr><td colspan="5" class="empty">❌ データ取得失敗: ${esc(e.message)}<br><small>セットアップが完了しているか確認してください</small></td></tr>`;
+    }
+  }
+}
+
+function render(data) {
+  const t = data.updated_at ? new Date(data.updated_at).toLocaleString('ja-JP') : '不明';
+  document.getElementById('upd-time').textContent = t;
+
+  const cnt = {draft:0, review:0, approved:0};
+  (data.pages||[]).forEach(p => { cnt[p.status] = (cnt[p.status]||0)+1; });
+  document.getElementById('sd').textContent = `draft: ${cnt.draft}`;
+  document.getElementById('sr').textContent = `review: ${cnt.review}`;
+  document.getElementById('sa').textContent = `approved: ${cnt.approved}`;
+
+  const tbody = document.getElementById('tbody');
+  if (!data.pages?.length) {
+    tbody.innerHTML = '<tr><td colspan="5" class="empty">ページがありません。ワークフローを実行してください。</td></tr>';
+    return;
+  }
+  tbody.innerHTML = data.pages.map(row).join('');
+}
+
+function wfUrl(wf) {
+  return `https://github.com/${OWNER}/${CORE}/actions/workflows/${wf}.yml`;
+}
+
+function previewUrl(slug) {
+  return `https://htmlpreview.github.io/?https://github.com/${OWNER}/${REPO}/blob/main/_staging/${slug}/index.html`;
+}
+
+function row(p) {
+  const btns = [];
+
+  // 生成: 常に表示
+  btns.push(
+    `<a href="${wfUrl('generate-page')}" target="_blank" class="btn btn-p"
+        onclick="hintCopy('${p.id}','page_id')">🔧 生成</a>`
+  );
+
+  // staging転送: files生成済みまたはreview状態
+  if (p.generated || p.status === 'review') {
+    btns.push(
+      `<a href="${wfUrl('sync-page')}" target="_blank" class="btn btn-w"
+          onclick="hintCopy('${p.slug}','slug')">📤 staging</a>`
+    );
+  }
+
+  // staged: プレビュー・承認・却下
+  if (p.staged) {
+    btns.push(`<a href="${previewUrl(p.slug)}" target="_blank" class="btn btn-i">👁 プレビュー</a>`);
+    btns.push(
+      `<a href="${wfUrl('approve-page')}" target="_blank" class="btn btn-s"
+          onclick="hintCopy('${p.slug}','slug')">✅ 承認</a>`
+    );
+    btns.push(
+      `<a href="${wfUrl('reject-page')}" target="_blank" class="btn btn-d"
+          onclick="hintCopy('${p.slug}','slug')">✕ 却下</a>`
+    );
+  }
+
+  // 承認済みNetlify URL
+  if (p.approved_file && p.netlify_url) {
+    btns.push(`<a href="${p.netlify_url}" target="_blank" class="btn btn-g">🌐 公開</a>`);
+  }
+
+  return `<tr>
+    <td><span class="bdg bdg-${p.status}">${p.status}</span></td>
+    <td>
+      <span class="mono">${p.id}</span>
+      <button class="btn-cp" onclick="cp('${p.id}')" title="${p.id} をコピー">📋</button><br>
+      <span class="mono-sm">${p.slug}</span>
+      <button class="btn-cp" onclick="cp('${p.slug}')" title="${p.slug} をコピー">📋</button>
+    </td>
+    <td>${p.variant || '—'}<br><span style="color:#64748b;font-size:.7rem">${p.broker || '—'}</span></td>
+    <td>
+      <div class="files">
+        <div class="file-row"><span class="dot ${p.generated?'dot-ok':'dot-ng'}"></span><span class="file-lbl">pages/</span></div>
+        <div class="file-row"><span class="dot ${p.staged?'dot-ok':'dot-ng'}"></span><span class="file-lbl">_staging/</span></div>
+        <div class="file-row"><span class="dot ${p.approved_file?'dot-ok':'dot-ng'}"></span><span class="file-lbl">_approved/</span></div>
+      </div>
+    </td>
+    <td><div class="acts">${btns.join('')}</div></td>
+  </tr>`;
+}
+
+// ボタンクリック時にページIDをクリップボードへ + ヒント表示
+function hintCopy(value, fieldName) {
+  cp(value);
+  // Small delay so toast appears after new tab opens
+  showToast(`「${value}」をコピーしました → ${fieldName} に貼り付けてください`);
+}
+
+function cp(text) {
+  navigator.clipboard?.writeText(text).catch(() => {});
+}
+
+function showToast(msg) {
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 3000);
+}
+
+function openHelp()  { document.getElementById('ov-help').classList.add('open'); }
+function closeHelp() { document.getElementById('ov-help').classList.remove('open'); }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeHelp(); });
+
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+
+// 初回ロード + 1分毎に自動更新
+load(false);
+setInterval(() => load(false), 60000);
+</script>
+</body>
+</html>
