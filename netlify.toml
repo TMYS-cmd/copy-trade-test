@@ -1,0 +1,43 @@
+# copy-trade-test Netlify設定
+#
+# 重要: publish = "_approved" が唯一の承認制デプロイメカニズム
+# _approved/ のファイルのみ公開CDNにデプロイされる
+# pages/, _staging/, _feedback/ はコミットされるがNetlifyには公開されない
+
+[build]
+  publish = "_approved"
+  # ビルドコマンドなし（純粋な静的ファイル）
+
+# セキュリティヘッダー
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+
+# _staging/ と pages/ へのアクセスを防御的にブロック
+# (publish外なのでNetlifyは元々提供しないが、念のため)
+[[redirects]]
+  from = "/_staging/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/pages/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/_feedback/*"
+  to = "/404.html"
+  status = 404
+  force = true
