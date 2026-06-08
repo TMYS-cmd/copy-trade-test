@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【これ以外雑魚確定】リアル口座にて1年半で150倍越えの有名トレーダーコピートレード</title>
+    <meta name="description" content="開始から16ヶ月破綻なし。日本最高峰の戦略。嘘偽りないmyfxbook全公開。完全無料で有名トレーダーのコピートレード。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+
+        /* =============== HERO SECTION =============== */
+        .hero {
+            min-height: 90vh;
+            background: linear-gradient(135deg, #0a2540 0%, #1a1150 50%, #0a2540 100%),
+                        radial-gradient(circle at 20% 50%, rgba(98, 90, 250, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(98, 90, 250, 0.1) 0%, transparent 50%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23625afa' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-headline {
+            font-size: clamp(32px, 5vw, 64px);
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subheadline {
+            font-size: clamp(18px, 2.5vw, 28px);
+            font-weight: 500;
+            margin-bottom: 40px;
+            opacity: 0.95;
+            line-height: 1.4;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #625afa 0%, #2563eb 100%);
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: 'Noto Sans JP', sans-serif;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            width: fit-content;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(98, 90, 250, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(98, 90, 250, 0.5);
+        }
+
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(98, 90, 250, 0.5);
+        }
+
+        .stat-icon {
+            font-size: 40px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .stat-content h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-content p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(98, 90, 250, 0.2);
+            border: 1px solid rgba(98, 90, 250, 0.5);
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #d4d4ff;
+            margin-top: 12px;
+        }
+
+        /* =============== RESPONSIVE HERO =============== */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px 24px;
+            }
+
+            .hero-headline {
+                font-size: 28px;
+            }
+
+            .hero-subheadline {
+                font-size: 16px;
+            }
+        }
+
+        /* =============== FEATURES SECTION =============== */
+        .features-section {
+            padding: 80px 40px;
+            background-color: white;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900;
+            margin-bottom: 60px;
+            text-align: center;
+            color: #0a2540;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #f1f3ff 100%);
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(98, 90, 250, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(98, 90, 250, 0.15);
+            border-color: rgba(98, 90, 250, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0a2540;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* =============== PERFORMANCE GRAPH SECTION =============== */
+        .performance-section {
+            padding: 80px 40px;
+            background: linear-gradient(180deg, #0a2540 0%, #1a1150 50%, #0a2540 100%);
+            color: white;
+        }
+
+        .performance-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .performance-title {
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .performance-subtitle {
+            font-size: 16px;
+            text-align: center;
+            opacity: 0.8;
+            margin-bottom: 60px;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            margin-bottom: 40px;
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 100%;
+            gap: 8px;
+        }
+
+        .bar-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(180deg, #625afa 0%, #2563eb 100%);
+            border-radius: 4px 4px 0 0;
+            min-height: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            max-width: 40px;
+        }
+
+        .bar.negative {
+            background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+            filter: brightness(1.1);
+        }
+
+        .bar-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+            transform: rotate(-45deg);
+            transform-origin: center;
+            margin-top: 8px;
+        }
+
+        .bar-value {
+            font-size: 12px;
+            font-weight: 700;
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #d4d4ff;
+        }
+
+        .chart-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+
+        .legend-positive {
+            background: linear-gradient(135deg, #625afa, #2563eb);
+        }
+
+        .legend-negative {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        /* =============== STATS SECTION =============== */
+        .stats-section {
+            padding: 80px 40px;
+            background-color: #f9fafb;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .stat-box {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            border-color: #625afa;
+            box-shadow: 0 10px 30px rgba(98, 90, 250, 0.1);
+        }
+
+        .stat-number {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
+            color: #625afa;
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* =============== CTA SECTION =============== */
+        .cta-section {
+            padding: 80px 40px;
+            background: linear-gradient(135deg, #0a2540 0%, #1a1150 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* =============== SECURITY/TRUST SECTION =============== */
+        .trust-section {
+            padding: 80px 40px;
+            background-color: white;
+        }
+
+        .trust-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .trust-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .trust-icon {
+            font-size: 40px;
+            min-width: 60px;
+            text-align: center;
+            color: #625afa;
+        }
+
+        .trust-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #0a2540;
+        }
+
+        .trust-content p {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* =============== DISCLAIMER SECTION =============== */
+        .disclaimer-section {
+            padding: 60px 40px;
+            background-color: #f3f4f6;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .disclaimer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .disclaimer-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0a2540;
+        }
+
+        .disclaimer-item {
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 16px;
+            color: #555;
+            padding: 12px;
+            background-color: white;
+            border-left: 3px solid #625afa;
+            border-radius: 4px;
+        }
+
+        /* =============== FOOTER =============== */
+        footer {
+            background-color: #0a2540;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .features-section,
+            .performance-section,
+            .stats-section,
+            .trust-section {
+                padding: 60px 24px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .chart-wrapper {
+                height: 300px;
+            }
+
+            .bar-label {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-left">
+                <h1 class="hero-headline">【開始から16ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開</h1>
+                <p class="hero-subheadline">完全無料で有名トレーダーに相乗り</p>
+                <button class="cta-button">公式LINEはこちら</button>
+            </div>
+            <div class="hero-right">
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-content">
+                        <h3>150倍超</h3>
+                        <p>1年半でのリアル口座実績</p>
+                        <div class="badge">検証済み</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🛡️</div>
+                    <div class="stat-content">
+                        <h3>16ヶ月</h3>
+                        <p>破綻なし継続運用</p>
+                        <div class="badge">安定運用</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-content">
+                        <h3>完全公開</h3>
+                        <p>myfxbook履歴で透明性確保</p>
+                        <div class="badge">信頼性高</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section">
+        <div class="section-container">
+            <h2 class="section-title">このシステムの3つの特徴</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>セキュリティ</h3>
+                    <p>XMTradingのASIC・CySEC・IFSC規制取得により、資金安全性は業界最高水準です。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>信頼性</h3>
+                    <p>公開中の実績データは独立した第三者機関により検証。操作不可の透明性があります。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>実績</h3>
+                    <p>16ヶ月間の連続運用で破綻なし。月平均でも着実な利益が確認できます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERFORMANCE GRAPH SECTION -->
+    <section class="performance-section">
+        <div class="performance-container">
+            <h2 class="performance-title">月次収益率の推移</h2>
+            <p class="performance-subtitle">2024年11月〜2026年6月の全運用実績（6月は6日時点）</p>
+            <div class="chart-container">
+                <div class="chart-wrapper">
+                    <div class="chart-bars">
+                        <div class="bar-item">
+                            <div class="bar" style="height: 6.02%;">
+                                <div class="bar-value">6.02%</div>
+                            </div>
+                            <div class="bar-label">2024/11</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 24.64%;">
+                                <div class="bar-value">24.64%</div>
+                            </div>
+                            <div class="bar-label">2024/12</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 17.83%;">
+                                <div class="bar-value">17.83%</div>
+                            </div>
+                            <div class="bar-label">2025/01</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 83.37%;">
+                                <div class="bar-value">83.37%</div>
+                            </div>
+                            <div class="bar-label">2025/02</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 37.82%;">
+                                <div class="bar-value">37.82%</div>
+                            </div>
+                            <div class="bar-label">2025/03</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 39.15%;">
+                                <div class="bar-value">39.15%</div>
+                            </div>
+                            <div class="bar-label">2025/04</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 12.18%;">
+                                <div class="bar-value">12.18%</div>
+                            </div>
+                            <div class="bar-label">2025/05</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar negative" style="height: 1.86%;">
+                                <div class="bar-value">-1.86%</div>
+                            </div>
+                            <div class="bar-label">2025/06</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar negative" style="height: 11.55%;">
+                                <div class="bar-value">-11.55%</div>
+                            </div>
+                            <div class="bar-label">2025/07</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 8.17%;">
+                                <div class="bar-value">8.17%</div>
+                            </div>
+                            <div class="bar-label">2025/08</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 25.02%;">
+                                <div class="bar-value">25.02%</div>
+                            </div>
+                            <div class="bar-label">2025/09</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 45.63%;">
+                                <div class="bar-value">45.63%</div>
+                            </div>
+                            <div class="bar-label">2025/10</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar negative" style="height: 4.84%;">
+                                <div class="bar-value">-4.84%</div>
+                            </div>
+                            <div class="bar-label">2025/11</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 62.49%;">
+                                <div class="bar-value">62.49%</div>
+                            </div>
+                            <div class="bar-label">2025/12</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 86.92%;">
+                                <div class="bar-value">86.92%</div>
+                            </div>
+                            <div class="bar-label">2026/01</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 32.37%;">
+                                <div class="bar-value">32.37%</div>
+                            </div>
+                            <div class="bar-label">2026/02</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 118.46%;">
+                                <div class="bar-value">118.46%</div>
+                            </div>
+                            <div class="bar-label">2026/03</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 34.33%;">
+                                <div class="bar-value">34.33%</div>
+                            </div>
+                            <div class="bar-label">2026/04</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 28.12%;">
+                                <div class="bar-value">28.12%</div>
+                            </div>
+                            <div class="bar-label">2026/05</div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar" style="height: 3.98%;">
+                                <div class="bar-value">3.98%</div>
+                            </div>
+                            <div class="bar-label">2026/06</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="legend-color legend-positive"></div>
+                        <span>利益月</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-negative"></div>
+                        <span>損切り実施月</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="stats-section">
+        <div class="section-container">
+            <h2 class="section-title">実績サマリー</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">150x</div>
+                    <div class="stat-label">リアル口座倍率</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">16ヶ月</div>
+                    <div class="stat-label">連続運用期間</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">透明性レベル</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST/SECURITY SECTION -->
+    <section class="trust-section">
+        <div class="section-container">
+            <h2 class="section-title">なぜ信頼できるのか</h2>
+            <div class="trust-items">
+                <div class="trust-item">
+                    <div class="trust-icon">🏦</div>
+                    <div class="trust-content">
+                        <h3>複数国の金融規制</h3>
+                        <p>XMTradingはオーストラリア（ASIC）、キプロス（CySEC）、ベリーズ（IFSC）の3つの金融ライセンスを保有。国際水準の安全性を提供します。</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">📋</div>
+                    <div class="trust-content">
+                        <h3>myfxbook全公開</h3>
+                        <p>すべての取引履歴がmyfxbookで公開・検証可能。改ざん不可の第三者プラットフォームで透明性を確保しています。</p>
+                    </div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">📊</div>
+                    <div class="trust-content">
+                        <h3>継続的な損失管理</h3>
+                        <p>損切りを適切に実施し、ドローダウンを最小化。長期安定運用のための徹底したリスク管理を行っています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-section-content">
+            <h2>今すぐ始めましょう</h2>
+            <p>完全無料で有名トレーダーのコピートレードが利用できます。16ヶ月の実績を持つシステムで、あなたの資産運用を始めてください。</p>
+            <button class="cta-button">公式LINEはこちら</button>
+        </div>
+    </section>
+
+    <!-- DISCLAIMER SECTION -->
+    <section class="disclaimer-section">
+        <div class="disclaimer-container">
+            <div class="disclaimer-title">⚠️ 重要な注意事項</div>
+            <div class="disclaimer-item">
+                <strong>本ページについて:</strong> 本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。
+            </div>
+            <div class="disclaimer-item">
+                <strong>リスク警告:</strong> FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。過去の実績は将来の利益を保証するものではありません。
+            </div>
+            <div class="disclaimer-item">
+                <strong>金融規制:</strong> XMTradingはオーストラリア証券投資委員会（ASIC）、キプロス証券取引委員会（CySEC）、ベリーズ国際金融サービス委員会（IFSC）の規制を受けています。
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 FXコピートレード. All rights reserved. | 当サイトはアフィリエイトリンクを含みます。</p>
+    </footer>
+
+    <script>
+        // CTA Button Animation
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Chart bar animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.bar');
+                    bars.forEach((bar, index) => {
+                        setTimeout(() => {
+                            bar.style.opacity = '0.8';
+                        }, index * 50);
+                    });
+                }
+            });
+        });
+
+        const chartWrapper = document.querySelector('.chart-wrapper');
+        if (chartWrapper) {
+            observer.observe(chartWrapper);
+        }
+    </script>
+</body>
+</html>
