@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-06T22:52:06.949126+00:00",
+  "updated_at": "2026-06-08T06:25:04.229278+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -306,18 +306,81 @@
         "title": "\"溶けない\"損切EA",
         "meta_description": "",
         "hero": {
+          "cta_text": "公式LINEはこちら",
           "headline": "バックテストが語る、約1年3ヶ月分の実績",
-          "subheadline": "\"溶ける\"相場でも、損切りで生き残った",
-          "cta_text": "公式LINEはこちら"
+          "subheadline": "\"溶ける\"相場でも、損切りで生き残った"
         },
         "features": [],
         "faq": [],
         "legal": {
           "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
-          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。",
-          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。"
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
         },
         "gemini_instructions": "フォント: Rampart One（見出しに使用）\n    参考: airbnb.com スタイル\n    - 背景: #ffffff（白）、アクセント: #ff5a5f（コーラルレッド）\n    - フォント: Noto Sans JP\n    - ヒーロー: 鮮やかな画像（assets/利用）+ 中央コピー\n    - 「〇〇さんの声」風の口コミを画像付きで\n    - ソフトシャドウ付きカード\n    - 数値は大きく、「16ヶ月」「1000%超」を印象的に\n    - 全体的に柔らかい丸み・暖色系で信頼感と親しみを演出\n    \n    https://youtu.be/dgGLV9i6J_E?si=LaVOters1U4pXGiS\n    このURLをLP内に掲載して\n    # --- コンテンツ要件 ---\n    # https://note.com/fx_engineer/n/n92852ffadb00\n    # --- 参考URL ---\n    # - https://note.com/fx_engineer/n/n92852ffadb00\n    # - https://youtu.be/dgGLV9i6J_E?si=LaVOters1U4pXGiS\n",
+        "results_section": {
+          "show": false
+        }
+      }
+    },
+    {
+      "id": "lp8",
+      "slug": "fx-copy-trade8",
+      "status": "review",
+      "variant": "beginner",
+      "broker": "",
+      "headline": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開",
+      "generated": true,
+      "staged": false,
+      "approved_file": false,
+      "netlify_url": "",
+      "spec": {
+        "title": "【これ以外雑魚確定】リアル口座にて1年半で150倍越えの有名トレーダーコピートレード",
+        "meta_description": "",
+        "hero": {
+          "cta_text": "公式LINEはこちら",
+          "headline": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開",
+          "subheadline": "完全無料で有名トレーダーに相乗り"
+        },
+        "features": [],
+        "faq": [],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "フォント: Noto Sans JP（見出しに使用）\n参考: stripe.com スタイル\n- 背景: #0a2540（ダークネイビー）、アクセント: #625afa（紫）\n- フォント: Noto Sans JP\n- ヒーロー: 斜めグラデーション（#0a2540→#1a1150）\n- 「セキュリティ」「信頼性」「実績」を数値で表現\n- グリッドカードにアイコン+説明を並べる\n- グラデーションのCTAボタン（紫→青）\n- badge/chipで証明要素（〇ヶ月実績・第三者認定）を強調\n\n各月の利率でグラフを作成\n\n2024/11：6.02%\n2024/12：24.64%\n2025/01：17.83%\n2025/02：83.37%\n2025/03：37.82%\n2025/04：39.15%\n2025/05：12.18%\n2025/06：-1.86%（損切り実施）\n2025/07：-11.55%（損切り実施）\n2025/08：8.17%\n2025/09：25.02%\n2025/10：45.63%\n2025/11：-4.84%（損切り実施）\n2025/12：62.49%\n2026/01：86.92%\n2026/02：32.37%\n2026/03: 118.46％\n2026/04: 34.33％\n2026/05: 28.12％\n2026/06: 3.98％ (6月6日時点)\n",
+        "results_section": {
+          "show": false
+        }
+      }
+    },
+    {
+      "id": "lp-007",
+      "slug": "fx-copy-trade-lp-3",
+      "status": "review",
+      "variant": "beginner",
+      "broker": "",
+      "headline": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開",
+      "generated": true,
+      "staged": false,
+      "approved_file": false,
+      "netlify_url": "",
+      "spec": {
+        "title": "【リアルフォワード実績公開】コピートレード一覧",
+        "meta_description": "",
+        "hero": {
+          "cta_text": "無料で口座開設する",
+          "headline": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開"
+        },
+        "features": [],
+        "faq": [],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "フォント: Noto Sans JP（見出しに使用）\n参考: apple.com スタイル\n- 背景: #f5f5f7（薄グレー）、テキスト: #1d1d1f\n- アクセント: #0071e3（Appleブルー）\n- San Francisco / Noto Sans JP\n- 余白を大きく取り、コンテンツで語る\n- ヒーロー: 大きな1行見出し + 薄いサブコピー\n- 横並び特徴カード（3カラム）\n- CTAは青いシンプルボタン\n- アイコンや装飾は最小限、画像・数値で訴求\n# --- コンテンツ要件 ---\n# https://note.com/fx_hfm_/n/n20fc691491e5\n# --- 参考URL ---\n# - https://note.com/fx_hfm_/n/n20fc691491e5\n",
         "results_section": {
           "show": false
         }
