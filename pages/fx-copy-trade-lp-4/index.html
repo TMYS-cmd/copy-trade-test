@@ -156,10 +156,11 @@ img{max-width:100%}
 .plate::before{top:-1px;left:-1px;border-width:1px 0 0 1px}
 .plate::after{bottom:-1px;right:-1px;border-width:0 1px 1px 0}
 .plate-title{
-  font-size:.72rem;letter-spacing:.4em;color:var(--ink-faint);margin-bottom:30px;
+  font-size:.72rem;letter-spacing:.4em;color:var(--ink-faint);margin-bottom:24px;
   display:flex;align-items:center;gap:14px;
 }
 .plate-title::after{content:'';flex:1;height:1px;background:var(--gold-faint)}
+.plate-img{display:block;width:100%;height:auto;border:1px solid var(--gold-line);margin-bottom:10px}
 .stat{padding:18px 0}
 .stat+.stat{border-top:1px solid rgba(212,175,55,.1)}
 .stat-label{font-size:.76rem;color:var(--ink-dim);letter-spacing:.18em;margin-bottom:4px}
@@ -320,13 +321,17 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
     </div>
     <aside class="plate fade in" aria-label="運用実績サマリー">
       <div class="plate-title">PERFORMANCE</div>
-      <div class="stat">
-        <div class="stat-label">単利合計</div>
-        <div class="stat-val gold-grad">+1,180.75<small>%</small></div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">複利運用</div>
-        <div class="stat-val gold-grad">+15,605.75<small>%</small></div>
+      <img class="plate-img" src="assets/hero.webp" fetchpriority="high"
+           alt="myfxbookリアル口座公開中 ─ 驚異の+15,000%超え。実録・完全自動コピートレードのすべて（10万→1560万越え）">
+      <div class="stat stat-row">
+        <div class="stat-mini">
+          <div class="stat-label">単利合計</div>
+          <div class="stat-val gold-grad">+1,180.75<small>%</small></div>
+        </div>
+        <div class="stat-mini">
+          <div class="stat-label">複利運用</div>
+          <div class="stat-val gold-grad">+15,605.75<small>%</small></div>
+        </div>
       </div>
       <div class="stat stat-row">
         <div class="stat-mini">
