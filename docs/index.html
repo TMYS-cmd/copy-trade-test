@@ -298,7 +298,7 @@ button{font-family:inherit;cursor:pointer}
 <main class="main">
   <div class="tab-panel active" id="panel-lp">
     <div class="guide-banner">
-      <div class="guide-banner-txt"><strong>LP作成フロー:</strong> ① 新規LP作成フォーム → ② YAML追記 → ③ Claude Code で生成 → ④ Staging転送 → ⑤ 承認 → Netlify公開</div>
+      <div class="guide-banner-txt"><strong>LP作成フロー:</strong> ① 新規LP作成フォーム → ② YAML追記&amp;コミット → ③ Claude Code で生成 → ④ 承認 → Netlify公開</div>
       <div class="guide-banner-btns">
         <button class="new-lp-btn" onclick="openNewLP()">✨ 新規LP作成</button>
         <button class="abtn abtn-gen" style="border:1px solid rgba(37,99,235,.2)" onclick="openGuide()">📋 全ステップガイド</button>
@@ -382,15 +382,8 @@ button{font-family:inherit;cursor:pointer}
               </div>
             </div></div></div>
         <div class="tl-item"><div class="tl-left"><div class="tl-num">3</div><div class="tl-line"></div></div>
-          <div class="tl-right"><div class="tl-title">Staging に転送</div>
-            <div class="tl-body"><strong>「📤 ステージング」</strong> → GitHub Actions で <strong>sync-page.yml</strong> を実行。</div>
-          </div></div>
-        <div class="tl-item"><div class="tl-left"><div class="tl-num">4</div><div class="tl-line"></div></div>
-          <div class="tl-right"><div class="tl-title">承認 または 却下</div>
-            <div class="tl-body"><div class="tl-sub">
-              <div class="tl-sub-item"><strong>✅ 承認:</strong> approve-page.yml → _approved/ → Netlify即時公開</div>
-              <div class="tl-sub-item"><strong>✕ 却下:</strong> reject-page.yml（理由入力）→ 再生成</div>
-            </div></div>
+          <div class="tl-right"><div class="tl-title">承認して公開</div>
+            <div class="tl-body">LPカードの <strong>「👁 プレビュー」</strong> で内容を確認後、<strong>「✅ 承認」</strong> をクリック → GitHub Actions で approve-page.yml が実行され、pages/ → _approved/ → Netlify即時公開。</div>
           </div></div>
       </div>
     </div>
@@ -422,7 +415,7 @@ button{font-family:inherit;cursor:pointer}
     <div class="modal-hdr"><h3>📴 非公開にする</h3><button class="modal-x" onclick="closeModal('ov-unpublish')">✕</button></div>
     <div class="modal-body">
       <div style="background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:.78rem;color:#92400e;line-height:1.65">
-        ⚠️ <strong>_approved/</strong> からファイルを削除し、Netlifyから非公開にします。<br>ページデータ（pages/・_staging/）は保持されます。
+        ⚠️ <strong>_approved/</strong> からファイルを削除し、Netlifyから非公開にします。<br>ページデータ（pages/）は保持されます。
       </div>
       <div class="slug-box" style="margin-bottom:12px"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">非公開対象 slug:</div><span class="slug-val" id="unpub-slug-val" style="font-weight:700;color:#92400e">—</span></div></div>
       <div id="unpub-token-section">
@@ -451,7 +444,7 @@ button{font-family:inherit;cursor:pointer}
     <div class="modal-hdr"><h3 style="color:var(--red)">🗑 LP を完全削除</h3><button class="modal-x" onclick="closeModal('ov-delete')">✕</button></div>
     <div class="modal-body">
       <div style="background:rgba(220,38,38,.07);border:1px solid rgba(220,38,38,.2);border-radius:var(--r);padding:10px 14px;margin-bottom:12px;font-size:.78rem;color:#b91c1c;line-height:1.65">
-        ⛔ <strong>pages/ · _staging/ · _approved/ の全ファイル（assets含む）</strong>を削除します。<br>この操作は<strong>取り消せません</strong>。copy-trade-core の YAML 定義は残ります。
+        ⛔ <strong>pages/ · _approved/ の全ファイル（assets含む）</strong>を削除します。<br>この操作は<strong>取り消せません</strong>。copy-trade-core の YAML 定義は残ります。
       </div>
       <div class="slug-box" style="margin-bottom:12px"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">削除対象 slug:</div><span class="slug-val" id="del-slug-val" style="font-size:.9rem;font-weight:700;color:#b91c1c">—</span></div></div>
       <div id="del-token-section">
@@ -761,7 +754,7 @@ function lpCard(p){
   const assocIds=refs.lp_sites[p.id]||[];
   const assoc=assocIds.map(id=>refs.sites.find(s=>s.id===id)).filter(Boolean);
   const refHtml=assoc.map(s=>`<a href="${esc(s.url)}" target="_blank" rel="noopener" class="ref-chip" title="${esc(s.url)}">🔗 ${esc(s.title)}</a>`).join('');
-  const chips=[fc(p.generated,'pages/'),fc(p.staged,'_staging/'),fc(p.approved_file,'_approved/')].join('');
+  const chips=[fc(p.generated,'pages/'),fc(p.approved_file,'_approved/')].join('');
   return `<div class="lp-card status-${p.status}">
     <div class="lp-top">
       <div class="lp-id-group">
@@ -791,18 +784,14 @@ function buildBtns(p){
   // 生成: 常に表示 (ラベルは状態で切り替え)
   const genLabel=p.generated?'🔧 再生成':'🔧 生成';
   b.push(`<button class="abtn abtn-gen" onclick="openGenerate('${p.id}')">${genLabel}</button>`);
-  // Staging: 生成済み かつ まだStagingされていない場合のみ
-  if(p.generated&&!p.staged)
-    b.push(`<button class="abtn abtn-stage" onclick="openWf('stage','${p.slug}')">📤 ステージング</button>`);
-  // プレビュー: Staging済みなら常に表示
-  if(p.staged){
-    const prev=`https://htmlpreview.github.io/?https://github.com/${OWNER}/${REPO}/blob/main/_staging/${p.slug}/index.html`;
+  // プレビュー: 生成済みなら表示
+  if(p.generated){
+    const prev=`https://htmlpreview.github.io/?https://github.com/${OWNER}/${REPO}/blob/main/pages/${p.slug}/index.html`;
     b.push(`<a href="${prev}" target="_blank" class="abtn abtn-preview">👁 プレビュー</a>`);
   }
-  // 承認/却下: Staging済み かつ まだ公開されていない場合のみ
-  if(p.staged&&!p.approved_file){
+  // 承認: 生成済み かつ まだ公開されていない場合のみ
+  if(p.generated&&!p.approved_file){
     b.push(`<button class="abtn abtn-approve" onclick="openWf('approve','${p.slug}')">✅ 承認</button>`);
-    b.push(`<button class="abtn abtn-reject" onclick="openWf('reject','${p.slug}')">✕ 却下</button>`);
   }
   // 公開LP: 承認済み
   if(p.approved_file&&p.netlify_url)
@@ -816,15 +805,9 @@ function buildBtns(p){
 }
 
 const WF={
-  stage:{title:'📤 ステージング — sync-page.yml',url:`https://github.com/${OWNER}/${CORE}/actions/workflows/sync-page.yml`,
-    desc:'pages/ のHTMLを _staging/ にコピーし、レビュー待ち状態にします。',
-    steps:['下の<strong>スラッグをコピー</strong>する','<strong>「GitHub Actions を開く」</strong>ボタンへ移動','右上の<strong>「Run workflow」</strong>ドロップダウンをクリック','<strong>slug フィールド</strong>にコピーしたスラッグを貼り付け','<strong>「Run workflow」</strong>ボタンを押す','30〜60秒後に🔄更新して <strong>_staging/ ●</strong> を確認']},
   approve:{title:'✅ 承認 — approve-page.yml',url:`https://github.com/${OWNER}/${CORE}/actions/workflows/approve-page.yml`,
-    desc:'_staging/ のHTMLを _approved/ にコピーしNetlifyへ即時デプロイします。⚠️ 承認後は即公開されます。',
-    steps:['<strong>「👁 プレビュー」</strong>で内容・リンク・免責事項を確認','下の<strong>スラッグをコピー</strong>する','GitHub Actions で approve-page.yml を実行','slug を貼り付けて「Run workflow」','完了後: <strong>「🌐 公開LP」</strong>でNetlifyを確認']},
-  reject:{title:'✕ 却下 — reject-page.yml',url:`https://github.com/${OWNER}/${CORE}/actions/workflows/reject-page.yml`,
-    desc:'フィードバックを _feedback/[slug]-latest.yaml に保存します。次回生成時に反映されます。',
-    steps:['<strong>「👁 プレビュー」</strong>で問題点を確認','下の<strong>スラッグをコピー</strong>する','GitHub Actions で reject-page.yml を実行','<strong>reason フィールド</strong>に却下理由を入力して実行','修正後: Claude Code に再生成依頼 → <code>bash scripts/post-generate.sh [id]</code>']}
+    desc:'pages/ のHTMLを _approved/ にコピーしNetlifyへ即時デプロイします。⚠️ 承認後は即公開されます。',
+    steps:['<strong>「👁 プレビュー」</strong>で内容・リンク・免責事項を確認','下の<strong>スラッグをコピー</strong>する','GitHub Actions で approve-page.yml を実行','slug を貼り付けて「Run workflow」','完了後: <strong>「🌐 公開LP」</strong>でNetlifyを確認']}
 };
 
 function openUnpublish(slug){

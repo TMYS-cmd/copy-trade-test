@@ -3,45 +3,38 @@
 ## このリポジトリの役割
 
 Netlifyデプロイ専用のパブリックリポジトリ。
-`copy-trade-core` で生成されたランディングページのステージング・承認・デプロイを管理する。
+`copy-trade-core` で生成されたランディングページの承認・デプロイを管理する。
 
 ## 重要: このリポジトリのHTMLを直接編集しないこと
 
-すべてのHTMLは `copy-trade-core` の `scripts/generate.sh` で生成される。
+すべてのHTMLは `copy-trade-core` の Claude Code 経由で生成される。
 このリポジトリのHTMLを直接編集しても、次回の生成で上書きされる。
 
 コンテンツを変更する場合は:
-1. `copy-trade-core/content/landing-pages.yaml` を編集
-2. `./scripts/generate.sh [page-id]` で再生成
-3. `./scripts/sync-to-test.sh [slug]` でこのリポジトリに転送
+1. `copy-trade-core/content/landing-pages.yaml` を編集してコミット
+2. Claude Code に HTML 生成を依頼
+3. `bash scripts/post-generate.sh [page-id]` で後処理
 
 ## ディレクトリ説明
 
 | ディレクトリ | 説明 | Netlify公開 |
 |------------|------|------------|
 | `_approved/` | 承認済みページ。Netlifyが公開するのはここのみ | **公開される** |
-| `_staging/` | レビュー待ちページ | 公開されない |
-| `_feedback/` | 却下フィードバックYAML | 公開されない |
-| `pages/` | 全生成ページのアーカイブ | 公開されない |
+| `pages/` | 生成済み HTML のアーカイブ（レビュー・承認待ち） | 公開されない |
+| `docs/` | ダッシュボード（GitHub Pages） | GitHub Pages で公開 |
 
 ## デプロイの仕組み
 
 ```
-copy-trade-coreで: ./scripts/approve.sh [slug]
-  → _approved/[slug]/index.html が作成される
-  
-このリポジトリで: git push
+copy-trade-core で: bash scripts/post-generate.sh [page-id]
+  → pages/[slug]/index.html が作成・コミットされる
+
+ダッシュボードで「✅ 承認」ボタン
+  → GitHub Actions approve-page.yml が実行される
+  → _approved/[slug]/index.html がコピーされる
+
+このリポジトリで: git push（Actions が自動実行）
   → Netlifyが _approved/ のみを自動デプロイ
-```
-
-## 承認フロー
-
-copy-trade-core のスクリプトを使って操作してください:
-
-```bash
-# copy-trade-core ディレクトリで実行
-./scripts/approve.sh fx-copy-trade-beginner   # 承認
-./scripts/reject.sh fx-copy-trade-beginner "理由"  # 却下
 ```
 
 ## Netlify設定の確認
@@ -53,3 +46,4 @@ copy-trade-core のスクリプトを使って操作してください:
 
 - **copy-trade-core**: `C:\Users\kgtmy\Documents\copy-trade-core`（プライベート）
   - すべての操作はここから行う
+  - 詳細は `copy-trade-core/docs/GUIDE.md` を参照
