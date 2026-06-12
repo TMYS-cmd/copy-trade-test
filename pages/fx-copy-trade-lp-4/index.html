@@ -7,7 +7,7 @@
 <meta name="description" content="2024年11月の運用開始から16ヶ月、破綻ゼロ。myfxbookで全実績を公開中のFXコピートレード戦略。単利+1180%・月別データ・損切りルールまで包み隠さず公開。詳細は公式LINEへ。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -23,7 +23,7 @@
   --ink-dim:#b9ae96;
   --ink-faint:#7d745f;
   --crimson:#b05252;
-  --serif:'Kaisei Decol','Noto Serif JP',serif;
+  --serif:'Noto Sans JP',sans-serif; /* 全体ゴシック統一（見出しも本文もNoto Sans JP） */
   --sans:'Noto Sans JP',sans-serif;
 }
 html{scroll-behavior:smooth}
@@ -58,7 +58,7 @@ img{max-width:100%}
 }
 .sec-num::after{content:'';height:1px;width:72px;background:var(--gold-dim)}
 .sec h2{
-  font-family:var(--serif);font-weight:700;
+  font-family:var(--serif);font-weight:900;
   font-size:clamp(26px,3.4vw,42px);line-height:1.5;letter-spacing:.04em;margin-bottom:34px;
 }
 .lead{font-size:1.02rem;color:var(--ink-dim);max-width:46em}
@@ -71,6 +71,23 @@ img{max-width:100%}
   font-size:.68rem;color:var(--ink-faint);text-align:center;
   padding:7px 16px;letter-spacing:.06em;
 }
+
+/* ── top bar (myfxbook link) ── */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(12,10,8,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--gold-line);padding:10px 0;
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.tb-brand{font-size:.7rem;letter-spacing:.32em;color:var(--ink-faint);white-space:nowrap}
+.tb-myfx{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--gold);
+  border:1px solid var(--gold-dim);padding:8px 20px;white-space:nowrap;
+  transition:background-color .4s ease,color .4s ease;
+}
+.tb-myfx:hover{background:var(--gold);color:#0c0a08}
+@media(max-width:600px){.tb-brand{display:none}.topbar .wrap{justify-content:center}}
 
 /* ── hero ── */
 .hero{
@@ -107,7 +124,7 @@ img{max-width:100%}
 }
 .hero-eyebrow::before{content:'';width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
 .hero h1{
-  font-family:var(--serif);font-weight:700;
+  font-family:var(--serif);font-weight:900;
   font-size:clamp(32px,4.6vw,58px);line-height:1.42;letter-spacing:.02em;
   margin-bottom:30px;
 }
@@ -248,7 +265,7 @@ img{max-width:100%}
 /* ── closing ── */
 .closing{text-align:center;padding:150px 28px}
 .closing p{
-  font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);font-weight:500;
+  font-family:var(--serif);font-size:clamp(20px,2.6vw,30px);font-weight:700;
   line-height:2.1;letter-spacing:.06em;
 }
 
@@ -281,6 +298,13 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 <body>
 
 <div class="ribbon">本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。FX取引は元本割れのリスクがあります。</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="tb-brand">MSC SUPERGOLD PRO ─ VERIFIED RECORD</span>
+    <a class="tb-myfx" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">myfxbookでリアル実績を確認 ↗</a>
+  </div>
+</div>
 
 <!-- ════════ HERO ════════ -->
 <header class="hero">
