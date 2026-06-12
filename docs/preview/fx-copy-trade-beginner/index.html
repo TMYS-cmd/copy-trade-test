@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>初心者でも始められるFXコピートレード | XMTrading</title>
+  <meta name="description" content="プロトレーダーの取引をそのままコピー。MT4/MT5対応。難しい知識不要で資産運用を始めよう。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-primary: #22c55e;
+      --color-primary-dark: #16a34a;
+      --color-primary-light: #dcfce7;
+      --color-secondary: #1e293b;
+      --color-text: #1e293b;
+      --color-text-muted: #64748b;
+      --color-background: #ffffff;
+      --color-surface: #f8fafc;
+      --color-border: #e2e8f0;
+      --font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+      --container-max: 1100px;
+      --border-radius: 0.5rem;
+      --border-radius-lg: 1rem;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-family);
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--color-text);
+      background-color: var(--color-background);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .container { padding: 0 2rem; }
+    }
+
+    /* ===== ヘッダー ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.75rem 0;
+    }
+
+    .site-header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .site-logo {
+      font-size: 1.125rem;
+      font-weight: 900;
+      color: var(--color-primary-dark);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .site-logo span { color: var(--color-secondary); }
+
+    .header-cta { display: none; }
+
+    @media (min-width: 640px) {
+      .header-cta { display: inline-flex; }
+    }
+
+    /* ===== ボタン ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-family);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.875rem 2rem;
+      border: none;
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+      box-shadow: 0 4px 14px 0 rgb(34 197 94 / 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+      box-shadow: 0 6px 20px 0 rgb(34 197 94 / 0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-sm { font-size: 0.875rem; padding: 0.5rem 1.25rem; }
+
+    .btn-lg {
+      font-size: 1.125rem;
+      padding: 1rem 2.5rem;
+    }
+
+    .btn-block { width: 100%; }
+
+    .cta-sub-text {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* ===== ヒーロー ===== */
+    .hero {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 40%, #ffffff 100%);
+      padding: 4rem 0 3rem;
+      overflow: hidden;
+    }
+
+    .hero__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero__inner {
+        flex-direction: row;
+        text-align: left;
+        gap: 3rem;
+      }
+    }
+
+    .hero__content { flex: 1; }
+
+    .hero__badge {
+      display: inline-block;
+      background: var(--color-primary);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+      letter-spacing: 0.06em;
+    }
+
+    .hero__headline {
+      font-size: 1.875rem;
+      font-weight: 900;
+      line-height: 1.35;
+      color: var(--color-secondary);
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .hero__headline { font-size: 2.5rem; }
+    }
+
+    .hero__subheadline {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.85;
+    }
+
+    .hero__cta-group { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+
+    @media (min-width: 768px) {
+      .hero__cta-group { align-items: flex-start; }
+    }
+
+    .hero__visual {
+      flex: 1;
+      max-width: 440px;
+      width: 100%;
+    }
+
+    .hero__mock {
+      background: white;
+      border-radius: var(--border-radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: 1.5rem;
+      border: 1px solid var(--color-border);
+    }
+
+    .hero__mock-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .mock-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+
+    .mock-dot--red { background: #ef4444; }
+    .mock-dot--yellow { background: #f59e0b; }
+    .mock-dot--green { background: var(--color-primary); }
+
+    .hero__mock-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      margin-left: 0.25rem;
+    }
+
+    .mock-trader-list { display: flex; flex-direction: column; gap: 0.625rem; }
+
+    .mock-trader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--color-surface);
+      border-radius: var(--border-radius);
+      padding: 0.625rem 0.875rem;
+      font-size: 0.8rem;
+    }
+
+    .mock-trader__name { font-weight: 700; color: var(--color-secondary); }
+
+    .mock-trader__roi {
+      font-weight: 900;
+      color: var(--color-primary-dark);
+    }
+
+    .mock-trader__bar {
+      width: 60px;
+      height: 6px;
+      background: var(--color-border);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .mock-trader__fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary));
+      border-radius: 9999px;
+    }
+
+    .mock-copy-btn {
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      border-radius: 0.25rem;
+      padding: 0.2rem 0.6rem;
+      cursor: default;
+    }
+
+    /* ===== 信頼バッジ ===== */
+    .trust-bar {
+      background: var(--color-secondary);
+      padding: 0.875rem 0;
+    }
+
+    .trust-bar .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #cbd5e1;
+    }
+
+    .trust-item__icon {
+      font-size: 1rem;
+    }
+
+    /* ===== セクション共通 ===== */
+    .section { padding: 4rem 0; }
+    .section--bg { background: var(--color-surface); }
+
+    .section__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section__label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section__title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--color-secondary);
+      line-height: 1.4;
+    }
+
+    @media (min-width: 768px) {
+      .section__title { font-size: 1.875rem; }
+    }
+
+    .section__subtitle {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      margin-top: 0.75rem;
+    }
+
+    /* ===== 特徴グリッド ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 640px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .features-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius-lg);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+
+    .feature-icon {
+      width: 60px; height: 60px;
+      background: var(--color-primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.6rem;
+    }
+
+    .feature-card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card__body {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== ステップ ===== */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .steps-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .step-card {
+      background: white;
+      border-radius: var(--border-radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 2px solid var(--color-primary-light);
+      position: relative;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      background: var(--color-primary);
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 900;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+    }
+
+    .step-card__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-card__body {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== 実績テーブル ===== */
+    .results-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+    }
+
+    .results-table th,
+    .results-table td {
+      padding: 1rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.9rem;
+    }
+
+    .results-table th {
+      background: var(--color-secondary);
+      color: white;
+      font-weight: 700;
+    }
+
+    .results-table td { font-size: 0.875rem; }
+    .results-table tr:last-child td { border-bottom: none; }
+    .text-positive { color: var(--color-primary-dark); font-weight: 700; }
+
+    .results-disclaimer {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+
+    /* ===== CTAセクション ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--color-secondary) 0%, #334155 100%);
+      padding: 4.5rem 0;
+      text-align: center;
+      color: white;
+    }
+
+    .cta-section__eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #86efac;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section__title {
+      font-size: 1.75rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    @media (min-width: 768px) {
+      .cta-section__title { font-size: 2.25rem; }
+    }
+
+    .cta-section__body {
+      font-size: 1rem;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .cta-section .btn-primary {
+      background: var(--color-primary);
+      font-size: 1.125rem;
+      padding: 1rem 3rem;
+    }
+
+    .cta-section .btn-primary:hover {
+      background: var(--color-primary-dark);
+    }
+
+    /* ===== FAQ ===== */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.1rem 1.5rem;
+      text-align: left;
+      font-family: var(--font-family);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: background 0.15s;
+    }
+
+    .faq-question:hover { background: var(--color-surface); }
+
+    .faq-icon {
+      font-size: 1.25rem;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      font-weight: 400;
+    }
+
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      display: none;
+      padding: 0.875rem 1.5rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      line-height: 1.85;
+      background: #fafafa;
+    }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ===== 免責事項 ===== */
+    .disclaimer {
+      background: #fef9c3;
+      border: 1px solid #fde047;
+      border-radius: var(--border-radius);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .disclaimer__title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #854d0e;
+      margin-bottom: 0.5rem;
+    }
+
+    .disclaimer__text {
+      font-size: 0.75rem;
+      color: #713f12;
+      line-height: 1.85;
+    }
+
+    /* ===== フッター ===== */
+    .site-footer {
+      background: var(--color-secondary);
+      color: #64748b;
+      padding: 2.5rem 0;
+      text-align: center;
+      font-size: 0.75rem;
+      line-height: 1.9;
+    }
+
+    .site-footer a { color: #94a3b8; text-decoration: underline; }
+
+    /* ===== スクロールアニメーション ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== フローティングCTA（モバイル） ===== */
+    .floating-cta {
+      position: fixed;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 200;
+      width: calc(100% - 2rem);
+      max-width: 400px;
+    }
+
+    @media (min-width: 640px) {
+      .floating-cta { display: none; }
+    }
+
+    .floating-cta .btn {
+      width: 100%;
+      box-shadow: 0 8px 30px rgb(34 197 94 / 0.45);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="site-logo">Copy<span>FX</span></a>
+      <a href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0"
+         class="btn btn-primary btn-sm header-cta"
+         target="_blank" rel="noopener">
+        無料で口座開設する
+      </a>
+    </div>
+  </header>
+
+  <!-- ヒーローセクション -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__inner">
+        <div class="hero__content">
+          <span class="hero__badge">XMTrading 公式アフィリエイト</span>
+          <h1 class="hero__headline">
+            プロの取引を自動コピー。<br>寝ている間も資産を育てる。
+          </h1>
+          <p class="hero__subheadline">
+            FXコピートレードで始める、かんたん資産運用。<br>
+            難しい知識は一切不要。
+          </p>
+          <div class="hero__cta-group">
+            <a href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0"
+               class="btn btn-primary btn-lg"
+               target="_blank" rel="noopener">
+              無料で口座開設する
+            </a>
+            <span class="cta-sub-text">所要時間：約5分 ・ 完全無料</span>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero__mock">
+            <div class="hero__mock-header">
+              <div class="mock-dot mock-dot--red"></div>
+              <div class="mock-dot mock-dot--yellow"></div>
+              <div class="mock-dot mock-dot--green"></div>
+              <span class="hero__mock-title">XM コピートレード ダッシュボード</span>
+            </div>
+            <div class="mock-trader-list">
+              <div class="mock-trader">
+                <div>
+                  <div class="mock-trader__name">ProTrader_JP</div>
+                  <div style="font-size:0.7rem;color:#94a3b8;">最大DD 8.2%</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <div>
+                    <div class="mock-trader__bar">
+                      <div class="mock-trader__fill" style="width:85%"></div>
+                    </div>
+                    <div class="mock-trader__roi" style="font-size:0.85rem;margin-top:2px;">+42.3%</div>
+                  </div>
+                  <button class="mock-copy-btn">コピー</button>
+                </div>
+              </div>
+              <div class="mock-trader">
+                <div>
+                  <div class="mock-trader__name">StableWave_FX</div>
+                  <div style="font-size:0.7rem;color:#94a3b8;">最大DD 11.4%</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <div>
+                    <div class="mock-trader__bar">
+                      <div class="mock-trader__fill" style="width:70%"></div>
+                    </div>
+                    <div class="mock-trader__roi" style="font-size:0.85rem;margin-top:2px;">+31.7%</div>
+                  </div>
+                  <button class="mock-copy-btn">コピー</button>
+                </div>
+              </div>
+              <div class="mock-trader">
+                <div>
+                  <div class="mock-trader__name">AlphaSignal_V2</div>
+                  <div style="font-size:0.7rem;color:#94a3b8;">最大DD 6.1%</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <div>
+                    <div class="mock-trader__bar">
+                      <div class="mock-trader__fill" style="width:60%"></div>
+                    </div>
+                    <div class="mock-trader__roi" style="font-size:0.85rem;margin-top:2px;">+28.5%</div>
+                  </div>
+                  <button class="mock-copy-btn">コピー</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 信頼バッジ -->
+  <div class="trust-bar">
+    <div class="container">
+      <div class="trust-item">
+        <span class="trust-item__icon">🛡️</span>
+        <span>ASIC・CySEC 規制対応</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-item__icon">📱</span>
+        <span>MT4/MT5 完全対応</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-item__icon">🇯🇵</span>
+        <span>日本語サポートあり</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-item__icon">💴</span>
+        <span>最小100ドルから開始</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 特徴セクション -->
+  <section class="section section--bg">
+    <div class="container">
+      <div class="section__header fade-in">
+        <span class="section__label">Features</span>
+        <h2 class="section__title">コピートレードが選ばれる4つの理由</h2>
+        <p class="section__subtitle">難しい分析や監視は一切不要。プロに任せて、あなたは日常を楽しめます。</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-card__title">実績あるトレーダーのみ</div>
+          <p class="feature-card__body">過去パフォーマンスが透明公開されたトレーダーのみ掲載。安心してコピーできます。</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">⏰</div>
+          <div class="feature-card__title">24時間完全自動</div>
+          <p class="feature-card__body">あなたが寝ていても、働いていても、システムが自動でコピー取引します。</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">📊</div>
+          <div class="feature-card__title">MT4/MT5対応</div>
+          <p class="feature-card__body">業界標準のMT4・MT5プラットフォームに完全対応。スマホからも管理できます。</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">💴</div>
+          <div class="feature-card__title">少額から始められる</div>
+          <p class="feature-card__body">最小100ドル（約15,000円）から始めることができます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 始め方ステップ -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header fade-in">
+        <span class="section__label">How to Start</span>
+        <h2 class="section__title">たった3ステップで始められる</h2>
+        <p class="section__subtitle">口座開設から最初のコピー開始まで、最短30分。</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card fade-in">
+          <div class="step-number">1</div>
+          <div class="step-card__title">口座開設（無料）</div>
+          <p class="step-card__body">XMTradingの公式サイトで無料口座を開設。メールアドレスだけで完了。所要時間は約5分。</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">2</div>
+          <div class="step-card__title">トレーダーを選ぶ</div>
+          <p class="step-card__body">実績・ドローダウン・フォロワー数を参考に、コピーしたいトレーダーを選択。</p>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-number">3</div>
+          <div class="step-card__title">あとはお任せ</div>
+          <p class="step-card__body">コピーをスタートしたら、あとはシステムが自動で取引をコピー。通知で状況を確認できます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 実績セクション -->
+  <section class="section section--bg">
+    <div class="container">
+      <div class="section__header fade-in">
+        <span class="section__label">Track Record</span>
+        <h2 class="section__title">実際の運用実績（参考）</h2>
+        <p class="section__subtitle">※ 過去の実績は将来の利益を保証するものではありません</p>
+      </div>
+      <div class="results-wrap fade-in">
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th>期間</th>
+              <th>運用利回り</th>
+              <th>最大ドローダウン</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2024年通年</td>
+              <td class="text-positive">+42.3%</td>
+              <td>8.2%</td>
+            </tr>
+            <tr>
+              <td>2023年通年</td>
+              <td class="text-positive">+31.7%</td>
+              <td>11.4%</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="results-disclaimer">※過去の実績は将来の利益を保証するものではありません。上記は参考数値であり、実際の運用成果は異なります。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTAセクション -->
+  <section class="cta-section">
+    <div class="container">
+      <p class="cta-section__eyebrow fade-in">今すぐ無料で始める</p>
+      <h2 class="cta-section__title fade-in">
+        知識ゼロでも、今日から<br>プロのトレードを自動コピー
+      </h2>
+      <p class="cta-section__body fade-in">
+        口座開設は完全無料。難しい設定も不要。<br>
+        まずはXMTradingのアカウントを作成しましょう。
+      </p>
+      <a href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0"
+         class="btn btn-primary btn-lg fade-in"
+         target="_blank" rel="noopener">
+        無料で口座開設する →
+      </a>
+      <span class="cta-sub-text" style="color:#94a3b8;margin-top:0.75rem;">所要時間：約5分 ・ クレジットカード不要</span>
+    </div>
+  </section>
+
+  <!-- FAQセクション -->
+  <section class="section">
+    <div class="container">
+      <div class="section__header fade-in">
+        <span class="section__label">FAQ</span>
+        <h2 class="section__title">よくある質問</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            FXの知識がなくても始められますか？
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            はい。コピートレードはプロの取引を自動でコピーするため、FXの知識がなくても始められます。難しいチャート分析や相場判断は一切不要です。
+          </div>
+        </div>
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            最低いくらから始められますか？
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            XMTradingでは最低5ドルから口座開設できます。コピートレードは100ドル（約15,000円）が目安です。少額から始めて慣れてから資金を増やすことをおすすめします。
+          </div>
+        </div>
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            リスクはありますか？
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            はい、FX取引には元本割れのリスクがあります（損失が生じる可能性があります）。余裕資金での運用を推奨します。トレーダーのドローダウン履歴を確認し、リスク管理を行ってください。
+          </div>
+        </div>
+        <div class="faq-item fade-in">
+          <button class="faq-question" aria-expanded="false">
+            いつでも止められますか？
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            はい、コピーの停止・再開はいつでも自由に行えます。コピーを停止してもポジションはそのまま保持されます。ポジションを閉じる場合は手動で決済してください。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 免責事項 -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="disclaimer fade-in">
+        <div class="disclaimer__title">⚠ 重要なリスク開示・免責事項</div>
+        <p class="disclaimer__text">
+          本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。<br>
+          FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。過去の実績は将来の利益を保証しません。<br>
+          掲載しているFX会社は各国金融当局の規制を受けています。<br>
+          本サイトに掲載されている情報は、投資助言・投資勧誘を目的としたものではありません。
+          取引を行う場合は、ご自身の判断と責任で行ってください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <p style="font-weight:700;color:#94a3b8;margin-bottom:0.5rem;">CopyFX — FXコピートレード情報サイト</p>
+      <p>本サイトはアフィリエイトプログラムを利用しています。</p>
+      <p>XMTradingはTradexfin Limited（CySEC）およびTrading Point of Financial Instruments Ltd（ASIC・IFSC）が運営するサービスです。</p>
+      <p style="margin-top:0.75rem;">
+        <a href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0" target="_blank" rel="noopener">XMTrading 公式サイト</a>
+      </p>
+      <p style="margin-top:0.75rem;font-size:0.7rem;">
+        © 2026 CopyFX. 掲載情報に誤りがある場合はお問い合わせください。
+      </p>
+    </div>
+  </footer>
+
+  <!-- モバイル フローティングCTA -->
+  <div class="floating-cta">
+    <a href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0"
+       class="btn btn-primary"
+       target="_blank" rel="noopener">
+      無料で口座開設する
+    </a>
+  </div>
+
+  <script>
+    // FAQ アコーディオン
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // スクロールアニメーション
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // モバイルCTAをスクロール位置によって表示
+    var heroSection = document.querySelector('.hero');
+    var floatingCta = document.querySelector('.floating-cta');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > heroSection.offsetHeight) {
+        floatingCta.style.opacity = '1';
+        floatingCta.style.pointerEvents = 'auto';
+      } else {
+        floatingCta.style.opacity = '0';
+        floatingCta.style.pointerEvents = 'none';
+      }
+    }, { passive: true });
+    floatingCta.style.opacity = '0';
+    floatingCta.style.pointerEvents = 'none';
+    floatingCta.style.transition = 'opacity 0.3s ease';
+  </script>
+</body>
+</html>

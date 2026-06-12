@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="FXBlue第三者検証済み。526ドルから9ヶ月で13,215ドル（約205万円）達成。最大ドローダウンわずか-1.9%。JPコピトレの全実績を公開。">
+<title>【履歴公開】8万円→200万超。最大ドローダウン-1.9%で「破綻ゼロ」を貫く。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+
+:root{
+  --navy:    #0b1f3a;
+  --navy-1:  #0d2545;
+  --navy-2:  #071628;
+  --navy-3:  #0f1e35;
+  --navy-4:  #091529;
+  --gold:    #c9a227;
+  --gold-lt: #e2c060;
+  --gold-dk: #a07f1c;
+  --text:    #e0e8f0;
+  --text-md: #8fa3bc;
+  --text-sm: #5a6e85;
+  --serif:   'Kaisei Decol','Noto Serif JP',Georgia,serif;
+  --sans:    'Noto Sans JP','Hiragino Sans',sans-serif;
+  --gb:      rgba(201,162,39,.22);
+  --inner:   860px;
+}
+
+body{
+  background:var(--navy);
+  color:var(--text);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.75;
+}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;height:64px;
+  background:rgba(7,22,40,.97);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-top:3px solid var(--gold);
+  z-index:100;
+}
+.nav-inner{
+  max-width:1100px;margin:0 auto;
+  height:100%;padding:0 24px;
+  display:flex;align-items:center;gap:14px;
+}
+.nav-logo{display:flex;flex-direction:column;gap:1px;flex:1}
+.nav-logo-main{
+  font-family:var(--serif);font-size:18px;font-weight:700;
+  color:var(--gold-lt);letter-spacing:.06em;
+}
+.nav-logo-sub{
+  font-size:9px;color:var(--text-sm);
+  letter-spacing:.14em;text-transform:uppercase;
+}
+.nav-badge{
+  font-size:10px;color:var(--gold);
+  border:1px solid var(--gb);padding:3px 10px;
+  border-radius:2px;letter-spacing:.07em;white-space:nowrap;
+}
+.nav-cta{
+  display:inline-block;
+  background:var(--gold);color:#071628;
+  font-size:12px;font-weight:700;
+  padding:9px 20px;border-radius:3px;
+  letter-spacing:.05em;white-space:nowrap;
+  transition:background .15s;
+}
+.nav-cta:hover{background:var(--gold-lt)}
+
+/* HERO */
+.hero{
+  min-height:100vh;padding-top:64px;
+  background:
+    radial-gradient(ellipse 75% 55% at 50% 0%,   rgba(201,162,39,.45) 0%, rgba(201,162,39,.14) 42%, transparent 65%),
+    radial-gradient(ellipse 60% 65% at -5% 100%,  rgba(14,70,150,.55) 0%, transparent 52%),
+    radial-gradient(ellipse 45% 50% at 105% 15%,  rgba(0,5,20,.75)    0%, transparent 50%),
+    linear-gradient(165deg, #00060f 0%, #05162e 28%, #0e2c55 58%, #030b1a 100%);
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+}
+/* diagonal stripe texture */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    -52deg,
+    transparent,transparent 110px,
+    rgba(201,162,39,.038) 110px,
+    rgba(201,162,39,.038) 111px
+  );
+  pointer-events:none;z-index:0;
+}
+/* grid with radial fade */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,162,39,.11) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,162,39,.11) 1px,transparent 1px);
+  background-size:64px 64px;
+  pointer-events:none;
+  mask-image:radial-gradient(ellipse 88% 82% at 50% 50%, black 25%, transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 88% 82% at 50% 50%, black 25%, transparent 100%);
+}
+/* gold horizon line bottom */
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent);
+}
+/* corner accent marks */
+.hero-inner::before{
+  content:'';position:absolute;
+  top:56px;left:20px;
+  width:28px;height:28px;
+  border-top:1.5px solid rgba(201,162,39,.5);
+  border-left:1.5px solid rgba(201,162,39,.5);
+  pointer-events:none;
+}
+.hero-inner::after{
+  content:'';position:absolute;
+  bottom:72px;right:20px;
+  width:28px;height:28px;
+  border-bottom:1.5px solid rgba(201,162,39,.5);
+  border-right:1.5px solid rgba(201,162,39,.5);
+  pointer-events:none;
+}
+.hero-inner{
+  max-width:var(--inner);margin:0 auto;
+  padding:72px 24px 80px;position:relative;z-index:1;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;color:var(--gold);
+  letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:28px;
+}
+.eyebrow::before{
+  content:'';display:inline-block;
+  width:28px;height:1px;background:var(--gold);
+}
+h1.headline{
+  font-family:var(--serif);
+  font-size:clamp(26px,5vw,46px);
+  font-weight:900;line-height:1.45;
+  color:#f2eadb;margin-bottom:20px;
+}
+h1.headline .acc{color:var(--gold-lt)}
+.hero-sub{
+  font-size:15px;color:var(--text-md);
+  margin-bottom:52px;letter-spacing:.03em;
+}
+.stats-row{
+  display:flex;align-items:stretch;
+  background:rgba(13,37,69,.55);
+  border:1px solid var(--gb);border-radius:3px;
+  overflow:hidden;margin-bottom:44px;
+}
+.stat{flex:1;padding:24px 12px;text-align:center}
+.stat-div{width:1px;background:var(--gb);flex-shrink:0}
+.s-num{
+  font-family:var(--serif);
+  font-size:clamp(30px,4.5vw,42px);
+  font-weight:900;color:var(--gold-lt);
+  line-height:1;margin-bottom:7px;
+}
+.s-unit{font-size:.5em;letter-spacing:.03em}
+.s-lbl{font-size:10px;color:var(--text-md);letter-spacing:.07em}
+.btn-line{
+  display:inline-block;
+  background:var(--gold);color:#071628;
+  font-size:17px;font-weight:900;
+  padding:18px 52px;border-radius:3px;
+  letter-spacing:.06em;
+  transition:all .2s;
+}
+.btn-line:hover{
+  background:var(--gold-lt);
+  transform:translateY(-2px);
+  box-shadow:0 10px 28px rgba(201,162,39,.32);
+}
+.hero-disc{
+  margin-top:14px;font-size:10px;
+  color:var(--text-sm);letter-spacing:.02em;
+}
+
+/* SECTION */
+.sec{width:100%}
+.sec-a{background:var(--navy-2)}
+.sec-b{background:var(--navy)}
+.sec-c{background:var(--navy-1)}
+.inner{max-width:var(--inner);margin:0 auto;padding:80px 24px}
+
+.sec-hdr{
+  display:flex;align-items:flex-start;gap:20px;
+  padding-bottom:28px;margin-bottom:36px;
+  border-bottom:1px solid var(--gb);
+}
+.sec-idx{
+  font-family:var(--serif);font-size:44px;font-weight:900;
+  color:rgba(201,162,39,.15);line-height:1;flex-shrink:0;padding-top:2px;
+}
+.sec-ttl{
+  font-family:var(--serif);
+  font-size:clamp(20px,3.2vw,30px);
+  font-weight:700;line-height:1.5;color:#f2eadb;
+}
+.sec-ttl .acc{color:var(--gold-lt)}
+
+/* TEXT */
+.txt{font-size:15px;line-height:2;color:var(--text-md)}
+.txt p{margin-bottom:1.5em}
+.txt p:last-child{margin-bottom:0}
+.txt strong{color:var(--text);font-weight:700}
+
+/* QUOTE CHIPS */
+.q-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.q-chip{
+  background:rgba(201,162,39,.07);
+  border:1px solid var(--gb);
+  border-radius:2px;padding:6px 16px;
+  font-family:var(--serif);
+  font-size:14px;color:var(--gold-lt);letter-spacing:.04em;
+}
+
+/* FXBLUE CARD */
+.fxblue-card{
+  display:flex;align-items:center;gap:16px;
+  background:rgba(13,37,69,.7);
+  border:1px solid var(--gb);border-left:3px solid var(--gold);
+  border-radius:0 3px 3px 0;padding:16px 24px;margin:24px 0;
+}
+.fxblue-card-name{
+  font-family:var(--serif);font-size:17px;font-weight:700;
+  color:var(--gold-lt);margin-bottom:4px;
+}
+.fxblue-card-desc{font-size:12px;color:var(--text-md);line-height:1.6}
+
+/* IMAGE PLACEHOLDER */
+.img-ph{
+  width:100%;
+  background:rgba(9,21,41,.7);
+  border:1px solid var(--gb);border-radius:3px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:10px;position:relative;overflow:hidden;
+}
+.img-ph::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold-dk),var(--gold),var(--gold-dk));
+}
+.img-ph-ic{
+  width:36px;height:36px;
+  border:1.5px solid var(--text-sm);border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--text-sm);font-family:monospace;
+}
+.img-ph-lbl{font-size:13px;color:var(--text-md);font-weight:700;letter-spacing:.05em}
+.img-ph-note{font-size:10px;color:var(--text-sm);letter-spacing:.04em}
+
+/* DIVIDERS */
+.gold-div{
+  width:100%;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin:36px 0;
+}
+.gold-bar{width:40px;height:2px;background:var(--gold);margin-bottom:20px}
+
+/* TIMELINE */
+.timeline{margin:32px 0}
+.tl-row{display:grid;grid-template-columns:130px 1fr;gap:0 24px}
+.tl-date-col{
+  text-align:right;padding-right:24px;
+  border-right:2px solid var(--gb);position:relative;
+}
+.tl-dot{
+  position:absolute;right:-6px;top:8px;
+  width:10px;height:10px;border-radius:50%;
+  background:var(--navy-2);border:2px solid var(--gold);
+}
+.tl-date-txt{font-size:12px;color:var(--text-md);line-height:1.6;padding-top:6px}
+.tl-content{padding-bottom:28px;padding-top:4px}
+.tl-amount{
+  font-family:var(--serif);
+  font-size:clamp(28px,4.5vw,40px);
+  font-weight:900;color:var(--gold-lt);line-height:1.1;
+}
+.tl-amount-sub{font-size:13px;color:var(--text-md);margin-top:5px}
+.tl-arrow-row{display:grid;grid-template-columns:130px 1fr;gap:0 24px}
+.tl-arrow-line{
+  border-right:2px solid var(--gb);
+  display:flex;align-items:center;justify-content:flex-end;
+  padding-right:18px;
+  color:var(--gb);font-size:22px;
+}
+.tl-arrow-lbl{
+  font-size:11px;color:var(--text-sm);
+  letter-spacing:.08em;text-transform:uppercase;
+  display:flex;align-items:center;
+}
+
+.growth-box{
+  background:rgba(201,162,39,.06);
+  border:1px solid var(--gb);
+  border-left:3px solid var(--gold);
+  border-radius:0 4px 4px 0;
+  padding:24px 28px;margin-top:32px;
+}
+.growth-big{
+  font-family:var(--serif);
+  font-size:clamp(44px,8vw,72px);
+  font-weight:900;color:var(--gold-lt);line-height:1;
+}
+.growth-lbl{font-size:13px;color:var(--text-md);margin-top:8px;line-height:1.8}
+
+/* DRAWDOWN */
+.dd-num-row{display:flex;align-items:baseline;gap:6px;margin:20px 0 6px}
+.dd-big{
+  font-family:var(--serif);
+  font-size:clamp(56px,11vw,100px);
+  font-weight:900;color:var(--gold-lt);line-height:1;
+}
+.dd-sfx{
+  font-family:var(--serif);
+  font-size:clamp(26px,4vw,42px);color:var(--gold);
+}
+.dd-lbl{font-size:13px;color:var(--text-md);letter-spacing:.06em;margin-bottom:28px}
+
+.cmp-table{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0}
+.cmp-table th{
+  background:rgba(201,162,39,.08);
+  border:1px solid var(--gb);
+  padding:10px 14px;
+  color:var(--gold);font-size:11px;letter-spacing:.07em;font-weight:700;text-align:center;
+}
+.cmp-table td{
+  border:1px solid rgba(11,31,58,.9);
+  padding:10px 14px;text-align:center;
+  color:var(--text-md);background:rgba(7,22,40,.4);
+}
+.cmp-table .v-good{color:#4ade80;font-weight:700}
+.cmp-table .v-bad{color:#f87171}
+.cmp-table .v-gold{color:var(--gold-lt);font-weight:700}
+
+.dd-note{
+  background:rgba(13,37,69,.6);
+  border:1px solid var(--gb);
+  border-radius:3px;padding:22px 24px;
+}
+.dd-note p{font-size:14px;color:var(--text-md);line-height:2;margin-bottom:10px}
+.dd-note p:last-child{margin-bottom:0}
+.dd-note strong{color:var(--text);font-weight:700}
+
+/* CTA */
+.cta-sec{
+  background:linear-gradient(180deg,var(--navy-3),var(--navy-2));
+  text-align:center;padding:84px 24px;position:relative;
+}
+.cta-sec::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent);
+}
+.cta-inner{max-width:580px;margin:0 auto}
+.cta-h{
+  font-family:var(--serif);
+  font-size:clamp(22px,3.5vw,32px);
+  font-weight:700;color:#f2eadb;margin-bottom:12px;
+}
+.cta-sub{font-size:14px;color:var(--text-md);margin-bottom:36px;line-height:1.9}
+.cta-btn{
+  display:inline-block;
+  background:var(--gold);color:#071628;
+  font-size:18px;font-weight:900;
+  padding:20px 64px;border-radius:3px;
+  letter-spacing:.06em;transition:all .2s;
+}
+.cta-btn:hover{
+  background:var(--gold-lt);
+  transform:translateY(-2px);
+  box-shadow:0 12px 32px rgba(201,162,39,.36);
+}
+.cta-note{margin-top:14px;font-size:11px;color:var(--text-sm)}
+
+/* LEGAL */
+.legal{background:var(--navy-4);border-top:1px solid var(--gb);padding:52px 24px}
+.legal-inner{max-width:var(--inner);margin:0 auto}
+.legal-tag{
+  font-size:10px;color:var(--gold);
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;
+}
+.legal-box{
+  background:rgba(7,22,40,.55);
+  border:1px solid rgba(201,162,39,.1);
+  border-radius:3px;padding:18px 22px;margin-bottom:10px;
+}
+.legal-box p{font-size:11px;color:var(--text-sm);line-height:1.95;letter-spacing:.02em}
+.legal-box strong{color:var(--text-md);font-weight:700}
+.legal-copy{
+  margin-top:24px;font-size:10px;
+  color:var(--text-sm);text-align:center;letter-spacing:.06em;
+}
+
+@media(max-width:640px){
+  .stats-row{flex-direction:column}
+  .stat-div{width:100%;height:1px}
+  .tl-row,.tl-arrow-row{grid-template-columns:100px 1fr}
+  .nav-badge{display:none}
+  .btn-line,.cta-btn{padding:16px 32px;font-size:15px}
+  .sec-idx{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <span class="nav-logo-main">JP コピトレ</span>
+      <span class="nav-logo-sub">STEADY COMPOUNDING · FX COPY TRADE</span>
+    </div>
+    <div class="nav-badge">FXBlue 第三者検証済み</div>
+    <a href="https://lin.ee/qjpV7zY" class="nav-cta">公式LINEはこちら</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-inner">
+
+    <div class="eyebrow">FXBlue リアル口座 · 全履歴公開中</div>
+
+    <h1 class="headline">
+      【履歴公開】8万円→200万超。<br>
+      最大ドローダウン<span class="acc">-1.9%</span>で<br>
+      「破綻ゼロ」を貫く。
+    </h1>
+    <p class="hero-sub">海外トレーダー日本初上陸の神業JPコピトレの正体</p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="s-num">26<span class="s-unit">倍</span></div>
+        <div class="s-lbl">総資産増加率</div>
+      </div>
+      <div class="stat-div" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="s-num">-1.9<span class="s-unit">%</span></div>
+        <div class="s-lbl">最大ドローダウン</div>
+      </div>
+      <div class="stat-div" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="s-num">9<span class="s-unit">ヶ月</span></div>
+        <div class="s-lbl">達成期間</div>
+      </div>
+      <div class="stat-div" aria-hidden="true"></div>
+      <div class="stat">
+        <div class="s-num">0<span class="s-unit">回</span></div>
+        <div class="s-lbl">ロスカット</div>
+      </div>
+    </div>
+
+    <a href="https://lin.ee/qjpV7zY" class="btn-line">公式LINEはこちら</a>
+    <div class="hero-disc">
+      ※ FXBlueリアル口座実績（2025年5月〜2026年2月）。過去の成果は将来の利益を保証しません。
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 01: 証拠がすべて -->
+<section class="sec sec-a">
+  <div class="inner">
+    <div class="sec-hdr">
+      <div class="sec-idx">01</div>
+      <h2 class="sec-ttl">
+        「証拠」がすべて。<br>
+        第三者機関による<span class="acc">完全公開</span>
+      </h2>
+    </div>
+
+    <div class="q-chips">
+      <span class="q-chip">「勝率90%」</span>
+      <span class="q-chip">「月利100%」</span>
+      <span class="q-chip">「＋○○円勝ち！」</span>
+    </div>
+
+    <div class="txt">
+      <p>世の中に溢れる、こうした甘い言葉。そのほとんどが、都合の良い期間だけを切り取ったバックテストや、いくらでも偽造できるスクリーンショットです。</p>
+      <p>私がどれだけ言葉を尽くしても、信じられないかもしれません。</p>
+      <p><strong>ですから、「証拠」のすべてをあなたの目で直接確認してください。</strong></p>
+      <p>このプロジェクトは<strong>「透明性」に命を懸けています。</strong></p>
+      <p>実績の証明には、世界中の投資家が利用する第三者機関 <strong>『FXBlue』</strong> を採用しました。<br>
+      リアル口座とFXBlueを紐づけて第三者機関で履歴を公開する仕組みのため、<strong>100%改ざんが不可能な履歴</strong>になっています。</p>
+    </div>
+
+    <div class="fxblue-card">
+      <div>
+        <div class="fxblue-card-name">FXBlue</div>
+        <div class="fxblue-card-desc">世界中の投資家が利用する第三者検証機関<br>リアル口座と直接連携 · 改ざん不可能</div>
+      </div>
+    </div>
+
+    <div class="img-ph" style="height:260px;margin-top:4px;">
+      <div class="img-ph-ic">&#9638;</div>
+      <div class="img-ph-lbl">FXBlue 実績スクリーンショット</div>
+      <div class="img-ph-note">assets/fxblue-overview.png を配置してください</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02: 資産26倍の軌跡 -->
+<section class="sec sec-b">
+  <div class="inner">
+    <div class="sec-hdr">
+      <div class="sec-idx">02</div>
+      <h2 class="sec-ttl">
+        資産26倍の軌跡。<br>
+        複利がもたらす<span class="acc">驚異の資産形成</span>
+      </h2>
+    </div>
+
+    <div class="txt">
+      <p>まずは、実際に動いている口座の数字を見てください。</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-row">
+        <div class="tl-date-col">
+          <div class="tl-dot"></div>
+          <div class="tl-date-txt">2025年<br>5月16日</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-amount">$526<span style="font-size:.5em;opacity:.6">.00</span></div>
+          <div class="tl-amount-sub">約8万円 — スタート資金</div>
+          <div class="img-ph" style="height:190px;margin-top:16px;">
+            <div class="img-ph-ic">&#9638;</div>
+            <div class="img-ph-lbl">口座残高 開始時スクリーンショット</div>
+            <div class="img-ph-note">assets/start-balance.png を配置してください</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-arrow-row">
+        <div class="tl-arrow-line">&#8595;</div>
+        <div class="tl-arrow-lbl">&nbsp;&nbsp;9ヶ月弱 · ロスカット 0回</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-date-col">
+          <div class="tl-dot"></div>
+          <div class="tl-date-txt">2026年<br>2月13日</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-amount">$13,215<span style="font-size:.5em;opacity:.6">.00</span></div>
+          <div class="tl-amount-sub">約205万円 — 1度も破綻せず達成</div>
+          <div class="img-ph" style="height:190px;margin-top:16px;">
+            <div class="img-ph-ic">&#9638;</div>
+            <div class="img-ph-lbl">口座残高 現在スクリーンショット</div>
+            <div class="img-ph-note">assets/current-balance.png を配置してください</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="growth-box">
+      <div class="growth-big">×26</div>
+      <div class="growth-lbl">
+        わずか9ヶ月弱で、資産は約26倍。<br>
+        これはバックテストの夢物語ではなく、リアル口座で今この瞬間も刻まれている現実です。
+      </div>
+    </div>
+
+    <div class="gold-div"></div>
+
+    <div class="txt">
+      <p>複利運用で一度も資金を溶かすことなく、雪だるま式に資産が増えていく。</p>
+      <p><strong>これこそが本物の「複利の魔法」です。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03: 最大DD -1.9% -->
+<section class="sec sec-c">
+  <div class="inner">
+    <div class="sec-hdr">
+      <div class="sec-idx">03</div>
+      <h2 class="sec-ttl">
+        なぜ破綻していないのか？<br>
+        <span class="acc">「最大ドローダウン-1.9%」</span>の正体
+      </h2>
+    </div>
+
+    <div class="txt">
+      <p>多くの投資家が一番驚愕するのは、収益率よりもこの数値です。</p>
+    </div>
+
+    <div class="dd-num-row">
+      <div class="dd-big">-1.9</div>
+      <div class="dd-sfx">%</div>
+    </div>
+    <div class="dd-lbl">最大ドローダウン（ピーク比最大損失率）</div>
+
+    <table class="cmp-table">
+      <thead>
+        <tr>
+          <th>指標</th>
+          <th>JPコピトレ</th>
+          <th>業界平均</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>最大ドローダウン</td>
+          <td class="v-gold">-1.9%</td>
+          <td class="v-bad">-30〜50%</td>
+        </tr>
+        <tr>
+          <td>ロスカット回数</td>
+          <td class="v-good">0回</td>
+          <td class="v-bad">複数回</td>
+        </tr>
+        <tr>
+          <td>実績検証</td>
+          <td class="v-good">FXBlue（第三者機関）</td>
+          <td class="v-bad">スクリーンショットのみ</td>
+        </tr>
+        <tr>
+          <td>履歴公開</td>
+          <td class="v-good">全履歴公開</td>
+          <td class="v-bad">一部・期間選択</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="dd-note">
+      <p>「ドローダウン」とは、資産がピークから最大でどれだけ下落したかを示す指標です。多くのトレーダーが高収益を謳う一方で、一度の暴落で資金が半減・全滅するケースが後を絶ちません。</p>
+      <p>JPコピトレは<strong>最大でも-1.9%の損失に抑え</strong>、9ヶ月間一度もロスカット（強制決済による口座破綻）を起こしていません。</p>
+      <p>この数値が何を意味するか。リスク管理において、世界トップレベルのパフォーマンスと言っても過言ではありません。</p>
+    </div>
+
+    <div class="img-ph" style="height:240px;margin-top:24px;">
+      <div class="img-ph-ic">&#9638;</div>
+      <div class="img-ph-lbl">最大ドローダウン 推移チャート</div>
+      <div class="img-ph-note">assets/drawdown-chart.png を配置してください</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-inner">
+    <div class="gold-bar" style="margin:0 auto 24px;"></div>
+    <h2 class="cta-h">この実績に参加したい方へ</h2>
+    <p class="cta-sub">
+      詳細・参加方法・ご質問は<strong>公式LINEにてご案内</strong>しています。<br>
+      完全無料で登録できます。
+    </p>
+    <a href="https://lin.ee/qjpV7zY" class="cta-btn">公式LINEはこちら</a>
+    <div class="cta-note">登録無料 · いつでも退会可能</div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<footer class="legal">
+  <div class="legal-inner">
+    <div class="legal-tag">重要事項 · 法的免責事項</div>
+
+    <div class="legal-box">
+      <p><strong>【免責事項】</strong> 本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。掲載されている情報はアフィリエイト報酬を目的として作成されています。</p>
+    </div>
+
+    <div class="legal-box">
+      <p><strong>【リスク警告】</strong> FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。過去の実績は将来の利益を保証するものではありません。掲載の運用実績はリアル口座の実績ですが、同等の成果を保証するものではありません。本ページに記載されている情報は投資助言を構成するものではありません。</p>
+    </div>
+
+    <div class="legal-box">
+      <p><strong>【規制情報】</strong> XMTradingはASIC（オーストラリア証券投資委員会）・CySEC（キプロス証券取引委員会）・IFSC（ベリーズ国際金融サービス委員会）の規制を受けています。日本居住者の方は、海外FX業者の利用に際して適用される法律・規制をご確認ください。</p>
+    </div>
+
+    <p class="legal-copy">© 2026 JP コピトレ · All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>

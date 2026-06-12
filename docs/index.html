@@ -810,9 +810,9 @@ function buildBtns(p){
   // 生成: 常に表示 (ラベルは状態で切り替え)
   const genLabel=p.generated?'🔧 再生成':'🔧 生成';
   b.push(`<button class="abtn abtn-gen" onclick="openGenerate('${p.id}')">${genLabel}</button>`);
-  // プレビュー: 生成済みなら表示（raw.githack: assets/ の画像・動画も相対パスで表示できる）
+  // プレビュー: 生成済みなら表示（GitHub Pages配信: assets/ の画像・動画も確実に表示される）
   if(p.generated){
-    const prev=`https://raw.githack.com/${OWNER}/${REPO}/main/pages/${p.slug}/index.html`;
+    const prev=`https://${OWNER.toLowerCase()}.github.io/${REPO}/preview/${p.slug}/`;
     b.push(`<a href="${prev}" target="_blank" class="abtn abtn-preview">👁 プレビュー</a>`);
   }
   // デザイン比較: 同一ベーススラッグ（-v2/-v3）の生成済み案が2つ以上あるとき
@@ -911,7 +911,7 @@ function openCompare(slug){
   refreshTokenUI();
   setWfStatus('cmp-wf-status','','');
   document.getElementById('cmp-grid').innerHTML=group.map(v=>{
-    const url=`https://raw.githack.com/${OWNER}/${REPO}/main/pages/${v.slug}/index.html`;
+    const url=`https://${OWNER.toLowerCase()}.github.io/${REPO}/preview/${v.slug}/`;
     return `<div class="cmp-pane">
       <div class="cmp-pane-hdr">
         <span class="badge badge-${v.status}">${v.status}</span>
