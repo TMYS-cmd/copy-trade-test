@@ -1157,14 +1157,14 @@ function saveGHToken(inputId){
 }
 function refreshTokenUI(){
   const ok=!!getGHToken();
+  // 入力欄は常に表示する（Tokenが無効化された場合に上書きできるようにするため）
   ['del','unpub','app','cmp'].forEach(pfx=>{
     const input=document.getElementById(pfx+'-token-input');
     const okEl=document.getElementById(pfx+'-token-ok');
     if(!input||!okEl)return;
-    input.style.display=ok?'none':'block';
-    const saveBtn=input.parentElement?.querySelector('.wf-token-save');
-    if(saveBtn)saveBtn.style.display=ok?'none':'inline-block';
+    input.placeholder=ok?'新しいTokenに変更する場合はここに貼り付け':'ghp_xxxxxxxxxxxxxxxxxxxx';
     okEl.style.display=ok?'block':'none';
+    okEl.textContent='✅ Token設定済み — 「Bad credentials」エラーが出る場合は新しいTokenを上に貼って保存';
   });
 }
 
