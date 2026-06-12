@@ -208,11 +208,6 @@ button{font-family:inherit;cursor:pointer}
 .dp-card:hover{border-color:#94a3b8}
 .dp-card.sel{border-color:var(--violet);box-shadow:0 0 0 3px rgba(124,58,237,.12)}
 .dp-preview{height:72px;padding:5px;display:flex;flex-direction:column;gap:3px;overflow:hidden}
-.dp-ph{flex:0 0 26px;border-radius:2px;position:relative}
-.dp-ph::after{content:'';position:absolute;left:5px;right:35%;bottom:6px;height:2px;border-radius:1px;background:currentColor;opacity:.55}
-.dp-pf{display:flex;gap:2px;flex:1;margin-top:1px}
-.dp-pfb{flex:1;border-radius:2px;opacity:.75}
-.dp-pc{height:6px;width:36%;align-self:flex-end;border-radius:2px;margin:2px auto 0}
 .dp-ref{font-size:.56rem;font-weight:600;letter-spacing:.05em;color:#94a3b8;padding:0 7px 3px;text-align:right;opacity:.7}
 .dp-label{font-size:.68rem;font-weight:600;color:var(--text-dim);padding:4px 7px;border-top:1px solid var(--border);background:var(--surface2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* variant count */
@@ -272,6 +267,26 @@ button{font-family:inherit;cursor:pointer}
 /* ── status-specific buttons ── */
 .abtn-unpublish{background:rgba(245,158,11,.1);color:#92400e;border:1px solid rgba(245,158,11,.25)}
 .abtn-delete{background:rgba(220,38,38,.06);color:#991b1b;border:1px solid rgba(220,38,38,.16)}
+.abtn-refine{background:rgba(124,58,237,.08);color:#6d28d9;border:1px solid rgba(124,58,237,.2)}
+.abtn-compare{background:rgba(2,132,199,.08);color:#0369a1;border:1px solid rgba(2,132,199,.25)}
+
+/* ── approve modal ── */
+.approve-exec-btn{width:100%;background:#16a34a;color:#fff;border:none;border-radius:var(--r);padding:10px;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s}
+.approve-exec-btn:hover{background:#15803d}
+.approve-exec-btn:disabled{background:#94a3b8;cursor:not-allowed}
+
+/* ── design compare modal ── */
+.modal-wide{max-width:min(1500px,96vw)}
+.cmp-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+.cmp-pane{border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
+.cmp-pane-hdr{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid var(--border);background:var(--surface2);flex-wrap:wrap}
+.cmp-pane-slug{font-family:'Consolas',monospace;font-size:.74rem;font-weight:700;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cmp-frame{width:100%;height:540px;border:none;background:#fff}
+.cmp-btn{display:inline-flex;align-items:center;gap:3px;padding:4px 10px;border-radius:var(--r);font-size:.7rem;font-weight:700;border:none;cursor:pointer;white-space:nowrap;text-decoration:none;transition:opacity .15s}
+.cmp-btn:hover{opacity:.8}
+.cmp-adopt{background:rgba(22,163,74,.12);color:#15803d;border:1px solid rgba(22,163,74,.25)}
+.cmp-del{background:rgba(220,38,38,.07);color:#b91c1c;border:1px solid rgba(220,38,38,.2)}
+.cmp-open{background:var(--surface);color:var(--text-dim);border:1px solid var(--border)}
 </style>
 </head>
 <body>
@@ -298,7 +313,7 @@ button{font-family:inherit;cursor:pointer}
 <main class="main">
   <div class="tab-panel active" id="panel-lp">
     <div class="guide-banner">
-      <div class="guide-banner-txt"><strong>LP作成フロー:</strong> ① 新規LP作成フォーム → ② YAML追記&amp;コミット → ③ Claude Code で生成 → ④ 承認 → Netlify公開</div>
+      <div class="guide-banner-txt"><strong>LP作成フロー:</strong> ① 新規LP作成（複数デザイン案OK） → ② Claude Code に貼り付け → ③ ⚖️ 比較・🔁 修正 → ④ ✅ 承認 → Netlify公開</div>
       <div class="guide-banner-btns">
         <button class="new-lp-btn" onclick="openNewLP()">✨ 新規LP作成</button>
         <button class="abtn abtn-gen" style="border:1px solid rgba(37,99,235,.2)" onclick="openGuide()">📋 全ステップガイド</button>
@@ -316,14 +331,72 @@ button{font-family:inherit;cursor:pointer}
   </div>
 </main>
 
-<!-- Workflow Modal -->
-<div class="overlay" id="ov-wf" onclick="closeModal('ov-wf')">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-hdr"><h3 id="wf-title">ワークフロー実行</h3><button class="modal-x" onclick="closeModal('ov-wf')">✕</button></div>
-    <div class="modal-body" id="wf-body"></div>
+<!-- Approve Confirm Modal -->
+<div class="overlay" id="ov-approve" onclick="closeModal('ov-approve')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:480px">
+    <div class="modal-hdr"><h3>✅ 承認して公開する</h3><button class="modal-x" onclick="closeModal('ov-approve')">✕</button></div>
+    <div class="modal-body">
+      <div style="background:rgba(22,163,74,.07);border:1px solid rgba(22,163,74,.2);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-size:.78rem;color:#166534;line-height:1.65">
+        ✅ <strong>pages/</strong> のHTMLを <strong>_approved/</strong> にコピーし、Netlifyに公開します。<br>⚠️ 承認後は<strong>即座に公開</strong>されます。先に「👁 プレビュー」で内容・リンク・免責事項を確認してください。
+      </div>
+      <div class="slug-box" style="margin-bottom:12px"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">承認対象 slug:</div><span class="slug-val" id="app-slug-val">—</span></div></div>
+      <div id="app-token-section">
+        <div style="font-size:.73rem;font-weight:600;color:var(--text-dim);margin-bottom:3px">🔑 GitHub Personal Access Token</div>
+        <div style="font-size:.69rem;color:var(--text-muted);margin-bottom:6px">他のモーダルで保存済みの場合は省略可。</div>
+        <div class="wf-token-row">
+          <input class="wf-token-input" type="password" id="app-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+          <button class="wf-token-save" onclick="saveGHToken('app-token-input')">保存</button>
+        </div>
+        <div class="wf-token-ok" id="app-token-ok">✅ Token設定済み</div>
+      </div>
+      <div style="margin-top:12px">
+        <button class="approve-exec-btn" id="app-exec-btn" onclick="execApprove()">✅ 承認して公開する</button>
+        <div class="wf-status" id="app-wf-status"></div>
+      </div>
+    </div>
+    <div class="modal-foot"><button class="icon-btn" onclick="closeModal('ov-approve')">キャンセル</button></div>
+  </div>
+</div>
+
+<!-- Design Compare Modal -->
+<div class="overlay" id="ov-compare" onclick="closeModal('ov-compare')">
+  <div class="modal modal-wide" onclick="event.stopPropagation()">
+    <div class="modal-hdr"><h3>⚖️ デザイン比較</h3><button class="modal-x" onclick="closeModal('ov-compare')">✕</button></div>
+    <div class="modal-body">
+      <div class="wf-desc">各案を見比べて、採用する案の <strong>「✅ この案を採用」</strong> を押してください（承認 → Netlify公開）。不採用の案は <strong>「🗑 削除」</strong> で整理できます。</div>
+      <div id="cmp-token-row" style="display:none;margin-bottom:12px">
+        <div style="font-size:.73rem;font-weight:600;color:var(--text-dim);margin-bottom:3px">🔑 GitHub Personal Access Token（採用・削除に必要）</div>
+        <div class="wf-token-row" style="margin-top:4px">
+          <input class="wf-token-input" type="password" id="cmp-token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+          <button class="wf-token-save" onclick="saveGHToken('cmp-token-input')">保存</button>
+        </div>
+        <div class="wf-token-ok" id="cmp-token-ok">✅ Token設定済み</div>
+      </div>
+      <div class="cmp-grid" id="cmp-grid"></div>
+      <div class="wf-status" id="cmp-wf-status"></div>
+    </div>
+    <div class="modal-foot"><button class="icon-btn" onclick="closeModal('ov-compare')">閉じる</button></div>
+  </div>
+</div>
+
+<!-- Refine (design feedback) Modal -->
+<div class="overlay" id="ov-refine" onclick="closeModal('ov-refine')">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:560px">
+    <div class="modal-hdr"><h3>🔁 デザイン修正依頼 — <span id="rf-id-lbl" style="font-family:monospace;font-size:.85rem;color:#6d28d9">lp-001</span></h3><button class="modal-x" onclick="closeModal('ov-refine')">✕</button></div>
+    <div class="modal-body">
+      <div class="wf-desc" style="background:rgba(124,58,237,.06);border-color:rgba(124,58,237,.18)">生成済みのLPを<strong>作り直さずに部分修正</strong>します。直してほしい点を具体的に書くと修正依頼文が生成されるので、Claude Code に貼り付けるだけです。</div>
+      <div class="fg">
+        <label class="fl">修正フィードバック<span class="fl-hint">具体的に書くほど精度が上がります</span></label>
+        <textarea class="fta" id="rf-input" rows="5" placeholder="例:&#10;- ヒーローの見出しをもっと大きく・太く&#10;- 全体の配色をもう少し明るいトーンに&#10;- CTAボタンを各セクションの末尾にも追加&#10;- 実績の数字をグラフ表示に変える"></textarea>
+      </div>
+      <div class="prompt-box" id="rf-out-box" style="display:none">
+        <pre class="prompt-pre" id="rf-out"></pre>
+        <button class="cp-slug-btn" onclick="cpMark(this,document.getElementById('rf-out').textContent)">📋 修正依頼文をコピー</button>
+      </div>
+    </div>
     <div class="modal-foot">
-      <button class="icon-btn" onclick="closeModal('ov-wf')">閉じる</button>
-      <a id="wf-open-btn" href="#" target="_blank" class="open-wf-btn" onclick="onWfOpen()">GitHub Actions を開く →</a>
+      <button class="icon-btn" onclick="closeModal('ov-refine')">閉じる</button>
+      <button class="primary-btn" onclick="buildRefinePrompt()">修正依頼文を生成 →</button>
     </div>
   </div>
 </div>
@@ -382,8 +455,12 @@ button{font-family:inherit;cursor:pointer}
               </div>
             </div></div></div>
         <div class="tl-item"><div class="tl-left"><div class="tl-num">3</div><div class="tl-line"></div></div>
+          <div class="tl-right"><div class="tl-title">デザインを確認・調整</div>
+            <div class="tl-body"><strong>「👁 プレビュー」</strong>で内容を確認。複数案を生成した場合は<strong>「⚖️ 比較」</strong>で並べて見比べられます。直したい点があれば<strong>「🔁 修正」</strong>に書くだけで修正依頼文ができるので、Claude Code に貼り付けて部分修正。</div>
+          </div></div>
+        <div class="tl-item"><div class="tl-left"><div class="tl-num">4</div><div class="tl-line"></div></div>
           <div class="tl-right"><div class="tl-title">承認して公開</div>
-            <div class="tl-body">LPカードの <strong>「👁 プレビュー」</strong> で内容を確認後、<strong>「✅ 承認」</strong> をクリック → GitHub Actions で approve-page.yml が実行され、pages/ → _approved/ → Netlify即時公開。</div>
+            <div class="tl-body"><strong>「✅ 承認」</strong>→ モーダルの<strong>「✅ 承認して公開する」</strong>ボタンを押すだけ（GitHub Token が必要・初回のみ設定）。約1分でNetlifyに公開されます。比較画面の<strong>「✅ この案を採用」</strong>からも承認できます。</div>
           </div></div>
       </div>
     </div>
@@ -548,59 +625,8 @@ button{font-family:inherit;cursor:pointer}
       </div>
 
       <div class="form-section">
-        <div class="form-section-title">🎨 デザインパターン<span class="fl-hint" style="font-weight:400">ベースデザインを選択（後から変更可）</span></div>
-        <div class="dp-grid" id="nlp-dp-grid">
-          <!-- Apple style -->
-          <div class="dp-card" data-dpid="apple-clean" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#f5f5f7">
-              <div class="dp-ph" style="background:#e5e5ea;color:#0071e3"></div>
-              <div class="dp-pf"><div class="dp-pfb" style="background:#e5e5ea"></div><div class="dp-pfb" style="background:#ececec"></div><div class="dp-pfb" style="background:#e5e5ea"></div></div>
-              <div class="dp-pc" style="background:#0071e3"></div>
-            </div>
-            <div class="dp-ref">ref: apple.com</div>
-            <div class="dp-label">Appleスタイル</div>
-          </div>
-          <!-- Stripe style -->
-          <div class="dp-card" data-dpid="stripe-fintech" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#0a2540">
-              <div class="dp-ph" style="background:linear-gradient(135deg,#0a2540,#3d1a7a);color:#a78bfa"></div>
-              <div class="dp-pf"><div class="dp-pfb" style="background:#0d2f55"></div><div class="dp-pfb" style="background:#1a3a5c"></div><div class="dp-pfb" style="background:#0d2f55"></div></div>
-              <div class="dp-pc" style="background:#625afa"></div>
-            </div>
-            <div class="dp-ref">ref: stripe.com</div>
-            <div class="dp-label">Stripeスタイル</div>
-          </div>
-          <!-- Tesla style -->
-          <div class="dp-card" data-dpid="tesla-dark" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#000">
-              <div class="dp-ph" style="background:#0d0d0d;color:#e82127"></div>
-              <div class="dp-pf"><div class="dp-pfb" style="background:#0a0a0a"></div><div class="dp-pfb" style="background:#111"></div><div class="dp-pfb" style="background:#0a0a0a"></div></div>
-              <div class="dp-pc" style="background:#e82127"></div>
-            </div>
-            <div class="dp-ref">ref: tesla.com</div>
-            <div class="dp-label">Teslaスタイル</div>
-          </div>
-          <!-- Airbnb style -->
-          <div class="dp-card" data-dpid="airbnb-warm" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#fff">
-              <div class="dp-ph" style="background:#ff5a5f;color:#fff"></div>
-              <div class="dp-pf"><div class="dp-pfb" style="background:#f7f7f7"></div><div class="dp-pfb" style="background:#fff;border:1px solid #e5e5e5"></div><div class="dp-pfb" style="background:#f7f7f7"></div></div>
-              <div class="dp-pc" style="background:#ff5a5f"></div>
-            </div>
-            <div class="dp-ref">ref: airbnb.com</div>
-            <div class="dp-label">Airbnbスタイル</div>
-          </div>
-          <!-- Finance/Bloomberg style -->
-          <div class="dp-card" data-dpid="finance-navy" onclick="selectDP(this)">
-            <div class="dp-preview" style="background:#0b1f3a">
-              <div class="dp-ph" style="background:#0d2545;color:#c9a227"></div>
-              <div class="dp-pf"><div class="dp-pfb" style="background:#0d2545"></div><div class="dp-pfb" style="background:#142d5a"></div><div class="dp-pfb" style="background:#0d2545"></div></div>
-              <div class="dp-pc" style="background:#c9a227"></div>
-            </div>
-            <div class="dp-ref">ref: bloomberg.com</div>
-            <div class="dp-label">ファイナンス</div>
-          </div>
-        </div>
+        <div class="form-section-title">🎨 デザインパターン<span class="fl-hint" style="font-weight:400">ベースデザインを選択（推奨フォントも自動選択）</span></div>
+        <div class="dp-grid" id="nlp-dp-grid"></div>
         <div style="margin-top:8px">
           <div id="nlp-dp-desc" style="font-size:.73rem;color:var(--text-muted);min-height:18px"></div>
         </div>
@@ -784,14 +810,20 @@ function buildBtns(p){
   // 生成: 常に表示 (ラベルは状態で切り替え)
   const genLabel=p.generated?'🔧 再生成':'🔧 生成';
   b.push(`<button class="abtn abtn-gen" onclick="openGenerate('${p.id}')">${genLabel}</button>`);
-  // プレビュー: 生成済みなら表示
+  // プレビュー: 生成済みなら表示（raw.githack: assets/ の画像・動画も相対パスで表示できる）
   if(p.generated){
-    const prev=`https://htmlpreview.github.io/?https://github.com/${OWNER}/${REPO}/blob/main/pages/${p.slug}/index.html`;
+    const prev=`https://raw.githack.com/${OWNER}/${REPO}/main/pages/${p.slug}/index.html`;
     b.push(`<a href="${prev}" target="_blank" class="abtn abtn-preview">👁 プレビュー</a>`);
   }
-  // 承認: 生成済み かつ まだ公開されていない場合のみ
+  // デザイン比較: 同一ベーススラッグ（-v2/-v3）の生成済み案が2つ以上あるとき
+  if(p.generated&&variantGroupOf(p).length>=2)
+    b.push(`<button class="abtn abtn-compare" onclick="openCompare('${p.slug}')">⚖️ 比較</button>`);
+  // 修正依頼: 生成済みなら表示（部分修正の依頼文を生成）
+  if(p.generated)
+    b.push(`<button class="abtn abtn-refine" onclick="openRefine('${p.id}')">🔁 修正</button>`);
+  // 承認: 生成済み かつ まだ公開されていない場合のみ（ワンクリックでActions起動）
   if(p.generated&&!p.approved_file){
-    b.push(`<button class="abtn abtn-approve" onclick="openWf('approve','${p.slug}')">✅ 承認</button>`);
+    b.push(`<button class="abtn abtn-approve" onclick="openApprove('${p.slug}')">✅ 承認</button>`);
   }
   // 公開LP: 承認済み
   if(p.approved_file&&p.netlify_url)
@@ -803,12 +835,6 @@ function buildBtns(p){
   b.push(`<button class="abtn abtn-delete" onclick="openDelete('${p.slug}')">🗑 削除</button>`);
   return b.join('');
 }
-
-const WF={
-  approve:{title:'✅ 承認 — approve-page.yml',url:`https://github.com/${OWNER}/${CORE}/actions/workflows/approve-page.yml`,
-    desc:'pages/ のHTMLを _approved/ にコピーしNetlifyへ即時デプロイします。⚠️ 承認後は即公開されます。',
-    steps:['<strong>「👁 プレビュー」</strong>で内容・リンク・免責事項を確認','下の<strong>スラッグをコピー</strong>する','GitHub Actions で approve-page.yml を実行','slug を貼り付けて「Run workflow」','完了後: <strong>「🌐 公開LP」</strong>でNetlifyを確認']}
-};
 
 function openUnpublish(slug){
   document.getElementById('unpub-slug-val').textContent=slug;
@@ -825,20 +851,128 @@ function openDelete(slug){
   openModal('ov-delete');
 }
 
-let curWfSlug='';
-function openWf(type,slug){
-  const c=WF[type];curWfSlug=slug;
-  document.getElementById('wf-title').textContent=c.title;
-  document.getElementById('wf-open-btn').href=c.url;
-  const steps=c.steps.map((s,i)=>`<div class="step-item"><div class="step-num">${i+1}</div><div class="step-txt">${s}</div></div>`).join('');
-  document.getElementById('wf-body').innerHTML=`<div class="wf-desc">${c.desc}</div>
-    <div class="slug-box"><div><div style="font-size:.67rem;color:var(--text-muted);margin-bottom:3px">slug:</div>
-    <span class="slug-val">${esc(slug)}</span></div>
-    <button class="cp-slug-btn" onclick="cpMark(this,'${slug}')">📋 コピー</button></div>
-    <div class="step-list">${steps}</div>`;
-  openModal('ov-wf');
+/* ── one-click approve ── */
+function openApprove(slug){
+  document.getElementById('app-slug-val').textContent=slug;
+  document.getElementById('app-exec-btn').disabled=false;
+  setWfStatus('app-wf-status','','');
+  refreshTokenUI();
+  openModal('ov-approve');
 }
-function onWfOpen(){cp(curWfSlug);showToast('「'+curWfSlug+'」をコピーしました')}
+async function execApprove(){
+  const slug=document.getElementById('app-slug-val').textContent;
+  if(!slug||slug==='—')return;
+  const btn=document.getElementById('app-exec-btn');
+  btn.disabled=true;
+  setWfStatus('app-wf-status','loading','⏳ approve-page.yml を起動中...');
+  try{
+    await triggerWorkflow('approve-page.yml',slug);
+    setWfStatus('app-wf-status','success','✅ 承認ワークフローを起動しました！30〜60秒後にNetlifyへ公開されます。「🔄 更新」で確認してください。');
+    setTimeout(()=>load(true),60000);
+  }catch(e){
+    setWfStatus('app-wf-status','error','❌ エラー: '+e.message);
+    btn.disabled=false;
+  }
+}
+
+/* ── design refine (partial fix request) ── */
+let curRefineId='';
+function openRefine(id){
+  curRefineId=id;
+  document.getElementById('rf-id-lbl').textContent=id;
+  document.getElementById('rf-input').value='';
+  document.getElementById('rf-out-box').style.display='none';
+  openModal('ov-refine');
+}
+function buildRefinePrompt(){
+  const fb=document.getElementById('rf-input').value.trim();
+  if(!fb){showToast('修正してほしい内容を入力してください');return;}
+  const p=pages.find(x=>x.id===curRefineId);
+  const slug=p?.slug||curRefineId;
+  let r='「'+curRefineId+' ('+slug+') のLPを修正してください。\n';
+  r+='対象ファイル: copy-trade-test/pages/'+slug+'/index.html\n\n';
+  r+='## 修正フィードバック\n'+fb+'\n\n';
+  r+='## ルール\n- 既存のデザイン・トンマナ・構成は維持し、フィードバック箇所のみ改善する\n- HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）\n- 免責事項・リスク警告セクションは必ず保持する\n\n';
+  r+='修正完了後、以下を Bash ツールで実行してください:\n```bash\nbash scripts/post-generate.sh '+curRefineId+'\n```」';
+  document.getElementById('rf-out').textContent=r;
+  document.getElementById('rf-out-box').style.display='flex';
+}
+
+/* ── variant compare ── */
+function baseSlug(s){return s.replace(/-v\d+$/,'')}
+function variantGroupOf(p){
+  const base=baseSlug(p.slug);
+  return pages.filter(q=>baseSlug(q.slug)===base&&q.generated);
+}
+function openCompare(slug){
+  const p=pages.find(x=>x.slug===slug);if(!p)return;
+  const group=variantGroupOf(p);
+  document.getElementById('cmp-token-row').style.display=getGHToken()?'none':'block';
+  refreshTokenUI();
+  setWfStatus('cmp-wf-status','','');
+  document.getElementById('cmp-grid').innerHTML=group.map(v=>{
+    const url=`https://raw.githack.com/${OWNER}/${REPO}/main/pages/${v.slug}/index.html`;
+    return `<div class="cmp-pane">
+      <div class="cmp-pane-hdr">
+        <span class="badge badge-${v.status}">${v.status}</span>
+        <span class="cmp-pane-slug" title="${esc(v.slug)}">${esc(v.slug)}</span>
+        <a href="${url}" target="_blank" class="cmp-btn cmp-open">🗗 別タブ</a>
+        ${v.approved_file?'':`<button class="cmp-btn cmp-adopt" onclick="adoptVariant('${v.slug}',this)">✅ この案を採用</button>`}
+        <button class="cmp-btn cmp-del" onclick="deleteVariant('${v.slug}',this)">🗑 削除</button>
+      </div>
+      <iframe class="cmp-frame" src="${url}" loading="lazy"></iframe>
+    </div>`;
+  }).join('');
+  openModal('ov-compare');
+}
+async function adoptVariant(slug,btn){
+  if(!getGHToken()){setWfStatus('cmp-wf-status','error','❌ GitHub Token が未設定です。上の入力欄から保存してください。');document.getElementById('cmp-token-row').style.display='block';return;}
+  if(!confirm('「'+slug+'」を承認してNetlifyに公開します。よろしいですか？'))return;
+  btn.disabled=true;btn.textContent='⏳ 起動中...';
+  try{
+    await triggerWorkflow('approve-page.yml',slug);
+    btn.textContent='✅ 承認起動済み';
+    setWfStatus('cmp-wf-status','success','✅ 「'+slug+'」の承認ワークフローを起動しました。30〜60秒後にNetlifyへ公開されます。不採用の案は「🗑 削除」で整理できます。');
+    setTimeout(()=>load(true),60000);
+  }catch(e){
+    btn.disabled=false;btn.textContent='✅ この案を採用';
+    setWfStatus('cmp-wf-status','error','❌ エラー: '+e.message);
+  }
+}
+async function deleteVariant(slug,btn){
+  if(!getGHToken()){setWfStatus('cmp-wf-status','error','❌ GitHub Token が未設定です。上の入力欄から保存してください。');document.getElementById('cmp-token-row').style.display='block';return;}
+  if(!confirm('「'+slug+'」を完全削除します（pages/・_approved/）。この操作は取り消せません。よろしいですか？'))return;
+  btn.disabled=true;btn.textContent='⏳ 削除中...';
+  try{
+    await triggerWorkflow('delete-page.yml',slug);
+    btn.textContent='🗑 削除起動済み';
+    btn.closest('.cmp-pane').style.opacity='.35';
+    setWfStatus('cmp-wf-status','success','✅ 「'+slug+'」の削除ワークフローを起動しました。');
+    setTimeout(()=>load(true),60000);
+  }catch(e){
+    btn.disabled=false;btn.textContent='🗑 削除';
+    setWfStatus('cmp-wf-status','error','❌ エラー: '+e.message);
+  }
+}
+
+/* 新規生成・再生成で共通のデザイン品質要件（重複定義によるドリフトを防ぐ） */
+function commonDesignReqs(){
+  let r='';
+  r+='## YouTube埋め込みの要件（YouTubeリンクが含まれる場合）\n';
+  r+='YouTubeのURLをiframeで埋め込む場合は必ず以下のパラメータを付与すること:\n';
+  r+='- src: https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID\n';
+  r+='- allow属性: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"\n';
+  r+='- loading="lazy" は付けない（autoplayと競合するため）\n\n';
+  r+='## ヒーロー・ファーストビューの要件（必須）\n';
+  r+='ファーストビューは訪問者に強いインパクトを与えること:\n';
+  r+='- 高さ: min-height:90vh以上でフルスクリーン表示\n';
+  r+='- 背景: 単色・単純グラデーション禁止。複数のradial-gradientや装飾要素を重ねた、デザインパターンのトーンに合った奥行きのある多層背景\n';
+  r+='- デスクトップ: CSS Grid 2カラム（左:キャッチコピー＋CTA、右:数値実績カード・UIモック・ビジュアル要素)\n';
+  r+='- ヘッドライン: font-size:clamp(32px,5vw,64px)以上、font-weight:900\n';
+  r+='- CTAボタン: hoverでtranslateY(-2px)＋box-shadow強調アニメーション\n';
+  r+='- スクロール前の段階で価値提案（数値・実績・キャッチ）が一目で伝わること\n\n';
+  return r;
+}
 
 function openGenerate(pageId){
   const id=pageId||'lp-001';
@@ -878,6 +1012,7 @@ function openGenerate(pageId){
     if(spec.legal.regulated_note) req+='- 規制情報: '+spec.legal.regulated_note+'\n';
     req+='\n';
   }
+  req+=commonDesignReqs();
   req+='## 参照ファイル\n- content/landing-pages.yaml（完全な仕様）\n- links/page-registry.yaml（アフィリエイトリンク）\n- links/broker-specs.yaml（ブローカー詳細情報）\n\n';
   req+='HTMLは純粋な静的HTML/CSS/JSのみ（外部CDN・フレームワーク禁止）。Noto Sans JP使用。免責事項は全ページ必須。」';
 
@@ -1022,7 +1157,7 @@ function saveGHToken(inputId){
 }
 function refreshTokenUI(){
   const ok=!!getGHToken();
-  ['del','unpub'].forEach(pfx=>{
+  ['del','unpub','app','cmp'].forEach(pfx=>{
     const input=document.getElementById(pfx+'-token-input');
     const okEl=document.getElementById(pfx+'-token-ok');
     if(!input||!okEl)return;
@@ -1091,32 +1226,79 @@ const DP_PATTERNS={
   'apple-clean':{
     label:'Appleスタイル',
     ref:'apple.com',
+    font:'noto-sans-jp',
     desc:'白背景・大きな見出し・上品な余白。Apple.comの洗練されたミニマルデザイン。',
     instruct:'参考: apple.com スタイル\n- 背景: #f5f5f7（薄グレー）、テキスト: #1d1d1f\n- アクセント: #0071e3（Appleブルー）\n- San Francisco / Noto Sans JP\n- 余白を大きく取り、コンテンツで語る\n- ヒーロー: 大きな1行見出し + 薄いサブコピー\n- 横並び特徴カード（3カラム）\n- CTAは青いシンプルボタン\n- アイコンや装飾は最小限、画像・数値で訴求'
   },
   'stripe-fintech':{
     label:'Stripeスタイル',
     ref:'stripe.com',
+    font:'noto-sans-jp',
     desc:'ダーク紫グラデーション・フィンテック感。Stripeの信頼性と先進性を表現。',
     instruct:'参考: stripe.com スタイル\n- 背景: #0a2540（ダークネイビー）、アクセント: #625afa（紫）\n- フォント: Noto Sans JP\n- ヒーロー: 斜めグラデーション（#0a2540→#1a1150）\n- 「セキュリティ」「信頼性」「実績」を数値で表現\n- グリッドカードにアイコン+説明を並べる\n- グラデーションのCTAボタン（紫→青）\n- badge/chipで証明要素（〇ヶ月実績・第三者認定）を強調'
   },
   'tesla-dark':{
     label:'Teslaスタイル',
     ref:'tesla.com',
+    font:'sofia-condensed',
     desc:'ピュアブラック・インパクトヒーロー。Tesla.comの映画的なドラマチックデザイン。',
     instruct:'参考: tesla.com スタイル\n- 背景: #000000（ピュアブラック）、アクセント: #e82127（赤）\n- 見出しフォント: Sofia Sans Condensed / Noto Sans JP\n- ヒーロー: 全幅暗い背景 + 超大型見出し（中央揃え）\n- 数値・実績・月次グラフを視覚的に表現\n- CTAを2つ横並び（メイン赤 + サブ白枠）\n- セクション境界は暗い色で自然につなぐ\n- スクロールで数値が「浮かび上がる」感覚を演出'
   },
   'airbnb-warm':{
     label:'Airbnbスタイル',
     ref:'airbnb.com',
+    font:'noto-sans-jp',
     desc:'ウォームカラー・人間味・親しみやすさ。Airbnbのコミュニティ感と安心感を演出。',
     instruct:'参考: airbnb.com スタイル\n- 背景: #ffffff（白）、アクセント: #ff5a5f（コーラルレッド）\n- フォント: Noto Sans JP\n- ヒーロー: 鮮やかな画像（assets/利用）+ 中央コピー\n- 「〇〇さんの声」風の口コミを画像付きで\n- ソフトシャドウ付きカード\n- 数値は大きく、「16ヶ月」「1000%超」を印象的に\n- 全体的に柔らかい丸み・暖色系で信頼感と親しみを演出'
   },
   'finance-navy':{
     label:'ファイナンス',
     ref:'bloomberg.com',
+    font:'biz-udp',
     desc:'ネイビー×ゴールド・データ重視。Bloomberg/Goldman風の本格的金融デザイン。',
     instruct:'参考: bloomberg.com / goldman sachs スタイル\n- 背景: #0b1f3a（ダークネイビー）、アクセント: #c9a227（ゴールド）\n- 見出しフォント: BIZ UDPGothic / Noto Sans JP\n- 月次パフォーマンステーブルを本格的な金融データ表として表現\n- ヒーローに実績数値を大きく並べる（+1029%など）\n- ゴールドの細いアクセントラインで区切り\n- プロフェッショナル・厳格・信頼性を最優先\n- 免責事項は目立つ場所に（法令遵守の観点）'
+  },
+  'linear-glass':{
+    label:'Linearスタイル',
+    ref:'linear.app',
+    font:'zen-kaku',
+    desc:'ダーク×オーロラグラデ×ガラス質感。SaaS系の最先端トレンドデザイン。',
+    instruct:'参考: linear.app スタイル\n- 背景: #08090d（ほぼ黒）、アクセント: #5e6ad2（藍紫）\n- 見出しフォント: Zen Kaku Gothic New\n- ヒーロー背景にオーロラ状のグラデーション（紫→青→ピンク）を大きくぼかして配置\n- カードは半透明白(rgba(255,255,255,.04)) + 1pxボーダー + backdrop-filter:blur のガラス質感\n- テキストは高コントラスト白、サブテキストは50%グレー\n- 1pxの精密なボーダー・繊細なグローで密度感を出す\n- ホバーでカード境界がふわっと光るインタラクション'
+  },
+  'vercel-mono':{
+    label:'Vercelスタイル',
+    ref:'vercel.com',
+    font:'sofia-condensed',
+    desc:'白黒モノクローム・シャープ・余白主導。エンジニア的な精密さと説得力。',
+    instruct:'参考: vercel.com スタイル\n- 背景: #ffffff、テキスト: #000000、色はほぼ使わない（モノクローム）\n- 見出し: 特大・font-weight:900・タイトな字間（letter-spacing:-0.03em）\n- 数値・実績は等幅フォント(monospace)で表示してデータの説得力を出す\n- セクション境界は1pxの薄いライン（#eaeaea）のみ\n- CTAは黒背景白文字の角丸ボタン（ホバーで白黒反転）\n- グラデーション・影・装飾は最小限。タイポグラフィと余白で語る'
+  },
+  'revolut-neon':{
+    label:'Revolutスタイル',
+    ref:'revolut.com',
+    font:'mplus-1p',
+    desc:'ダーク×ネオングラデーション。コンシューマー向けフィンテックの勢いと未来感。',
+    instruct:'参考: revolut.com スタイル\n- 背景: #0b0b1e（ダークパープル）、アクセント: ネオングラデーション（#e85aff→#5561ff）\n- 見出しフォント: M PLUS 1p（font-weight:900）\n- ヒーローにネオンの光彩（blurの大きいglow）を複数配置\n- 数値カウンター・実績バッジをグラデーション枠で強調\n- CTAはネオングラデーション背景、ホバーで発光が強まる\n- スマホUIモック風のカードで「自動で完結する」感を演出\n- スピード感・勢い・未来感を全面に出す'
+  },
+  'jp-energy':{
+    label:'王道LP（オレンジ）',
+    ref:'国内縦長LP',
+    font:'rampart-one',
+    desc:'日本の王道縦長LP。オレンジ×赤・バッジ・リボン・吹き出しで勢いと行動喚起。',
+    instruct:'参考: 日本国内の王道縦長LPスタイル\n- 背景: #fff7ed（クリーム）、メイン: #ff6b1a（オレンジ）、CTA: #e11d48（赤）\n- 見出しフォント: Rampart One（インパクト見出し）+ Noto Sans JP（本文）\n- 「無料」「期間限定」などのバッジ・リボン装飾を活用（虚偽の数値・実態のない限定表記は禁止）\n- 吹き出し・矢印・「↓」マークで視線誘導しながら縦に読ませる構成\n- CTAボタンは特大・赤・パルスアニメーション付きで複数箇所に設置\n- 特典・ボーナスはギフトボックス風の枠で強調\n- 口コミはLINE風の吹き出しチャットUIで表現'
+  },
+  'luxury-noir':{
+    label:'高級プライベートバンク',
+    ref:'高級金融ブランド',
+    font:'kaisei-decol',
+    desc:'黒×ゴールド×明朝体。富裕層向けの静かな高級感と信頼。',
+    instruct:'参考: プライベートバンク・高級ブランドスタイル\n- 背景: #0c0a08（漆黒）、アクセント: #d4af37（ゴールド）\n- 見出しフォント: Kaisei Decol（明朝系・エレガント）\n- 余白を贅沢に取り、要素は少なく・大きく\n- ゴールドの極細ライン(1px)とセリフ体数字で格式を演出\n- 実績数値はゴールドのグラデーションテキストで上品に表現\n- アニメーションはゆっくりとしたフェードのみ（騒がしい動きは禁止）\n- CTAはゴールド枠の控えめなボタン（ホバーで金色に満ちる）'
+  },
+  'soft-pastel':{
+    label:'やさしい初心者向け',
+    ref:'国内SaaS（SmartHR等）',
+    font:'zen-kaku',
+    desc:'パステルブルー×丸み×図解。FX未経験者の不安を和らげる安心設計。',
+    instruct:'参考: SmartHR・freee など国内SaaSの安心系スタイル\n- 背景: #f0f9ff（薄い水色）、アクセント: #0ea5e9（スカイブルー）、補助: #34d399（ミント）\n- 見出しフォント: Zen Kaku Gothic New\n- 角丸大きめ(16px以上)・ソフトシャドウのカード\n- 難しい用語には吹き出し注釈で補足を付ける\n- 「3ステップで始められる」流れを丸数字の図解で表現\n- 不安解消FAQ（途中でやめられる？少額でもできる？）を前面に\n- CTAは「まずは無料で見てみる」のような心理障壁の低い文言'
   }
 };
 let nlpSelectedDP='';
@@ -1135,6 +1317,11 @@ function selectDP(card,gridSuffix){
     document.getElementById('nlp-dp-desc').textContent=pat?`${pat.desc} (ref: ${pat.ref})`:'';
     const inst=document.getElementById('nlp-instructions');
     if(pat&&!inst.value.trim()) inst.value=pat.instruct;
+    // 推奨フォントを自動選択（ユーザーが未選択の場合のみ）
+    if(pat&&pat.font&&!document.getElementById('nlp-selected-font').value){
+      const fcard=document.querySelector(`#nlp-font-all-grid .font-card[data-fid="${pat.font}"]`);
+      if(fcard){selectFont(fcard);const fn=FONT_LIST.find(f=>f.id===pat.font);showToast('推奨フォント「'+(fn?fn.name:pat.font)+'」を選択しました');}
+    }
   }else if(gridSuffix==='-v2') nlpSelectedDPv2=dpid;
   else if(gridSuffix==='-v3') nlpSelectedDPv3=dpid;
   saveDraft();
@@ -1166,6 +1353,12 @@ const DP_COLORS={
   'tesla-dark':   {bg:'#000',   h:'#0d0d0d',f:'#111',   c:'#e82127'},
   'airbnb-warm':  {bg:'#fff',   h:'#ff5a5f',f:'#f7f7f7',c:'#ff5a5f'},
   'finance-navy': {bg:'#0b1f3a',h:'#0d2545',f:'#142d5a',c:'#c9a227'},
+  'linear-glass': {bg:'#08090d',h:'#1b1d3a',f:'#131525',c:'#5e6ad2'},
+  'vercel-mono':  {bg:'#fff',   h:'#000',   f:'#fafafa',c:'#000'},
+  'revolut-neon': {bg:'#0b0b1e',h:'#1a1339',f:'#14102b',c:'#e85aff'},
+  'jp-energy':    {bg:'#fff7ed',h:'#ff6b1a',f:'#ffe8d6',c:'#e11d48'},
+  'luxury-noir':  {bg:'#0c0a08',h:'#1a1610',f:'#15120c',c:'#d4af37'},
+  'soft-pastel':  {bg:'#f0f9ff',h:'#bae6fd',f:'#e0f2fe',c:'#0ea5e9'},
 };
 function renderDPPreviews(){
   document.querySelectorAll('[id^="dp-prev-"]').forEach(el=>{
@@ -1386,19 +1579,7 @@ function generateLPSpec(){
     });
     req+=`HTMLでは <img src="assets/ファイル名"> または <video autoplay muted loop playsinline src="assets/ファイル名"> で参照してください。\n\n`;
   }
-  req+=`## YouTube埋め込みの要件（YouTubeリンクが含まれる場合）\n`;
-  req+=`YouTubeのURLをiframeで埋め込む場合は必ず以下のパラメータを付与すること:\n`;
-  req+=`- src: https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID\n`;
-  req+=`- allow属性: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"\n`;
-  req+=`- loading="lazy" は付けない（autoplayと競合するため）\n\n`;
-  req+=`## ヒーロー・ファーストビューの要件（必須）\n`;
-  req+=`ファーストビューは訪問者に強いインパクトを与えること:\n`;
-  req+=`- 高さ: min-height:90vh以上でフルスクリーン表示\n`;
-  req+=`- 背景: 単色・単純グラデーション禁止。複数のradial-gradientを重ねた多層背景か、アセット画像を活かした奥行きある暗めの背景\n`;
-  req+=`- デスクトップ: CSS Grid 2カラム（左:キャッチコピー＋CTA、右:数値実績カード・UIモック・ビジュアル要素）\n`;
-  req+=`- ヘッドライン: font-size:clamp(32px,5vw,64px)以上、font-weight:900\n`;
-  req+=`- CTAボタン: hoverでtranslateY(-2px)＋box-shadow強調アニメーション\n`;
-  req+=`- スクロール前の段階で価値提案（数値・実績・キャッチ）が一目で伝わること\n\n`;
+  req+=commonDesignReqs();
   req+=`## 法的要件（必須）\n- 免責事項: 本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。\n`;
   req+=`- リスク警告: FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。\n`;
   req+=`- 規制情報: XMTradingはASIC・CySEC・IFSCの規制を受けています。\n\n`;
@@ -1410,11 +1591,41 @@ function generateLPSpec(){
   // ── multi-variant prompts ──
   const isMulti=document.getElementById('nlp-multi-ck').checked;
   const variantCount=isMulti?parseInt(document.getElementById('nlp-variant-count').value)||2:1;
-  const variants=[{label:'1案目（メイン）',slug,req,yaml}];
+  const variants=[{label:'1案目（メイン）',id,slug,req,yaml}];
 
-  const buildVariantReq=(vSlug,dpId)=>{
+  // バリアントにも完全なYAMLを生成する（YAMLがないとダッシュボードに表示されず、比較・承認ができない）
+  const buildVariantYaml=(vid,vSlug,vLabel,dpId)=>{
     const pat=dpId&&DP_PATTERNS[dpId];
-    let r=`「${id}-variant (${vSlug}) のLPを以下の仕様に基づいて生成し、copy-trade-test/pages/${vSlug}/index.html に保存してください。\n\n`;
+    const V=[];
+    V.push(`- id: "${vid}"`);
+    V.push(`  slug: "${vSlug}"`);
+    V.push(`  title: "${title}（${vLabel}）"`);
+    V.push(`  status: draft`);
+    V.push(`  variant: "${variant}"`);
+    V.push(`  target_broker: "${broker}"`);
+    V.push(`  hero:`);
+    V.push(`    headline: "${headline||title}"`);
+    if(sub) V.push(`    subheadline: "${sub}"`);
+    V.push(`    cta_text: "${cta}"`);
+    if(ctaSub) V.push(`    cta_sub_text: "${ctaSub}"`);
+    V.push(`  features: []`);
+    V.push(`  faq: []`);
+    V.push(`  legal:`);
+    V.push(`    disclaimer: "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。"`);
+    V.push(`    risk_warning: "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"`);
+    V.push(`    regulated_note: "XMTradingはASIC・CySEC・IFSCの規制を受けています。"`);
+    V.push(`  gemini_instructions: |`);
+    V.push(`    # ${slug}（1案目）と同一コンテンツ・別デザインのバリアント`);
+    if(selFont) V.push(`    フォント: ${selFont.name}（見出しに使用）`);
+    if(pat) pat.instruct.split('\n').forEach(l=>V.push(`    ${l}`));
+    V.push(`  results_section:`);
+    V.push(`    show: false`);
+    return V.join('\n');
+  };
+
+  const buildVariantReq=(vid,vSlug,dpId)=>{
+    const pat=dpId&&DP_PATTERNS[dpId];
+    let r=`「${vid} (${vSlug}) のLPを以下の仕様に基づいて生成し、copy-trade-test/pages/${vSlug}/index.html に保存してください。\n\n`;
     r+=`## タイトル\n${title}（バリアント）\n\n`;
     r+=`## 基本情報\n- バリアント: ${variant}\n- ターゲットブローカー: ${broker}\n\n`;
     r+=`## ヒーロー\n- ヘッドライン: ${headline||title}\n`;
@@ -1428,15 +1639,16 @@ function generateLPSpec(){
       nlpMediaFiles.forEach(f=>{r+=`- ${f.name}\n`;});
       r+=`HTMLでは <img src="assets/ファイル名"> / <video autoplay muted loop playsinline src="assets/ファイル名"> で参照。\n\n`;
     }
+    r+=commonDesignReqs();
     r+=`## 法的要件（必須）\n- 免責事項: 本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。\n- リスク警告: FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。\n\n`;
     r+=`HTMLは純粋な静的HTML/CSS/JSのみ。免責事項必須。1案目（${slug}）と同じコンテンツ・違うデザインで生成してください。」`;
     return r;
   };
-  if(isMulti&&variantCount>=2) variants.push({label:'2案目',slug:slug+'-v2',req:buildVariantReq(slug+'-v2',nlpSelectedDPv2),yaml:`# ${slug}-v2 の仕様は 1案目と同じ（デザインパターンのみ異なる）`});
-  if(isMulti&&variantCount>=3) variants.push({label:'3案目',slug:slug+'-v3',req:buildVariantReq(slug+'-v3',nlpSelectedDPv3),yaml:`# ${slug}-v3 の仕様は 1案目と同じ（デザインパターンのみ異なる）`});
+  if(isMulti&&variantCount>=2) variants.push({label:'2案目',id:id+'-v2',slug:slug+'-v2',req:buildVariantReq(id+'-v2',slug+'-v2',nlpSelectedDPv2),yaml:buildVariantYaml(id+'-v2',slug+'-v2','2案目',nlpSelectedDPv2)});
+  if(isMulti&&variantCount>=3) variants.push({label:'3案目',id:id+'-v3',slug:slug+'-v3',req:buildVariantReq(id+'-v3',slug+'-v3',nlpSelectedDPv3),yaml:buildVariantYaml(id+'-v3',slug+'-v3','3案目',nlpSelectedDPv3)});
 
   // Build combined output (YAML + all prompts in one block)
-  let combined='content/landing-pages.yaml の pages: リストの末尾に以下のYAMLを追記してから、LPを生成してください。\n\n';
+  let combined='content/landing-pages.yaml の pages: リストの末尾に以下のYAMLを追記し、先に git add → commit → push してから、LPの生成に進んでください（コミット前に生成するとダッシュボードに表示されません）。\n\n';
   combined+='## ① YAML（content/landing-pages.yaml に追記）\n\n';
   combined+=variants.map(v=>(variants.length>1?'# === '+v.label+' ('+v.slug+') ===\n':'')+v.yaml).join('\n\n');
   combined+='\n\n## ② LP生成\n\n';
@@ -1464,8 +1676,8 @@ function generateLPSpec(){
   // ③ or ④ post-generate.sh — instruct Claude to execute via Bash tool
   const postStep=nlpMediaFiles.length?'④':'③';
   combined+='## '+postStep+' 後処理スクリプト（LP生成完了後にBashツールで実行してください）\n\n';
-  combined+='LP生成が完了したら、以下をBashツールで実行してください:\n\n';
-  combined+='```bash\nbash scripts/post-generate.sh '+id+'\n```';
+  combined+='全LPの生成が完了したら、以下をBashツールで実行してください:\n\n';
+  combined+='```bash\n'+variants.map(v=>'bash scripts/post-generate.sh '+v.id).join('\n')+'\n```';
 
   document.getElementById('nlp-combined-out').textContent=combined;
   clearDraft();
@@ -1579,6 +1791,7 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 load(false);
 setInterval(()=>load(false),60000);
 refreshTokenUI();
+document.getElementById('nlp-dp-grid').innerHTML=buildDPCards('');
 renderDPPreviews();
 // Auto-save draft on any form input
 document.getElementById('new-lp-form').addEventListener('input',saveDraft);
