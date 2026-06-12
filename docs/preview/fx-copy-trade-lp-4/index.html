@@ -125,9 +125,12 @@ img{max-width:100%}
 .hero-eyebrow::before{content:'';width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
 .hero h1{
   font-family:var(--serif);font-weight:900;
-  font-size:clamp(32px,4.6vw,58px);line-height:1.42;letter-spacing:.02em;
+  font-size:clamp(19px,5.5vw,40px);line-height:1.55;letter-spacing:.02em;
   margin-bottom:30px;
 }
+/* 2カラム時は左カラム幅に収まるサイズへ（行の折り返し防止） */
+@media(min-width:921px){.hero h1{font-size:clamp(26px,3.5vw,40px)}}
+.hero h1 .ln{display:block;white-space:nowrap} /* 1行=1フレーズ固定（途中で折り返さない） */
 .hero h1 .hl{color:var(--gold)}
 .hero-sub{font-size:1.05rem;color:var(--ink-dim);margin-bottom:48px;max-width:34em}
 .cta-row{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
@@ -333,6 +336,9 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 .sim-card .v{font-family:var(--sans);font-weight:900;font-size:clamp(26px,3vw,40px);line-height:1.2}
 .sim-card .s{font-size:.72rem;color:var(--ink-faint);margin-top:10px}
 .sim-note{font-size:.7rem;color:var(--ink-faint);line-height:1.9;margin-top:24px}
+.sim-chart-wrap{margin-top:36px;border-top:1px solid rgba(212,175,55,.1);padding-top:30px}
+.sim-chart-title{font-size:.74rem;letter-spacing:.2em;color:var(--ink-faint);margin-bottom:14px}
+#sim-chart{width:100%;height:280px;display:block}
 
 /* ── reviews ── */
 .rev-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin:0 0 40px}
@@ -389,7 +395,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   <div class="hero-inner">
     <div class="fade in">
       <span class="hero-eyebrow">VERIFIED BY MYFXBOOK</span>
-      <h1>【開始から16ヶ月<span class="hl">破綻なし</span>】<br>「日本最高峰」の戦略。<br>嘘偽りない<span class="hl">myfxbook全公開</span></h1>
+      <h1><span class="ln">【開始から16ヶ月<span class="hl">破綻なし</span>】</span><span class="ln">「日本最高峰」の戦略。</span><span class="ln">嘘偽りない<span class="hl">myfxbook全公開</span></span></h1>
       <p class="hero-sub">まずは、下記の「証拠」のすべてをあなたの目で直接確認してください。</p>
       <a class="cta-myfx" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">📈 2024年11月からの実績を確認する</a>
       <div class="cta-row">
@@ -644,6 +650,10 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
           <div class="s">月間平均 +31.59% を12ヶ月複利（約27.0倍）</div>
         </div>
       </div>
+      <div class="sim-chart-wrap">
+        <div class="sim-chart-title">資産推移イメージ（スタート → 1年後）</div>
+        <canvas id="sim-chart"></canvas>
+      </div>
       <p class="sim-note">
         ※本シミュレーターは、myfxbookが公表する過去の月間平均増加率（+31.59%・2026年6月12日時点）を機械的に当てはめた机上の試算です。
         将来の運用成果を保証するものではなく、相場状況により損失が発生する可能性があります。税金・手数料・スリッページ等は考慮していません。
@@ -815,11 +825,67 @@ function simFmt(yen){
 function simCalc(){
   var v=parseFloat(document.getElementById('sim-input').value);
   var s=document.getElementById('sim-simple'),c=document.getElementById('sim-comp');
-  if(!v||v<=0){s.textContent='—';c.textContent='—';return;}
+  if(!v||v<=0){s.textContent='—';c.textContent='—';simDraw(0);return;}
   var yen=v*10000;
   s.textContent=simFmt(yen*(1+SIM_MONTHLY*12));
   c.textContent=simFmt(yen*Math.pow(1+SIM_MONTHLY,12));
+  simDraw(yen);
 }
+/* 資産推移グラフ: y軸0起点なので複利の指数カーブが右肩上がりに大きく見える */
+function simDraw(yen){
+  var cv=document.getElementById('sim-chart');
+  if(!cv)return;
+  var dpr=window.devicePixelRatio||1;
+  var w=cv.clientWidth||600,h=280;
+  cv.width=w*dpr;cv.height=h*dpr;
+  var ctx=cv.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+  if(!yen)return;
+  var padL=8,padR=Math.min(130,w*0.25),padT=24,padB=34;
+  var iw=w-padL-padR,ih=h-padT-padB;
+  var M=12,comp=[],simp=[],t;
+  for(t=0;t<=M;t++){comp.push(yen*Math.pow(1+SIM_MONTHLY,t));simp.push(yen*(1+SIM_MONTHLY*t));}
+  var maxV=comp[M]*1.04;
+  function X(i){return padL+iw*i/M}
+  function Y(v){return padT+ih*(1-v/maxV)}
+  // 薄いグリッド
+  ctx.strokeStyle='rgba(212,175,55,.10)';ctx.lineWidth=1;
+  for(var g=1;g<=4;g++){var gy=padT+ih*g/4;ctx.beginPath();ctx.moveTo(padL,gy);ctx.lineTo(padL+iw,gy);ctx.stroke();}
+  // 複利エリア塗り（ゴールド→透明）
+  var grad=ctx.createLinearGradient(0,padT,0,padT+ih);
+  grad.addColorStop(0,'rgba(212,175,55,.38)');grad.addColorStop(1,'rgba(212,175,55,0)');
+  ctx.beginPath();ctx.moveTo(X(0),Y(comp[0]));
+  for(t=1;t<=M;t++)ctx.lineTo(X(t),Y(comp[t]));
+  ctx.lineTo(X(M),padT+ih);ctx.lineTo(X(0),padT+ih);ctx.closePath();
+  ctx.fillStyle=grad;ctx.fill();
+  // 単利ライン（点線・控えめ）
+  ctx.beginPath();ctx.setLineDash([5,5]);ctx.strokeStyle='rgba(185,174,150,.65)';ctx.lineWidth=1.5;
+  ctx.moveTo(X(0),Y(simp[0]));for(t=1;t<=M;t++)ctx.lineTo(X(t),Y(simp[t]));
+  ctx.stroke();ctx.setLineDash([]);
+  // 複利ライン（ゴールド・グロー付き）
+  ctx.save();
+  ctx.shadowColor='rgba(212,175,55,.55)';ctx.shadowBlur=14;
+  var lg=ctx.createLinearGradient(padL,0,padL+iw,0);
+  lg.addColorStop(0,'#a8842a');lg.addColorStop(1,'#f0d77b');
+  ctx.beginPath();ctx.strokeStyle=lg;ctx.lineWidth=3;ctx.lineJoin='round';ctx.lineCap='round';
+  ctx.moveTo(X(0),Y(comp[0]));for(t=1;t<=M;t++)ctx.lineTo(X(t),Y(comp[t]));
+  ctx.stroke();ctx.restore();
+  // 終点ドット
+  ctx.beginPath();ctx.fillStyle='#f0d77b';ctx.arc(X(M),Y(comp[M]),5,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.strokeStyle='rgba(240,215,123,.4)';ctx.lineWidth=2;ctx.arc(X(M),Y(comp[M]),9,0,Math.PI*2);ctx.stroke();
+  // ラベル
+  ctx.font='700 12px "Noto Sans JP",sans-serif';ctx.textAlign='left';
+  ctx.fillStyle='#f0d77b';
+  ctx.fillText('複利 '+simFmt(comp[M]),X(M)+12,Y(comp[M])+4);
+  ctx.fillStyle='rgba(185,174,150,.9)';
+  ctx.fillText('単利 '+simFmt(simp[M]),X(M)+12,Math.max(Y(simp[M])+4,Y(comp[M])+26));
+  ctx.font='11px "Noto Sans JP",sans-serif';ctx.fillStyle='rgba(125,116,95,.95)';
+  ctx.textAlign='left';ctx.fillText('スタート '+simFmt(yen),padL,padT+ih+22);
+  ctx.textAlign='center';ctx.fillText('6ヶ月',X(6),padT+ih+22);
+  ctx.textAlign='right';ctx.fillText('1年後',X(M),padT+ih+22);
+}
+window.addEventListener('resize',simCalc);
 function simPreset(btn){
   document.querySelectorAll('.sim-preset').forEach(function(b){b.classList.remove('on')});
   btn.classList.add('on');
