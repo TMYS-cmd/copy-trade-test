@@ -212,7 +212,14 @@ img{max-width:100%}
   font-family:var(--serif);font-weight:700;margin:34px 0 14px;
 }
 .compound .amt{font-size:clamp(40px,6vw,76px);line-height:1.15}
-.compound .arr{font-size:clamp(22px,3vw,34px);color:var(--gold-dim);letter-spacing:.2em}
+.compound .arr{
+  font-size:clamp(44px,8vw,84px);font-weight:900;line-height:1;
+  color:var(--gold);letter-spacing:0;
+  text-shadow:0 0 22px rgba(212,175,55,.65),0 0 6px rgba(212,175,55,.5);
+  animation:arrGlow 2.6s ease-in-out infinite;
+}
+@keyframes arrGlow{0%,100%{opacity:.78;transform:translateX(0)}50%{opacity:1;transform:translateX(6px)}}
+@media(prefers-reduced-motion:reduce){.compound .arr{animation:none}}
 .compound .cap{font-size:.78rem;color:var(--ink-faint);letter-spacing:.12em;margin-top:26px;line-height:2}
 
 /* ── cutloss ── */
@@ -376,12 +383,61 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   .sim-box{padding:40px 24px}
   .sim-results{grid-template-columns:1fr}
   .rev-grid{grid-template-columns:1fr}
+  .tb-headline{font-size:clamp(26px,7vw,40px)}
 }
+
+/* ── top attention banner (bright = strong light/dark contrast at the very top) ── */
+.topbanner{
+  background:linear-gradient(135deg,#f6e08a 0%,#d4af37 48%,#b8923a 100%);
+  color:#0c0a08;text-align:center;padding:20px 0 22px;
+  border-bottom:3px solid #0c0a08;
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+}
+.topbanner .wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+.tb-label{
+  font-size:.68rem;letter-spacing:.4em;font-weight:700;color:#5a4708;
+}
+.tb-headline{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(30px,5.4vw,52px);letter-spacing:.04em;line-height:1.2;
+}
+.tb-headline .em{position:relative;display:inline-block}
+.tb-headline .em::after{
+  content:'';position:absolute;left:0;right:0;bottom:.08em;height:.16em;
+  background:rgba(12,10,8,.18);z-index:-1;
+}
+
+/* ── myfxbook orange/black variant of the big top button ── */
+.cta-myfx.myfx-orange{
+  background:linear-gradient(135deg,#ff9a4d 0%,#ff6a00 52%,#e25600 100%);
+  border:2px solid #0c0a08;color:#0c0a08;
+  box-shadow:0 10px 36px rgba(255,106,0,.32);
+}
+.cta-myfx.myfx-orange:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 48px rgba(255,106,0,.5);
+}
+.cta-myfx .mfx-tag{
+  font-size:.62rem;font-weight:900;letter-spacing:.14em;
+  background:#0c0a08;color:#ff8a3d;padding:3px 9px;border-radius:4px;
+}
+
+/* ── why-myfxbook reasons (reuses cut-grid look) ── */
+.why-intro{
+  border:1px solid var(--gold-line);background:var(--bg-card);
+  padding:36px 38px;margin-top:46px;font-size:.96rem;color:var(--ink-dim);line-height:2;
+}
+.why-intro strong{color:var(--gold);font-weight:700}
 </style>
 </head>
 <body>
 
-<div class="ribbon">本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。FX取引は元本割れのリスクがあります。</div>
+<div class="topbanner">
+  <div class="wrap">
+    <span class="tb-label">MSC SUPERGOLD PRO ─ VERIFIED RECORD</span>
+    <strong class="tb-headline">開始以来、<span class="em">ロスカットなし。</span></strong>
+  </div>
+</div>
 
 <div class="topbar">
   <div class="wrap">
@@ -397,7 +453,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
       <span class="hero-eyebrow">VERIFIED BY MYFXBOOK</span>
       <h1><span class="ln">【開始から16ヶ月<span class="hl">破綻なし</span>】</span><span class="ln">「日本最高峰」の戦略。</span><span class="ln">嘘偽りない<span class="hl">myfxbook全公開</span></span></h1>
       <p class="hero-sub">まずは、下記の「証拠」のすべてをあなたの目で直接確認してください。</p>
-      <a class="cta-myfx" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">📈 2024年11月からの実績を確認する</a>
+      <a class="cta-myfx myfx-orange" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">2024年からの実績を<span class="mfx-tag">myfxbook</span>で確認する</a>
       <div class="cta-row">
         <a class="cta" href="https://lin.ee/Zg3o5zr" target="_blank" rel="noopener">公式LINEはこちら</a>
         <a class="btn-oc" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener"><span class="oc-tag">LINE</span>オープンチャットに参加</a>
@@ -464,7 +520,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
       <div style="font-size:.76rem;letter-spacing:.3em;color:var(--ink-faint)">COMPOUND SIMULATION ─ 2024.11 START</div>
       <div class="from-to">
         <span class="amt">10<span style="font-size:.45em">万円</span></span>
-        <span class="arr">──›</span>
+        <span class="arr" aria-hidden="true">➜</span>
         <span class="amt gold-grad">1,840<span style="font-size:.45em">万円超</span></span>
       </div>
       <p class="lead" style="margin:0 auto;max-width:38em">
@@ -523,11 +579,46 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   </div>
 </section>
 
-<!-- ════════ 3. 損切り ════════ -->
+<!-- ════════ 3. なぜ他社はmyfxbookを出せないのか ════════ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-num">03 ─ WHY MYFXBOOK</div>
+      <h2>他のシステム開発者が<br>myfxbookを「出せない」理由</h2>
+      <div class="why-intro">
+        <strong>myfxbook（マイ・エフエックス・ブック）</strong>とは、FX口座と直接連携し、
+        取引履歴・損益曲線・ドローダウンまでを自動で記録し公開する第三者機関のサービスです。
+        数字を後から書き換えることは一切できません。だからこそ、これは「最も信頼できる実績の証明」になります。
+        <br><br>
+        ネット上には自動売買やコピートレードの広告があふれていますが、
+        その多くは myfxbook を掲載していません。なぜでしょうか。
+      </div>
+    </div>
+    <div class="cut-grid fade">
+      <div class="cut-cell">
+        <div class="k gold-grad">出せない</div>
+        <h3>「出さない」のではなく「出せない」</h3>
+        <p>多くの販売者が myfxbook を載せないのは、見せたくないからではありません。載せた瞬間にすべてが明るみに出るため、そもそも載せられないのです。</p>
+      </div>
+      <div class="cut-cell">
+        <div class="k gold-grad">100<span style="font-size:.5em">%公開</span></div>
+        <h3>実績が100%公開されてしまうから</h3>
+        <p>勝ったトレードだけを切り取ることも、都合の悪い月を隠すこともできません。負けも損切りも含め、すべてが正直に記録され続けます。</p>
+      </div>
+      <div class="cut-cell">
+        <div class="k gold-grad">実力</div>
+        <h3>そもそも、ここまでの結果を出せないから</h3>
+        <p>改ざんが効かない土俵で、これだけの実績を出し続けられる戦略はごくわずか。だからこそ私たちは、堂々と myfxbook を全公開できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 4. 損切り ════════ -->
 <section class="sec">
   <div class="wrap">
     <div class="fade">
-      <div class="sec-num">03 ─ RISK CONTROL</div>
+      <div class="sec-num">04 ─ RISK CONTROL</div>
       <h2>「損切り」こそが、<br>あなたを恐怖から解放する</h2>
       <p class="lead">
         このトレードの最大の特徴は、<strong>「戦略的な損切り」</strong>を徹底している点です。
@@ -555,11 +646,11 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   </div>
 </section>
 
-<!-- ════════ 4. 月別データ ════════ -->
+<!-- ════════ 5. 月別データ ════════ -->
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     <div class="fade">
-      <div class="sec-num">04 ─ MONTHLY RECORD</div>
+      <div class="sec-num">05 ─ MONTHLY RECORD</div>
       <h2>月別のリアルな収益データ</h2>
       <p class="lead">損切りを実践しながら積み上げた、1年半の全記録です。マイナスの月も隠さず公開します。</p>
       <div class="tbl-note">
@@ -602,6 +693,12 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
         見ての通り、マイナスの月もあります。しかし、これこそが<strong>「損切りを正しく行っている証拠」</strong>であり、
         結果として破綻回数は<em>ゼロ</em>です。
       </p>
+      <div class="compound fade" style="margin-top:40px;padding:46px 40px">
+        <p class="lead" style="margin:0 auto;max-width:40em;font-size:1.1rem;color:var(--ink)">
+          月ベースで見ると、<strong>10万円で参加した場合でも、最大の下落は<em>−1.1万円</em>に抑えられています。</strong><br>
+          損切りを徹底しているからこそ、ひと月の損失も限定的です。
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -614,11 +711,11 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   </div>
 </div>
 
-<!-- ════════ 5. 収益シミュレーター ════════ -->
+<!-- ════════ 6. 収益シミュレーター ════════ -->
 <section class="sec">
   <div class="wrap">
     <div class="fade">
-      <div class="sec-num">05 ─ SIMULATOR</div>
+      <div class="sec-num">06 ─ SIMULATOR</div>
       <h2>収益シミュレーター</h2>
       <p class="lead">
         myfxbook公表の月間平均 <em>+31.59%</em>（2026年6月12日時点）をもとに、
@@ -662,11 +759,11 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   </div>
 </section>
 
-<!-- ════════ 6. 利用者レビュー ════════ -->
+<!-- ════════ 7. 利用者レビュー ════════ -->
 <section class="sec" style="padding-top:0">
   <div class="wrap">
     <div class="fade">
-      <div class="sec-num">06 ─ REVIEWS</div>
+      <div class="sec-num">07 ─ REVIEWS</div>
       <h2>利用者の声</h2>
       <div class="rev-head">
         <span class="rev-avg gold-grad">4.6</span>
@@ -730,11 +827,11 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   </div>
 </section>
 
-<!-- ════════ 7. 参加方法 ════════ -->
+<!-- ════════ 8. 参加方法 ════════ -->
 <section class="sec join">
   <div class="wrap join-inner">
     <div class="fade">
-      <div class="sec-num">07 ─ HOW TO JOIN</div>
+      <div class="sec-num">08 ─ HOW TO JOIN</div>
       <h2>参加方法</h2>
       <p class="lead">
         本案件は<strong>最低約3万円</strong>からスタートすることができます。<br><br>
@@ -758,14 +855,18 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   </div>
 </section>
 
-<!-- ════════ 8. よくある質問 ════════ -->
+<!-- ════════ 9. よくある質問 ════════ -->
 <section class="sec">
   <div class="wrap">
     <div class="fade">
-      <div class="sec-num">08 ─ FAQ</div>
+      <div class="sec-num">09 ─ FAQ</div>
       <h2>よくある質問</h2>
     </div>
     <div class="faq-list fade">
+      <div class="faq-item">
+        <div class="faq-q"><span class="fq-mark q">Q.</span>完全無料ですか？</div>
+        <div class="faq-a"><span class="fq-mark a">A.</span>全てにおいて、こちらからお金をいただくことは一切ありません。</div>
+      </div>
       <div class="faq-item">
         <div class="faq-q"><span class="fq-mark q">Q.</span>導入にお金はかかりますか？</div>
         <div class="faq-a"><span class="fq-mark a">A.</span>一切かかりません。完全無料です。</div>
