@@ -110,7 +110,7 @@ img{max-width:100%}
   background:linear-gradient(90deg,transparent,var(--gold-line),transparent);
 }
 .hero-inner{
-  position:relative;z-index:1;width:100%;max-width:720px;margin:0 auto;
+  position:relative;z-index:1;width:100%;max-width:1040px;margin:0 auto;
   padding:120px 28px 90px;
   display:block;text-align:center;
 }
@@ -130,15 +130,27 @@ img{max-width:100%}
 /* モバイルは各フレーズを自然に折り返し、PCでは1フレーズ=1行固定 */
 .hero h1 .ln{display:block}
 @media(min-width:921px){
-  .hero h1{font-size:clamp(28px,3.2vw,44px)}
+  .hero h1{font-size:clamp(34px,3.8vw,56px);line-height:1.4}
   .hero h1 .ln{white-space:nowrap}
 }
 .hero h1 .hl{color:var(--gold)}
 .hero-sub{font-size:1.05rem;color:var(--ink-dim);margin:0 auto 40px;max-width:34em}
 .cta-row{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
 /* stats plate relocated between headline and subheadline (no image) */
-.hero-plate{width:100%;max-width:560px;margin:6px auto 36px;text-align:left}
-.hero-plate .stat-label{text-align:left}
+.hero-plate{width:100%;max-width:920px;margin:14px auto 42px;text-align:left;padding:42px 46px 34px}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);margin:4px 0}
+.hero-stats .hs{padding:12px 24px;border-left:1px solid rgba(212,175,55,.14)}
+.hero-stats .hs:first-child{border-left:none;padding-left:4px}
+.hero-stats .stat-label{font-size:.76rem;color:var(--ink-dim);letter-spacing:.1em;margin-bottom:10px}
+.hero-stats .stat-val{font-family:var(--serif);font-weight:700;line-height:1.12;font-size:clamp(23px,2.2vw,34px);letter-spacing:.01em}
+.hero-stats .stat-val small{font-size:.5em;letter-spacing:.08em}
+@media(max-width:760px){
+  .hero-plate{padding:32px 24px 26px}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .hero-stats .hs{border-left:none;padding:16px 14px;border-top:1px solid rgba(212,175,55,.1)}
+  .hero-stats .hs:nth-child(odd){border-right:1px solid rgba(212,175,55,.1)}
+  .hero-stats .hs:first-child,.hero-stats .hs:nth-child(2){border-top:none}
+}
 .cta{
   position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;
   font-family:var(--serif);font-size:1.04rem;font-weight:700;letter-spacing:.14em;
@@ -459,19 +471,17 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 /* ── floating openchat button (follows scroll) ── */
 .float-oc{
   position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:95;
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  display:inline-flex;align-items:center;justify-content:center;gap:11px;
   max-width:calc(100% - 32px);
-  background:#06C755;color:#fff;border:1px solid #06C755;border-radius:999px;
-  padding:15px 30px;font-weight:700;font-size:1rem;letter-spacing:.03em;
-  box-shadow:0 10px 32px rgba(6,199,85,.5);
+  background:#06C755;color:#fff;border:1px solid #06C755;border-radius:12px;
+  padding:16px 36px;font-weight:700;font-size:1.02rem;letter-spacing:.04em;
+  box-shadow:0 12px 34px rgba(6,199,85,.5);
   transition:transform .3s ease,box-shadow .4s ease,background-color .4s ease;
 }
-.float-oc:hover{background:#05b14c;color:#fff;transform:translateX(-50%) translateY(-3px);box-shadow:0 14px 40px rgba(6,199,85,.65)}
-.float-oc .oc-tag{font-size:.62rem;font-weight:900;background:rgba(255,255,255,.22);padding:2px 8px;border-radius:5px;letter-spacing:.1em}
-.float-oc .fo-sub{font-size:.72rem;font-weight:700;opacity:.92}
+.float-oc:hover{background:#05b14c;color:#fff;transform:translateX(-50%) translateY(-3px);box-shadow:0 16px 42px rgba(6,199,85,.65)}
+.float-oc .oc-tag{font-size:.64rem;font-weight:900;background:rgba(255,255,255,.22);padding:3px 9px;border-radius:5px;letter-spacing:.1em}
 @media(max-width:600px){
-  .float-oc{padding:13px 20px;font-size:.9rem;gap:7px;bottom:12px}
-  .float-oc .fo-sub{display:block;font-size:.66rem}
+  .float-oc{padding:14px 24px;font-size:.92rem;gap:8px;bottom:12px}
 }
 body{padding-bottom:88px}
 
@@ -486,7 +496,7 @@ body{padding-bottom:88px}
 <body>
 
 <a class="float-oc" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">
-  <span class="oc-tag">LINE</span>オープンチャットはこちら<span class="fo-sub">（稼働者グループ）</span>
+  <span class="oc-tag">LINE</span>オープンチャットに参加
 </a>
 
 <div class="topbanner">
@@ -510,22 +520,20 @@ body{padding-bottom:88px}
 
       <div class="plate hero-plate" aria-label="運用実績サマリー">
         <div class="plate-title">PERFORMANCE</div>
-        <div class="stat stat-row">
-          <div class="stat-mini">
+        <div class="hero-stats">
+          <div class="hs">
             <div class="stat-label">単利（絶対増加）</div>
             <div class="stat-val gold-grad">+1,220.32<small>%</small></div>
           </div>
-          <div class="stat-mini">
+          <div class="hs">
             <div class="stat-label">複利（増加）</div>
             <div class="stat-val gold-grad">+18,303.98<small>%</small></div>
           </div>
-        </div>
-        <div class="stat stat-row">
-          <div class="stat-mini">
+          <div class="hs">
             <div class="stat-label">運用期間</div>
             <div class="stat-val">16<small>ヶ月</small></div>
           </div>
-          <div class="stat-mini">
+          <div class="hs">
             <div class="stat-label">破綻回数</div>
             <div class="stat-val">0<small>回</small></div>
           </div>
