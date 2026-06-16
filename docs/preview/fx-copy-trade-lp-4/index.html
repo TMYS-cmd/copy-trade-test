@@ -93,7 +93,9 @@ img{max-width:100%}
   transition:transform .3s ease,box-shadow .4s ease;
 }
 .tb-logo:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.45)}
-.mfb{font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.3rem;letter-spacing:-.03em}
+.mfb{font-family:'Noto Sans JP',sans-serif;font-weight:900;letter-spacing:-.03em}
+.tb-logo .mfb{font-size:1.3rem}
+.tb-logo-txt{color:#141414;font-weight:700;font-size:.82rem;letter-spacing:.02em;margin-left:8px}
 .mfb .d{color:#141414}
 .mfb .o{color:#ff7a00}
 
@@ -478,6 +480,21 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   background:#0c0a08;color:#ff8a3d;padding:3px 9px;border-radius:4px;
 }
 
+/* ── unified myfxbook button design (white chip, like the myfxbook logo) ── */
+.mfx-btn{
+  background:#fff !important;color:#141414 !important;
+  border:1px solid #ececec !important;border-radius:10px !important;
+  font-weight:900 !important;
+  box-shadow:0 6px 20px rgba(0,0,0,.22) !important;
+}
+.mfx-btn:hover{
+  background:#fff !important;color:#141414 !important;
+  transform:translateY(-2px) !important;box-shadow:0 12px 30px rgba(0,0,0,.34) !important;
+}
+.mfx-btn .mfb{font-weight:900}
+.mfx-btn .mfb .d{color:#141414}
+.mfx-btn .mfb .o{color:#ff7a00}
+
 /* ── floating openchat button (follows scroll) ── */
 .float-oc{
   position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:95;
@@ -518,7 +535,7 @@ body{padding-bottom:88px}
 <div class="topbar">
   <div class="wrap">
     <a class="tb-logo" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener" aria-label="myfxbookで実績を確認">
-      <span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>
+      <span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span><span class="tb-logo-txt">で実績を確認</span>
     </a>
   </div>
 </div>
@@ -557,7 +574,7 @@ body{padding-bottom:88px}
       </div>
 
       <p class="hero-sub">まずは、下記の「証拠」のすべてをあなたの目で直接確認してください。</p>
-      <a class="cta-myfx myfx-orange" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">2024年からの実績を<span class="mfx-tag">myfxbook</span>で確認する</a>
+      <a class="cta-myfx mfx-btn" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">2024年からの実績を<span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>で確認する</a>
       <div class="cta-row">
         <a class="cta" href="https://lin.ee/Zg3o5zr" target="_blank" rel="noopener">公式LINEはこちら</a>
         <a class="btn-oc" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener"><span class="oc-tag">LINE</span>オープンチャットに参加</a>
@@ -647,7 +664,7 @@ body{padding-bottom:88px}
         <div style="font-size:.72rem;letter-spacing:.34em;color:var(--ink-faint)">THIRD-PARTY VERIFIED</div>
         <div class="t">myfxbook 実績ページ<br><span class="gold-grad">全履歴を一般公開中</span></div>
         <p>登録不要・誰でも閲覧可能。取引履歴・損益曲線・ドローダウンまで、あなたの目で直接確認できます。</p>
-        <a class="btn-line" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">履歴はコチラ ↗</a>
+        <a class="btn-line mfx-btn" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">履歴はコチラ ↗</a>
       </div>
     </div>
   </div>
