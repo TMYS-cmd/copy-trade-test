@@ -101,7 +101,7 @@ img{max-width:100%}
 
 /* ── hero ── */
 .hero{
-  position:relative;min-height:94vh;display:flex;align-items:center;
+  position:relative;min-height:auto;display:flex;align-items:center;
   background:
     radial-gradient(ellipse 60% 48% at 78% 18%,rgba(212,175,55,.13),transparent 62%),
     radial-gradient(ellipse 44% 36% at 12% 86%,rgba(168,132,42,.10),transparent 64%),
@@ -480,6 +480,20 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   background:#0c0a08;color:#ff8a3d;padding:3px 9px;border-radius:4px;
 }
 
+/* ── MT5 video (YouTube Shorts, vertical) ── */
+.video-sec{padding-top:48px}
+.video-cap{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(1rem,2.4vw,1.3rem);color:var(--ink);
+  letter-spacing:.05em;line-height:1.7;margin-bottom:26px;
+}
+.video-frame{
+  position:relative;width:100%;max-width:340px;margin:0 auto;
+  aspect-ratio:9/16;border:1px solid var(--gold-line);
+  background:#000;box-shadow:0 16px 48px rgba(0,0,0,.55);
+}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+
 /* ── unified myfxbook button design (white chip, like the myfxbook logo) ── */
 .mfx-btn{
   background:#fff !important;color:#141414 !important;
@@ -583,6 +597,16 @@ body{padding-bottom:88px}
     </div>
   </div>
 </header>
+
+<!-- ════════ MT5 動画（YouTube Shorts） ════════ -->
+<section class="sec video-sec">
+  <div class="wrap fade" style="text-align:center">
+    <p class="video-cap">2024年11月開始から2026年6月までのMT5履歴。</p>
+    <div class="video-frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/jD0VYDVrsvE" title="2024年11月開始から2026年6月までのMT5履歴" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
 
 <!-- ════════ INTRO ════════ -->
 <section class="sec">
