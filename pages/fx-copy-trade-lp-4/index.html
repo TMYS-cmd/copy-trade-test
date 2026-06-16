@@ -78,8 +78,7 @@ img{max-width:100%}
   background:rgba(12,10,8,.92);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--gold-line);padding:10px 0;
 }
-.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px}
-.tb-brand{font-size:.7rem;letter-spacing:.32em;color:var(--ink-faint);white-space:nowrap}
+.topbar .wrap{display:flex;align-items:center;justify-content:center;gap:14px}
 .tb-myfx{
   display:inline-flex;align-items:center;gap:9px;
   font-size:.78rem;font-weight:700;letter-spacing:.08em;color:var(--gold);
@@ -393,19 +392,37 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   border-bottom:3px solid #0c0a08;
   box-shadow:0 8px 30px rgba(0,0,0,.5);
 }
-.topbanner .wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
-.tb-label{
-  font-size:.68rem;letter-spacing:.4em;font-weight:700;color:#5a4708;
+.topbanner .wrap{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
 }
 .tb-headline{
+  display:inline-block;max-width:100%;text-align:center;
   font-family:var(--serif);font-weight:900;
-  font-size:clamp(30px,5.4vw,52px);letter-spacing:.04em;line-height:1.2;
+  font-size:clamp(26px,5.6vw,50px);letter-spacing:.05em;line-height:1.35;
+  color:#fff8e6;
+  background:rgba(8,6,4,.92);
+  padding:.42em .8em;border-radius:14px;
+  border:1px solid rgba(255,224,138,.45);
+  text-shadow:
+    0 0 4px #fff,
+    0 0 11px #ffe9a8,
+    0 0 22px #ffcf3f,
+    0 0 38px #ff9d00,
+    0 0 58px #ff7a00;
+  box-shadow:0 0 18px rgba(255,170,40,.35),inset 0 0 14px rgba(255,170,40,.12);
+  animation:neonPulse 2.8s ease-in-out infinite;
 }
-.tb-headline .em{position:relative;display:inline-block}
-.tb-headline .em::after{
-  content:'';position:absolute;left:0;right:0;bottom:.08em;height:.16em;
-  background:rgba(12,10,8,.18);z-index:-1;
+.tb-headline .em{
+  color:#ffd86b;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 14px #ffd86b,
+    0 0 28px #ffb300,
+    0 0 46px #ff8400;
 }
+@keyframes neonPulse{0%,100%{opacity:1}45%{opacity:.86}}
+@media(prefers-reduced-motion:reduce){.tb-headline{animation:none}}
 
 /* ── myfxbook orange/black variant of the big top button ── */
 .cta-myfx.myfx-orange{
@@ -434,14 +451,12 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 
 <div class="topbanner">
   <div class="wrap">
-    <span class="tb-label">MSC SUPERGOLD PRO ─ VERIFIED RECORD</span>
     <strong class="tb-headline">開始以来、<span class="em">ロスカットなし。</span></strong>
   </div>
 </div>
 
 <div class="topbar">
   <div class="wrap">
-    <span class="tb-brand">MSC SUPERGOLD PRO ─ VERIFIED RECORD</span>
     <a class="tb-myfx" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">myfxbookでリアル実績を確認 ↗</a>
   </div>
 </div>
