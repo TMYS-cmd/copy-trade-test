@@ -419,6 +419,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   .sec{padding:64px 0}
   .sec-num{font-size:.7rem;letter-spacing:.26em;gap:12px}
   .sec-num::after{width:40px}
+  .tb-headline{font-size:clamp(17px,6.8vw,40px);letter-spacing:.01em}
   .hero{min-height:auto}
   .hero-inner{padding:64px 18px 56px}
   .hero-eyebrow{font-size:.66rem;letter-spacing:.22em;padding:8px 14px;margin-bottom:24px}
@@ -452,9 +453,9 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   text-align:center;
 }
 .tb-headline{
-  display:block;width:100%;text-align:center;
+  display:block;width:100%;text-align:center;white-space:nowrap;
   font-family:var(--serif);font-weight:900;
-  font-size:clamp(27px,5vw,62px);letter-spacing:.05em;line-height:1.3;
+  font-size:clamp(27px,5vw,62px);letter-spacing:.04em;line-height:1.3;
   color:#0c0a08;
 }
 .tb-headline .em{
@@ -478,6 +479,21 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 .cta-myfx .mfx-tag{
   font-size:.62rem;font-weight:900;letter-spacing:.14em;
   background:#0c0a08;color:#ff8a3d;padding:3px 9px;border-radius:4px;
+}
+
+/* ── hero main alert (99% scam / 1% real) ── */
+.hero-alert{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(25px,5vw,48px);letter-spacing:.03em;line-height:1.4;
+  margin-bottom:30px;
+}
+.hero-alert .scam{
+  color:#ff3b3b;
+  text-shadow:0 0 24px rgba(255,59,59,.55),0 1px 0 rgba(0,0,0,.45);
+}
+.hero-alert .real{
+  color:#ffd24a;
+  text-shadow:0 0 20px rgba(212,175,55,.55);
 }
 
 /* ── MT5 video (YouTube Shorts, vertical) ── */
@@ -558,6 +574,7 @@ body{padding-bottom:88px}
 <header class="hero">
   <div class="hero-inner">
     <div class="fade in">
+      <div class="hero-alert"><span class="scam">99％は詐欺。</span><span class="real">1％の本物。</span></div>
       <h1><span class="ln">【開始から16ヶ月<span class="hl">破綻なし</span>】</span><span class="ln">「日本最高峰」の戦略。</span><span class="ln">嘘偽りない<span class="hl">myfxbook全公開</span></span></h1>
 
       <div class="plate hero-plate" aria-label="運用実績サマリー">
