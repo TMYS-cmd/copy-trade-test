@@ -86,6 +86,16 @@ img{max-width:100%}
   transition:background-color .4s ease,color .4s ease;
 }
 .tb-myfx:hover{background:var(--gold);color:#0c0a08}
+/* myfxbook ロゴ風ワードマーク（白チップ＋黒/オレンジ） */
+.tb-logo{
+  display:inline-flex;align-items:center;line-height:1;
+  background:#fff;border-radius:8px;padding:7px 18px;
+  transition:transform .3s ease,box-shadow .4s ease;
+}
+.tb-logo:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.mfb{font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:1.3rem;letter-spacing:-.03em}
+.mfb .d{color:#141414}
+.mfb .o{color:#ff7a00}
 
 /* ── hero ── */
 .hero{
@@ -507,7 +517,9 @@ body{padding-bottom:88px}
 
 <div class="topbar">
   <div class="wrap">
-    <a class="tb-myfx" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">myfxbookでリアル実績を確認 ↗</a>
+    <a class="tb-logo" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener" aria-label="myfxbookで実績を確認">
+      <span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>
+    </a>
   </div>
 </div>
 
@@ -515,7 +527,6 @@ body{padding-bottom:88px}
 <header class="hero">
   <div class="hero-inner">
     <div class="fade in">
-      <span class="hero-eyebrow">VERIFIED BY MYFXBOOK</span>
       <h1><span class="ln">【開始から16ヶ月<span class="hl">破綻なし</span>】</span><span class="ln">「日本最高峰」の戦略。</span><span class="ln">嘘偽りない<span class="hl">myfxbook全公開</span></span></h1>
 
       <div class="plate hero-plate" aria-label="運用実績サマリー">
