@@ -555,8 +555,23 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 }
 .float-oc:hover{background:#05b14c;color:#fff;transform:translateX(-50%) translateY(-3px);box-shadow:0 16px 42px rgba(6,199,85,.65)}
 .float-oc .oc-tag{font-size:.64rem;font-weight:900;background:rgba(255,255,255,.22);padding:3px 9px;border-radius:5px;letter-spacing:.1em}
+@keyframes ocPulse{
+  0%,100%{box-shadow:0 10px 30px rgba(6,199,85,.65),0 0 0 0 rgba(6,199,85,.5)}
+  50%{box-shadow:0 10px 30px rgba(6,199,85,.65),0 0 0 10px rgba(6,199,85,0)}
+}
 @media(max-width:600px){
-  .float-oc{padding:14px 24px;font-size:.92rem;gap:8px;bottom:12px}
+  .float-oc{
+    width:calc(100% - 24px);max-width:none;
+    padding:18px 16px;font-size:1.06rem;font-weight:800;gap:10px;bottom:14px;
+    border:2px solid rgba(255,255,255,.9);
+    box-shadow:0 10px 30px rgba(6,199,85,.65),0 0 0 4px rgba(6,199,85,.2);
+    animation:ocPulse 2.4s ease-out infinite;
+  }
+  .float-oc:hover{transform:translateX(-50%)}
+  .float-oc .oc-tag{font-size:.68rem;padding:3px 10px}
+}
+@media(max-width:600px) and (prefers-reduced-motion:reduce){
+  .float-oc{animation:none}
 }
 body{padding-bottom:88px}
 
