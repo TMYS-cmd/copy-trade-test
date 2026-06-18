@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【リアルフォワード実績公開】開始から16ヶ月破綻ゼロ｜myfxbook第三者検証済みFXコピートレード</title>
+<meta name="description" content="myfxbook第三者検証済み。2024年11月開始から16ヶ月、破綻ゼロ。単利+1,220%・複利+18,303%のリアル口座実績を全公開。FXコピートレードの詳細は公式LINEへ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;
+  --bg-soft:#0a0f14;
+  --bg-card:#161b22;
+  --bg-card2:#1c2128;
+  --blue:#3b82f6;
+  --blue-soft:#2563eb;
+  --blue-dim:rgba(59,130,246,.3);
+  --blue-faint:rgba(59,130,246,.12);
+  --blue-line:rgba(59,130,246,.2);
+  --green:#10b981;
+  --green-soft:#059669;
+  --ink:#f0f6fc;
+  --ink-dim:#8b949e;
+  --ink-faint:#484f58;
+  --gold:#d4af37;
+  --gold-grad-start:#f0d77b;
+  --crimson:#f87171;
+  --sans:'Noto Sans JP',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+
+/* ── fade-in ── */
+.fade{opacity:0;transform:translateY(16px);transition:opacity 1.2s ease,transform 1.2s ease}
+.fade.in{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}}
+
+/* ── layout ── */
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+.sec{padding:120px 0}
+.sec-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.72rem;font-weight:700;letter-spacing:.4em;color:var(--blue);
+  text-transform:uppercase;margin-bottom:18px;
+}
+.sec-label::before{content:'';display:block;width:28px;height:2px;background:var(--blue)}
+.sec h2{
+  font-weight:900;font-size:clamp(24px,3.2vw,40px);
+  line-height:1.45;letter-spacing:.02em;margin-bottom:28px;
+}
+.lead{font-size:1rem;color:var(--ink-dim);max-width:48em;line-height:2}
+.lead strong{color:var(--ink);font-weight:700}
+.lead em{font-style:normal;color:var(--blue);font-weight:700}
+.hairline{height:1px;background:linear-gradient(90deg,transparent,var(--blue-line) 20%,var(--blue-line) 80%,transparent)}
+
+/* ── alert bar ── */
+.alert-bar{
+  background:linear-gradient(90deg,#1d2d44,#1e3a5f,#1d2d44);
+  border-bottom:1px solid var(--blue-line);
+  font-size:.7rem;color:#60a5fa;text-align:center;
+  padding:8px 16px;letter-spacing:.08em;
+}
+
+/* ── sticky topbar ── */
+.topbar{
+  position:sticky;top:0;z-index:60;
+  background:rgba(13,17,23,.95);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08);padding:10px 0;
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:center;gap:14px}
+.tb-logo{
+  display:inline-flex;align-items:center;line-height:1;
+  background:#fff;border-radius:8px;padding:7px 18px;
+  transition:transform .3s,box-shadow .3s;
+}
+.tb-logo:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.mfb{font-family:var(--sans);font-weight:900;letter-spacing:-.03em}
+.tb-logo .mfb{font-size:1.3rem}
+.tb-logo-txt{color:#141414;font-weight:700;font-size:.82rem;margin-left:8px}
+.mfb .d{color:#141414}
+.mfb .o{color:#ff7a00}
+
+/* ══ HERO ══ */
+.hero{
+  min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 10% 20%,rgba(37,99,235,.18),transparent 55%),
+    radial-gradient(ellipse 50% 50% at 90% 80%,rgba(16,185,129,.1),transparent 60%),
+    radial-gradient(ellipse 80% 70% at 50% 120%,rgba(30,58,138,.25),transparent 65%),
+    radial-gradient(ellipse 30% 30% at 80% 10%,rgba(59,130,246,.08),transparent 70%),
+    linear-gradient(160deg,#0d1b2a 0%,#0d1117 45%,#060d14 100%);
+}
+/* subtle grid overlay */
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(59,130,246,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(59,130,246,.05) 1px,transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 80%);
+}
+.hero::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue-line),transparent);
+}
+.hero-inner{
+  position:relative;z-index:1;width:100%;
+  max-width:1100px;margin:0 auto;padding:80px 28px;
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+}
+/* ── hero left ── */
+.hero-trust{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.72rem;font-weight:700;letter-spacing:.22em;color:#60a5fa;
+  border:1px solid var(--blue-line);padding:8px 18px;margin-bottom:28px;
+  background:rgba(59,130,246,.07);border-radius:4px;
+}
+.hero-trust::before{content:'✓';color:var(--green);font-weight:900}
+.hero-alert{
+  font-weight:900;line-height:1.3;margin-bottom:24px;
+  font-size:clamp(20px,3vw,36px);
+}
+.hero-alert .scam{color:#f87171}
+.hero-alert .real{color:#34d399}
+.hero h1{
+  font-weight:900;
+  font-size:clamp(32px,4.2vw,58px);
+  line-height:1.38;letter-spacing:.01em;margin-bottom:20px;
+}
+.hero h1 .ln{display:block}
+.hero h1 .hl{
+  background:linear-gradient(135deg,#60a5fa,#3b82f6);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-sub{font-size:1rem;color:var(--ink-dim);margin-bottom:36px;line-height:1.9;max-width:34em}
+.hero-kpis{
+  display:flex;gap:24px;margin-bottom:36px;flex-wrap:wrap;
+}
+.hero-kpi{
+  background:rgba(59,130,246,.08);border:1px solid var(--blue-line);
+  border-radius:8px;padding:14px 20px;
+}
+.hero-kpi .kv{font-size:1.6rem;font-weight:900;color:#60a5fa;line-height:1}
+.hero-kpi .kl{font-size:.68rem;color:var(--ink-faint);letter-spacing:.08em;margin-top:4px}
+.hero-ctas{display:flex;flex-direction:column;gap:12px;max-width:400px}
+.cta-primary{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:700;font-size:1rem;letter-spacing:.06em;
+  color:#fff;background:linear-gradient(135deg,#2563eb,#3b82f6);
+  border:none;border-radius:8px;padding:17px 28px;cursor:pointer;
+  transition:transform .3s ease,box-shadow .4s ease;
+  box-shadow:0 4px 20px rgba(37,99,235,.35);
+}
+.cta-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(37,99,235,.55)}
+.cta-myfx-hero{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:700;font-size:.9rem;letter-spacing:.04em;
+  color:#141414;background:#fff;
+  border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:14px 24px;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);
+  transition:transform .3s ease,box-shadow .4s ease;
+}
+.cta-myfx-hero:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.5)}
+.btn-line-hero{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  font-weight:700;font-size:.9rem;
+  color:#fff;background:#06C755;border-radius:8px;padding:14px 24px;
+  transition:transform .3s ease,box-shadow .4s ease,background-color .3s;
+}
+.btn-line-hero:hover{background:#05b14c;transform:translateY(-2px);box-shadow:0 10px 28px rgba(6,199,85,.4)}
+.btn-line-hero .oc-tag{font-size:.62rem;font-weight:900;background:rgba(255,255,255,.22);padding:2px 7px;border-radius:3px}
+.cta-note{font-size:.68rem;color:var(--ink-faint);text-align:center;letter-spacing:.06em}
+
+/* ── hero right ── */
+.hero-right{display:flex;flex-direction:column;gap:20px}
+.perf-card{
+  background:rgba(22,27,34,.9);border:1px solid rgba(59,130,246,.25);
+  border-radius:12px;padding:28px 28px 22px;backdrop-filter:blur(4px);
+  box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.perf-card-title{
+  font-size:.68rem;font-weight:700;letter-spacing:.3em;color:var(--blue);
+  margin-bottom:20px;display:flex;align-items:center;gap:10px;
+}
+.perf-card-title::after{content:'';flex:1;height:1px;background:var(--blue-line)}
+.perf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(59,130,246,.15);border-radius:4px;overflow:hidden}
+.perf-item{background:var(--bg-card);padding:20px 18px}
+.perf-item:first-child{border-radius:4px 0 0 0}
+.perf-item .pv{
+  font-size:clamp(22px,2.5vw,32px);font-weight:900;line-height:1.1;
+  background:linear-gradient(135deg,#93c5fd,#3b82f6);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.perf-item .pl{font-size:.68rem;color:var(--ink-faint);letter-spacing:.1em;margin-bottom:6px}
+.perf-item .ps{font-size:.72rem;color:#34d399;margin-top:6px;font-weight:700}
+.perf-foot{
+  margin-top:16px;padding-top:14px;border-top:1px solid rgba(59,130,246,.15);
+  font-size:.66rem;color:var(--ink-faint);line-height:1.8;
+}
+.perf-foot a{color:#60a5fa;border-bottom:1px solid rgba(96,165,250,.3);transition:color .3s}
+.perf-foot a:hover{color:#93c5fd}
+.hero-chart-wrap{
+  border-radius:10px;overflow:hidden;border:1px solid rgba(59,130,246,.2);
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  transition:transform .3s ease,box-shadow .4s ease;
+}
+.hero-chart-wrap:hover{transform:translateY(-2px);box-shadow:0 18px 50px rgba(0,0,0,.65)}
+.hero-chart-wrap img{display:block;width:100%;height:auto;background:#fff}
+.hero-chart-cap{font-size:.66rem;color:var(--ink-faint);text-align:center;padding:8px 0 4px;letter-spacing:.06em}
+
+/* ── section shared ── */
+.card{
+  background:var(--bg-card);border:1px solid rgba(255,255,255,.07);
+  border-radius:10px;padding:32px 28px;
+}
+.badge{
+  display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.1em;
+  background:var(--blue-faint);border:1px solid var(--blue-line);
+  color:#60a5fa;border-radius:4px;padding:3px 10px;margin-bottom:14px;
+}
+
+/* ── proof grid ── */
+.proof-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-top:56px}
+.proof-list{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.07)}
+.proof-item{padding:26px 4px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:18px;align-items:flex-start}
+.proof-num{font-size:.78rem;font-weight:900;color:#60a5fa;min-width:24px;padding-top:3px}
+.proof-item h3{font-weight:700;font-size:1rem;letter-spacing:.02em;margin-bottom:6px}
+.proof-item p{font-size:.88rem;color:var(--ink-dim);line-height:1.85}
+.proof-myfx-card{
+  background:var(--bg-card);border:1px solid rgba(59,130,246,.2);
+  border-radius:10px;padding:36px 30px;display:flex;flex-direction:column;gap:16px;
+}
+.proof-myfx-card .t{font-size:1.2rem;font-weight:700;letter-spacing:.04em}
+.proof-myfx-card p{font-size:.88rem;color:var(--ink-dim);line-height:1.9}
+.btn-verify{
+  display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-size:.85rem;font-weight:700;letter-spacing:.08em;
+  color:#fff;background:var(--blue-soft);border-radius:6px;
+  padding:13px 26px;margin-top:6px;
+  transition:background-color .3s,transform .3s,box-shadow .4s;
+}
+.btn-verify:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.45)}
+
+/* ── why reasons ── */
+.reason-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden;margin-top:48px}
+.reason-cell{background:var(--bg-card);padding:36px 28px}
+.reason-num{font-size:1.6rem;font-weight:900;color:#60a5fa;margin-bottom:12px;line-height:1}
+.reason-cell h3{font-weight:700;font-size:.98rem;letter-spacing:.03em;margin-bottom:10px}
+.reason-cell p{font-size:.84rem;color:var(--ink-dim);line-height:1.85}
+.why-intro-box{
+  background:rgba(37,99,235,.07);border:1px solid var(--blue-line);
+  border-radius:8px;padding:28px 30px;margin-top:36px;
+  font-size:.93rem;color:var(--ink-dim);line-height:2;
+}
+.why-intro-box strong{color:#60a5fa;font-weight:700}
+
+/* ── risk grid ── */
+.risk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.risk-card{
+  background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);
+  border-radius:10px;padding:32px 24px;
+}
+.risk-card .rk{font-size:1.8rem;font-weight:900;color:var(--crimson);margin-bottom:12px;line-height:1}
+.risk-card h3{font-weight:700;font-size:.96rem;margin-bottom:10px}
+.risk-card p{font-size:.83rem;color:var(--ink-dim);line-height:1.85}
+
+/* ── monthly table ── */
+.tbl-note{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:.72rem;color:var(--ink-faint);margin:24px 0 32px}
+.dot{display:inline-block;width:8px;height:8px;margin-right:6px;border-radius:2px;vertical-align:middle}
+.dot.g{background:var(--blue)}
+.dot.r{background:var(--crimson)}
+.month-tbl{width:100%;border-collapse:collapse;border-top:1px solid rgba(255,255,255,.07)}
+.month-tbl tr{border-bottom:1px solid rgba(255,255,255,.05)}
+.month-tbl tr:hover{background:rgba(59,130,246,.04)}
+.month-tbl td{padding:13px 10px;vertical-align:middle}
+.month-tbl .ym{font-size:.88rem;color:var(--ink-dim);white-space:nowrap;width:7em}
+.month-tbl .pct{font-weight:700;font-size:1rem;text-align:right;white-space:nowrap;width:6.5em;color:#60a5fa}
+.month-tbl .pct.neg{color:var(--crimson)}
+.month-tbl .bar-cell{width:46%}
+.bar{height:4px;background:rgba(255,255,255,.05);border-radius:2px;position:relative}
+.bar i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#2563eb,#60a5fa);border-radius:2px}
+.bar i.neg{background:var(--crimson);opacity:.7}
+.month-tbl .tag{font-size:.64rem;color:var(--crimson);letter-spacing:.08em;white-space:nowrap;padding-left:12px}
+.tbl-sum{
+  margin-top:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07);border-radius:10px;overflow:hidden;
+}
+.tbl-sum>div{background:var(--bg-card);padding:26px 22px;text-align:center}
+.tbl-sum .v{font-size:1.6rem;font-weight:900;color:#60a5fa}
+.tbl-sum .l{font-size:.68rem;color:var(--ink-faint);letter-spacing:.18em;margin-top:6px}
+
+/* ── LINE band ── */
+.oc-band{
+  border-top:1px solid rgba(16,185,129,.2);border-bottom:1px solid rgba(16,185,129,.2);
+  background:rgba(16,185,129,.05);padding:52px 0;text-align:center;
+}
+.oc-band p{font-size:.92rem;color:var(--ink-dim);margin-bottom:22px}
+.btn-oc{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-size:.92rem;font-weight:700;color:#fff;background:#06C755;
+  border-radius:9px;padding:15px 30px;
+  transition:background-color .3s,transform .3s,box-shadow .4s;
+}
+.btn-oc:hover{background:#05b14c;transform:translateY(-2px);box-shadow:0 10px 28px rgba(6,199,85,.4)}
+.btn-oc .oc-tag{font-size:.62rem;font-weight:900;background:rgba(255,255,255,.22);padding:2px 7px;border-radius:3px}
+
+/* ── compound ── */
+.compound-box{
+  background:linear-gradient(160deg,rgba(37,99,235,.1),rgba(16,185,129,.06)),var(--bg-card);
+  border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:60px 48px;text-align:center;margin-top:48px;
+}
+.from-to{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;font-weight:900;margin:28px 0 12px}
+.amt{font-size:clamp(38px,6vw,72px);line-height:1.1}
+.amt.gold-num{
+  background:linear-gradient(135deg,#93c5fd,#3b82f6,#06b6d4);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.arr{font-size:clamp(40px,7vw,80px);font-weight:900;color:#60a5fa;animation:arrPulse 2.4s ease-in-out infinite}
+@keyframes arrPulse{0%,100%{opacity:.7;transform:translateX(0)}50%{opacity:1;transform:translateX(5px)}}
+@media(prefers-reduced-motion:reduce){.arr{animation:none}}
+.compound-cap{font-size:.76rem;color:var(--ink-faint);letter-spacing:.1em;margin-top:22px;line-height:2}
+
+/* ── simulator ── */
+.sim-box{background:var(--bg-card);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:48px 40px;margin-top:44px}
+.sim-presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.sim-preset{
+  font-family:var(--sans);font-size:.9rem;font-weight:700;color:#60a5fa;
+  background:transparent;border:1px solid var(--blue-line);border-radius:6px;
+  padding:10px 22px;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s;
+}
+.sim-preset:hover{border-color:var(--blue)}
+.sim-preset.on{background:var(--blue-soft);color:#fff;border-color:var(--blue-soft)}
+.sim-input-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:32px;font-size:.92rem;color:var(--ink-dim)}
+.sim-input{
+  width:140px;background:var(--bg);border:1px solid rgba(255,255,255,.12);color:var(--ink);
+  font-family:var(--sans);font-size:1.3rem;font-weight:900;text-align:right;border-radius:6px;
+  padding:10px 14px;outline:none;transition:border-color .25s;
+}
+.sim-input:focus{border-color:var(--blue)}
+.sim-results{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.07)}
+.sim-card{background:var(--bg);padding:36px 26px;text-align:center}
+.sim-card .l{font-size:.74rem;letter-spacing:.12em;color:var(--ink-dim);margin-bottom:10px}
+.sim-card .v{font-weight:900;font-size:clamp(24px,2.8vw,36px);line-height:1.2;color:#60a5fa}
+.sim-card .s{font-size:.68rem;color:var(--ink-faint);margin-top:8px}
+.sim-note{font-size:.68rem;color:var(--ink-faint);line-height:1.9;margin-top:20px}
+.sim-chart-wrap{margin-top:32px;border-top:1px solid rgba(255,255,255,.06);padding-top:28px}
+.sim-chart-title{font-size:.7rem;letter-spacing:.18em;color:var(--ink-faint);margin-bottom:12px}
+#sim-chart{width:100%;height:260px;display:block}
+
+/* ── video ── */
+.video-cap{font-weight:700;font-size:clamp(10px,2.5vw,1.1rem);color:var(--ink);letter-spacing:.01em;line-height:1.7;margin-bottom:22px}
+.video-frame{position:relative;width:100%;max-width:320px;margin:0 auto;aspect-ratio:9/16;border:1px solid rgba(59,130,246,.2);border-radius:8px;background:#000;box-shadow:0 16px 48px rgba(0,0,0,.55);overflow:hidden}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+
+/* ── reviews ── */
+.rev-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin:0 0 36px}
+.rev-avg{font-weight:900;font-size:2.4rem;line-height:1;color:#fbbf24}
+.rev-stars{color:#fbbf24;font-size:1.1rem;letter-spacing:.2em}
+.rev-cnt{font-size:.76rem;color:var(--ink-faint)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rev-card{background:var(--bg-card);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:24px 24px 20px;display:flex;flex-direction:column}
+.rev-card .st{color:#fbbf24;letter-spacing:.22em;font-size:.9rem;margin-bottom:10px}
+.rev-card .st .off{color:#374151}
+.rev-card p{font-size:.84rem;color:var(--ink-dim);line-height:1.9;margin-bottom:14px;flex:1}
+.rev-card .who{font-size:.68rem;color:var(--ink-faint);letter-spacing:.06em}
+.rev-note{font-size:.66rem;color:var(--ink-faint);margin-top:20px}
+
+/* ── join ── */
+.join-inner{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:60px;align-items:center}
+.join-facts{display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.07)}
+.join-fact{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 4px;border-bottom:1px solid rgba(255,255,255,.07)}
+.join-fact .k{font-size:.83rem;color:var(--ink-dim);letter-spacing:.08em}
+.join-fact .v{font-weight:700;font-size:1.05rem;color:#60a5fa;text-align:right}
+.join-cta-box{background:var(--bg-card);border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:44px 36px;text-align:center}
+.join-cta-box .t{font-size:1.15rem;font-weight:700;letter-spacing:.06em;margin-bottom:8px}
+.join-cta-box p{font-size:.8rem;color:var(--ink-dim);margin-bottom:26px}
+.join-cta-box .risk{font-size:.63rem;color:var(--ink-faint);margin-top:18px;line-height:1.8}
+
+/* ── faq ── */
+.faq-list{border-top:1px solid rgba(255,255,255,.07);margin-top:12px}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.07);padding:26px 4px}
+.faq-q{display:flex;gap:14px;align-items:flex-start;font-weight:700;font-size:1rem;margin-bottom:10px}
+.faq-a{display:flex;gap:14px;align-items:flex-start;font-size:.88rem;color:var(--ink-dim);line-height:1.9}
+.fq-mark{font-weight:900;min-width:1.4em;font-size:.9rem}
+.fq-mark.q{color:#60a5fa}
+.fq-mark.a{color:var(--ink-faint)}
+
+/* ── closing ── */
+.closing{text-align:center;padding:140px 28px}
+.closing p{font-size:clamp(18px,2.4vw,28px);font-weight:700;line-height:2.2;letter-spacing:.04em}
+.closing .hl-blue{
+  background:linear-gradient(135deg,#60a5fa,#3b82f6,#34d399);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+/* ── footer ── */
+footer{border-top:1px solid rgba(255,255,255,.07);background:#060a0f;padding:64px 0 48px}
+.legal-title{font-size:.85rem;font-weight:700;letter-spacing:.28em;color:#60a5fa;margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.legal-title::after{content:'';flex:1;height:1px;background:var(--blue-line)}
+.legal-list{display:flex;flex-direction:column;gap:12px;font-size:.72rem;color:var(--ink-faint);line-height:1.9;max-width:62em}
+.legal-list li{list-style:none;padding-left:1.2em;position:relative}
+.legal-list li::before{content:'※';position:absolute;left:0;color:#60a5fa;opacity:.6}
+.copyright{margin-top:40px;font-size:.66rem;color:#30363d;letter-spacing:.1em;text-align:center}
+
+/* ── float button ── */
+.float-oc{
+  position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:95;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  max-width:calc(100% - 32px);
+  background:#06C755;color:#fff;border-radius:12px;
+  padding:15px 36px;font-weight:700;font-size:1rem;letter-spacing:.04em;
+  box-shadow:0 10px 32px rgba(6,199,85,.5);
+  transition:transform .3s,box-shadow .4s,background-color .3s;
+}
+.float-oc:hover{background:#05b14c;color:#fff;transform:translateX(-50%) translateY(-3px);box-shadow:0 16px 40px rgba(6,199,85,.6)}
+.float-oc .oc-tag{font-size:.62rem;font-weight:900;background:rgba(255,255,255,.22);padding:3px 9px;border-radius:4px}
+@keyframes ocPulse{
+  0%,100%{box-shadow:0 10px 30px rgba(6,199,85,.6),0 0 0 0 rgba(6,199,85,.4)}
+  50%{box-shadow:0 10px 30px rgba(6,199,85,.6),0 0 0 10px rgba(6,199,85,0)}
+}
+@media(max-width:600px){
+  .float-oc{
+    width:calc(100% - 24px);max-width:none;
+    padding:17px 16px;font-size:1.04rem;font-weight:800;bottom:14px;
+    border:2px solid rgba(255,255,255,.9);
+    animation:ocPulse 2.4s ease-out infinite;
+  }
+  .float-oc:hover{transform:translateX(-50%)}
+}
+@media(max-width:600px) and (prefers-reduced-motion:reduce){.float-oc{animation:none}}
+body{padding-bottom:88px}
+
+/* ── responsive ── */
+@media(max-width:960px){
+  .hero-inner{grid-template-columns:1fr;gap:48px;padding:70px 24px}
+  .hero h1{font-size:clamp(28px,6vw,48px)}
+  .proof-grid{grid-template-columns:1fr;gap:36px}
+  .reason-grid{grid-template-columns:1fr}
+  .risk-grid{grid-template-columns:1fr}
+  .join-inner{grid-template-columns:1fr;gap:44px}
+  .tbl-sum{grid-template-columns:1fr}
+  .month-tbl .bar-cell{display:none}
+  .sim-box{padding:36px 22px}
+  .sim-results{grid-template-columns:1fr}
+  .rev-grid{grid-template-columns:1fr}
+  .compound-box{padding:44px 24px}
+}
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .sec{padding:72px 0}
+  .hero-kpis{gap:12px}
+  .hero-kpi{padding:12px 16px}
+  .hero-kpi .kv{font-size:1.3rem}
+  .perf-grid{grid-template-columns:1fr}
+  .sec h2{font-size:clamp(22px,6vw,32px)}
+}
+</style>
+</head>
+<body>
+
+<!-- floating LINE button -->
+<a class="float-oc" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">
+  <span class="oc-tag">LINE</span>オープンチャットに参加
+</a>
+
+<!-- alert bar -->
+<div class="alert-bar">myfxbook 第三者検証済み ─ リアル口座実績を全期間公開中 ─ 改ざん不可能なシステムで証明</div>
+
+<!-- sticky topbar -->
+<div class="topbar">
+  <div class="wrap">
+    <a class="tb-logo" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener" aria-label="myfxbookで実績確認">
+      <span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span><span class="tb-logo-txt">で実績を確認</span>
+    </a>
+  </div>
+</div>
+
+<!-- ════════ HERO ════════ -->
+<header class="hero">
+  <div class="hero-inner">
+
+    <!-- Left: copy + CTAs -->
+    <div class="fade in">
+      <div class="hero-trust">myfxbook 第三者検証済み・リアル口座</div>
+      <div class="hero-alert">
+        <span class="scam">FXは99％詐欺。</span><span class="real">1％の本物。</span>
+      </div>
+      <h1>
+        <span class="ln">【リアルフォワード実績公開】</span>
+        <span class="ln">開始から16ヶ月、</span>
+        <span class="ln"><span class="hl">破綻ゼロ</span>の戦略。</span>
+      </h1>
+      <p class="hero-sub">嘘偽りのないmyfxbook全公開。数字は改ざんできません。まず「証拠」をあなたの目で確認してください。</p>
+      <div class="hero-kpis">
+        <div class="hero-kpi">
+          <div class="kv">+1,220%</div>
+          <div class="kl">単利（絶対増加）</div>
+        </div>
+        <div class="hero-kpi">
+          <div class="kv">+18,303%</div>
+          <div class="kl">複利（増加）</div>
+        </div>
+        <div class="hero-kpi">
+          <div class="kv">0回</div>
+          <div class="kl">破綻回数</div>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a class="cta-primary" href="https://lin.ee/Zg3o5zr" target="_blank" rel="noopener">公式LINEはこちら（参加無料）</a>
+        <a class="cta-myfx-hero" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
+          <span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>で実績を直接確認する ↗
+        </a>
+        <a class="btn-line-hero" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">
+          <span class="oc-tag">LINE</span>匿名オープンチャットに参加
+        </a>
+        <div class="cta-note">参加希望・ご質問・お問い合わせは公式LINEへ</div>
+      </div>
+    </div>
+
+    <!-- Right: performance card + chart -->
+    <div class="hero-right fade in">
+      <div class="perf-card" aria-label="運用実績サマリー">
+        <div class="perf-card-title">LIVE PERFORMANCE ─ myfxbook verified</div>
+        <div class="perf-grid">
+          <div class="perf-item">
+            <div class="pl">単利（絶対増加）</div>
+            <div class="pv">+1,220.32%</div>
+            <div class="ps">10万円 → 122万円</div>
+          </div>
+          <div class="perf-item">
+            <div class="pl">複利（増加）</div>
+            <div class="pv">+18,303.98%</div>
+            <div class="ps">10万円 → 1,830万円</div>
+          </div>
+          <div class="perf-item">
+            <div class="pl">運用期間</div>
+            <div class="pv">16ヶ月</div>
+            <div class="ps">2024.11 〜 継続中</div>
+          </div>
+          <div class="perf-item">
+            <div class="pl">破綻回数</div>
+            <div class="pv">0回</div>
+            <div class="ps">ロスカットゼロを継続</div>
+          </div>
+        </div>
+        <div class="perf-foot">
+          全履歴は myfxbook にて公開中 ─
+          <a href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">実績ページを直接確認する</a><br>
+          ※2026年6月12日時点。過去の実績は将来の成果を保証しません。
+        </div>
+      </div>
+      <a class="hero-chart-wrap" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener" aria-label="myfxbook成長チャートを確認">
+        <img src="assets/myfxbook-chart.jpg" alt="myfxbook 成長チャート 2024年11月〜2026年6月（+18,303.98%）">
+        <div class="hero-chart-cap">myfxbook 実績チャート（2024.11〜2026.06 ／ 増加 +18,303.98%）</div>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- ════════ MT5動画 ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(20,40,80,.55),transparent 70%),#06101e;border-top:1px solid rgba(59,130,246,.15);border-bottom:1px solid rgba(59,130,246,.12);padding-top:72px">
+  <div class="wrap fade" style="text-align:center">
+    <div class="sec-label">MT5 LIVE RECORD</div>
+    <p class="video-cap">2024年11月開始から2026年6月までのMT5履歴。（単利運用）</p>
+    <div class="video-frame">
+      <iframe src="https://www.youtube-nocookie.com/embed/jD0VYDVrsvE?autoplay=1&mute=1&loop=1&playlist=jD0VYDVrsvE" title="MT5 取引履歴 2024年11月〜2026年6月" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ INTRO ════════ -->
+<section class="sec" style="background:#050608;border-bottom:1px solid rgba(255,255,255,.05)">
+  <div class="wrap fade">
+    <p class="lead" style="font-size:1.15rem;line-height:2.4">
+      正直に言います。<br><br>
+      リアル口座でここまでの実績を出し続けているトレード内容は、恐らく他にありません。<br>
+      もしこれを超える「本物」の実績があるなら、ぜひ教えてほしいくらいです（笑）<br><br>
+      今回は、<strong>2024年11月の運用開始から現在まで一度も破綻することなく</strong>、
+      着実に資産を増やし続けている驚異のトレード戦略をご紹介します。
+    </p>
+  </div>
+</section>
+
+<div class="wrap"><div class="hairline"></div></div>
+
+<!-- ════════ 01 PERFORMANCE ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 60% 70% at 50% 100%,rgba(37,99,235,.1),transparent 65%),#050e08;border-bottom:1px solid rgba(59,130,246,.12)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">01 ─ PERFORMANCE</div>
+      <h2>驚異の運用実績。<br>10万円が「1,840万円」へ</h2>
+      <p class="lead">まずは、嘘偽りのない数字を見てください。</p>
+    </div>
+    <div class="compound-box fade">
+      <div style="font-size:.72rem;letter-spacing:.28em;color:var(--ink-faint)">COMPOUND SIMULATION ─ 2024.11 START</div>
+      <div class="from-to">
+        <span class="amt">10<span style="font-size:.45em">万円</span></span>
+        <span class="arr" aria-hidden="true">→</span>
+        <span class="amt gold-num">1,840<span style="font-size:.45em">万円超</span></span>
+      </div>
+      <p class="lead" style="margin:0 auto;max-width:38em">
+        単利（絶対増加）<em>+1,220.32%</em>。複利（増加）なら <em>+18,303.98%</em> 達成。<br>
+        もし2024年11月に10万円で複利スタートしていたら、現在の残高は1,840万円を超えています。
+      </p>
+      <div class="compound-cap">※myfxbook公表値（2026年6月12日時点）。複利シミュレーション値。手数料・税金等は考慮外。将来の成果を保証しません。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 02 PROOF ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 70% 50% at 0% 50%,rgba(180,60,60,.08),transparent 60%),#110608;border-top:1px solid rgba(248,113,113,.15);border-bottom:1px solid rgba(248,113,113,.12)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">02 ─ PROOF</div>
+      <h2>なぜ「本物」と言い切れるのか</h2>
+      <p class="lead">
+        ネット上には、都合の良い部分だけを切り取った画像や、いくらでも偽造できるバックテストがあふれています。
+        しかし、このトレードは違います。実績の裏付けには <strong>myfxbook</strong> ──
+        100%改ざんが不可能な、第三者機関の公開システムを採用しています。
+      </p>
+    </div>
+    <div class="proof-grid fade">
+      <div class="proof-list">
+        <div class="proof-item">
+          <span class="proof-num">一</span>
+          <div>
+            <h3>画像加工ではない、リアルな数字</h3>
+            <p>口座と直結した自動記録。スクリーンショットの切り貼りでは作れません。</p>
+          </div>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">二</span>
+          <div>
+            <h3>都合の良い部分だけのバックテストではない</h3>
+            <p>負けた月も、損切りした月も、すべてそのまま記録されています。</p>
+          </div>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">三</span>
+          <div>
+            <h3>すべてを包み隠さず公開</h3>
+            <p>公開しているからこそ、自信を持って「日本最高峰」だと断言できます。</p>
+          </div>
+        </div>
+      </div>
+      <div class="proof-myfx-card">
+        <div class="badge">THIRD-PARTY VERIFIED</div>
+        <div class="t">myfxbook 実績ページ<br>全履歴を一般公開中</div>
+        <p>登録不要・誰でも閲覧可能。取引履歴・損益曲線・ドローダウンまで、あなたの目で直接確認できます。</p>
+        <a class="btn-verify" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
+          <span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>で履歴を確認する ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 03 WHY MYFXBOOK ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 60% 60% at 100% 50%,rgba(60,60,180,.08),transparent 65%),#06060e;border-bottom:1px solid rgba(100,100,220,.15)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">03 ─ WHY MYFXBOOK</div>
+      <h2>他のシステム開発者が<br>myfxbookを「出せない」理由</h2>
+      <div class="why-intro-box fade">
+        <strong>myfxbook（マイ・エフエックス・ブック）</strong>とは、FX口座と直接連携し、
+        取引履歴・損益曲線・ドローダウンまでを自動で記録し公開する第三者機関のサービスです。
+        数字を後から書き換えることは一切できません。だからこそ、これは「最も信頼できる実績の証明」になります。
+        <br><br>
+        ネット上には自動売買やコピートレードの広告があふれていますが、
+        その多くは myfxbook を掲載していません。なぜでしょうか。
+      </div>
+    </div>
+    <div class="reason-grid fade">
+      <div class="reason-cell">
+        <div class="reason-num">出せない</div>
+        <h3>「出さない」のではなく「出せない」</h3>
+        <p>多くの販売者が myfxbook を載せないのは、見せたくないからではありません。載せた瞬間にすべてが明るみに出るため、そもそも載せられないのです。</p>
+      </div>
+      <div class="reason-cell">
+        <div class="reason-num">100%</div>
+        <h3>実績が100%公開されてしまうから</h3>
+        <p>勝ったトレードだけを切り取ることも、都合の悪い月を隠すこともできません。負けも損切りも含め、すべてが正直に記録され続けます。</p>
+      </div>
+      <div class="reason-cell">
+        <div class="reason-num">実力</div>
+        <h3>そもそも、ここまでの結果を出せないから</h3>
+        <p>改ざんが効かない土俵で、これだけの実績を出し続けられる戦略はごくわずか。だからこそ私たちは、堂々と myfxbook を全公開できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 04 RISK CONTROL ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(160,40,40,.1),transparent 65%),#100505;border-top:1px solid rgba(248,113,113,.2);border-bottom:1px solid rgba(248,113,113,.15)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">04 ─ RISK CONTROL</div>
+      <h2>「損切り」こそが、<br>あなたを恐怖から解放する</h2>
+      <p class="lead">
+        このトレードの最大の特徴は、<strong>「戦略的な損切り」</strong>を徹底している点です。
+        多くの口座が破綻する原因は、損切りができずに含み損に耐え続け、最後には耐えきれずゼロになるから。
+        この戦略では、<em>総資産の20%以内</em>で明確に損切りを実行します。
+      </p>
+    </div>
+    <div class="risk-grid fade">
+      <div class="risk-card">
+        <div class="rk">20%以内</div>
+        <h3>明確な損切りライン</h3>
+        <p>感情ではなくルールで切る。総資産の20%以内で機械的に損切りを実行します。</p>
+      </div>
+      <div class="risk-card">
+        <div class="rk">守り</div>
+        <h3>破綻させないための損切り</h3>
+        <p>一時的なマイナスは「破綻させないための守り」。その後の利益で取り返す繰り返しが右肩上がりの曲線を作ります。</p>
+      </div>
+      <div class="risk-card">
+        <div class="rk">0回</div>
+        <h3>結果として、破綻ゼロ</h3>
+        <p>「いつ溶けるか分からない」暗闇を歩くような恐怖から、あなたを解き放ちます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 05 MONTHLY RECORD ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(37,99,235,.05),transparent 70%),#070808;border-bottom:1px solid rgba(255,255,255,.06)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">05 ─ MONTHLY RECORD</div>
+      <h2>月別のリアルな収益データ</h2>
+      <p class="lead">損切りを実践しながら積み上げた、1年半の全記録です。マイナスの月も隠さず公開します。</p>
+      <div class="tbl-note">
+        <span><span class="dot g"></span>収益月</span>
+        <span><span class="dot r"></span>損切り実施月</span>
+        <span>2026年6月12日時点（myfxbook公表値）</span>
+      </div>
+    </div>
+    <div class="fade">
+      <table class="month-tbl">
+        <tbody>
+          <tr><td class="ym">2024 / 11</td><td class="pct">+6.02%</td><td class="bar-cell"><div class="bar"><i style="width:5.1%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2024 / 12</td><td class="pct">+24.64%</td><td class="bar-cell"><div class="bar"><i style="width:20.8%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 01</td><td class="pct">+17.83%</td><td class="bar-cell"><div class="bar"><i style="width:15.1%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 02</td><td class="pct">+83.37%</td><td class="bar-cell"><div class="bar"><i style="width:70.4%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 03</td><td class="pct">+37.82%</td><td class="bar-cell"><div class="bar"><i style="width:31.9%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 04</td><td class="pct">+39.15%</td><td class="bar-cell"><div class="bar"><i style="width:33.0%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 05</td><td class="pct">+12.18%</td><td class="bar-cell"><div class="bar"><i style="width:10.3%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 06</td><td class="pct neg">−1.86%</td><td class="bar-cell"><div class="bar"><i class="neg" style="width:1.6%"></i></div></td><td class="tag">損切り実施</td></tr>
+          <tr><td class="ym">2025 / 07</td><td class="pct neg">−11.55%</td><td class="bar-cell"><div class="bar"><i class="neg" style="width:9.8%"></i></div></td><td class="tag">損切り実施</td></tr>
+          <tr><td class="ym">2025 / 08</td><td class="pct">+8.17%</td><td class="bar-cell"><div class="bar"><i style="width:6.9%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 09</td><td class="pct">+25.02%</td><td class="bar-cell"><div class="bar"><i style="width:21.1%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 10</td><td class="pct">+45.63%</td><td class="bar-cell"><div class="bar"><i style="width:38.5%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2025 / 11</td><td class="pct neg">−4.84%</td><td class="bar-cell"><div class="bar"><i class="neg" style="width:4.1%"></i></div></td><td class="tag">損切り実施</td></tr>
+          <tr><td class="ym">2025 / 12</td><td class="pct">+62.49%</td><td class="bar-cell"><div class="bar"><i style="width:52.8%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2026 / 01</td><td class="pct">+86.92%</td><td class="bar-cell"><div class="bar"><i style="width:73.4%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2026 / 02</td><td class="pct">+32.37%</td><td class="bar-cell"><div class="bar"><i style="width:27.3%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2026 / 03</td><td class="pct">+118.46%</td><td class="bar-cell"><div class="bar"><i style="width:100%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2026 / 04</td><td class="pct">+34.33%</td><td class="bar-cell"><div class="bar"><i style="width:29.0%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2026 / 05</td><td class="pct">+28.12%</td><td class="bar-cell"><div class="bar"><i style="width:23.7%"></i></div></td><td></td></tr>
+          <tr><td class="ym">2026 / 06</td><td class="pct">+21.84%</td><td class="bar-cell"><div class="bar"><i style="width:18.4%"></i></div></td><td class="tag" style="color:var(--ink-faint)">6月12日時点</td></tr>
+        </tbody>
+      </table>
+      <div class="tbl-sum">
+        <div><div class="v">17 / 20</div><div class="l">プラス月</div></div>
+        <div><div class="v" style="color:var(--crimson)">3回</div><div class="l">損切り実施月</div></div>
+        <div><div class="v">0回</div><div class="l">破綻</div></div>
+      </div>
+      <p class="lead" style="margin-top:36px">
+        見ての通り、マイナスの月もあります。しかし、これこそが<strong>「損切りを正しく行っている証拠」</strong>であり、
+        結果として破綻回数は<em>ゼロ</em>です。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ OC BAND ════════ -->
+<div class="oc-band fade">
+  <div class="wrap">
+    <p>同じシステムを稼働する運用者と、リアルタイムで情報交換できます。</p>
+    <a class="btn-oc" style="font-size:1rem;padding:17px 40px" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener"><span class="oc-tag">LINE</span>オープンチャットに入室する（無料・匿名OK）</a>
+  </div>
+</div>
+
+<!-- ════════ 06 SIMULATOR ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(37,99,235,.12),transparent 60%),#080a02;border-top:1px solid rgba(59,130,246,.2);border-bottom:1px solid rgba(59,130,246,.15)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">06 ─ SIMULATOR</div>
+      <h2>収益シミュレーター</h2>
+      <p class="lead">
+        myfxbook公表の月間平均 <em>+31.59%</em>（2026年6月12日時点）をもとに、
+        あなたの資金が<strong>1年後にいくらになるか</strong>を単利・複利で試算できます。
+      </p>
+    </div>
+    <div class="sim-box fade">
+      <div style="font-size:.7rem;letter-spacing:.2em;color:var(--ink-faint);margin-bottom:12px">スタート資金を選択 または 入力</div>
+      <div class="sim-presets">
+        <button class="sim-preset" data-v="3" onclick="simPreset(this)">3万円</button>
+        <button class="sim-preset" data-v="5" onclick="simPreset(this)">5万円</button>
+        <button class="sim-preset on" data-v="10" onclick="simPreset(this)">10万円</button>
+        <button class="sim-preset" data-v="50" onclick="simPreset(this)">50万円</button>
+      </div>
+      <div class="sim-input-row">
+        <input class="sim-input" id="sim-input" type="number" min="1" step="1" value="10" inputmode="numeric">
+        <span style="font-weight:700;color:var(--ink)">万円</span>
+        <span>でスタートした場合、1年後…</span>
+      </div>
+      <div class="sim-results">
+        <div class="sim-card">
+          <div class="l">単利運用（利益を毎月出金）</div>
+          <div class="v" id="sim-simple">—</div>
+          <div class="s">月間平均 +31.59% × 12ヶ月（+379.1%）</div>
+        </div>
+        <div class="sim-card">
+          <div class="l">複利運用（利益を再投資）</div>
+          <div class="v" id="sim-comp">—</div>
+          <div class="s">月間平均 +31.59% を12ヶ月複利（約27.0倍）</div>
+        </div>
+      </div>
+      <div class="sim-chart-wrap">
+        <div class="sim-chart-title">資産推移イメージ（スタート → 1年後）</div>
+        <canvas id="sim-chart"></canvas>
+      </div>
+      <p class="sim-note">
+        ※本シミュレーターは、myfxbookが公表する過去の月間平均増加率（+31.59%・2026年6月12日時点）を機械的に当てはめた机上の試算です。
+        将来の運用成果を保証するものではなく、相場状況により損失が発生する可能性があります。税金・手数料・スリッページ等は考慮していません。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 07 REVIEWS ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(100,40,180,.08),transparent 65%),#080510;border-top:1px solid rgba(140,80,220,.15);border-bottom:1px solid rgba(140,80,220,.12)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">07 ─ REVIEWS</div>
+      <h2>利用者の声</h2>
+      <div class="rev-head">
+        <span class="rev-avg">4.6</span>
+        <span class="rev-stars">★★★★★</span>
+        <span class="rev-cnt">10件のレビュー（平均）</span>
+      </div>
+    </div>
+    <div class="rev-grid fade">
+      <div class="rev-card"><div class="st">★★★★★</div><p>myfxbookで実績が全部見られるので疑いようがない。半年運用していますが、口座残高は想像以上に増えました。</p><div class="who">K.T さん（40代・男性）</div></div>
+      <div class="rev-card"><div class="st">★★★★★</div><p>設定はLINEで聞きながら30分ほどで完了。FX未経験の私でも問題なく始められました。</p><div class="who">M.S さん（30代・女性）</div></div>
+      <div class="rev-card"><div class="st">★★★★<span class="off">★</span></div><p>月によって成績の波はありますが、損切りルールが明確なので安心して任せられます。</p><div class="who">H.Y さん（50代・男性）</div></div>
+      <div class="rev-card"><div class="st">★★★★★</div><p>3万円から始めました。少額でも複利でじわじわ増えていくのを見るのが毎月の楽しみです。</p><div class="who">A.N さん（20代・女性）</div></div>
+      <div class="rev-card"><div class="st">★★★★★</div><p>退職金の一部で運用中。オープンチャットで他の運用者の状況が見られるのが心強いです。</p><div class="who">T.K さん（60代・男性）</div></div>
+      <div class="rev-card"><div class="st">★★★<span class="off">★★</span></div><p>毎日エントリーがあるわけではないので、毎日動きを見たい自分には少し物足りない。ただ実績は本物だと思います。</p><div class="who">R.M さん（30代・男性）</div></div>
+      <div class="rev-card"><div class="st">★★★★★</div><p>以前ほかの自動売買で失敗しましたが、ここは損切りがきちんと入るので全く別物でした。</p><div class="who">Y.I さん（40代・女性）</div></div>
+      <div class="rev-card"><div class="st">★★★★<span class="off">★</span></div><p>マイナスの月もあるので★4。それでもトータルではしっかりプラスになっています。</p><div class="who">S.O さん（50代・女性）</div></div>
+      <div class="rev-card"><div class="st">★★★★★</div><p>完全放置でこの成績は正直すごい。VPSも不要なので手間が一切かかりません。</p><div class="who">J.W さん（20代・男性）</div></div>
+      <div class="rev-card"><div class="st">★★★★★</div><p>質問への返信が早くて丁寧。数字を盛らずmyfxbookをそのまま見せてくれるのが信頼できます。</p><div class="who">E.F さん（30代・女性）</div></div>
+    </div>
+    <p class="rev-note">※個人の感想であり、運用成果を保証するものではありません。</p>
+  </div>
+</section>
+
+<!-- ════════ 08 HOW TO JOIN ════════ -->
+<section class="sec" style="background:#0a0d10;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)">
+  <div class="wrap join-inner">
+    <div class="fade">
+      <div class="sec-label">08 ─ HOW TO JOIN</div>
+      <h2>参加方法</h2>
+      <p class="lead">
+        本案件は<strong>最低約3万円</strong>からスタートすることができます。<br><br>
+        また、専用の<strong>匿名オープンチャット</strong>もありますので、
+        同じシステムを稼働する運用者とコミュニケーションをとることも可能です。
+      </p>
+      <div class="join-facts" style="margin-top:40px">
+        <div class="join-fact"><span class="k">最低スタート資金</span><span class="v">約3万円〜</span></div>
+        <div class="join-fact"><span class="k">実績の確認</span><span class="v">myfxbookで全公開</span></div>
+        <div class="join-fact"><span class="k">コミュニティ</span><span class="v">匿名オープンチャット</span></div>
+        <div class="join-fact"><span class="k">費用</span><span class="v">完全無料</span></div>
+      </div>
+    </div>
+    <div class="join-cta-box fade">
+      <div class="badge">CONTACT</div>
+      <div class="t">参加希望・ご質問・<br>その他お問い合わせ</div>
+      <p>すべて公式LINEで受け付けています。</p>
+      <a class="cta-primary" style="margin-bottom:12px" href="https://lin.ee/Zg3o5zr" target="_blank" rel="noopener">公式LINEはこちら</a>
+      <a class="btn-oc" style="width:100%" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener"><span class="oc-tag">LINE</span>匿名オープンチャットに参加</a>
+      <p class="risk">FX取引は元本割れのリスクがあります。<br>投資は必ずご自身の判断と責任で行ってください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ 09 FAQ ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 70% 60% at 0% 50%,rgba(20,60,100,.12),transparent 65%),#04090e;border-top:1px solid rgba(59,130,246,.15);border-bottom:1px solid rgba(59,130,246,.1)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">09 ─ FAQ</div>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list fade">
+      <div class="faq-item">
+        <div class="faq-q"><span class="fq-mark q">Q.</span>完全無料ですか？</div>
+        <div class="faq-a"><span class="fq-mark a">A.</span>全てにおいて、こちらからお金をいただくことは一切ありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="fq-mark q">Q.</span>導入にお金はかかりますか？</div>
+        <div class="faq-a"><span class="fq-mark a">A.</span>一切かかりません。完全無料です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="fq-mark q">Q.</span>VPSは必要ですか？</div>
+        <div class="faq-a"><span class="fq-mark a">A.</span>コピートレードなので必要ないです。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="fq-mark q">Q.</span>最低いくらから始められますか？</div>
+        <div class="faq-a"><span class="fq-mark a">A.</span>約3万円からスタートできます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="fq-mark q">Q.</span>myfxbookとは何ですか？</div>
+        <div class="faq-a"><span class="fq-mark a">A.</span>FX取引実績をリアルタイムで第三者検証するプラットフォームです。口座と直接連携しているため、数値の改ざんは不可能です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CLOSING ════════ -->
+<section class="closing fade" style="background:linear-gradient(160deg,#060612 0%,#080b02 50%,#060a0e 100%);border-top:1px solid rgba(59,130,246,.15)">
+  <p>あなたの資産運用が、<br>恐怖ではなく<span class="hl-blue">「楽しみ」</span>に変わる瞬間を。</p>
+</section>
+
+<!-- ════════ FOOTER / LEGAL ════════ -->
+<footer>
+  <div class="wrap">
+    <div class="legal-title">免責事項・リスクに関するご注意</div>
+    <ul class="legal-list">
+      <li>本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。</li>
+      <li>FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。</li>
+      <li>掲載している運用実績はすべて過去の実績であり、将来の運用成果・利益を保証するものではありません。</li>
+      <li>複利シミュレーションの数値は過去実績にもとづく試算であり、手数料・税金・スリッページ等は考慮していません。</li>
+      <li>相場急変時には、想定を超える損失が発生する可能性があります。余剰資金の範囲内でのご利用を強く推奨します。</li>
+      <li>XMTradingはASIC・CySEC・IFSCの規制を受けています。</li>
+    </ul>
+    <div class="copyright">© 2026 FX Copy Trade. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+  document.querySelectorAll('.fade:not(.in)').forEach(function(el){io.observe(el);});
+})();
+
+var SIM_MONTHLY=0.3159;
+function simFmt(yen){
+  var man=yen/10000;
+  if(man>=10000)return '約'+(man/10000).toFixed(2)+'億円';
+  return '約'+Math.round(man).toLocaleString('ja-JP')+'万円';
+}
+function simCalc(){
+  var v=parseFloat(document.getElementById('sim-input').value);
+  var s=document.getElementById('sim-simple'),c=document.getElementById('sim-comp');
+  if(!v||v<=0){s.textContent='—';c.textContent='—';simDraw(0);return;}
+  var yen=v*10000;
+  s.textContent=simFmt(yen*(1+SIM_MONTHLY*12));
+  c.textContent=simFmt(yen*Math.pow(1+SIM_MONTHLY,12));
+  simDraw(yen);
+}
+function simDraw(yen){
+  var cv=document.getElementById('sim-chart');
+  if(!cv)return;
+  var dpr=window.devicePixelRatio||1;
+  var w=cv.clientWidth||600,h=260;
+  cv.width=w*dpr;cv.height=h*dpr;
+  var ctx=cv.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+  if(!yen)return;
+  var padL=8,padR=Math.min(148,Math.max(94,w*0.35)),padT=22,padB=32;
+  var iw=w-padL-padR,ih=h-padT-padB;
+  var M=12,comp=[],simp=[],t;
+  for(t=0;t<=M;t++){comp.push(yen*Math.pow(1+SIM_MONTHLY,t));simp.push(yen*(1+SIM_MONTHLY*t));}
+  var maxV=comp[M]*1.04;
+  function X(i){return padL+iw*i/M}
+  function Y(v){return padT+ih*(1-v/maxV)}
+  ctx.strokeStyle='rgba(59,130,246,.1)';ctx.lineWidth=1;
+  for(var g=1;g<=4;g++){var gy=padT+ih*g/4;ctx.beginPath();ctx.moveTo(padL,gy);ctx.lineTo(padL+iw,gy);ctx.stroke();}
+  var grad=ctx.createLinearGradient(0,padT,0,padT+ih);
+  grad.addColorStop(0,'rgba(59,130,246,.3)');grad.addColorStop(1,'rgba(59,130,246,0)');
+  ctx.beginPath();ctx.moveTo(X(0),Y(comp[0]));
+  for(t=1;t<=M;t++)ctx.lineTo(X(t),Y(comp[t]));
+  ctx.lineTo(X(M),padT+ih);ctx.lineTo(X(0),padT+ih);ctx.closePath();
+  ctx.fillStyle=grad;ctx.fill();
+  ctx.beginPath();ctx.setLineDash([4,4]);ctx.strokeStyle='rgba(148,163,184,.5)';ctx.lineWidth=1.5;
+  ctx.moveTo(X(0),Y(simp[0]));for(t=1;t<=M;t++)ctx.lineTo(X(t),Y(simp[t]));
+  ctx.stroke();ctx.setLineDash([]);
+  ctx.save();
+  ctx.shadowColor='rgba(59,130,246,.5)';ctx.shadowBlur=12;
+  var lg=ctx.createLinearGradient(padL,0,padL+iw,0);
+  lg.addColorStop(0,'#2563eb');lg.addColorStop(1,'#60a5fa');
+  ctx.beginPath();ctx.strokeStyle=lg;ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.lineCap='round';
+  ctx.moveTo(X(0),Y(comp[0]));for(t=1;t<=M;t++)ctx.lineTo(X(t),Y(comp[t]));
+  ctx.stroke();ctx.restore();
+  ctx.beginPath();ctx.fillStyle='#60a5fa';ctx.arc(X(M),Y(comp[M]),5,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.strokeStyle='rgba(96,165,250,.35)';ctx.lineWidth=2;ctx.arc(X(M),Y(comp[M]),9,0,Math.PI*2);ctx.stroke();
+  ctx.font='700 12px "Noto Sans JP",sans-serif';ctx.textAlign='left';
+  var lblC='複利 '+simFmt(comp[M]);
+  var lblS='単利 '+simFmt(simp[M]);
+  var lblW=Math.max(ctx.measureText(lblC).width,ctx.measureText(lblS).width);
+  var lblX=Math.min(X(M)+12,w-lblW-4);
+  ctx.fillStyle='#93c5fd';ctx.fillText(lblC,lblX,Y(comp[M])+4);
+  ctx.fillStyle='rgba(148,163,184,.85)';ctx.fillText(lblS,lblX,Math.max(Y(simp[M])+4,Y(comp[M])+24));
+  ctx.font='11px "Noto Sans JP",sans-serif';ctx.fillStyle='rgba(72,79,88,.9)';
+  ctx.textAlign='left';ctx.fillText('スタート '+simFmt(yen),padL,padT+ih+22);
+  ctx.textAlign='center';ctx.fillText('6ヶ月',X(6),padT+ih+22);
+  ctx.textAlign='right';ctx.fillText('1年後',X(M),padT+ih+22);
+}
+window.addEventListener('resize',simCalc);
+function simPreset(btn){
+  document.querySelectorAll('.sim-preset').forEach(function(b){b.classList.remove('on')});
+  btn.classList.add('on');
+  document.getElementById('sim-input').value=btn.dataset.v;
+  simCalc();
+}
+document.getElementById('sim-input').addEventListener('input',function(){
+  document.querySelectorAll('.sim-preset').forEach(function(b){b.classList.remove('on')});
+  simCalc();
+});
+simCalc();
+</script>
+</body>
+</html>
