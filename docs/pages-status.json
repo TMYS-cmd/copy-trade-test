@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T01:26:09.030910+00:00",
+  "updated_at": "2026-06-18T01:38:27.431313+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -438,27 +438,27 @@
     {
       "id": "lp-010",
       "slug": "fx-copy-trade-lp-5",
-      "status": "review",
+      "status": "draft",
       "variant": "beginner",
       "broker": "XM",
       "headline": "（そちらで考えて）",
       "generated": true,
       "staged": false,
-      "approved_file": false,
+      "approved_file": true,
       "netlify_url": "",
       "spec": {
         "title": "（そちらで考えて）",
         "meta_description": "",
         "hero": {
-          "cta_text": "無料で口座開設する",
-          "headline": "（そちらで考えて）"
+          "headline": "（そちらで考えて）",
+          "cta_text": "無料で口座開設する"
         },
         "features": [],
         "faq": [],
         "legal": {
           "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
-          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
-          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。"
         },
         "gemini_instructions": "# --- コンテンツ要件 ---\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-4/\n# 上記のLPと全く同じものを作成\n# --- 参考URL ---\n# - https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-4/\n# - 上記のLPと全く同じものを作成\n",
         "results_section": {
