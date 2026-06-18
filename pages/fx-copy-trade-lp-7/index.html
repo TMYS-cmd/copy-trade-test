@@ -341,7 +341,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 
 /* ── LINE openchat green button ── */
 .btn-oc{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  display:inline-flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;
   font-size:.92rem;font-weight:700;letter-spacing:.04em;
   color:#fff;background:#06C755;border:1px solid #06C755;border-radius:9px;
   padding:15px 30px;
@@ -349,6 +349,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 }
 .btn-oc:hover{background:#05b14c;transform:translateY(-2px);box-shadow:0 10px 30px rgba(6,199,85,.3);color:#fff}
 .btn-oc .oc-tag{font-size:.64rem;font-weight:900;background:rgba(255,255,255,.22);padding:2px 8px;border-radius:4px;letter-spacing:.1em}
+.oc-sub{display:block;font-size:.62rem;font-weight:400;opacity:.82;letter-spacing:.04em;margin-top:1px}
 .oc-band{
   border-top:1px solid var(--gold-line);border-bottom:1px solid var(--gold-line);
   background:rgba(6,199,85,.04);padding:54px 0;text-align:center;
@@ -546,7 +547,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 /* ── floating openchat button (follows scroll) ── */
 .float-oc{
   position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:95;
-  display:inline-flex;align-items:center;justify-content:center;gap:11px;
+  display:inline-flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;
   max-width:calc(100% - 32px);
   background:#06C755;color:#fff;border:1px solid #06C755;border-radius:12px;
   padding:16px 36px;font-weight:700;font-size:1.02rem;letter-spacing:.04em;
@@ -586,7 +587,8 @@ body{padding-bottom:88px}
 <body>
 
 <a class="float-oc" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">
-  <span class="oc-tag">LINE</span>オープンチャットに参加
+  <span>【無料でシステムを受け取る】</span>
+  <small class="oc-sub">登録不要。今すぐ始められます。</small>
 </a>
 
 <div class="topbanner">
@@ -608,10 +610,6 @@ body{padding-bottom:88px}
   <div class="hero-inner">
     <div class="fade in">
       <div class="hero-alert"><span class="scam">FXは99％詐欺。</span><span class="real">1％の本物。</span></div>
-      <a class="hero-chart" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener" aria-label="myfxbookの成長チャートを確認する">
-        <img src="assets/myfxbook-chart.jpg" alt="myfxbook 成長チャート 2024年11月〜2026年6月（増加 +18,303.98%）" loading="lazy">
-      </a>
-      <p class="hero-chart-cap">myfxbook 実績チャート（2024年11月〜2026年6月・増加 +18,303.98%）</p>
       <h1><span class="ln">【開始から16ヶ月<span class="hl">破綻なし</span>】</span><span class="ln">「日本最高峰」の戦略。</span><span class="ln">嘘偽りない<span class="hl">myfxbook全公開</span></span></h1>
 
       <div class="plate hero-plate" aria-label="運用実績サマリー">
@@ -647,7 +645,7 @@ body{padding-bottom:88px}
       <a class="cta-myfx mfx-btn" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">2024年からの実績を<span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>で確認する</a>
       <div class="cta-row">
         <a class="cta" href="https://lin.ee/Zg3o5zr" target="_blank" rel="noopener">公式LINEはこちら</a>
-        <a class="btn-oc" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener"><span class="oc-tag">LINE</span>オープンチャットに参加</a>
+        <a class="btn-oc" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">【無料でシステムを受け取る】<small class="oc-sub">登録不要。今すぐ始められます。</small></a>
       </div>
       <div class="cta-note" style="margin-top:16px">参加希望・ご質問・お問い合わせは公式LINEへ</div>
     </div>
@@ -878,7 +876,7 @@ body{padding-bottom:88px}
 <div class="oc-band fade">
   <div class="wrap">
     <p>同じシステムを稼働する運用者と、リアルタイムで情報交換できます。</p>
-    <a class="btn-oc" style="font-size:1rem;padding:17px 40px" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener"><span class="oc-tag">LINE</span>オープンチャットに入室する（無料・匿名OK）</a>
+    <a class="btn-oc" style="font-size:1rem;padding:17px 40px" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">【無料でシステムを受け取る】<small class="oc-sub">登録不要。今すぐ始められます。</small></a>
   </div>
 </div>
 
@@ -1020,7 +1018,7 @@ body{padding-bottom:88px}
       <div class="t">参加希望・ご質問・<br>その他お問い合わせ</div>
       <p>すべて公式LINEで受け付けています。</p>
       <a class="cta" href="https://lin.ee/Zg3o5zr" target="_blank" rel="noopener">公式LINEはこちら</a>
-      <a class="btn-oc" style="width:100%" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener"><span class="oc-tag">LINE</span>匿名オープンチャットに参加</a>
+      <a class="btn-oc" style="width:100%" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">【無料でシステムを受け取る】<small class="oc-sub">登録不要。今すぐ始められます。</small></a>
       <p class="risk">FX取引は元本割れのリスクがあります。<br>投資は必ずご自身の判断と責任で行ってください。</p>
     </div>
   </div>
