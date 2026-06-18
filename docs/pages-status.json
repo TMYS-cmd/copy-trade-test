@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-18T09:50:05.500085+00:00",
+  "updated_at": "2026-06-18T10:15:16.601452+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -492,6 +492,37 @@
           "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
         },
         "gemini_instructions": "# --- コンテンツ要件 ---\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-5/\n# 内容と添付画像は上記のリンクと同じにする。\n# --- デザイン参考サイト ---\n# - 競合LP１(真面目系): https://sub-mainichi-charin.com/...\n",
+        "results_section": {
+          "show": false
+        }
+      }
+    },
+    {
+      "id": "lp-012",
+      "slug": "fx-copy-trade-lp-7",
+      "status": "review",
+      "variant": "beginner",
+      "broker": "",
+      "headline": "(そちらで考えてください)",
+      "generated": true,
+      "staged": false,
+      "approved_file": false,
+      "netlify_url": "",
+      "spec": {
+        "title": "(そちらで考えてください)",
+        "meta_description": "",
+        "hero": {
+          "cta_text": "無料で口座開設する",
+          "headline": "(そちらで考えてください)"
+        },
+        "features": [],
+        "faq": [],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "# --- コンテンツ要件 ---\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-5/\n#\n# このLPと全く同じものを作成\n# --- 参考URL ---\n# - https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-5/\n",
         "results_section": {
           "show": false
         }
