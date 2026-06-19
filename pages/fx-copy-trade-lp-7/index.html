@@ -110,8 +110,14 @@ img{max-width:100%}
     linear-gradient(168deg,#0e0c09 0%,#0c0a08 38%,#0a0806 100%);
   overflow:hidden;
 }
+.hero-bg-img{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:url('assets/hero-bg.jpg') center center / cover no-repeat;
+  opacity:.13;
+  mix-blend-mode:screen;
+}
 .hero::before{ /* fine gold grain lines, very subtle depth */
-  content:'';position:absolute;inset:0;pointer-events:none;
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
   background:
     linear-gradient(90deg,transparent 0 calc(50% - .5px),rgba(212,175,55,.045) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
     linear-gradient(90deg,transparent 0 calc(18% - .5px),rgba(212,175,55,.03) calc(18% - .5px) calc(18% + .5px),transparent calc(18% + .5px)),
@@ -122,7 +128,7 @@ img{max-width:100%}
   background:linear-gradient(90deg,transparent,var(--gold-line),transparent);
 }
 .hero-inner{
-  position:relative;z-index:1;width:100%;max-width:1040px;margin:0 auto;
+  position:relative;z-index:2;width:100%;max-width:1040px;margin:0 auto;
   padding:120px 28px 90px;
   display:block;text-align:center;
 }
@@ -607,6 +613,7 @@ body{padding-bottom:88px}
 
 <!-- ════════ HERO ════════ -->
 <header class="hero">
+  <div class="hero-bg-img" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="fade in">
       <div class="hero-alert"><span class="scam">FXは99％詐欺。</span><span class="real">1％の本物。</span></div>
