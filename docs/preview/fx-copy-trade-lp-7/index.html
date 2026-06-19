@@ -143,8 +143,11 @@ img{max-width:100%}
 }
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block}
 .hero-bullets{
-  display:flex;gap:22px;flex-wrap:wrap;font-size:.84rem;color:var(--ink-dim);
-  margin:0 0 32px;
+  display:flex;gap:22px;flex-wrap:nowrap;font-size:.84rem;color:var(--ink-dim);
+  margin:0 0 32px;white-space:nowrap;
+}
+@media(max-width:480px){
+  .hero-bullets{gap:10px;font-size:.72rem}
 }
 .hero-bullets span{display:flex;align-items:center;gap:7px}
 .hero-bullets span::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
