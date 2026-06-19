@@ -112,9 +112,11 @@ img{max-width:100%}
 }
 .hero-bg-img{
   position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:url('assets/hero-bg.jpg') center center / cover no-repeat;
-  opacity:.28;
+  background:url('assets/hero-bg.jpg') center right / cover no-repeat;
+  opacity:.38;
   mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(to right,transparent 15%,rgba(0,0,0,.6) 45%,black 70%);
+  mask-image:linear-gradient(to right,transparent 15%,rgba(0,0,0,.6) 45%,black 70%);
 }
 .hero::before{ /* fine gold grain lines, very subtle depth */
   content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
@@ -128,11 +130,24 @@ img{max-width:100%}
   background:linear-gradient(90deg,transparent,var(--gold-line),transparent);
 }
 .hero-inner{
-  position:relative;z-index:2;width:100%;max-width:1040px;margin:0 auto;
-  padding:120px 28px 90px;
-  display:block;text-align:center;
+  position:relative;z-index:2;width:100%;max-width:1080px;margin:0 auto;
+  padding:110px 28px 90px;
+  display:block;text-align:left;
 }
-.hero-inner>div{display:flex;flex-direction:column;align-items:center}
+.hero-inner>div{display:flex;flex-direction:column;align-items:flex-start}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.72rem;font-weight:700;letter-spacing:.18em;color:var(--gold);
+  border:1px solid var(--gold-dim);padding:7px 18px;background:rgba(212,175,55,.08);
+  margin-bottom:26px;border-radius:3px;
+}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block}
+.hero-bullets{
+  display:flex;gap:22px;flex-wrap:wrap;font-size:.84rem;color:var(--ink-dim);
+  margin:0 0 32px;
+}
+.hero-bullets span{display:flex;align-items:center;gap:7px}
+.hero-bullets span::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:12px;
   font-size:.78rem;letter-spacing:.34em;color:var(--gold-soft);
@@ -616,45 +631,22 @@ body{padding-bottom:88px}
   <div class="hero-bg-img" aria-hidden="true"></div>
   <div class="hero-inner">
     <div class="fade in">
-      <div class="hero-alert"><span class="scam">FXは99％詐欺。</span><span class="real">1％の本物。</span></div>
-      <h1><span class="ln">【開始から16ヶ月<span class="hl">破綻なし</span>】</span><span class="ln">「日本最高峰」の戦略。</span><span class="ln">嘘偽りない<span class="hl">myfxbook全公開</span></span></h1>
-
-      <div class="plate hero-plate" aria-label="運用実績サマリー">
-        <div class="plate-title">PERFORMANCE</div>
-        <div class="hero-stats">
-          <div class="hs">
-            <div class="stat-label">単利（絶対増加）</div>
-            <div class="stat-val gold-grad">+1,220.32<small>%</small></div>
-            <div class="hs-sub">10万円 → 122万円</div>
-          </div>
-          <div class="hs">
-            <div class="stat-label">複利（増加）</div>
-            <div class="stat-val gold-grad">+18,303.98<small>%</small></div>
-            <div class="hs-sub">10万円 → 1,830万円</div>
-          </div>
-          <div class="hs">
-            <div class="stat-label">運用期間</div>
-            <div class="stat-val">16<small>ヶ月</small></div>
-          </div>
-          <div class="hs">
-            <div class="stat-label">破綻回数</div>
-            <div class="stat-val">0<small>回</small></div>
-          </div>
-        </div>
-        <div class="plate-foot">
-          全履歴は第三者機関 myfxbook にて公開中 ─
-          <a href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">実績ページを直接確認する</a><br>
-          ※2026年6月12日時点のmyfxbook公表値。過去の実績は将来の成果を保証するものではありません。
-        </div>
+      <div class="hero-badge">期間限定 無料提供中</div>
+      <h1>
+        <span class="ln">開始から1度も<span class="hl">破綻なし</span>×</span>
+        <span class="ln">「日本最高峰」のFX戦略</span>
+      </h1>
+      <p class="hero-sub">専業トレーダー監修の自動売買システムを「無料」で提供中。</p>
+      <div class="hero-bullets">
+        <span>実績公開中</span>
+        <span>知識ゼロでもОК</span>
+        <span>完全無料で提供</span>
       </div>
-
-      <p class="hero-sub">まずは、下記の「証拠」のすべてをあなたの目で直接確認してください。</p>
-      <a class="cta-myfx mfx-btn" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">2024年からの実績を<span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>で確認する</a>
-      <div class="cta-row">
+      <a class="btn-oc" style="font-size:1.04rem;padding:18px 36px;border-radius:10px" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">【無料でシステムを受け取る】<small class="oc-sub">登録不要。今すぐ始められます。</small></a>
+      <div class="cta-row" style="justify-content:flex-start;margin-top:16px">
         <a class="cta" href="https://lin.ee/Zg3o5zr" target="_blank" rel="noopener">公式LINEはこちら</a>
-        <a class="btn-oc" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">【無料でシステムを受け取る】<small class="oc-sub">登録不要。今すぐ始められます。</small></a>
+        <a class="cta-myfx mfx-btn" style="margin:0;max-width:none;width:auto;padding:14px 24px;font-size:.88rem" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">実績を<span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>で確認</a>
       </div>
-      <div class="cta-note" style="margin-top:16px">参加希望・ご質問・お問い合わせは公式LINEへ</div>
     </div>
   </div>
 </header>
