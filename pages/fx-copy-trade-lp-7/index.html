@@ -141,6 +141,12 @@ img{max-width:100%}
   border:1px solid var(--gold-dim);padding:7px 18px;background:rgba(212,175,55,.08);
   margin-bottom:26px;border-radius:3px;
 }
+.hero-btn-group{display:flex;flex-direction:column;gap:12px;width:100%;max-width:360px}
+@media(max-width:600px){
+  .hero-btn-group{max-width:244px;gap:8px}
+  .hero-btn-group .btn-oc{padding:10px 16px!important;font-size:.82rem!important}
+  .hero-btn-group .cta-myfx{padding:10px 16px!important;font-size:.82rem!important}
+}
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block}
 .hero-bullets{
   display:flex;gap:22px;flex-wrap:nowrap;font-size:.84rem;color:var(--ink-dim);
@@ -660,11 +666,11 @@ body{padding-bottom:88px}
         <span>知識ゼロでもОК</span>
         <span>完全無料で提供</span>
       </div>
-      <div style="display:flex;flex-direction:column;gap:12px;width:100%;max-width:360px">
+      <div class="hero-btn-group">
         <a class="btn-oc" style="width:100%;font-size:.95rem;padding:15px 24px;border-radius:10px;box-sizing:border-box" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">【無料でシステムを受け取る】<small class="oc-sub">登録不要。今すぐ始められます。</small></a>
-        <a class="cta-myfx mfx-btn" style="margin:0;width:100%;box-sizing:border-box;padding:15px 24px;flex-direction:column;gap:2px;font-size:.95rem" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
-          <span style="font-size:.72rem;font-weight:500;color:#555;letter-spacing:.04em"><span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span></span>
-          <span style="font-weight:900;color:#141414">【実績を確認する】</span>
+        <a class="cta-myfx mfx-btn" style="margin:0;width:100%;box-sizing:border-box;padding:15px 24px;flex-direction:column;gap:3px;font-size:.95rem" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
+          <span style="font-size:1.05rem;font-weight:900;letter-spacing:-.02em"><span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span></span>
+          <span style="font-weight:900;color:#141414;font-size:.9rem">【実績を確認する】</span>
         </a>
       </div>
     </div>
