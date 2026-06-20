@@ -144,8 +144,10 @@ img{max-width:100%}
 .hero-btn-group{display:flex;flex-direction:column;gap:12px;width:100%;max-width:360px}
 @media(max-width:600px){
   .hero-btn-group{max-width:244px;gap:8px}
-  .hero-btn-group .btn-oc{padding:10px 16px!important;font-size:.82rem!important}
-  .hero-btn-group .cta-myfx{padding:10px 16px!important;font-size:.82rem!important}
+  .hero-btn-group .btn-oc,.hero-btn-group .cta-myfx{
+    padding:0 16px!important;font-size:.82rem!important;
+    min-height:64px;height:64px;
+  }
 }
 .hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;display:inline-block}
 .hero-bullets{
