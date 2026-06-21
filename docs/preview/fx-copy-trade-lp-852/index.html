@@ -384,6 +384,52 @@
     }
     .legal p+p{margin-top:8px}
 
+    /* ── SIMULATOR ── */
+    .sim-box{
+      border:1px solid var(--border);background:rgba(255,255,255,.03);
+      border-radius:20px;padding:48px 40px;margin-top:44px;
+    }
+    @media(max-width:600px){.sim-box{padding:32px 20px}}
+    .sim-label{font-size:.68rem;letter-spacing:.2em;color:var(--text-faint);margin-bottom:14px}
+    .sim-presets{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+    .sim-preset{
+      font-size:.9rem;font-weight:700;color:var(--purple-l);
+      background:transparent;border:1px solid var(--border);
+      padding:10px 22px;cursor:pointer;border-radius:8px;
+      transition:all .25s;font-family:inherit;
+    }
+    .sim-preset:hover{border-color:var(--purple)}
+    .sim-preset.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+    .sim-input-row{
+      display:flex;align-items:baseline;gap:12px;
+      flex-wrap:wrap;margin-bottom:32px;
+      font-size:.92rem;color:var(--text-dim);
+    }
+    .sim-input{
+      width:140px;background:#071b2e;border:1px solid var(--border);
+      color:#fff;font-size:1.3rem;font-weight:900;text-align:right;
+      padding:10px 14px;border-radius:8px;outline:none;
+      transition:border-color .25s;font-family:inherit;
+    }
+    .sim-input:focus{border-color:var(--purple)}
+    .sim-results{
+      display:grid;grid-template-columns:1fr 1fr;gap:1px;
+      background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    }
+    @media(max-width:600px){.sim-results{grid-template-columns:1fr}}
+    .sim-card{background:var(--bg);padding:36px 28px;text-align:center}
+    .sim-card .l{font-size:.72rem;letter-spacing:.12em;color:var(--text-faint);margin-bottom:12px}
+    .sim-card .v{font-weight:900;font-size:clamp(24px,3.5vw,38px);line-height:1.2;color:#fff}
+    .sim-card .v.grad{
+      background:linear-gradient(135deg,var(--purple-l),var(--blue));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .sim-card .s{font-size:.7rem;color:var(--text-faint);margin-top:10px}
+    .sim-chart-wrap{margin-top:32px;border-top:1px solid rgba(98,90,250,.15);padding-top:28px}
+    .sim-chart-title{font-size:.7rem;letter-spacing:.18em;color:var(--text-faint);margin-bottom:14px}
+    #sim-chart{width:100%;height:280px;display:block}
+    .sim-note{font-size:.68rem;color:var(--text-faint);line-height:1.85;margin-top:22px}
+
     /* ── FADE ── */
     .fade{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
     .fade.in{opacity:1;transform:none}
@@ -395,7 +441,7 @@
 <nav class="topbar">
   <div class="topbar-inner">
     <span class="topbar-brand">myfxbook 第三者認証 ｜ 16ヶ月連続実績公開中</span>
-    <a class="tb-btn" href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0" target="_blank" rel="noopener">無料で口座開設する</a>
+    <a class="tb-btn" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">システムを無料で受け取る。</a>
   </div>
 </nav>
 
@@ -428,7 +474,7 @@
         </div>
       </div>
       <div class="hero-btns">
-        <a class="btn-main" href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0" target="_blank" rel="noopener">無料で口座開設する →</a>
+        <a class="btn-main" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">システムを無料で受け取る。</a>
         <a class="btn-sub" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
           <span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>&nbsp;で実績を確認する ↗
         </a>
@@ -573,11 +619,57 @@
   </div>
 </section>
 
+<!-- SEC 3.5: 収益シミュレーター -->
+<section class="sec" style="background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(98,90,250,.14),transparent 60%),#071b2e;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">04 · SIMULATOR</div>
+      <h2 class="sec-h2">収益シミュレーター</h2>
+      <p class="lead">
+        myfxbook公表の月間平均 <em style="color:var(--purple-l);font-style:normal;font-weight:700">+31.59%</em> をもとに、あなたの資金が<strong style="color:#fff">1年後にいくらになるか</strong>を単利・複利で試算できます。
+      </p>
+    </div>
+    <div class="sim-box fade">
+      <div class="sim-label">スタート資金を選択 または 入力</div>
+      <div class="sim-presets">
+        <button class="sim-preset" data-v="3" onclick="simPreset(this)">3万円</button>
+        <button class="sim-preset" data-v="5" onclick="simPreset(this)">5万円</button>
+        <button class="sim-preset on" data-v="10" onclick="simPreset(this)">10万円</button>
+        <button class="sim-preset" data-v="50" onclick="simPreset(this)">50万円</button>
+      </div>
+      <div class="sim-input-row">
+        <input class="sim-input" id="sim-input" type="number" min="1" step="1" value="10" inputmode="numeric">
+        <span style="font-weight:700;color:#fff">万円</span>
+        <span>でスタートした場合、1年後…</span>
+      </div>
+      <div class="sim-results">
+        <div class="sim-card">
+          <div class="l">単利運用（利益を毎月出金）</div>
+          <div class="v" id="sim-simple">—</div>
+          <div class="s">月間平均 +31.59% × 12ヶ月（+379.1%）</div>
+        </div>
+        <div class="sim-card">
+          <div class="l">複利運用（利益を再投資）</div>
+          <div class="v grad" id="sim-comp">—</div>
+          <div class="s">月間平均 +31.59% を12ヶ月複利（約27.0倍）</div>
+        </div>
+      </div>
+      <div class="sim-chart-wrap">
+        <div class="sim-chart-title">資産推移イメージ（スタート → 1年後）</div>
+        <canvas id="sim-chart"></canvas>
+      </div>
+      <p class="sim-note">
+        ※本シミュレーターは、myfxbookが公表する過去の月間平均増加率（+31.59%）を機械的に当てはめた机上の試算です。将来の運用成果を保証するものではなく、相場状況により損失が発生する可能性があります。税金・手数料・スリッページ等は考慮していません。
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- SEC 4: 月別データ -->
 <section class="sec" style="background:#0a2540">
   <div class="wrap">
     <div class="fade">
-      <div class="sec-label">04 · MONTHLY RESULTS</div>
+      <div class="sec-label">05 · MONTHLY RESULTS</div>
       <h2 class="sec-h2">リアルを映し出す<br>「<span class="gt">16ヶ月連続</span>」の月別運用データ</h2>
       <p class="lead">負けを隠さないことこそが、本当に運用されている証拠です。利益が出る月もあれば、当然ドローダウンの月もあります。そのすべてを包み隠さず開示します。</p>
     </div>
@@ -636,7 +728,7 @@
         上限に達し次第、予告なく募集を締め切ります。
       </p>
       <div class="cta-btns">
-        <a class="btn-cta" href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0" target="_blank" rel="noopener">無料で口座開設する →</a>
+        <a class="btn-cta" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">システムを無料で受け取る。</a>
         <a class="btn-mfx" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
           <span style="font-weight:900"><span style="color:#fff">my</span><span style="color:#ff7a00">fx</span><span style="color:#fff">book</span></span>
           で実績を先に確認する
@@ -648,8 +740,8 @@
 </section>
 
 <!-- FLOATING CTA -->
-<a class="float-cta" href="https://clicks.pipaffiliates.com/c?c=XXXXX&l=ja&p=0" target="_blank" rel="noopener">
-  無料で口座開設する →
+<a class="float-cta" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">
+  システムを無料で受け取る。
 </a>
 
 <!-- FOOTER -->
@@ -670,6 +762,90 @@ const obs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+/* ── 収益シミュレーター ── */
+var SIM_MONTHLY = 0.3159;
+function simFmt(yen) {
+  var man = yen / 10000;
+  if (man >= 10000) return '約' + (man / 10000).toFixed(2) + '億円';
+  return '約' + Math.round(man).toLocaleString('ja-JP') + '万円';
+}
+function simCalc() {
+  var v = parseFloat(document.getElementById('sim-input').value);
+  var s = document.getElementById('sim-simple'), c = document.getElementById('sim-comp');
+  if (!v || v <= 0) { s.textContent = '—'; c.textContent = '—'; simDraw(0); return; }
+  var yen = v * 10000;
+  s.textContent = simFmt(yen * (1 + SIM_MONTHLY * 12));
+  c.textContent = simFmt(yen * Math.pow(1 + SIM_MONTHLY, 12));
+  simDraw(yen);
+}
+function simDraw(yen) {
+  var cv = document.getElementById('sim-chart');
+  if (!cv) return;
+  var dpr = window.devicePixelRatio || 1;
+  var w = cv.clientWidth || 600, h = 280;
+  cv.width = w * dpr; cv.height = h * dpr;
+  var ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  if (!yen) return;
+  var padL = 8, padR = Math.min(150, Math.max(96, w * 0.36)), padT = 24, padB = 34;
+  var iw = w - padL - padR, ih = h - padT - padB;
+  var M = 12, comp = [], simp = [], t;
+  for (t = 0; t <= M; t++) { comp.push(yen * Math.pow(1 + SIM_MONTHLY, t)); simp.push(yen * (1 + SIM_MONTHLY * t)); }
+  var maxV = comp[M] * 1.04;
+  function X(i) { return padL + iw * i / M; }
+  function Y(v) { return padT + ih * (1 - v / maxV); }
+  /* グリッド */
+  ctx.strokeStyle = 'rgba(98,90,250,.12)'; ctx.lineWidth = 1;
+  for (var g = 1; g <= 4; g++) { var gy = padT + ih * g / 4; ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(padL + iw, gy); ctx.stroke(); }
+  /* 複利エリア（紫→透明） */
+  var grad = ctx.createLinearGradient(0, padT, 0, padT + ih);
+  grad.addColorStop(0, 'rgba(98,90,250,.35)'); grad.addColorStop(1, 'rgba(98,90,250,0)');
+  ctx.beginPath(); ctx.moveTo(X(0), Y(comp[0]));
+  for (t = 1; t <= M; t++) ctx.lineTo(X(t), Y(comp[t]));
+  ctx.lineTo(X(M), padT + ih); ctx.lineTo(X(0), padT + ih); ctx.closePath();
+  ctx.fillStyle = grad; ctx.fill();
+  /* 単利ライン（点線） */
+  ctx.beginPath(); ctx.setLineDash([5, 5]); ctx.strokeStyle = 'rgba(168,184,216,.5)'; ctx.lineWidth = 1.5;
+  ctx.moveTo(X(0), Y(simp[0])); for (t = 1; t <= M; t++) ctx.lineTo(X(t), Y(simp[t]));
+  ctx.stroke(); ctx.setLineDash([]);
+  /* 複利ライン（紫グラデーション・グロー） */
+  ctx.save();
+  ctx.shadowColor = 'rgba(98,90,250,.6)'; ctx.shadowBlur = 14;
+  var lg = ctx.createLinearGradient(padL, 0, padL + iw, 0);
+  lg.addColorStop(0, '#625afa'); lg.addColorStop(1, '#a78bfa');
+  ctx.beginPath(); ctx.strokeStyle = lg; ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  ctx.moveTo(X(0), Y(comp[0])); for (t = 1; t <= M; t++) ctx.lineTo(X(t), Y(comp[t]));
+  ctx.stroke(); ctx.restore();
+  /* 終点ドット */
+  ctx.beginPath(); ctx.fillStyle = '#a78bfa'; ctx.arc(X(M), Y(comp[M]), 5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.strokeStyle = 'rgba(167,139,250,.4)'; ctx.lineWidth = 2; ctx.arc(X(M), Y(comp[M]), 9, 0, Math.PI * 2); ctx.stroke();
+  /* ラベル */
+  ctx.font = '700 12px "Noto Sans JP",sans-serif'; ctx.textAlign = 'left';
+  var lblC = '複利 ' + simFmt(comp[M]);
+  var lblS = '単利 ' + simFmt(simp[M]);
+  var lblW = Math.max(ctx.measureText(lblC).width, ctx.measureText(lblS).width);
+  var lblX = Math.min(X(M) + 12, w - lblW - 4);
+  ctx.fillStyle = '#a78bfa'; ctx.fillText(lblC, lblX, Y(comp[M]) + 4);
+  ctx.fillStyle = 'rgba(168,184,216,.8)'; ctx.fillText(lblS, lblX, Math.max(Y(simp[M]) + 4, Y(comp[M]) + 26));
+  ctx.font = '11px "Noto Sans JP",sans-serif'; ctx.fillStyle = 'rgba(107,127,163,.9)';
+  ctx.textAlign = 'left'; ctx.fillText('スタート ' + simFmt(yen), padL, padT + ih + 22);
+  ctx.textAlign = 'center'; ctx.fillText('6ヶ月', X(6), padT + ih + 22);
+  ctx.textAlign = 'right'; ctx.fillText('1年後', X(M), padT + ih + 22);
+}
+window.addEventListener('resize', simCalc);
+function simPreset(btn) {
+  document.querySelectorAll('.sim-preset').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  document.getElementById('sim-input').value = btn.dataset.v;
+  simCalc();
+}
+document.getElementById('sim-input').addEventListener('input', function() {
+  document.querySelectorAll('.sim-preset').forEach(function(b) { b.classList.remove('on'); });
+  simCalc();
+});
+simCalc();
 </script>
 </body>
 </html>
