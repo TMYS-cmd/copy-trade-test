@@ -107,20 +107,14 @@
       font-size:clamp(14px,1.8vw,18px);color:var(--text-dim);
       margin-bottom:36px;line-height:1.6;
     }
-    .hero-kpis{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:40px;
-    }
-    .kpi{
-      display:flex;flex-direction:column;align-items:flex-start;gap:4px;
-      background:rgba(255,255,255,.05);border:1px solid rgba(98,90,250,.3);
-      border-radius:10px;padding:10px 8px;
-    }
+    .hero-kpis{display:flex;gap:36px;margin-bottom:40px;flex-wrap:wrap}
+    .kpi{display:flex;flex-direction:column;gap:3px}
     .kpi .v{
-      font-size:.85rem;font-weight:900;letter-spacing:-.01em;line-height:1.2;
+      font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:-.03em;line-height:1;
       background:linear-gradient(135deg,var(--purple-l),var(--blue));
       -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
     }
-    .kpi .l{font-size:.8rem;color:var(--text-faint);letter-spacing:.02em;margin-top:0}
+    .kpi .l{font-size:.68rem;color:var(--text-faint);letter-spacing:.06em;margin-top:4px}
     .hero-btns{display:flex;flex-direction:column;gap:12px;max-width:400px}
     .btn-main{
       display:flex;align-items:center;justify-content:center;
@@ -461,20 +455,16 @@
       </h1>
       <div class="hero-kpis">
         <div class="kpi">
-          <span class="l">単利運用</span>
-          <span class="v">13倍</span>
+          <span class="v">+17,994%</span>
+          <span class="l">複利運用実績</span>
         </div>
         <div class="kpi">
-          <span class="l">複利運用</span>
-          <span class="v">179倍</span>
+          <span class="v">16ヶ月</span>
+          <span class="l">連続稼働中</span>
         </div>
         <div class="kpi">
-          <span class="l">連続稼働</span>
-          <span class="v">16か月</span>
-        </div>
-        <div class="kpi">
-          <span class="l">破綻回数</span>
           <span class="v">0回</span>
+          <span class="l">破綻回数</span>
         </div>
       </div>
       <div class="hero-btns">
