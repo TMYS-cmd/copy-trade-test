@@ -448,16 +448,6 @@
     .mfx-growth-val{font-size:.82rem;font-weight:900;color:#06c755}
     #growth-chart{width:100%;display:block;border-radius:10px;border:1px solid var(--border-dim);background:rgba(255,255,255,.03)}
 
-    /* ── MFX BAR CHARTS ── */
-    .mfx-charts{margin-bottom:32px;width:100%}
-    .mfx-chart-block{margin-bottom:16px}
-    .mfx-chart-yr{
-      font-size:.63rem;font-weight:700;letter-spacing:.14em;
-      color:var(--purple-l);margin-bottom:6px;
-      display:flex;align-items:center;gap:8px;
-    }
-    .mfx-chart-yr::after{content:'';flex:1;height:1px;background:var(--border)}
-    .mfx-cv{width:100%;display:block;background:rgba(255,255,255,.03);border-radius:10px;border:1px solid var(--border-dim)}
 
     /* ── FADE ── */
     .fade{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
@@ -502,21 +492,7 @@
         </div>
         <canvas id="growth-chart" style="height:200px"></canvas>
       </div>
-      <!-- Monthly Bar Charts -->
-      <div class="mfx-charts fade in">
-        <div class="mfx-chart-block">
-          <div class="mfx-chart-yr">2024年</div>
-          <canvas class="mfx-cv" id="cv2024" style="height:110px"></canvas>
-        </div>
-        <div class="mfx-chart-block">
-          <div class="mfx-chart-yr">2025年</div>
-          <canvas class="mfx-cv" id="cv2025" style="height:150px"></canvas>
-        </div>
-        <div class="mfx-chart-block">
-          <div class="mfx-chart-yr">2026年</div>
-          <canvas class="mfx-cv" id="cv2026" style="height:130px"></canvas>
-        </div>
-      </div>
+
       <div class="hero-btns">
         <a class="btn-main" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">システムを無料で受け取る。</a>
         <a class="btn-sub" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
@@ -966,54 +942,6 @@ simCalc();
   window.addEventListener('resize', drawGrowth);
 })();
 
-/* ── 月別バーチャート ── */
-(function(){
-  var DATA={
-    cv2024:[{m:'Nov',v:6.02},{m:'Dec',v:24.64}],
-    cv2025:[{m:'Jan',v:17.83},{m:'Feb',v:83.37},{m:'Mar',v:37.82},{m:'Apr',v:39.15},{m:'May',v:12.18},{m:'Jun',v:-1.86},{m:'Jul',v:-11.55},{m:'Aug',v:8.17},{m:'Sep',v:25.02},{m:'Oct',v:45.63},{m:'Nov',v:-4.84},{m:'Dec',v:62.49}],
-    cv2026:[{m:'Jan',v:86.92},{m:'Feb',v:32.37},{m:'Mar',v:118.46},{m:'Apr',v:34.33},{m:'May',v:28.12},{m:'Jun',v:19.79}]
-  };
-  var COLS=['#b39ddb','#ef9a9a','#80cbc4','#ffcc80','#a5d6a7','#90caf9','#f48fb1','#ce93d8','#ffab91','#80deea','#c5e1a5','#ffe082'];
-  function draw(id,data){
-    var cv=document.getElementById(id); if(!cv) return;
-    var dpr=window.devicePixelRatio||1;
-    var W=cv.offsetWidth||300, H=cv.offsetHeight||130;
-    cv.width=W*dpr; cv.height=H*dpr;
-    var ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
-    var PL=34,PR=8,PT=24,PB=26;
-    var cW=W-PL-PR, cH=H-PT-PB, n=data.length;
-    var maxV=Math.max.apply(null,data.map(function(d){return d.v}).concat([0]));
-    var minV=Math.min.apply(null,data.map(function(d){return d.v}).concat([0]));
-    var range=maxV-minV||1;
-    var zeroY=PT+cH*(maxV/range);
-    var slotW=cW/n, barW=slotW*0.55;
-    /* zero line */
-    ctx.strokeStyle='rgba(255,255,255,.18)'; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(PL,zeroY); ctx.lineTo(PL+cW,zeroY); ctx.stroke();
-    /* y labels */
-    ctx.fillStyle='rgba(168,184,216,.55)'; ctx.font='8px sans-serif'; ctx.textAlign='right';
-    if(maxV>0) ctx.fillText(Math.round(maxV)+'%',PL-4,PT+5);
-    if(minV<0) ctx.fillText(Math.round(minV)+'%',PL-4,PT+cH+5);
-    /* bars */
-    data.forEach(function(d,i){
-      var x=PL+i*slotW+(slotW-barW)/2;
-      var barH=Math.abs(d.v)/range*cH;
-      var y=d.v>=0?zeroY-barH:zeroY;
-      ctx.fillStyle=d.v>=0?COLS[i%COLS.length]:'rgba(255,71,87,.7)';
-      ctx.fillRect(x,y,barW,barH);
-      /* value */
-      ctx.fillStyle='#e8f1ff'; ctx.font='bold 8px sans-serif'; ctx.textAlign='center';
-      if(d.v>=0) ctx.fillText(d.v+'%',x+barW/2,y-3);
-      else       ctx.fillText(d.v+'%',x+barW/2,y+barH+11);
-      /* month */
-      ctx.fillStyle='rgba(168,184,216,.65)'; ctx.font='8px sans-serif';
-      ctx.fillText(d.m,x+barW/2,H-PB+13);
-    });
-  }
-  function drawAll(){ Object.keys(DATA).forEach(function(id){ draw(id,DATA[id]); }); }
-  window.addEventListener('load', drawAll);
-  window.addEventListener('resize', drawAll);
-})();
 </script>
 </body>
 </html>
