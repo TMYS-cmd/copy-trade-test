@@ -107,8 +107,14 @@
       font-size:clamp(14px,1.8vw,18px);color:var(--text-dim);
       margin-bottom:36px;line-height:1.6;
     }
-    .hero-kpis{display:flex;flex-direction:column;gap:16px;margin-bottom:40px}
-    .kpi{display:flex;flex-direction:column;gap:3px}
+    .hero-kpis{
+      display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:40px;
+    }
+    .kpi{
+      display:flex;flex-direction:column;gap:4px;
+      background:rgba(255,255,255,.05);border:1px solid rgba(98,90,250,.3);
+      border-radius:12px;padding:14px 16px;
+    }
     .kpi .v{
       font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:-.03em;line-height:1;
       background:linear-gradient(135deg,var(--purple-l),var(--blue));
@@ -456,11 +462,11 @@
       <div class="hero-kpis">
         <div class="kpi">
           <span class="v">13倍</span>
-          <span class="l">単利運用実績</span>
+          <span class="l">単利運用</span>
         </div>
         <div class="kpi">
           <span class="v">179倍</span>
-          <span class="l">複利運用実績</span>
+          <span class="l">複利運用</span>
         </div>
         <div class="kpi">
           <span class="v">16か月</span>
