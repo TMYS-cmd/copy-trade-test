@@ -441,6 +441,13 @@
     #sim-chart{width:100%;height:280px;display:block}
     .sim-note{font-size:.68rem;color:var(--text-faint);line-height:1.85;margin-top:22px}
 
+    /* ── MFX GROWTH CHART ── */
+    .mfx-growth{margin-bottom:24px;width:100%}
+    .mfx-growth-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+    .mfx-growth-lbl{font-size:.62rem;color:var(--text-faint);letter-spacing:.08em}
+    .mfx-growth-val{font-size:.82rem;font-weight:900;color:#06c755}
+    #growth-chart{width:100%;display:block;border-radius:10px;border:1px solid var(--border-dim);background:rgba(255,255,255,.03)}
+
     /* ── MFX BAR CHARTS ── */
     .mfx-charts{margin-bottom:32px;width:100%}
     .mfx-chart-block{margin-bottom:16px}
@@ -486,6 +493,14 @@
           <span class="v">0回</span>
           <span class="l">破綻回数</span>
         </div>
+      </div>
+      <!-- Growth Chart -->
+      <div class="mfx-growth fade in">
+        <div class="mfx-growth-hd">
+          <span class="mfx-growth-lbl">成長チャート（myfxbook リアル口座）</span>
+          <span class="mfx-growth-val">+17,994%</span>
+        </div>
+        <canvas id="growth-chart" style="height:200px"></canvas>
       </div>
       <!-- Monthly Bar Charts -->
       <div class="mfx-charts fade in">
@@ -886,6 +901,70 @@ document.getElementById('sim-input').addEventListener('input', function() {
   simCalc();
 });
 simCalc();
+
+/* ── 成長チャート ── */
+(function(){
+  var MONTHLY=[
+    {g:6.02},{g:24.64},
+    {g:17.83},{g:83.37},{g:37.82},{g:39.15},{g:12.18},{g:-1.86},{g:-11.55},{g:8.17},{g:25.02},{g:45.63},{g:-4.84},{g:62.49},
+    {g:86.92},{g:32.37},{g:118.46},{g:34.33},{g:28.12},{g:19.79}
+  ];
+  var XLABELS=["Nov '24","Apr '25","Jul '25","Nov '25","Feb '26","Jun '26"];
+  var XPOS=[0,5,8,13,16,19];
+
+  function drawGrowth(){
+    var cv=document.getElementById('growth-chart'); if(!cv) return;
+    var dpr=window.devicePixelRatio||1;
+    var W=cv.offsetWidth||340, H=cv.offsetHeight||200;
+    cv.width=W*dpr; cv.height=H*dpr;
+    var ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+    var PL=48,PR=12,PT=18,PB=30;
+    var cW=W-PL-PR, cH=H-PT-PB;
+    /* 累積複利計算 */
+    var pts=[{i:0,v:0}], mul=1;
+    MONTHLY.forEach(function(m,idx){
+      mul*=(1+m.g/100);
+      pts.push({i:idx+1, v:(mul-1)*100});
+    });
+    var maxV=20000;
+    function X(i){return PL+cW*(i/(pts.length-1));}
+    function Y(v){return PT+cH*(1-Math.min(v,maxV)/maxV);}
+    /* グリッド・y軸ラベル */
+    ctx.strokeStyle='rgba(255,255,255,.07)'; ctx.lineWidth=1;
+    [0,5000,10000,15000,20000].forEach(function(pct){
+      var y=Y(pct);
+      ctx.beginPath(); ctx.moveTo(PL,y); ctx.lineTo(PL+cW,y); ctx.stroke();
+      ctx.fillStyle='rgba(168,184,216,.55)'; ctx.font='9px sans-serif'; ctx.textAlign='right';
+      ctx.fillText(pct===0?'0%':(pct/1000)+'K%',PL-4,y+4);
+    });
+    /* 月別利益バー（緑・半透明） */
+    MONTHLY.forEach(function(m,idx){
+      if(m.g<=0) return;
+      var x=X(idx+1)-cW/(pts.length-1)*0.25;
+      var barH=Math.min(m.g/100*cH*0.55,cH*0.4);
+      ctx.fillStyle='rgba(6,199,85,.35)';
+      ctx.fillRect(x,Y(0)-barH,cW/(pts.length-1)*0.5,barH);
+    });
+    /* 成長曲線（赤・myfxbook風） */
+    var grad=ctx.createLinearGradient(0,PT,0,PT+cH);
+    grad.addColorStop(0,'rgba(220,50,50,.4)'); grad.addColorStop(1,'rgba(220,50,50,0)');
+    ctx.beginPath(); ctx.moveTo(X(0),Y(0));
+    pts.slice(1).forEach(function(p){ctx.lineTo(X(p.i),Y(p.v));});
+    ctx.lineTo(X(pts.length-1),Y(0)); ctx.lineTo(X(0),Y(0)); ctx.closePath();
+    ctx.fillStyle=grad; ctx.fill();
+    ctx.beginPath(); ctx.moveTo(X(0),Y(0));
+    pts.slice(1).forEach(function(p){ctx.lineTo(X(p.i),Y(p.v));});
+    ctx.strokeStyle='#e53935'; ctx.lineWidth=2; ctx.lineJoin='round'; ctx.stroke();
+    /* x軸ラベル */
+    XLABELS.forEach(function(lbl,k){
+      var i=XPOS[k];
+      ctx.fillStyle='rgba(168,184,216,.65)'; ctx.font='8px sans-serif'; ctx.textAlign='center';
+      ctx.fillText(lbl,X(i),H-PB+14);
+    });
+  }
+  window.addEventListener('load', drawGrowth);
+  window.addEventListener('resize', drawGrowth);
+})();
 
 /* ── 月別バーチャート ── */
 (function(){
