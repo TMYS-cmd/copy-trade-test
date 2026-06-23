@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>破綻せず、17倍達成｜元手10万円が1,799万円に</title>
+  <meta property="og:title" content="破綻せず、17倍達成｜元手10万円が1,799万円に">
+  <meta property="og:description" content="myfxbook第三者認証済み。19ヶ月連続稼働、一度も破綻なし。複利+17,994%の実績をすべて公開中。">
+  <meta property="og:type" content="website">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#0a2540;
+      --bg2:#071b2e;
+      --bg3:#0a0a20;
+      --purple:#625afa;
+      --purple-l:#a78bfa;
+      --blue:#0070f3;
+      --green:#06c755;
+      --red:#ff4757;
+      --gold:#d4af37;
+      --text:#e8f1ff;
+      --text-dim:#a8b8d8;
+      --text-faint:#6b7fa3;
+      --border:rgba(98,90,250,.25);
+      --border-dim:rgba(255,255,255,.08);
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Noto Sans JP','Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic UI','Yu Gothic','Meiryo',sans-serif;
+      background:var(--bg);color:var(--text);
+      line-height:1.7;font-size:16px;overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* ── LAYOUT ── */
+    .wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 28px}
+    .sec{padding:96px 0}
+    @media(max-width:768px){.sec{padding:64px 0}}
+
+    /* ── TOPBAR ── */
+    .topbar{
+      background:rgba(7,27,46,.95);border-bottom:1px solid var(--border-dim);
+      backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;padding:10px 0;
+    }
+    .topbar-inner{
+      display:flex;align-items:center;justify-content:space-between;
+      max-width:1100px;margin:0 auto;padding:0 28px;
+    }
+    .topbar-brand{font-size:.75rem;font-weight:700;color:var(--text-dim);letter-spacing:.08em}
+    .tb-btn{
+      font-size:.75rem;font-weight:900;color:#fff;
+      background:linear-gradient(135deg,var(--purple),var(--blue));
+      padding:7px 18px;border-radius:20px;
+      transition:opacity .2s;letter-spacing:.04em;
+    }
+    .tb-btn:hover{opacity:.85}
+
+    /* ── HERO ── */
+    .hero{
+      min-height:92vh;
+      background:
+        radial-gradient(ellipse 75% 65% at 85% 35%,rgba(98,90,250,.3),transparent 65%),
+        radial-gradient(ellipse 55% 55% at 8% 85%,rgba(0,112,243,.2),transparent 60%),
+        radial-gradient(ellipse 40% 40% at 50% 10%,rgba(98,90,250,.12),transparent 50%),
+        linear-gradient(135deg,#0a2540 0%,#0f1840 45%,#1a1150 100%);
+      display:flex;align-items:center;
+      padding:80px 0 90px;position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:'';position:absolute;inset:0;pointer-events:none;
+      background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23625afa' fill-opacity='0.035'%3E%3Cpath d='M50 50v-5h-5v5h-5v5h5v5h5v-5h5v-5h-5zm0-40v-5h-5v5h-5v5h5v5h5V20h5v-5h-5zM10 50v-5H5v5H0v5h5v5h5v-5h5v-5h-5zM10 10V5H5v5H0v5h5v5h5V20h5v-5h-5z'/%3E%3C/g%3E%3C/svg%3E");
+      opacity:.5;
+    }
+    .hero-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+      width:100%;max-width:1100px;margin:0 auto;padding:0 28px;
+      position:relative;z-index:1;
+    }
+    .mfx-img-link{display:none}
+    @media(max-width:768px){
+      .hero{padding-top:20px;min-height:auto}
+      .hero-left{text-align:center}
+      .hero-chip{justify-content:center}
+      .hero-kpis{justify-content:center}
+      .hero-btns{margin:0 auto}
+      .mfx-img-link{display:block}
+    }
+    .h1-tag{font-size:.5em;font-weight:700;color:var(--text-dim);letter-spacing:.04em;display:block;margin-bottom:4px}
+    .h1-note{font-size:.42em;font-weight:700;color:var(--purple-l);letter-spacing:.02em;display:block;margin-top:8px}
+    @media(max-width:920px){
+      .hero-grid{grid-template-columns:1fr;gap:44px}
+    }
+
+    /* hero left */
+    .hero-chip{
+      display:inline-flex;align-items:center;gap:8px;
+      background:rgba(98,90,250,.16);border:1px solid rgba(98,90,250,.5);
+      color:var(--purple-l);font-size:.7rem;font-weight:700;
+      letter-spacing:.14em;padding:6px 14px;border-radius:20px;margin-bottom:28px;
+    }
+    .live-dot{
+      width:7px;height:7px;background:#06c755;border-radius:50%;
+      animation:blink 1.6s ease-in-out infinite;flex-shrink:0;
+    }
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+    h1.hero-h1{
+      font-size:clamp(32px,4.8vw,62px);font-weight:900;
+      line-height:1.15;letter-spacing:-.03em;color:#fff;margin-bottom:16px;
+    }
+    .gt{
+      background:linear-gradient(135deg,var(--purple-l),var(--purple) 40%,var(--blue));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .hero-sub{
+      font-size:clamp(14px,1.8vw,18px);color:var(--text-dim);
+      margin-bottom:36px;line-height:1.6;
+    }
+    .hero-kpis{display:flex;gap:36px;margin-bottom:20px;flex-wrap:wrap}
+    .kpi{display:flex;flex-direction:column;gap:3px}
+    .kpi .v{
+      font-size:clamp(20px,3vw,34px);font-weight:900;letter-spacing:-.03em;line-height:1;
+      background:linear-gradient(135deg,var(--purple-l),var(--blue));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .kpi .l{font-size:.68rem;color:var(--text-faint);letter-spacing:.06em;margin-top:4px}
+    .hero-btns{display:flex;flex-direction:column;gap:12px;max-width:400px}
+    .btn-main{
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(135deg,var(--purple) 0%,var(--blue) 100%);
+      color:#fff;font-weight:900;font-size:1rem;
+      padding:17px 36px;border-radius:12px;
+      box-shadow:0 8px 32px rgba(98,90,250,.45);
+      transition:transform .25s,box-shadow .3s;letter-spacing:.04em;
+    }
+    .btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(98,90,250,.68)}
+    .btn-sub{
+      display:flex;align-items:center;justify-content:center;gap:6px;
+      background:#fff;border:1px solid #fff;
+      color:#141414;font-weight:700;font-size:.88rem;
+      padding:14px 28px;border-radius:12px;
+      transition:all .25s;
+    }
+    .btn-sub:hover{background:#f0f0f0;border-color:#f0f0f0;color:#141414}
+    .mfb .d{color:#141414}.mfb .o{color:#ff7a00}
+
+    /* hero right card */
+    .hero-card{
+      background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.12);border-radius:20px;
+      padding:36px 32px;backdrop-filter:blur(16px);
+      box-shadow:0 24px 64px rgba(0,0,0,.45);position:relative;overflow:hidden;
+    }
+    .hero-card::after{
+      content:'';position:absolute;top:-80px;right:-80px;
+      width:220px;height:220px;
+      background:radial-gradient(circle,rgba(98,90,250,.28),transparent 70%);
+      pointer-events:none;
+    }
+    .card-tag{
+      font-size:.63rem;font-weight:700;letter-spacing:.2em;
+      color:var(--purple-l);margin-bottom:22px;
+      display:flex;align-items:center;gap:10px;
+    }
+    .card-tag::after{content:'';flex:1;height:1px;background:var(--border)}
+    .card-items{display:flex;flex-direction:column;gap:16px}
+    .card-item{
+      padding:18px 20px;background:rgba(255,255,255,.04);
+      border-radius:12px;border:1px solid rgba(255,255,255,.07);
+    }
+    .card-item .k{font-size:.68rem;color:var(--text-faint);letter-spacing:.06em;margin-bottom:6px}
+    .card-item .v{
+      font-size:clamp(22px,3.5vw,38px);font-weight:900;
+      letter-spacing:-.04em;line-height:1;
+    }
+    .card-item .v.green{
+      background:linear-gradient(135deg,#4ade80,#06c755);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .card-item .v.purple{
+      background:linear-gradient(135deg,var(--purple-l),var(--purple));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .card-item .note{font-size:.68rem;color:var(--text-dim);margin-top:6px}
+    .verified-badge{
+      display:inline-flex;align-items:center;gap:5px;
+      background:rgba(6,199,85,.12);border:1px solid rgba(6,199,85,.3);
+      color:#4ade80;font-size:.63rem;font-weight:700;
+      padding:4px 10px;border-radius:20px;margin-top:8px;
+    }
+    .verified-badge::before{content:'✓';font-weight:900}
+
+    /* ── SECTION LABELS ── */
+    .sec-label{
+      display:inline-flex;align-items:center;gap:10px;
+      font-size:.68rem;font-weight:700;letter-spacing:.2em;
+      color:var(--purple-l);margin-bottom:18px;
+    }
+    .sec-label::before{content:'';width:22px;height:2px;background:var(--purple);display:inline-block}
+    h2.sec-h2{
+      font-size:clamp(24px,4vw,42px);font-weight:900;
+      line-height:1.2;margin-bottom:20px;letter-spacing:-.02em;
+    }
+    .lead{color:var(--text-dim);font-size:.95rem;line-height:1.8;max-width:720px}
+
+    /* ── NUMBERS SECTION ── */
+    .num-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px;
+    }
+    @media(max-width:720px){.num-grid{grid-template-columns:1fr;gap:16px}}
+    .num-card{
+      background:linear-gradient(135deg,rgba(98,90,250,.1),rgba(0,112,243,.06));
+      border:1px solid var(--border);border-radius:16px;
+      padding:32px 26px;position:relative;overflow:hidden;
+    }
+    .num-card::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--purple),var(--blue));
+    }
+    .num-card .n{
+      font-size:clamp(28px,4.5vw,48px);font-weight:900;
+      background:linear-gradient(135deg,var(--purple-l),var(--blue));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      letter-spacing:-.04em;line-height:1;margin-bottom:10px;
+    }
+    .num-card .d{color:var(--text-dim);font-size:.85rem;line-height:1.6}
+    .num-card .s{font-size:.7rem;color:var(--text-faint);margin-top:8px}
+    .highlight-box{
+      margin-top:36px;padding:32px 36px;
+      background:rgba(98,90,250,.08);border:1px solid rgba(98,90,250,.25);
+      border-left:4px solid var(--purple);border-radius:0 16px 16px 0;
+    }
+    @media(max-width:600px){.highlight-box{padding:24px 20px}}
+    .highlight-box .hl-head{
+      font-size:clamp(15px,2.5vw,20px);font-weight:700;color:#fff;margin-bottom:10px;
+    }
+    .highlight-box p{font-size:.88rem;color:var(--text-dim);line-height:1.8}
+
+    /* ── MYFXBOOK SECTION ── */
+    .mfx-box{
+      background:linear-gradient(135deg,rgba(98,90,250,.09),rgba(0,112,243,.06));
+      border:1px solid var(--border);border-radius:20px;padding:48px 40px;
+    }
+    @media(max-width:600px){.mfx-box{padding:32px 22px}}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+    .chip{
+      display:inline-flex;align-items:center;gap:5px;
+      font-size:.68rem;font-weight:700;letter-spacing:.08em;
+      padding:5px 12px;border-radius:20px;
+    }
+    .chip.purple{background:rgba(98,90,250,.15);border:1px solid rgba(98,90,250,.4);color:var(--purple-l)}
+    .chip.green{background:rgba(6,199,85,.12);border:1px solid rgba(6,199,85,.35);color:#4ade80}
+    .proof-items{display:flex;flex-direction:column;gap:16px;margin:28px 0 32px}
+    .proof-item{
+      display:flex;align-items:flex-start;gap:16px;
+      padding:20px 22px;background:rgba(255,255,255,.04);
+      border-radius:12px;border-left:3px solid var(--purple);
+    }
+    .proof-item .ic{
+      font-size:1.3rem;flex-shrink:0;
+      width:42px;height:42px;display:flex;align-items:center;justify-content:center;
+      background:rgba(98,90,250,.15);border-radius:10px;
+    }
+    .proof-item h3{font-size:.95rem;font-weight:700;margin-bottom:6px;color:#fff}
+    .proof-item p{font-size:.85rem;color:var(--text-dim);line-height:1.65}
+
+    /* ── RISK SECTION ── */
+    .risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+    @media(max-width:680px){.risk-grid{grid-template-columns:1fr}}
+    .risk-card{padding:30px 26px;border-radius:16px;border:1px solid}
+    .risk-card.bad{background:rgba(255,71,87,.05);border-color:rgba(255,71,87,.22)}
+    .risk-card.good{background:rgba(98,90,250,.08);border-color:rgba(98,90,250,.28)}
+    .rtag{
+      font-size:.63rem;font-weight:700;letter-spacing:.12em;
+      padding:4px 10px;border-radius:20px;display:inline-block;margin-bottom:14px;
+    }
+    .risk-card.bad .rtag{background:rgba(255,71,87,.15);color:#ff6b7a}
+    .risk-card.good .rtag{background:rgba(98,90,250,.2);color:var(--purple-l)}
+    .risk-card h3{font-size:1rem;font-weight:900;margin-bottom:10px;color:#fff}
+    .risk-card p{font-size:.85rem;color:var(--text-dim);line-height:1.7}
+    .rules{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+    .rules li{
+      list-style:none;display:flex;align-items:flex-start;gap:10px;
+      font-size:.83rem;color:var(--text-dim);
+    }
+    .rules li::before{content:'✓';color:var(--purple-l);font-weight:900;flex-shrink:0;margin-top:2px}
+    .risk-summary{
+      margin-top:28px;padding:24px 30px;
+      background:rgba(98,90,250,.08);border-radius:14px;
+      border:1px solid rgba(98,90,250,.2);text-align:center;
+    }
+    .risk-summary p{font-size:clamp(14px,2vw,17px);font-weight:700;color:#fff}
+
+    /* ── MONTHLY TABLE ── */
+    .table-wrap{
+      overflow-x:auto;border-radius:16px;
+      border:1px solid var(--border-dim);margin-top:36px;
+    }
+    table.monthly{width:100%;border-collapse:collapse;font-size:.88rem}
+    .monthly thead th{
+      background:rgba(98,90,250,.15);padding:14px 22px;
+      text-align:left;font-size:.68rem;letter-spacing:.14em;
+      color:var(--text-dim);font-weight:700;
+    }
+    .monthly tbody tr{border-top:1px solid rgba(255,255,255,.05)}
+    .monthly tbody tr:hover{background:rgba(255,255,255,.03)}
+    .monthly td{padding:13px 22px;color:var(--text-dim)}
+    .monthly td.m{color:#fff;font-weight:600}
+    .monthly td.pos{color:#4ade80;font-weight:700}
+    .monthly td.neg{color:#ff6b7a;font-weight:700}
+    .monthly tr.chart-row td{padding:8px 0 16px;background:transparent}
+    .monthly tr.chart-row img{width:100%;border-radius:8px;display:block}
+    .monthly tr.yr td{
+      background:rgba(98,90,250,.08);color:var(--purple-l);
+      font-size:.68rem;letter-spacing:.12em;font-weight:700;
+    }
+    .tbl-note{font-size:.7rem;color:var(--text-faint);margin-top:12px;text-align:right}
+
+    /* ── CTA SECTION ── */
+    .cta-box{
+      background:linear-gradient(135deg,rgba(98,90,250,.14),rgba(0,112,243,.1));
+      border:1px solid var(--border);border-radius:24px;
+      padding:68px 52px;text-align:center;position:relative;overflow:hidden;
+    }
+    @media(max-width:600px){.cta-box{padding:48px 24px}}
+    .cta-box::before{
+      content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+      width:480px;height:480px;
+      background:radial-gradient(circle,rgba(98,90,250,.22),transparent 70%);
+      pointer-events:none;
+    }
+    .limit-chip{
+      display:inline-flex;align-items:center;gap:7px;
+      background:rgba(255,71,87,.12);border:1px solid rgba(255,71,87,.32);
+      color:#ff6b7a;font-size:.7rem;font-weight:700;
+      padding:6px 14px;border-radius:20px;margin-bottom:24px;
+    }
+    .cta-box h2{
+      font-size:clamp(24px,4vw,40px);font-weight:900;
+      margin-bottom:16px;position:relative;color:#fff;
+    }
+    .cta-body{
+      font-size:clamp(13px,1.8vw,16px);color:var(--text-dim);
+      margin-bottom:16px;max-width:580px;margin-left:auto;margin-right:auto;line-height:1.8;
+    }
+    .cta-warn{
+      font-size:.88rem;color:#ff6b7a;font-weight:700;
+      margin-bottom:32px;line-height:1.7;
+    }
+    .cta-btns{
+      display:flex;flex-direction:column;align-items:center;
+      gap:12px;max-width:440px;margin:0 auto;
+    }
+    .btn-cta{
+      display:flex;align-items:center;justify-content:center;width:100%;
+      background:linear-gradient(135deg,var(--purple) 0%,var(--blue) 100%);
+      color:#fff;font-weight:900;font-size:1.05rem;
+      padding:20px 40px;border-radius:14px;
+      box-shadow:0 10px 40px rgba(98,90,250,.52);
+      transition:transform .25s,box-shadow .3s;letter-spacing:.04em;
+    }
+    .btn-cta:hover{transform:translateY(-2px);box-shadow:0 16px 52px rgba(98,90,250,.72)}
+    .btn-mfx{
+      display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+      background:#fff;border:1px solid #fff;
+      color:#141414;font-weight:700;font-size:.9rem;
+      padding:14px 28px;border-radius:12px;transition:all .25s;
+    }
+    .btn-mfx:hover{background:#f0f0f0;border-color:#f0f0f0;color:#141414}
+    .cta-fin{font-size:.72rem;color:var(--text-faint);margin-top:18px;position:relative}
+
+    /* ── FLOAT CTA ── */
+    .float-cta{
+      position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+      z-index:200;
+      background:linear-gradient(135deg,var(--purple),var(--blue));
+      color:#fff;font-weight:900;font-size:.95rem;
+      padding:14px 36px;border-radius:50px;
+      box-shadow:0 8px 32px rgba(98,90,250,.6);
+      white-space:nowrap;letter-spacing:.04em;
+      animation:fpulse 2.2s ease-in-out infinite;
+      transition:transform .2s,box-shadow .2s;
+    }
+    .float-cta:hover{transform:translateX(-50%) translateY(-2px);box-shadow:0 14px 44px rgba(98,90,250,.8)}
+    @keyframes fpulse{
+      0%,100%{box-shadow:0 8px 32px rgba(98,90,250,.6)}
+      50%{box-shadow:0 8px 48px rgba(98,90,250,.9)}
+    }
+    @media(max-width:600px){
+      .float-cta{font-size:.82rem;padding:12px 22px;width:calc(100% - 32px);text-align:center}
+    }
+
+    /* ── FOOTER ── */
+    footer{background:var(--bg3);border-top:1px solid var(--border-dim);padding:48px 0}
+    .legal{
+      max-width:860px;margin:0 auto;padding:0 28px;
+      font-size:.7rem;color:var(--text-faint);line-height:1.9;
+    }
+    .legal p+p{margin-top:8px}
+
+    /* ── SIMULATOR ── */
+    .sim-box{
+      border:1px solid var(--border);background:rgba(255,255,255,.03);
+      border-radius:20px;padding:48px 40px;margin-top:44px;
+    }
+    @media(max-width:600px){.sim-box{padding:32px 20px}}
+    .sim-label{font-size:.68rem;letter-spacing:.2em;color:var(--text-faint);margin-bottom:14px}
+    .sim-presets{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+    .sim-preset{
+      font-size:.9rem;font-weight:700;color:var(--purple-l);
+      background:transparent;border:1px solid var(--border);
+      padding:10px 22px;cursor:pointer;border-radius:8px;
+      transition:all .25s;font-family:inherit;
+    }
+    .sim-preset:hover{border-color:var(--purple)}
+    .sim-preset.on{background:var(--purple);color:#fff;border-color:var(--purple)}
+    .sim-input-row{
+      display:flex;align-items:baseline;gap:12px;
+      flex-wrap:wrap;margin-bottom:32px;
+      font-size:.92rem;color:var(--text-dim);
+    }
+    .sim-input{
+      width:140px;background:#071b2e;border:1px solid var(--border);
+      color:#fff;font-size:1.3rem;font-weight:900;text-align:right;
+      padding:10px 14px;border-radius:8px;outline:none;
+      transition:border-color .25s;font-family:inherit;
+    }
+    .sim-input:focus{border-color:var(--purple)}
+    .sim-results{
+      display:grid;grid-template-columns:1fr 1fr;gap:1px;
+      background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    }
+    @media(max-width:600px){.sim-results{grid-template-columns:1fr}}
+    .sim-card{background:var(--bg);padding:36px 28px;text-align:center}
+    .sim-card .l{font-size:.72rem;letter-spacing:.12em;color:var(--text-faint);margin-bottom:12px}
+    .sim-card .v{font-weight:900;font-size:clamp(24px,3.5vw,38px);line-height:1.2;color:#fff}
+    .sim-card .v.grad{
+      background:linear-gradient(135deg,var(--purple-l),var(--blue));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .sim-card .s{font-size:.7rem;color:var(--text-faint);margin-top:10px}
+    .sim-chart-wrap{margin-top:32px;border-top:1px solid rgba(98,90,250,.15);padding-top:28px}
+    .sim-chart-title{font-size:.7rem;letter-spacing:.18em;color:var(--text-faint);margin-bottom:14px}
+    #sim-chart{width:100%;height:280px;display:block}
+    .sim-note{font-size:.68rem;color:var(--text-faint);line-height:1.85;margin-top:22px}
+
+
+
+    /* ── FADE ── */
+    .fade{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+    .fade.in{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-left fade in">
+      <div class="hero-chip">
+        <span class="live-dot"></span>
+        LIVE · 第三者機関リアルタイム認証
+      </div>
+      <h1 class="hero-h1">
+        <span class="h1-tag">【2024年11月〜破綻ゼロ】</span>
+        <span class="gt">１０万円</span>→<span class="gt">１,７９９万円</span><br>
+        化ける威力
+        <span class="h1-note">myfxbook公開のリアル運用実績公開🔥</span>
+      </h1>
+      <div class="hero-kpis">
+        <div class="kpi">
+          <span class="v">+17,994%</span>
+          <span class="l">複利運用実績</span>
+        </div>
+        <div class="kpi">
+          <span class="v">19ヶ月</span>
+          <span class="l">連続稼働中</span>
+        </div>
+        <div class="kpi">
+          <span class="v">0回</span>
+          <span class="l">破綻回数</span>
+        </div>
+      </div>
+
+      <a class="mfx-img-link" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
+        <img src="./images/myfxbook.png" alt="myfxbook 運用実績チャート"
+          style="width:100%;border-radius:12px;margin:16px 0 20px;display:block;border:1px solid rgba(98,90,250,.25)">
+      </a>
+
+      <div class="hero-btns">
+        <a class="btn-main" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">システムを無料で受け取る。</a>
+        <a class="btn-sub" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
+          <span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>&nbsp;で実績を確認する ↗
+        </a>
+      </div>
+    </div>
+    <div class="hero-right fade in">
+      <div class="hero-card">
+        <div class="card-tag">LIVE PERFORMANCE</div>
+        <div class="card-items">
+          <div class="card-item">
+            <div class="k">複利運用収益率</div>
+            <div class="v green">+17,994%</div>
+            <div class="note">2024年11月〜2026年6月</div>
+            <span class="verified-badge">myfxbook 第三者認証済み</span>
+          </div>
+          <div class="card-item">
+            <div class="k">単利合計収益率</div>
+            <div class="v purple">+1,215%</div>
+            <div class="note">全期間合計 ／ 破綻ゼロ継続中</div>
+          </div>
+          <div class="card-item">
+            <div class="k">10万円入金時の現在換算残高</div>
+            <div class="v green" style="font-size:clamp(22px,3.2vw,36px)">1,799万円超</div>
+            <div class="note">※実際の運用実績を基に算出</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="topbar-inner">
+    <span class="topbar-brand">myfxbook 第三者認証<br>19ヶ月連続実績公開中</span>
+    <a class="tb-btn" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">システムを無料で受け取る。</a>
+  </div>
+</nav>
+
+<!-- SEC 1: 複利の威力 -->
+<section class="sec" style="background:linear-gradient(180deg,#071b2e,#0a2540)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">01 · COMPOUND POWER</div>
+      <h2 class="sec-h2">圧倒的な運用の現実：<br>元手10万円が「<span class="gt">1,799万円</span>」に化ける複利の威力</h2>
+      <p class="lead">2024年11月の運用開始から約1年半。当システムがリアル口座で刻み続けている驚異的なデータをご覧ください。</p>
+    </div>
+    <div class="num-grid fade">
+      <div class="num-card">
+        <div class="n">+1,215%</div>
+        <div class="d">単利合計収益率</div>
+        <div class="s">全期間通算の単純合計</div>
+      </div>
+      <div class="num-card">
+        <div class="n">+17,994%</div>
+        <div class="d">複利運用収益率</div>
+        <div class="s">複利で再投資した場合の実績</div>
+      </div>
+      <div class="num-card">
+        <div class="n">1,799万円</div>
+        <div class="d">10万円が化ける金額</div>
+        <div class="s">開始時に10万円を預けていた場合</div>
+      </div>
+    </div>
+    <div class="highlight-box fade">
+      <p class="hl-head">特筆すべきは、この爆発力を誇りながら「<span style="color:var(--purple-l)">一度も破綻していない</span>」という事実です。</p>
+      <p>これが、緻密に計算されたロジックだけが実現できる「複利の極み」です。感情で動くトレーダーには、絶対に再現できません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 2: myfxbook証明 -->
+<section class="sec" style="background:#0a2540">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">02 · THIRD-PARTY PROOF</div>
+      <h2 class="sec-h2">信憑性100%：<br>第三者機関「<span class="gt">myfxbook</span>」による完全証明</h2>
+    </div>
+    <div class="mfx-box fade">
+      <div class="chips">
+        <span class="chip purple">✦ 改ざん不可能</span>
+        <span class="chip purple">✦ リアルタイム更新</span>
+        <span class="chip green">✓ 第三者機関認証</span>
+        <span class="chip green">✓ 全履歴一般公開</span>
+      </div>
+      <p class="lead" style="margin-bottom:8px">
+        ネット上に溢れる「都合のいいスクリーンショット」や「いくらでも作れるバックテスト結果」に惑わされるのは終わりにしましょう。
+      </p>
+      <p class="lead" style="margin-bottom:0">
+        「月利〇〇％達成！」「含み損に◯◯pips耐えました！」——文字や画像だけの報告なら、現代のAI技術を使えばいくらでも偽造できてしまいます。
+      </p>
+      <div class="proof-items">
+        <div class="proof-item">
+          <div class="ic">🔒</div>
+          <div>
+            <h3>100%改ざん不可能な第三者機関</h3>
+            <p>myfxbookはFX口座と直接APIで連携し、取引履歴・損益曲線・ドローダウンを自動記録します。数字を後から書き換えることは一切できません。</p>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="ic">📊</div>
+          <div>
+            <h3>一秒ごとに更新される嘘偽りのない実績</h3>
+            <p>だからこそ、私たちはごまかしが一切利かない第三者検証プラットフォーム「myfxbook」で、すべての取引履歴をリアルタイムに完全公開しています。</p>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="ic">👁</div>
+          <div>
+            <h3>登録不要・誰でも無料で確認可能</h3>
+            <p>ご自身の目で、一秒ごとに更新される嘘偽りのない実績をご確認ください。取引履歴・損益曲線・ドローダウンまで、すべてが公開されています。</p>
+          </div>
+        </div>
+      </div>
+      <a class="btn-sub" style="max-width:380px" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
+        myfxbook で全履歴を確認する ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 3: 戦略的損切り -->
+<section class="sec" style="background:linear-gradient(180deg,#0a2540,#071b2e)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">03 · RISK MANAGEMENT</div>
+      <h2 class="sec-h2">なぜ生き残れるのか？<br>命運を分ける「<span class="gt">戦略的損切り</span>」</h2>
+      <p class="lead">世の中にある大半のEA（自動売買システム）が数ヶ月で資金を溶かす理由、それは非常にシンプルです。</p>
+    </div>
+    <div class="risk-grid fade">
+      <div class="risk-card bad">
+        <span class="rtag">❌ 一般的なEAの末路</span>
+        <h3>無駄にナンピンを続け、<br>一撃で破綻</h3>
+        <p>損切りができずに含み損に耐え続け、最後には耐えきれずゼロになるパターン。多くの口座が破綻する根本的な原因です。</p>
+      </div>
+      <div class="risk-card good">
+        <span class="rtag">✓ 本戦略の設計思想</span>
+        <h3>強固な「守りの設計」で<br>長期生存</h3>
+        <p>致命傷さえ負わなければ、その後の運用でいくらでも挽回できます。</p>
+        <ul class="rules">
+          <li>想定最大ドローダウンを総資産の20〜30%以内に設定</li>
+          <li>許容値を超えた場合、システムが冷徹に損切りを実行</li>
+          <li>一時的なマイナスは「口座を守り抜くための必要経費」</li>
+        </ul>
+      </div>
+    </div>
+    <div class="risk-summary fade">
+      <p>この徹底したリスク管理こそが、<span style="color:var(--purple-l)">長期にわたり右肩上がりの資産曲線</span>を支える唯一の正解です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 3.5: 収益シミュレーター -->
+<section class="sec" style="background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(98,90,250,.14),transparent 60%),#071b2e;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">04 · SIMULATOR</div>
+      <h2 class="sec-h2">収益シミュレーター</h2>
+      <p class="lead">
+        myfxbook公表の月間平均 <em style="color:var(--purple-l);font-style:normal;font-weight:700">+31%</em> をもとに、あなたの資金が<strong style="color:#fff">1年後にいくらになるか</strong>を単利・複利で試算できます。
+      </p>
+    </div>
+    <div class="sim-box fade">
+      <div class="sim-label">スタート資金を選択 または 入力</div>
+      <div class="sim-presets">
+        <button class="sim-preset" data-v="3" onclick="simPreset(this)">3万円</button>
+        <button class="sim-preset" data-v="5" onclick="simPreset(this)">5万円</button>
+        <button class="sim-preset on" data-v="10" onclick="simPreset(this)">10万円</button>
+        <button class="sim-preset" data-v="50" onclick="simPreset(this)">50万円</button>
+      </div>
+      <div class="sim-input-row">
+        <input class="sim-input" id="sim-input" type="number" min="1" step="1" value="10" inputmode="numeric">
+        <span style="font-weight:700;color:#fff">万円</span>
+        <span>でスタートした場合、1年後…</span>
+      </div>
+      <div class="sim-results">
+        <div class="sim-card">
+          <div class="l">単利運用（利益を毎月出金）</div>
+          <div class="v" id="sim-simple">—</div>
+          <div class="s">月間平均 +31% × 12ヶ月（+379%）</div>
+        </div>
+        <div class="sim-card">
+          <div class="l">複利運用（利益を再投資）</div>
+          <div class="v grad" id="sim-comp">—</div>
+          <div class="s">月間平均 +31% を12ヶ月複利（約27.0倍）</div>
+        </div>
+      </div>
+      <div class="sim-chart-wrap">
+        <div class="sim-chart-title">資産推移イメージ（スタート → 1年後）</div>
+        <canvas id="sim-chart"></canvas>
+      </div>
+      <p class="sim-note">
+        ※本シミュレーターは、myfxbookが公表する過去の月間平均増加率（+31%）を機械的に当てはめた机上の試算です。将来の運用成果を保証するものではなく、相場状況により損失が発生する可能性があります。税金・手数料・スリッページ等は考慮していません。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SEC 4: 月別データ -->
+<section class="sec" style="background:#0a2540">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-label">05 · MONTHLY RESULTS</div>
+      <h2 class="sec-h2">リアルを映し出す<br>「<span class="gt">19ヶ月連続</span>」の月別運用データ</h2>
+      <p class="lead">負けを隠さないことこそが、本当に運用されている証拠です。利益が出る月もあれば、当然ドローダウンの月もあります。そのすべてを包み隠さず開示します。</p>
+    </div>
+    <div class="table-wrap fade">
+      <table class="monthly">
+        <thead>
+          <tr>
+            <th>年</th>
+            <th>月</th>
+            <th>月利実績</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="yr"><td colspan="3">── 2024年 ──</td></tr>
+          <tr><td>2024</td><td class="m">11月</td><td class="pos">+6%</td></tr>
+          <tr><td>2024</td><td class="m">12月</td><td class="pos">+24%</td></tr>
+          <tr class="chart-row"><td colspan="3"><img src="./images/chart-2024.png" alt="2024年 月別利益チャート"></td></tr>
+          <tr class="yr"><td colspan="3">── 2025年 ──</td></tr>
+          <tr><td>2025</td><td class="m">1月</td><td class="pos">+17%</td></tr>
+          <tr><td>2025</td><td class="m">2月</td><td class="pos">+83%</td></tr>
+          <tr><td>2025</td><td class="m">3月</td><td class="pos">+37%</td></tr>
+          <tr><td>2025</td><td class="m">4月</td><td class="pos">+39%</td></tr>
+          <tr><td>2025</td><td class="m">5月</td><td class="pos">+12%</td></tr>
+          <tr><td>2025</td><td class="m">6月</td><td class="neg">-1%</td></tr>
+          <tr><td>2025</td><td class="m">7月</td><td class="neg">-11%</td></tr>
+          <tr><td>2025</td><td class="m">8月</td><td class="pos">+8%</td></tr>
+          <tr><td>2025</td><td class="m">9月</td><td class="pos">+25%</td></tr>
+          <tr><td>2025</td><td class="m">10月</td><td class="pos">+45%</td></tr>
+          <tr><td>2025</td><td class="m">11月</td><td class="neg">-4%</td></tr>
+          <tr><td>2025</td><td class="m">12月</td><td class="pos">+62%</td></tr>
+          <tr class="chart-row"><td colspan="3"><img src="./images/chart-2025.png" alt="2025年 月別利益チャート"></td></tr>
+          <tr class="yr"><td colspan="3">── 2026年 ──</td></tr>
+          <tr><td>2026</td><td class="m">1月</td><td class="pos">+86%</td></tr>
+          <tr><td>2026</td><td class="m">2月</td><td class="pos">+32%</td></tr>
+          <tr><td>2026</td><td class="m">3月</td><td class="pos">+118%</td></tr>
+          <tr><td>2026</td><td class="m">4月</td><td class="pos">+34%</td></tr>
+          <tr><td>2026</td><td class="m">5月</td><td class="pos">+28%</td></tr>
+          <tr><td>2026</td><td class="m">6月</td><td class="pos">+19% <small style="color:var(--text-faint);font-weight:400">（6/22時点）</small></td></tr>
+          <tr class="chart-row"><td colspan="3"><img src="./images/chart-2026.png" alt="2026年 月別利益チャート"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-note fade">※ myfxbook リアルタイムデータを基に作成。負けの月も含めた全期間の実績を開示しています。</p>
+  </div>
+</section>
+
+<!-- SEC 5: 最後に・CTA -->
+<section class="sec" style="background:linear-gradient(180deg,#071b2e,#0a0a20)">
+  <div class="wrap">
+    <div class="cta-box fade">
+      <span class="limit-chip">⚠ 募集枠に上限あり・随時締め切り</span>
+      <h2>最高峰の環境を<br>手に入れたい方へ</h2>
+      <p class="cta-body">
+        これまで数多くのロジックを見てきましたが、リアル口座においてここまで透明性が高く、
+        かつ圧倒的なパフォーマンスを維持しているシステムを私は他に知りません。<br><br>
+        名実ともに国内トップクラスの戦略であると自負しています。<br>
+        チャンスを掴むかどうかは完全にあなたの自由です。
+      </p>
+      <p class="cta-warn">
+        ただし、サーバーの負荷やサポート品質を維持するため、<br>
+        案内できる枠（フォロワー数）には厳格な上限を設けています。<br>
+        上限に達し次第、予告なく募集を締め切ります。
+      </p>
+      <div class="cta-btns">
+        <a class="btn-cta" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">システムを無料で受け取る。</a>
+        <a class="btn-mfx" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">
+          <span style="font-weight:900"><span style="color:#141414">my</span><span style="color:#ff7a00">fx</span><span style="color:#141414">book</span></span>
+          で実績を先に確認する
+        </a>
+      </div>
+      <p class="cta-fin">本気で資産形成を目指す方はお早めにお席を確保してください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLOATING CTA -->
+<a class="float-cta" href="https://lin.ee/69CeQrx" target="_blank" rel="noopener">
+  システムを無料で受け取る。
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <div class="legal">
+    <p>本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。</p>
+    <p>FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。</p>
+    <p>XMTradingはASIC（オーストラリア証券投資委員会）・CySEC（キプロス証券取引委員会）・IFSC（ベリーズ国際金融サービス委員会）の規制を受けています。</p>
+    <p>掲載している実績はmyfxbookによる第三者認証済みの過去のパフォーマンスです。将来の利益を保証するものではありません。</p>
+    <p style="margin-top:16px">&copy; 2026 FXコピートレード情報サイト</p>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+/* ── 収益シミュレーター ── */
+var SIM_MONTHLY = 0.3159;
+function simFmt(yen) {
+  var man = yen / 10000;
+  if (man >= 10000) return '約' + (man / 10000).toFixed(2) + '億円';
+  return '約' + Math.round(man).toLocaleString('ja-JP') + '万円';
+}
+function simCalc() {
+  var v = parseFloat(document.getElementById('sim-input').value);
+  var s = document.getElementById('sim-simple'), c = document.getElementById('sim-comp');
+  if (!v || v <= 0) { s.textContent = '—'; c.textContent = '—'; simDraw(0); return; }
+  var yen = v * 10000;
+  s.textContent = simFmt(yen * (1 + SIM_MONTHLY * 12));
+  c.textContent = simFmt(yen * Math.pow(1 + SIM_MONTHLY, 12));
+  simDraw(yen);
+}
+function simDraw(yen) {
+  var cv = document.getElementById('sim-chart');
+  if (!cv) return;
+  var dpr = window.devicePixelRatio || 1;
+  var w = cv.clientWidth || 600, h = 280;
+  cv.width = w * dpr; cv.height = h * dpr;
+  var ctx = cv.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  if (!yen) return;
+  var padL = 8, padR = Math.min(150, Math.max(96, w * 0.36)), padT = 24, padB = 34;
+  var iw = w - padL - padR, ih = h - padT - padB;
+  var M = 12, comp = [], simp = [], t;
+  for (t = 0; t <= M; t++) { comp.push(yen * Math.pow(1 + SIM_MONTHLY, t)); simp.push(yen * (1 + SIM_MONTHLY * t)); }
+  var maxV = comp[M] * 1.04;
+  function X(i) { return padL + iw * i / M; }
+  function Y(v) { return padT + ih * (1 - v / maxV); }
+  /* グリッド */
+  ctx.strokeStyle = 'rgba(98,90,250,.12)'; ctx.lineWidth = 1;
+  for (var g = 1; g <= 4; g++) { var gy = padT + ih * g / 4; ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(padL + iw, gy); ctx.stroke(); }
+  /* 複利エリア（紫→透明） */
+  var grad = ctx.createLinearGradient(0, padT, 0, padT + ih);
+  grad.addColorStop(0, 'rgba(98,90,250,.35)'); grad.addColorStop(1, 'rgba(98,90,250,0)');
+  ctx.beginPath(); ctx.moveTo(X(0), Y(comp[0]));
+  for (t = 1; t <= M; t++) ctx.lineTo(X(t), Y(comp[t]));
+  ctx.lineTo(X(M), padT + ih); ctx.lineTo(X(0), padT + ih); ctx.closePath();
+  ctx.fillStyle = grad; ctx.fill();
+  /* 単利ライン（点線） */
+  ctx.beginPath(); ctx.setLineDash([5, 5]); ctx.strokeStyle = 'rgba(168,184,216,.5)'; ctx.lineWidth = 1.5;
+  ctx.moveTo(X(0), Y(simp[0])); for (t = 1; t <= M; t++) ctx.lineTo(X(t), Y(simp[t]));
+  ctx.stroke(); ctx.setLineDash([]);
+  /* 複利ライン（紫グラデーション・グロー） */
+  ctx.save();
+  ctx.shadowColor = 'rgba(98,90,250,.6)'; ctx.shadowBlur = 14;
+  var lg = ctx.createLinearGradient(padL, 0, padL + iw, 0);
+  lg.addColorStop(0, '#625afa'); lg.addColorStop(1, '#a78bfa');
+  ctx.beginPath(); ctx.strokeStyle = lg; ctx.lineWidth = 3; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+  ctx.moveTo(X(0), Y(comp[0])); for (t = 1; t <= M; t++) ctx.lineTo(X(t), Y(comp[t]));
+  ctx.stroke(); ctx.restore();
+  /* 終点ドット */
+  ctx.beginPath(); ctx.fillStyle = '#a78bfa'; ctx.arc(X(M), Y(comp[M]), 5, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath(); ctx.strokeStyle = 'rgba(167,139,250,.4)'; ctx.lineWidth = 2; ctx.arc(X(M), Y(comp[M]), 9, 0, Math.PI * 2); ctx.stroke();
+  /* ラベル */
+  ctx.font = '700 12px "Noto Sans JP",sans-serif'; ctx.textAlign = 'left';
+  var lblC = '複利 ' + simFmt(comp[M]);
+  var lblS = '単利 ' + simFmt(simp[M]);
+  var lblW = Math.max(ctx.measureText(lblC).width, ctx.measureText(lblS).width);
+  var lblX = Math.min(X(M) + 12, w - lblW - 4);
+  ctx.fillStyle = '#a78bfa'; ctx.fillText(lblC, lblX, Y(comp[M]) + 4);
+  ctx.fillStyle = 'rgba(168,184,216,.8)'; ctx.fillText(lblS, lblX, Math.max(Y(simp[M]) + 4, Y(comp[M]) + 26));
+  ctx.font = '11px "Noto Sans JP",sans-serif'; ctx.fillStyle = 'rgba(107,127,163,.9)';
+  ctx.textAlign = 'left'; ctx.fillText('スタート ' + simFmt(yen), padL, padT + ih + 22);
+  ctx.textAlign = 'center'; ctx.fillText('6ヶ月', X(6), padT + ih + 22);
+  ctx.textAlign = 'right'; ctx.fillText('1年後', X(M), padT + ih + 22);
+}
+window.addEventListener('resize', simCalc);
+function simPreset(btn) {
+  document.querySelectorAll('.sim-preset').forEach(function(b) { b.classList.remove('on'); });
+  btn.classList.add('on');
+  document.getElementById('sim-input').value = btn.dataset.v;
+  simCalc();
+}
+document.getElementById('sim-input').addEventListener('input', function() {
+  document.querySelectorAll('.sim-preset').forEach(function(b) { b.classList.remove('on'); });
+  simCalc();
+});
+simCalc();
+</script>
+</body>
+</html>

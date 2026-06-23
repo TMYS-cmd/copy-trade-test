@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-21T17:08:38.173879+00:00",
+  "updated_at": "2026-06-23T05:02:44.748112+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -531,28 +531,28 @@
     {
       "id": "lp-013",
       "slug": "fx-copy-trade-lp-852",
-      "status": "review",
+      "status": "draft",
       "variant": "intermediate",
       "broker": "XM",
       "headline": "元手10万円が「822万円」に化ける威力",
       "generated": true,
       "staged": false,
-      "approved_file": false,
+      "approved_file": true,
       "netlify_url": "",
       "spec": {
         "title": "圧倒的な運用の実績",
         "meta_description": "",
         "hero": {
-          "cta_text": "無料で口座開設する",
           "headline": "元手10万円が「822万円」に化ける威力",
-          "subheadline": "「myfxbook」による完全証明"
+          "subheadline": "「myfxbook」による完全証明",
+          "cta_text": "無料で口座開設する"
         },
         "features": [],
         "faq": [],
         "legal": {
           "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
-          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
-          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。"
         },
         "gemini_instructions": "Stripeスタイル: 背景#0a2540、アクセント#625afa（紫）、Noto Sans JP",
         "results_section": {
