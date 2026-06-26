@@ -597,6 +597,9 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 .mfx-btn .mfb .o{color:#ff7a00}
 
 /* ── floating openchat button (follows scroll) ── */
+/* 初期は非表示。画像2セクションを過ぎてから .is-visible で表示 */
+.float-oc{opacity:0;visibility:hidden;pointer-events:none}
+.float-oc.is-visible{opacity:1;visibility:visible;pointer-events:auto}
 .float-oc{
   position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:95;
   display:inline-flex;align-items:center;justify-content:center;flex-direction:column;gap:2px;
@@ -604,7 +607,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   background:#06C755;color:#fff;border:1px solid #06C755;border-radius:12px;
   padding:16px 36px;font-weight:700;font-size:1.02rem;letter-spacing:.04em;
   box-shadow:0 12px 34px rgba(6,199,85,.5);
-  transition:transform .3s ease,box-shadow .4s ease,background-color .4s ease;
+  transition:opacity .35s ease,visibility .35s ease,transform .3s ease,box-shadow .4s ease,background-color .4s ease;
 }
 .float-oc:hover{background:#05b14c;color:#fff;transform:translateX(-50%) translateY(-3px);box-shadow:0 16px 42px rgba(6,199,85,.65)}
 .float-oc .oc-tag{font-size:.64rem;font-weight:900;background:rgba(255,255,255,.22);padding:3px 9px;border-radius:5px;letter-spacing:.1em}
@@ -689,7 +692,7 @@ body{padding-bottom:88px}
     <div class="video-frame">
       <iframe src="https://www.youtube-nocookie.com/embed/jD0VYDVrsvE?autoplay=1&mute=1&loop=1&playlist=jD0VYDVrsvE" title="2024年11月開始から2026年6月までのMT5履歴" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
-    <div class="growth-box">
+    <div class="growth-box" id="float-trigger">
       <div class="growth-row"><strong>2024年11月&nbsp;&nbsp;451ドル入金</strong></div>
       <span class="growth-arr" aria-hidden="true">↓</span>
       <div class="growth-row"><strong>2026年6月&nbsp;&nbsp;5,382ドル到達</strong><br><span class="hi">（約12倍到達）</span></div>
@@ -1168,6 +1171,22 @@ document.getElementById('sim-input').addEventListener('input',function(){
   simCalc();
 });
 simCalc();
+</script>
+<script>
+/* 追従ボタン: 画像2セクション（成長ボックス）を過ぎてから表示 */
+(function(){
+  var btn=document.querySelector('.float-oc');
+  var trigger=document.getElementById('float-trigger');
+  if(!btn||!trigger)return;
+  function update(){
+    // 成長ボックスの下端がビューポート上端を超えたら（=セクションを過ぎたら）表示
+    if(trigger.getBoundingClientRect().bottom<=0){btn.classList.add('is-visible');}
+    else{btn.classList.remove('is-visible');}
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
 </script>
 </body>
 </html>
