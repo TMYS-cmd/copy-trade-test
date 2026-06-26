@@ -280,7 +280,7 @@ img{max-width:100%}
   padding:78px 60px;text-align:center;
 }
 .compound .from-to{
-  display:flex;align-items:center;justify-content:center;gap:38px;flex-wrap:wrap;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
   font-family:var(--serif);font-weight:700;margin:34px 0 14px;
 }
 .compound .amt{font-size:clamp(40px,6vw,76px);line-height:1.15}
@@ -290,7 +290,7 @@ img{max-width:100%}
   text-shadow:0 0 22px rgba(212,175,55,.65),0 0 6px rgba(212,175,55,.5);
   animation:arrGlow 2.6s ease-in-out infinite;
 }
-@keyframes arrGlow{0%,100%{opacity:.78;transform:translateX(0)}50%{opacity:1;transform:translateX(6px)}}
+@keyframes arrGlow{0%,100%{opacity:.78;transform:translateY(0)}50%{opacity:1;transform:translateY(6px)}}
 @media(prefers-reduced-motion:reduce){.compound .arr{animation:none}}
 .compound .cap{font-size:.78rem;color:var(--ink-faint);letter-spacing:.12em;margin-top:26px;line-height:2}
 
@@ -724,8 +724,8 @@ body{padding-bottom:88px}
       <div style="font-size:.76rem;letter-spacing:.3em;color:var(--ink-faint)">COMPOUND SIMULATION ─ 2024.11 START</div>
       <div class="from-to">
         <span class="amt">10<span style="font-size:.45em">万円</span></span>
-        <span class="arr" aria-hidden="true">➜</span>
-        <span class="amt gold-grad">1,840<span style="font-size:.45em">万円超</span></span>
+        <span class="arr" aria-hidden="true">↓</span>
+        <span class="amt gold-grad">1,840<span style="font-size:.45em">万円</span></span>
       </div>
       <p class="lead" style="margin:0 auto;max-width:38em">
         単利（絶対増加）<em>+1,220.32%</em>。<br>
