@@ -173,6 +173,11 @@ img{max-width:100%}
 }
 /* モバイルは各フレーズを自然に折り返し、PCでは1フレーズ=1行固定 */
 .hero h1 .ln{display:block}
+/* スマホ／タブレットのみ「勝つこと」の後で改行（PCは1行のまま） */
+.hero h1 .br-sp{display:inline}
+@media(min-width:921px){
+  .hero h1 .br-sp{display:none}
+}
 @media(min-width:921px){
   .hero h1{font-size:clamp(34px,3.8vw,56px);line-height:1.4}
   .hero h1 .ln{white-space:nowrap}
@@ -661,7 +666,7 @@ body{padding-bottom:88px}
       <h1>
         <span class="ln">開始から1度も<span class="hl">破綻なし</span></span>
         <span class="ln" style="padding-left:2.5em">×</span>
-        <span class="ln">「<span style="color:#ff3b3b">勝つこと</span>」にこだわり抜いたEA</span>
+        <span class="ln">「<span style="color:#ff3b3b">勝つこと</span>」<br class="br-sp">にこだわり抜いたEA</span>
       </h1>
       <div class="hero-bullets">
         <span>実績公開中</span>
