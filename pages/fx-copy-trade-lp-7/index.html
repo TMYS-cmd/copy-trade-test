@@ -738,11 +738,59 @@ body{padding-bottom:88px}
   </div>
 </section>
 
+<!-- ════════ 収益シミュレーター ════════ -->
+<section class="sec" style="background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(212,175,55,.14),transparent 60%),#0c0a02;border-top:1px solid rgba(212,175,55,.35);border-bottom:1px solid rgba(212,175,55,.2)">
+  <div class="wrap">
+    <div class="fade">
+      <div class="sec-num">02 ─ SIMULATOR</div>
+      <h2>収益シミュレーター</h2>
+      <p class="lead">
+        myfxbook公表の月間平均 <em>+31.59%</em>（2026年6月12日時点）をもとに、
+        あなたの資金が<strong>1年後にいくらになるか</strong>を単利・複利で試算できます。
+      </p>
+    </div>
+    <div class="sim-box fade">
+      <div style="font-size:.74rem;letter-spacing:.2em;color:var(--ink-faint);margin-bottom:14px">スタート資金を選択 または 入力</div>
+      <div class="sim-presets">
+        <button class="sim-preset" data-v="3" onclick="simPreset(this)">3万円</button>
+        <button class="sim-preset" data-v="5" onclick="simPreset(this)">5万円</button>
+        <button class="sim-preset on" data-v="10" onclick="simPreset(this)">10万円</button>
+        <button class="sim-preset" data-v="50" onclick="simPreset(this)">50万円</button>
+      </div>
+      <div class="sim-input-row">
+        <input class="sim-input" id="sim-input" type="number" min="1" step="1" value="10" inputmode="numeric">
+        <span style="font-family:var(--sans);font-weight:700;color:var(--ink)">万円</span>
+        <span>でスタートした場合、1年後…</span>
+      </div>
+      <div class="sim-results">
+        <div class="sim-card">
+          <div class="l">単利運用（利益を毎月出金）</div>
+          <div class="v" id="sim-simple">—</div>
+          <div class="s">月間平均 +31.59% × 12ヶ月（+379.1%）</div>
+        </div>
+        <div class="sim-card">
+          <div class="l">複利運用（利益を再投資）</div>
+          <div class="v gold-grad" id="sim-comp">—</div>
+          <div class="s">月間平均 +31.59% を12ヶ月複利（約27.0倍）</div>
+        </div>
+      </div>
+      <div class="sim-chart-wrap">
+        <div class="sim-chart-title">資産推移イメージ（スタート → 1年後）</div>
+        <canvas id="sim-chart"></canvas>
+      </div>
+      <p class="sim-note">
+        ※本シミュレーターは、myfxbookが公表する過去の月間平均増加率（+31.59%・2026年6月12日時点）を機械的に当てはめた机上の試算です。
+        将来の運用成果を保証するものではなく、相場状況により損失が発生する可能性があります。税金・手数料・スリッページ等は考慮していません。
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ════════ 2. 証拠 ════════ -->
 <section class="sec" style="background:radial-gradient(ellipse 70% 50% at 0% 50%,rgba(180,60,60,.1),transparent 60%),#130808;border-top:1px solid rgba(176,82,82,.25);border-bottom:1px solid rgba(176,82,82,.2)">
   <div class="wrap">
     <div class="fade">
-      <div class="sec-num">02 ─ PROOF</div>
+      <div class="sec-num">03 ─ PROOF</div>
       <h2>なぜ「本物」と言い切れるのか</h2>
       <p class="lead">
         ネット上には、都合の良い部分だけを切り取った画像や、いくらでも偽造できるバックテストがあふれています。
@@ -880,54 +928,6 @@ body{padding-bottom:88px}
     <a class="btn-oc" style="font-size:1rem;padding:17px 40px" href="https://line.me/ti/g2/fTVFJcZQhmultdeQ7ZgZTY4FYY_0qvFArtTgyA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener">【無料でシステムを受け取る】<small class="oc-sub">登録不要。今すぐ始められます。</small></a>
   </div>
 </div>
-
-<!-- ════════ 6. 収益シミュレーター ════════ -->
-<section class="sec" style="background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(212,175,55,.14),transparent 60%),#0c0a02;border-top:1px solid rgba(212,175,55,.35);border-bottom:1px solid rgba(212,175,55,.2)">
-  <div class="wrap">
-    <div class="fade">
-      <div class="sec-num">06 ─ SIMULATOR</div>
-      <h2>収益シミュレーター</h2>
-      <p class="lead">
-        myfxbook公表の月間平均 <em>+31.59%</em>（2026年6月12日時点）をもとに、
-        あなたの資金が<strong>1年後にいくらになるか</strong>を単利・複利で試算できます。
-      </p>
-    </div>
-    <div class="sim-box fade">
-      <div style="font-size:.74rem;letter-spacing:.2em;color:var(--ink-faint);margin-bottom:14px">スタート資金を選択 または 入力</div>
-      <div class="sim-presets">
-        <button class="sim-preset" data-v="3" onclick="simPreset(this)">3万円</button>
-        <button class="sim-preset" data-v="5" onclick="simPreset(this)">5万円</button>
-        <button class="sim-preset on" data-v="10" onclick="simPreset(this)">10万円</button>
-        <button class="sim-preset" data-v="50" onclick="simPreset(this)">50万円</button>
-      </div>
-      <div class="sim-input-row">
-        <input class="sim-input" id="sim-input" type="number" min="1" step="1" value="10" inputmode="numeric">
-        <span style="font-family:var(--sans);font-weight:700;color:var(--ink)">万円</span>
-        <span>でスタートした場合、1年後…</span>
-      </div>
-      <div class="sim-results">
-        <div class="sim-card">
-          <div class="l">単利運用（利益を毎月出金）</div>
-          <div class="v" id="sim-simple">—</div>
-          <div class="s">月間平均 +31.59% × 12ヶ月（+379.1%）</div>
-        </div>
-        <div class="sim-card">
-          <div class="l">複利運用（利益を再投資）</div>
-          <div class="v gold-grad" id="sim-comp">—</div>
-          <div class="s">月間平均 +31.59% を12ヶ月複利（約27.0倍）</div>
-        </div>
-      </div>
-      <div class="sim-chart-wrap">
-        <div class="sim-chart-title">資産推移イメージ（スタート → 1年後）</div>
-        <canvas id="sim-chart"></canvas>
-      </div>
-      <p class="sim-note">
-        ※本シミュレーターは、myfxbookが公表する過去の月間平均増加率（+31.59%・2026年6月12日時点）を機械的に当てはめた机上の試算です。
-        将来の運用成果を保証するものではなく、相場状況により損失が発生する可能性があります。税金・手数料・スリッページ等は考慮していません。
-      </p>
-    </div>
-  </div>
-</section>
 
 <!-- ════════ 7. 利用者レビュー ════════ -->
 <section class="sec" style="padding-top:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(100,40,180,.1),transparent 65%),#0a0612;border-top:1px solid rgba(140,80,220,.2);border-bottom:1px solid rgba(140,80,220,.15)">
