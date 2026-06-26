@@ -1179,8 +1179,8 @@ simCalc();
   var trigger=document.getElementById('float-trigger');
   if(!btn||!trigger)return;
   function update(){
-    // 成長ボックスの下端がビューポート上端を超えたら（=セクションを過ぎたら）表示
-    if(trigger.getBoundingClientRect().bottom<=0){btn.classList.add('is-visible');}
+    // 成長ボックスが画面下から入ってきたら（上端がビューポート高の85%まで来たら）表示
+    if(trigger.getBoundingClientRect().top<=window.innerHeight*0.85){btn.classList.add('is-visible');}
     else{btn.classList.remove('is-visible');}
   }
   window.addEventListener('scroll',update,{passive:true});
