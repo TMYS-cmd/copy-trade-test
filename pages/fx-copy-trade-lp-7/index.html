@@ -317,6 +317,9 @@ img{max-width:100%}
 .bar i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#a8842a,#d4af37)}
 .bar i.neg{background:var(--crimson);opacity:.75}
 .month-tbl .tag{font-size:.66rem;color:var(--crimson);letter-spacing:.1em;white-space:nowrap;padding-left:14px}
+/* 年ごとのmyfxbook月次チャート画像 */
+.month-tbl .chart-row td{padding:14px 0 30px}
+.month-chart{display:block;width:100%;max-width:760px;margin:6px auto 0;border:1px solid var(--gold-line);border-radius:8px;background:#fff}
 .tbl-sum{
   margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
   background:var(--gold-line);border:1px solid var(--gold-line);
@@ -882,6 +885,7 @@ body{padding-bottom:88px}
         <tbody>
           <tr><td class="ym">2024 / 11</td><td class="pct gold-grad">+6.02%</td><td class="bar-cell"><div class="bar"><i style="width:5.1%"></i></div></td><td></td></tr>
           <tr><td class="ym">2024 / 12</td><td class="pct gold-grad">+24.64%</td><td class="bar-cell"><div class="bar"><i style="width:20.8%"></i></div></td><td></td></tr>
+          <tr class="chart-row"><td colspan="4"><img class="month-chart" src="assets/1.jpg" alt="2024年 月々の利益（myfxbook公表値）" loading="lazy"></td></tr>
           <tr><td class="ym">2025 / 01</td><td class="pct gold-grad">+17.83%</td><td class="bar-cell"><div class="bar"><i style="width:15.1%"></i></div></td><td></td></tr>
           <tr><td class="ym">2025 / 02</td><td class="pct gold-grad">+83.37%</td><td class="bar-cell"><div class="bar"><i style="width:70.4%"></i></div></td><td></td></tr>
           <tr><td class="ym">2025 / 03</td><td class="pct gold-grad">+37.82%</td><td class="bar-cell"><div class="bar"><i style="width:31.9%"></i></div></td><td></td></tr>
@@ -894,12 +898,14 @@ body{padding-bottom:88px}
           <tr><td class="ym">2025 / 10</td><td class="pct gold-grad">+45.63%</td><td class="bar-cell"><div class="bar"><i style="width:38.5%"></i></div></td><td></td></tr>
           <tr><td class="ym">2025 / 11</td><td class="pct neg">−4.84%</td><td class="bar-cell"><div class="bar"><i class="neg" style="width:4.1%"></i></div></td><td class="tag">損切り実施</td></tr>
           <tr><td class="ym">2025 / 12</td><td class="pct gold-grad">+62.49%</td><td class="bar-cell"><div class="bar"><i style="width:52.8%"></i></div></td><td></td></tr>
+          <tr class="chart-row"><td colspan="4"><img class="month-chart" src="assets/2.jpg" alt="2025年 月々の利益（myfxbook公表値）" loading="lazy"></td></tr>
           <tr><td class="ym">2026 / 01</td><td class="pct gold-grad">+86.92%</td><td class="bar-cell"><div class="bar"><i style="width:73.4%"></i></div></td><td></td></tr>
           <tr><td class="ym">2026 / 02</td><td class="pct gold-grad">+32.37%</td><td class="bar-cell"><div class="bar"><i style="width:27.3%"></i></div></td><td></td></tr>
           <tr><td class="ym">2026 / 03</td><td class="pct gold-grad">+118.46%</td><td class="bar-cell"><div class="bar"><i style="width:100%"></i></div></td><td></td></tr>
           <tr><td class="ym">2026 / 04</td><td class="pct gold-grad">+34.33%</td><td class="bar-cell"><div class="bar"><i style="width:29.0%"></i></div></td><td></td></tr>
           <tr><td class="ym">2026 / 05</td><td class="pct gold-grad">+28.12%</td><td class="bar-cell"><div class="bar"><i style="width:23.7%"></i></div></td><td></td></tr>
           <tr><td class="ym">2026 / 06</td><td class="pct gold-grad">+21.84%</td><td class="bar-cell"><div class="bar"><i style="width:18.4%"></i></div></td><td class="tag" style="color:var(--ink-faint)">6月12日時点</td></tr>
+          <tr class="chart-row"><td colspan="4"><img class="month-chart" src="assets/3.jpg" alt="2026年 月々の利益（myfxbook公表値）" loading="lazy"></td></tr>
         </tbody>
       </table>
       <div class="tbl-sum">
