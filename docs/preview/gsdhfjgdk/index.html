@@ -664,6 +664,20 @@ body{padding-bottom:88px}
 }
 .hero-sub strong{color:#ff5a5a;font-weight:900}
 .hero-sub .melt{color:#ff8a3d;font-weight:900}
+/* ヒーロー：10万→1927万 の大型フィギュア */
+.hero-lead-sm{font-size:clamp(15px,3.6vw,21px);font-weight:800;color:var(--ink);margin-bottom:8px;line-height:1.5}
+.hero-lead-sm .hl{color:var(--gold)}
+.hero h1.hero-figure{
+  font-family:var(--serif);font-weight:900;line-height:1.02;letter-spacing:-.01em;
+  font-size:clamp(48px,12vw,112px);margin:2px 0 12px;color:var(--ink);
+  display:flex;align-items:baseline;flex-wrap:wrap;
+}
+.hero-figure .u{font-size:.44em;font-weight:900;margin-left:.04em}
+.hero-figure .arw{
+  color:#3b82f6;font-weight:900;margin:0 .12em;
+  text-shadow:0 0 26px rgba(59,130,246,.65);
+}
+@media(min-width:921px){.hero h1.hero-figure .arw,.hero-figure{white-space:normal}}
 </style>
 </head>
 <body>
@@ -693,10 +707,8 @@ body{padding-bottom:88px}
   <div class="hero-inner">
     <div class="fade in">
       <div class="hero-eyebrow2">全履歴公開・日本トップクラス</div>
-      <h1>
-        <span class="ln"><span class="hl">myfxbook</span>のリアル口座履歴を</span>
-        <span class="ln"><span class="hl2">完全公開</span></span>
-      </h1>
+      <p class="hero-lead-sm"><span class="hl">myfxbook</span>のリアル口座履歴を完全公開</p>
+      <h1 class="hero-figure">10<span class="u">万</span><span class="arw">→</span><span class="hl2">1927<span class="u">万</span></span></h1>
       <p class="hero-sub"><span class="melt">“溶ける”</span>相場でも、<strong>損切りで生き残る。</strong><br>数字だけが、真実を証明する。</p>
       <div class="hero-bullets">
         <span>全取引 myfxbook公開</span>
