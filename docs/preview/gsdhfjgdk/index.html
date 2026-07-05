@@ -11,18 +11,18 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0c0a08;
-  --bg-soft:#110e0b;
-  --bg-card:#15120c;
-  --gold:#d4af37;
-  --gold-soft:#c9a227;
-  --gold-dim:rgba(212,175,55,.35);
-  --gold-faint:rgba(212,175,55,.14);
-  --gold-line:rgba(212,175,55,.22);
-  --ink:#f3ead8;
-  --ink-dim:#b9ae96;
-  --ink-faint:#7d745f;
-  --crimson:#b05252;
+  --bg:#0b1220;
+  --bg-soft:#0f172a;
+  --bg-card:#14203a;
+  --gold:#3b82f6;
+  --gold-soft:#60a5fa;
+  --gold-dim:rgba(59,130,246,.35);
+  --gold-faint:rgba(59,130,246,.14);
+  --gold-line:rgba(59,130,246,.22);
+  --ink:#e6edf7;
+  --ink-dim:#94a3b8;
+  --ink-faint:#64748b;
+  --crimson:#f87171;
   --serif:'Noto Sans JP',sans-serif; /* 全体ゴシック統一（見出しも本文もNoto Sans JP） */
   --sans:'Noto Sans JP',sans-serif;
 }
@@ -46,7 +46,7 @@ img{max-width:100%}
 /* ── shared ── */
 .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 .gold-grad{
-  background:linear-gradient(135deg,#f0d77b 0%,#d4af37 45%,#a8842a 80%,#e8cb6a 100%);
+  background:linear-gradient(135deg,#fcd34d 0%,#f59e0b 55%,#d97706 100%);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;color:transparent;
 }
@@ -85,7 +85,7 @@ img{max-width:100%}
   border:1px solid var(--gold-dim);padding:8px 20px;white-space:nowrap;
   transition:background-color .4s ease,color .4s ease;
 }
-.tb-myfx:hover{background:var(--gold);color:#0c0a08}
+.tb-myfx:hover{background:var(--gold);color:#0b1220}
 /* myfxbook ロゴ風ワードマーク（白チップ＋黒/オレンジ） */
 .tb-logo{
   display:inline-flex;align-items:center;line-height:1;
@@ -103,11 +103,11 @@ img{max-width:100%}
 .hero{
   position:relative;min-height:auto;display:flex;align-items:center;
   background:
-    radial-gradient(ellipse 60% 48% at 78% 18%,rgba(212,175,55,.13),transparent 62%),
+    radial-gradient(ellipse 60% 48% at 78% 18%,rgba(59,130,246,.13),transparent 62%),
     radial-gradient(ellipse 44% 36% at 12% 86%,rgba(168,132,42,.10),transparent 64%),
     radial-gradient(ellipse 90% 70% at 50% 115%,rgba(26,20,10,.9),transparent 70%),
-    radial-gradient(ellipse 32% 22% at 88% 78%,rgba(212,175,55,.06),transparent 70%),
-    linear-gradient(168deg,#0e0c09 0%,#0c0a08 38%,#0a0806 100%);
+    radial-gradient(ellipse 32% 22% at 88% 78%,rgba(59,130,246,.06),transparent 70%),
+    linear-gradient(168deg,#0e0c09 0%,#0b1220 38%,#0a0806 100%);
   overflow:hidden;
 }
 .hero-bg-img{
@@ -121,9 +121,9 @@ img{max-width:100%}
 .hero::before{ /* fine gold grain lines, very subtle depth */
   content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
   background:
-    linear-gradient(90deg,transparent 0 calc(50% - .5px),rgba(212,175,55,.045) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
-    linear-gradient(90deg,transparent 0 calc(18% - .5px),rgba(212,175,55,.03) calc(18% - .5px) calc(18% + .5px),transparent calc(18% + .5px)),
-    linear-gradient(90deg,transparent 0 calc(82% - .5px),rgba(212,175,55,.03) calc(82% - .5px) calc(82% + .5px),transparent calc(82% + .5px));
+    linear-gradient(90deg,transparent 0 calc(50% - .5px),rgba(59,130,246,.045) calc(50% - .5px) calc(50% + .5px),transparent calc(50% + .5px)),
+    linear-gradient(90deg,transparent 0 calc(18% - .5px),rgba(59,130,246,.03) calc(18% - .5px) calc(18% + .5px),transparent calc(18% + .5px)),
+    linear-gradient(90deg,transparent 0 calc(82% - .5px),rgba(59,130,246,.03) calc(82% - .5px) calc(82% + .5px),transparent calc(82% + .5px));
 }
 .hero::after{ /* bottom hairline */
   content:'';position:absolute;left:0;right:0;bottom:0;height:1px;
@@ -138,7 +138,7 @@ img{max-width:100%}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
   font-size:.72rem;font-weight:700;letter-spacing:.18em;color:var(--gold);
-  border:1px solid var(--gold-dim);padding:7px 18px;background:rgba(212,175,55,.08);
+  border:1px solid var(--gold-dim);padding:7px 18px;background:rgba(59,130,246,.08);
   margin-bottom:26px;border-radius:3px;
 }
 .hero-btn-group{display:flex;flex-direction:column;gap:12px;width:100%;max-width:360px}
@@ -163,7 +163,7 @@ img{max-width:100%}
   display:inline-flex;align-items:center;gap:12px;
   font-size:.78rem;letter-spacing:.34em;color:var(--gold-soft);
   border:1px solid var(--gold-line);padding:9px 20px;margin-bottom:36px;
-  background:rgba(212,175,55,.05);
+  background:rgba(59,130,246,.05);
 }
 .hero-eyebrow::before{content:'';width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
 .hero h1{
@@ -188,7 +188,7 @@ img{max-width:100%}
 /* stats plate relocated between headline and subheadline (no image) */
 .hero-plate{width:100%;max-width:920px;margin:14px auto 42px;text-align:left;padding:42px 46px 34px}
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);margin:4px 0}
-.hero-stats .hs{padding:12px 24px;border-left:1px solid rgba(212,175,55,.14)}
+.hero-stats .hs{padding:12px 24px;border-left:1px solid rgba(59,130,246,.14)}
 .hero-stats .hs:first-child{border-left:none;padding-left:4px}
 .hero-stats .stat-label{font-size:.76rem;color:var(--ink-dim);letter-spacing:.1em;margin-bottom:10px}
 .hero-stats .stat-val{font-family:var(--serif);font-weight:700;line-height:1.12;font-size:clamp(23px,2.2vw,34px);letter-spacing:.01em}
@@ -203,8 +203,8 @@ img{max-width:100%}
 @media(max-width:760px){
   .hero-plate{padding:32px 24px 26px}
   .hero-stats{grid-template-columns:1fr 1fr}
-  .hero-stats .hs{border-left:none;padding:16px 14px;border-top:1px solid rgba(212,175,55,.1)}
-  .hero-stats .hs:nth-child(odd){border-right:1px solid rgba(212,175,55,.1)}
+  .hero-stats .hs{border-left:none;padding:16px 14px;border-top:1px solid rgba(59,130,246,.1)}
+  .hero-stats .hs:nth-child(odd){border-right:1px solid rgba(59,130,246,.1)}
   .hero-stats .hs:first-child,.hero-stats .hs:nth-child(2){border-top:none}
 }
 .cta{
@@ -215,9 +215,9 @@ img{max-width:100%}
   transition:color .5s ease,background-color .5s ease,transform .35s ease,box-shadow .5s ease;
 }
 .cta:hover{
-  background:var(--gold);color:#0c0a08;
+  background:var(--gold);color:#0b1220;
   transform:translateY(-2px);
-  box-shadow:0 14px 44px rgba(212,175,55,.28),0 2px 10px rgba(212,175,55,.18);
+  box-shadow:0 14px 44px rgba(59,130,246,.28),0 2px 10px rgba(59,130,246,.18);
 }
 .cta-note{font-size:.72rem;color:var(--ink-faint);letter-spacing:.08em}
 
@@ -237,7 +237,7 @@ img{max-width:100%}
 }
 .plate-title::after{content:'';flex:1;height:1px;background:var(--gold-faint)}
 .stat{padding:18px 0}
-.stat+.stat{border-top:1px solid rgba(212,175,55,.1)}
+.stat+.stat{border-top:1px solid rgba(59,130,246,.1)}
 .stat-label{font-size:.76rem;color:var(--ink-dim);letter-spacing:.18em;margin-bottom:4px}
 .stat-val{
   font-family:var(--serif);font-weight:700;line-height:1.2;
@@ -247,7 +247,7 @@ img{max-width:100%}
 .stat-row{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
 .stat-mini .stat-val{font-size:clamp(22px,2.2vw,28px)}
 .plate-foot{
-  margin-top:26px;padding-top:20px;border-top:1px solid rgba(212,175,55,.1);
+  margin-top:26px;padding-top:20px;border-top:1px solid rgba(59,130,246,.1);
   font-size:.7rem;color:var(--ink-faint);line-height:1.8;
 }
 .plate-foot a{color:var(--gold-soft);border-bottom:1px solid var(--gold-dim);transition:color .4s}
@@ -272,11 +272,11 @@ img{max-width:100%}
   border:1px solid var(--gold-dim);padding:14px 34px;margin-top:8px;
   transition:background-color .5s,color .5s,border-color .5s;
 }
-.btn-line:hover{background:var(--gold);color:#0c0a08;border-color:var(--gold)}
+.btn-line:hover{background:var(--gold);color:#0b1220;border-color:var(--gold)}
 
 /* ── compounding feature ── */
 .compound{
-  border:1px solid var(--gold-line);background:linear-gradient(180deg,rgba(212,175,55,.05),rgba(212,175,55,0) 55%),var(--bg-soft);
+  border:1px solid var(--gold-line);background:linear-gradient(180deg,rgba(59,130,246,.05),rgba(59,130,246,0) 55%),var(--bg-soft);
   padding:78px 60px;text-align:center;
 }
 .compound .from-to{
@@ -287,7 +287,7 @@ img{max-width:100%}
 .compound .arr{
   font-size:clamp(44px,8vw,84px);font-weight:900;line-height:1;
   color:var(--gold);letter-spacing:0;
-  text-shadow:0 0 22px rgba(212,175,55,.65),0 0 6px rgba(212,175,55,.5);
+  text-shadow:0 0 22px rgba(59,130,246,.65),0 0 6px rgba(59,130,246,.5);
   animation:arrGlow 2.6s ease-in-out infinite;
 }
 @keyframes arrGlow{0%,100%{opacity:.78;transform:translateY(0)}50%{opacity:1;transform:translateY(6px)}}
@@ -307,14 +307,14 @@ img{max-width:100%}
 .tbl-note .dot.g{background:var(--gold)}
 .tbl-note .dot.r{background:var(--crimson)}
 .month-tbl{width:100%;border-collapse:collapse;border-top:1px solid var(--gold-line)}
-.month-tbl tr{border-bottom:1px solid rgba(212,175,55,.1)}
+.month-tbl tr{border-bottom:1px solid rgba(59,130,246,.1)}
 .month-tbl td{padding:15px 10px;vertical-align:middle}
 .month-tbl .ym{font-family:var(--serif);font-size:.92rem;letter-spacing:.1em;color:var(--ink-dim);white-space:nowrap;width:7.5em}
 .month-tbl .pct{font-family:var(--serif);font-weight:700;font-size:1.06rem;text-align:right;white-space:nowrap;width:7em}
 .month-tbl .pct.neg{color:var(--crimson)}
 .month-tbl .bar-cell{width:46%}
-.bar{height:3px;background:rgba(212,175,55,.08);position:relative}
-.bar i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#a8842a,#d4af37)}
+.bar{height:3px;background:rgba(59,130,246,.08);position:relative}
+.bar i{position:absolute;top:0;bottom:0;left:0;background:linear-gradient(90deg,#1e40af,#3b82f6)}
 .bar i.neg{background:var(--crimson);opacity:.75}
 .month-tbl .tag{font-size:.66rem;color:var(--crimson);letter-spacing:.1em;white-space:nowrap;padding-left:14px}
 /* 年ごとのカード枠 */
@@ -376,12 +376,12 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   display:flex;align-items:center;justify-content:center;gap:12px;
   width:100%;max-width:560px;
   font-size:clamp(15px,1.6vw,19px);font-weight:900;letter-spacing:.08em;
-  color:#0c0a08;background:linear-gradient(135deg,#f0d77b,#d4af37 55%,#b8923a);
-  border:1px solid #e8cb6a;padding:20px 34px;margin:0 auto 20px;
-  box-shadow:0 10px 36px rgba(212,175,55,.22);
+  color:#0b1220;background:linear-gradient(135deg,#93c5fd,#3b82f6 55%,#1e3a8a);
+  border:1px solid #60a5fa;padding:20px 34px;margin:0 auto 20px;
+  box-shadow:0 10px 36px rgba(59,130,246,.22);
   transition:transform .35s ease,box-shadow .5s ease;
 }
-.cta-myfx:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(212,175,55,.4)}
+.cta-myfx:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(59,130,246,.4)}
 
 /* ── LINE openchat green button ── */
 .btn-oc{
@@ -409,10 +409,10 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   letter-spacing:.06em;transition:background-color .35s,color .35s,border-color .35s;
 }
 .sim-preset:hover{border-color:var(--gold)}
-.sim-preset.on{background:var(--gold);color:#0c0a08;border-color:var(--gold)}
+.sim-preset.on{background:var(--gold);color:#0b1220;border-color:var(--gold)}
 .sim-input-row{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:38px;font-size:.95rem;color:var(--ink-dim)}
 .sim-input{
-  width:150px;background:#0c0a08;border:1px solid var(--gold-line);color:var(--ink);
+  width:150px;background:#0b1220;border:1px solid var(--gold-line);color:var(--ink);
   font-family:var(--sans);font-size:1.35rem;font-weight:900;text-align:right;
   padding:10px 14px;outline:none;transition:border-color .35s;
 }
@@ -423,7 +423,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 .sim-card .v{font-family:var(--sans);font-weight:900;font-size:clamp(26px,3vw,40px);line-height:1.2}
 .sim-card .s{font-size:.72rem;color:var(--ink-faint);margin-top:10px}
 .sim-note{font-size:.7rem;color:var(--ink-faint);line-height:1.9;margin-top:24px}
-.sim-chart-wrap{margin-top:36px;border-top:1px solid rgba(212,175,55,.1);padding-top:30px}
+.sim-chart-wrap{margin-top:36px;border-top:1px solid rgba(59,130,246,.1);padding-top:30px}
 .sim-chart-title{font-size:.74rem;letter-spacing:.2em;color:var(--ink-faint);margin-bottom:14px}
 #sim-chart{width:100%;height:280px;display:block}
 
@@ -495,9 +495,9 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 
 /* ── top attention banner (bright = strong light/dark contrast at the very top) ── */
 .topbanner{
-  background:linear-gradient(135deg,#f6e08a 0%,#d4af37 48%,#b8923a 100%);
-  color:#0c0a08;text-align:center;padding:clamp(16px,2.4vw,30px) 0;
-  border-bottom:3px solid #0c0a08;
+  background:linear-gradient(135deg,#f6e08a 0%,#3b82f6 48%,#1e3a8a 100%);
+  color:#0b1220;text-align:center;padding:clamp(16px,2.4vw,30px) 0;
+  border-bottom:3px solid #0b1220;
   box-shadow:0 8px 30px rgba(0,0,0,.5);
 }
 .topbanner .wrap{
@@ -508,10 +508,10 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   display:block;width:100%;text-align:center;white-space:nowrap;
   font-family:var(--serif);font-weight:900;
   font-size:clamp(27px,5vw,62px);letter-spacing:.04em;line-height:1.3;
-  color:#0c0a08;
+  color:#0b1220;
 }
 .tb-headline .em{
-  position:relative;display:inline-block;color:#0c0a08;
+  position:relative;display:inline-block;color:#0b1220;
 }
 .tb-headline .em::after{
   content:'';position:absolute;left:0;right:0;bottom:.06em;height:.14em;
@@ -521,7 +521,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 /* ── myfxbook orange/black variant of the big top button ── */
 .cta-myfx.myfx-orange{
   background:linear-gradient(135deg,#ff9a4d 0%,#ff6a00 52%,#e25600 100%);
-  border:2px solid #0c0a08;color:#0c0a08;
+  border:2px solid #0b1220;color:#0b1220;
   box-shadow:0 10px 36px rgba(255,106,0,.32);
 }
 .cta-myfx.myfx-orange:hover{
@@ -530,7 +530,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 }
 .cta-myfx .mfx-tag{
   font-size:.62rem;font-weight:900;letter-spacing:.14em;
-  background:#0c0a08;color:#ff8a3d;padding:3px 9px;border-radius:4px;
+  background:#0b1220;color:#ff8a3d;padding:3px 9px;border-radius:4px;
 }
 
 /* ── hero main alert (99% scam / 1% real) ── */
@@ -578,7 +578,7 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
 .growth-arr{
   font-size:clamp(40px,8vw,80px);font-weight:900;line-height:1.1;
   color:var(--gold);padding:4px 0;
-  text-shadow:0 0 22px rgba(212,175,55,.65),0 0 6px rgba(212,175,55,.5);
+  text-shadow:0 0 22px rgba(59,130,246,.65),0 0 6px rgba(59,130,246,.5);
   display:block;
 }
 .video-frame{
@@ -646,14 +646,14 @@ body{padding-bottom:88px}
 .why-intro strong{color:var(--gold);font-weight:700}
 /* ── lp-014 ヒーロー強化（ギラギラ・訴求最大） ── */
 .hero-eyebrow2{
-  display:inline-block;font-size:.74rem;font-weight:900;letter-spacing:.18em;color:#1a1405;
-  background:linear-gradient(135deg,#fff0b8,#f4d03f 50%,#d4af37);
-  padding:8px 18px;border-radius:4px;margin-bottom:20px;
-  box-shadow:0 6px 22px rgba(212,175,55,.55);
+  display:inline-block;font-size:.74rem;font-weight:900;letter-spacing:.18em;color:#0f172a;
+  background:linear-gradient(135deg,#fcd34d,#f59e0b 60%,#d97706);
+  padding:8px 18px;border-radius:9999px;margin-bottom:20px;
+  box-shadow:0 6px 22px rgba(245,158,11,.45);
 }
 .hero .hl2{
-  display:inline-block;font-size:1.14em;color:#f4d03f;letter-spacing:.01em;
-  text-shadow:0 0 30px rgba(244,208,63,.75),0 0 8px rgba(244,208,63,.5),0 2px 4px rgba(0,0,0,.45);
+  display:inline-block;font-size:1.14em;color:#fbbf24;letter-spacing:.01em;
+  text-shadow:0 0 30px rgba(251,191,36,.75),0 0 8px rgba(251,191,36,.5),0 2px 4px rgba(0,0,0,.45);
   animation:goldShine 2.8s ease-in-out infinite;
 }
 @keyframes goldShine{0%,100%{filter:brightness(1)}50%{filter:brightness(1.28)}}
@@ -714,7 +714,7 @@ body{padding-bottom:88px}
 </header>
 
 <!-- ════════ MT5 動画（YouTube Shorts） ════════ -->
-<section class="sec video-sec" style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(20,40,80,.55),transparent 70%),#06101e;border-top:1px solid rgba(100,160,255,.15);border-bottom:1px solid rgba(100,160,255,.15)">
+<section class="sec video-sec" style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(20,40,80,.55),transparent 70%),#0b1220;border-top:1px solid rgba(100,160,255,.15);border-bottom:1px solid rgba(100,160,255,.15)">
   <div class="wrap fade" style="text-align:center">
     <p class="video-cap">2024年11月開始から2026年6月までのMT5履歴。（単利運用）</p>
     <div class="video-frame">
@@ -729,7 +729,7 @@ body{padding-bottom:88px}
 </section>
 
 <!-- ════════ INTRO ════════ -->
-<section class="sec" style="background:#050505;border-top:1px solid rgba(212,175,55,.12)">
+<section class="sec" style="background:#0b1220;border-top:1px solid rgba(59,130,246,.12)">
   <div class="wrap fade">
     <p class="lead" style="font-family:var(--serif);font-size:1.25rem;line-height:2.3">
       今回は、<strong>2024年11月の運用開始から現在まで一度も破綻することなく</strong>、
@@ -741,7 +741,7 @@ body{padding-bottom:88px}
 <div class="wrap"><div class="hairline"></div></div>
 
 <!-- ════════ 1. 複利の力 ════════ -->
-<section class="sec" style="background:radial-gradient(ellipse 60% 70% at 50% 100%,rgba(212,175,55,.12),transparent 65%),#05100a;border-top:1px solid rgba(80,160,80,.2);border-bottom:1px solid rgba(80,160,80,.1)">
+<section class="sec" style="background:radial-gradient(ellipse 60% 70% at 50% 100%,rgba(59,130,246,.12),transparent 65%),#0d1526;border-top:1px solid rgba(59,130,246,.2);border-bottom:1px solid rgba(59,130,246,.1)">
   <div class="wrap">
     <div class="fade">
       <div class="sec-num">01 ─ PERFORMANCE</div>
@@ -767,7 +767,7 @@ body{padding-bottom:88px}
 </section>
 
 <!-- ════════ 収益シミュレーター ════════ -->
-<section class="sec" style="background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(212,175,55,.14),transparent 60%),#0c0a02;border-top:1px solid rgba(212,175,55,.35);border-bottom:1px solid rgba(212,175,55,.2)">
+<section class="sec" style="background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(59,130,246,.14),transparent 60%),#0c0a02;border-top:1px solid rgba(59,130,246,.35);border-bottom:1px solid rgba(59,130,246,.2)">
   <div class="wrap">
     <div class="fade">
       <div class="sec-num">02 ─ SIMULATOR</div>
@@ -815,7 +815,7 @@ body{padding-bottom:88px}
 </section>
 
 <!-- ════════ 2. 証拠 ════════ -->
-<section class="sec" style="background:radial-gradient(ellipse 70% 50% at 0% 50%,rgba(180,60,60,.1),transparent 60%),#130808;border-top:1px solid rgba(176,82,82,.25);border-bottom:1px solid rgba(176,82,82,.2)">
+<section class="sec" style="background:radial-gradient(ellipse 70% 50% at 0% 50%,rgba(59,130,246,.1),transparent 60%),#0d1526;border-top:1px solid rgba(59,130,246,.25);border-bottom:1px solid rgba(59,130,246,.2)">
   <div class="wrap">
     <div class="fade">
       <div class="sec-num">03 ─ PROOF</div>
@@ -861,7 +861,7 @@ body{padding-bottom:88px}
 </section>
 
 <!-- ════════ 4. 損切り ════════ -->
-<section class="sec" style="background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(160,40,40,.12),transparent 65%),#120606;border-top:1px solid rgba(176,82,82,.3);border-bottom:1px solid rgba(176,82,82,.2)">
+<section class="sec" style="background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(59,130,246,.12),transparent 65%),#0d1526;border-top:1px solid rgba(59,130,246,.3);border-bottom:1px solid rgba(59,130,246,.2)">
   <div class="wrap">
     <div class="fade">
       <div class="sec-num">04 ─ RISK CONTROL</div>
@@ -893,7 +893,7 @@ body{padding-bottom:88px}
 </section>
 
 <!-- ════════ 5. 月別データ ════════ -->
-<section class="sec" style="padding-top:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(212,175,55,.06),transparent 70%),#080808;border-bottom:1px solid var(--gold-line)">
+<section class="sec" style="padding-top:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(59,130,246,.06),transparent 70%),#0d1526;border-bottom:1px solid var(--gold-line)">
   <div class="wrap">
     <div class="fade">
       <div class="sec-num">05 ─ MONTHLY RECORD</div>
@@ -972,7 +972,7 @@ body{padding-bottom:88px}
 </div>
 
 <!-- ════════ 7. 利用者レビュー ════════ -->
-<section class="sec" style="padding-top:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(100,40,180,.1),transparent 65%),#0a0612;border-top:1px solid rgba(140,80,220,.2);border-bottom:1px solid rgba(140,80,220,.15)">
+<section class="sec" style="padding-top:0;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(59,130,246,.1),transparent 65%),#0d1526;border-top:1px solid rgba(96,165,250,.2);border-bottom:1px solid rgba(96,165,250,.15)">
   <div class="wrap">
     <div class="fade">
       <div class="sec-num">07 ─ REVIEWS</div>
@@ -1095,7 +1095,7 @@ body{padding-bottom:88px}
 </section>
 
 <!-- ════════ CLOSING ════════ -->
-<section class="closing fade" style="background:linear-gradient(160deg,#060610 0%,#0c0a02 50%,#0c0a08 100%);border-top:1px solid var(--gold-line)">
+<section class="closing fade" style="background:linear-gradient(160deg,#060610 0%,#0c0a02 50%,#0b1220 100%);border-top:1px solid var(--gold-line)">
   <p>あなたの資産運用が、<br>恐怖ではなく<span class="gold-grad">「楽しみ」</span>に変わる瞬間を。</p>
 </section>
 
@@ -1162,11 +1162,11 @@ function simDraw(yen){
   function X(i){return padL+iw*i/M}
   function Y(v){return padT+ih*(1-v/maxV)}
   // 薄いグリッド
-  ctx.strokeStyle='rgba(212,175,55,.10)';ctx.lineWidth=1;
+  ctx.strokeStyle='rgba(59,130,246,.10)';ctx.lineWidth=1;
   for(var g=1;g<=4;g++){var gy=padT+ih*g/4;ctx.beginPath();ctx.moveTo(padL,gy);ctx.lineTo(padL+iw,gy);ctx.stroke();}
   // 複利エリア塗り（ゴールド→透明）
   var grad=ctx.createLinearGradient(0,padT,0,padT+ih);
-  grad.addColorStop(0,'rgba(212,175,55,.38)');grad.addColorStop(1,'rgba(212,175,55,0)');
+  grad.addColorStop(0,'rgba(59,130,246,.38)');grad.addColorStop(1,'rgba(59,130,246,0)');
   ctx.beginPath();ctx.moveTo(X(0),Y(comp[0]));
   for(t=1;t<=M;t++)ctx.lineTo(X(t),Y(comp[t]));
   ctx.lineTo(X(M),padT+ih);ctx.lineTo(X(0),padT+ih);ctx.closePath();
@@ -1177,14 +1177,14 @@ function simDraw(yen){
   ctx.stroke();ctx.setLineDash([]);
   // 複利ライン（ゴールド・グロー付き）
   ctx.save();
-  ctx.shadowColor='rgba(212,175,55,.55)';ctx.shadowBlur=14;
+  ctx.shadowColor='rgba(59,130,246,.55)';ctx.shadowBlur=14;
   var lg=ctx.createLinearGradient(padL,0,padL+iw,0);
-  lg.addColorStop(0,'#a8842a');lg.addColorStop(1,'#f0d77b');
+  lg.addColorStop(0,'#1e40af');lg.addColorStop(1,'#93c5fd');
   ctx.beginPath();ctx.strokeStyle=lg;ctx.lineWidth=3;ctx.lineJoin='round';ctx.lineCap='round';
   ctx.moveTo(X(0),Y(comp[0]));for(t=1;t<=M;t++)ctx.lineTo(X(t),Y(comp[t]));
   ctx.stroke();ctx.restore();
   // 終点ドット
-  ctx.beginPath();ctx.fillStyle='#f0d77b';ctx.arc(X(M),Y(comp[M]),5,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.fillStyle='#93c5fd';ctx.arc(X(M),Y(comp[M]),5,0,Math.PI*2);ctx.fill();
   ctx.beginPath();ctx.strokeStyle='rgba(240,215,123,.4)';ctx.lineWidth=2;ctx.arc(X(M),Y(comp[M]),9,0,Math.PI*2);ctx.stroke();
   // ラベル（キャンバス内に必ず収める＝複利が見切れないように）
   ctx.font='700 12px "Noto Sans JP",sans-serif';ctx.textAlign='left';
@@ -1192,7 +1192,7 @@ function simDraw(yen){
   var lblS='単利 '+simFmt(simp[M]);
   var lblW=Math.max(ctx.measureText(lblC).width,ctx.measureText(lblS).width);
   var lblX=Math.min(X(M)+12,w-lblW-4);
-  ctx.fillStyle='#f0d77b';
+  ctx.fillStyle='#93c5fd';
   ctx.fillText(lblC,lblX,Y(comp[M])+4);
   ctx.fillStyle='rgba(185,174,150,.9)';
   ctx.fillText(lblS,lblX,Math.max(Y(simp[M])+4,Y(comp[M])+26));
