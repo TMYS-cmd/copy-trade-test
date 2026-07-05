@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-04T09:08:42.374678+00:00",
+  "updated_at": "2026-07-05T18:09:19.522054+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -555,6 +555,38 @@
           "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
         },
         "gemini_instructions": "Stripeスタイル: 背景#0a2540、アクセント#625afa（紫）、Noto Sans JP",
+        "results_section": {
+          "show": false
+        }
+      }
+    },
+    {
+      "id": "lp-014",
+      "slug": "gsdhfjgdk",
+      "status": "review",
+      "variant": "custom",
+      "broker": "XM",
+      "headline": "my fx bookのリアル口座履歴を完全公開",
+      "generated": true,
+      "staged": false,
+      "approved_file": false,
+      "netlify_url": "",
+      "spec": {
+        "title": "全履歴公開。日本トップクラスを誇るトレード内容",
+        "meta_description": "",
+        "hero": {
+          "cta_text": "無料で口座開設する",
+          "headline": "my fx bookのリアル口座履歴を完全公開",
+          "subheadline": "“溶ける”相場でも、損切りで生き残る"
+        },
+        "features": [],
+        "faq": [],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "フォント: Noto Sans JP（見出しに使用）\nギラギラ系。\n限界まで訴求を強く\n# --- コンテンツ要件 ---\n# デザインの参考は\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-mt4/\n#\n#\n# 内容自体の参考は\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-7/\n#\n#\n# my fx bookへの遷移先は同じ。\n# システムを無料で受け取るも同じ遷移先で。\n#\n# 内容は下記のLPと同じですが、下記は\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-7/\n# meta広告用に作成したので、今回のＬＰでは限界まで訴求を強くしてください。\n# --- 参考URL ---\n# - デザインの参考は\n# - https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-mt4/\n# - 内容自体の参考は\n# - https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-7/\n# - my fx bookへの遷移先は同じ。\n# - システムを無料で受け取るも同じ遷移先で。\n# - 内容は下記のLPと同じですが、下記は\n# - https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-7/\n# - meta広告用に作成したので、今回のＬＰでは限界まで訴求を強くしてください。\n",
         "results_section": {
           "show": false
         }
