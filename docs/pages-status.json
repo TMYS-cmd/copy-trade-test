@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-05T18:35:45.892398+00:00",
+  "updated_at": "2026-07-08T06:42:38.572445+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -587,6 +587,37 @@
           "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
         },
         "gemini_instructions": "フォント: Noto Sans JP（見出しに使用）\nギラギラ系。\n限界まで訴求を強く\n# --- コンテンツ要件 ---\n# デザインの参考は\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-mt4/\n#\n#\n# 内容自体の参考は\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-7/\n#\n#\n# my fx bookへの遷移先は同じ。\n# システムを無料で受け取るも同じ遷移先で。\n#\n# 内容は下記のLPと同じですが、下記は\n# https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-7/\n# meta広告用に作成したので、今回のＬＰでは限界まで訴求を強くしてください。\n# --- 参考URL ---\n# - デザインの参考は\n# - https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-mt4/\n# - 内容自体の参考は\n# - https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-7/\n# - my fx bookへの遷移先は同じ。\n# - システムを無料で受け取るも同じ遷移先で。\n# - 内容は下記のLPと同じですが、下記は\n# - https://tmys-cmd.github.io/copy-trade-test/preview/fx-copy-trade-lp-7/\n# - meta広告用に作成したので、今回のＬＰでは限界まで訴求を強くしてください。\n",
+        "results_section": {
+          "show": false
+        }
+      }
+    },
+    {
+      "id": "lp-015",
+      "slug": "gunajsofdij",
+      "status": "review",
+      "variant": "intermediate",
+      "broker": "",
+      "headline": "my fx bookのリアル口座履歴を完全公開",
+      "generated": true,
+      "staged": false,
+      "approved_file": false,
+      "netlify_url": "",
+      "spec": {
+        "title": "【19ヶ月破綻なし】10万円→1890万円。常識を覆す「負け方を知っているコピトレ」の全貌",
+        "meta_description": "",
+        "hero": {
+          "cta_text": "無料で口座開設する",
+          "headline": "my fx bookのリアル口座履歴を完全公開"
+        },
+        "features": [],
+        "faq": [],
+        "legal": {
+          "disclaimer": "本ページはFX取引口座開設を勧誘することを目的としたアフィリエイトページです。",
+          "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
+          "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
+        },
+        "gemini_instructions": "フォント: M PLUS 1p（見出しに使用）\n参考: revolut.com スタイル\n- 背景: #0b0b1e（ダークパープル）、アクセント: ネオングラデーション（#e85aff→#5561ff）\n- 見出しフォント: M PLUS 1p（font-weight:900）\n- ヒーローにネオンの光彩（blurの大きいglow）を複数配置\n- 数値カウンター・実績バッジをグラデーション枠で強調\n- CTAはネオングラデーション背景、ホバーで発光が強まる\n- スマホUIモック風のカードで「自動で完結する」感を演出\n- スピード感・勢い・未来感を全面に出す\n# --- コンテンツ要件 ---\n# https://note.com/loyal_dahlia8026/n/n71801939d350?sub_rt=share_b\n#\n# この内容と同じでmy fx bookの遷移先と参加はこちらの遷移先も踏襲\n# --- 参考URL ---\n# - https://note.com/loyal_dahlia8026/n/n71801939d350?sub_rt=share_b\n",
         "results_section": {
           "show": false
         }
