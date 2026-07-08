@@ -67,6 +67,7 @@ a{color:inherit;text-decoration:none}
 
 /* ── hero ── */
 .hero{position:relative;min-height:94vh;display:flex;align-items:center;padding:70px 0 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(11,11,30,.5),rgba(11,11,30,.82)),url(assets/hero-neon.jpg) center/cover no-repeat}
 .hero .glow.g1{width:520px;height:520px;top:-120px;left:-100px}
 .hero .glow.g2{width:480px;height:480px;bottom:-160px;right:-120px;background:radial-gradient(circle,#5561ff,transparent 70%)}
 .hero .glow.g3{width:300px;height:300px;top:40%;left:45%;background:radial-gradient(circle,#38e8ff,transparent 70%);opacity:.35}
@@ -261,6 +262,7 @@ a{color:inherit;text-decoration:none}
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="glow pink g1"></div>
   <div class="glow indigo g2"></div>
   <div class="glow cyan g3"></div>
