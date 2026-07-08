@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-08T08:01:11.065358+00:00",
+  "updated_at": "2026-07-08T08:03:33.825824+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -601,7 +601,7 @@
       "headline": "my fx bookのリアル口座履歴を完全公開",
       "generated": true,
       "staged": false,
-      "approved_file": false,
+      "approved_file": true,
       "netlify_url": "",
       "spec": {
         "title": "【19ヶ月破綻なし】10万円→1890万円。常識を覆す「負け方を知っているコピトレ」の全貌",
