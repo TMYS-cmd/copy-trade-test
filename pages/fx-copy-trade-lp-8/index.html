@@ -160,6 +160,23 @@ a{color:inherit}
   background:rgba(255,201,77,.12);border:1px solid rgba(255,201,77,.4);color:var(--gold);
 }
 
+/* hero right: video */
+.hero-video{display:flex;flex-direction:column;align-items:center;gap:18px}
+.video-frame{
+  width:min(320px,100%);aspect-ratio:9/16;
+  border-radius:20px;overflow:hidden;
+  border:1px solid var(--card-border);
+  box-shadow:0 24px 60px rgba(3,10,24,.55),0 0 0 1px rgba(98,90,250,.12);
+  background:#000;
+}
+.video-frame iframe{width:100%;height:100%;display:block;border:0}
+.video-result{
+  font-size:clamp(22px,2.6vw,30px);font-weight:900;line-height:1.3;
+  background:linear-gradient(90deg,#ffd76e,#ffb94d);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.video-result .arrow{padding:0 4px}
+
 /* hero right: stats card */
 .hero-card{
   background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
@@ -437,32 +454,11 @@ footer .copy{text-align:center;font-size:11px;color:#5a6b85;margin-top:12px}
         <a class="cta-btn cta-btn--line" href="https://lin.ee/S0da02r" target="_blank" rel="noopener">無料で口座開設する<small>EAの詳細・受取方法はこちら</small></a>
         <p class="cta-note">※ FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。</p>
       </div>
-      <div class="hero-card">
-        <div class="hero-card-head">
-          <span class="label">STRATEGY RECORD</span>
-          <span class="chip"><span class="dot"></span>HFM公開実績</span>
+      <div class="hero-video">
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/eD1-pgM0ghk" title="運用実績動画" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
         </div>
-        <div class="stat-main">
-          <div class="name">累計利益率</div>
-          <div class="value">1,234.72%</div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-cell">
-            <div class="name">最大ドローダウン</div>
-            <div class="value">17.33%</div>
-          </div>
-          <div class="stat-cell">
-            <div class="name">リスクスコア</div>
-            <div class="value">1 / 5</div>
-          </div>
-        </div>
-        <div class="fee-strip">
-          <span>利益手数料</span>
-          <span class="old">30%</span>
-          <span class="arrow">→</span>
-          <span class="new">0%</span>
-        </div>
-        <p class="hero-card-note">※ HFM上で公開されている元ストラテジーの実績値です。将来の運用成果を保証するものではありません。</p>
+        <p class="video-result">3.7万<span class="arrow">→</span>19.4万達成。</p>
       </div>
     </div>
   </div>
