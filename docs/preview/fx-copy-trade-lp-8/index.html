@@ -77,6 +77,21 @@ a{color:inherit}
 }
 .cta-note{font-size:12.5px;color:var(--text-sub);margin-top:12px}
 
+/* ===== broker logo bar ===== */
+.logo-bar{
+  display:flex;align-items:center;flex-wrap:wrap;gap:14px;
+  margin-bottom:40px;
+}
+.logo-bar img{
+  height:48px;width:auto;display:block;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 6px 18px rgba(3,10,24,.45);
+}
+@media(max-width:520px){
+  .logo-bar img{height:40px}
+}
+
 /* ===== monthly rate banner ===== */
 .monthly{
   display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 8px;
@@ -415,6 +430,10 @@ footer .copy{text-align:center;font-size:11px;color:#5a6b85;margin-top:12px}
 <!-- ================= HERO ================= -->
 <header class="hero">
   <div class="container">
+    <div class="logo-bar">
+      <img src="logo-hfm.png" alt="HFM（HF Markets）" width="401" height="192">
+      <img src="logo-xm.png" alt="XMTRADING" width="423" height="108">
+    </div>
     <div class="hero-grid">
       <div>
         <div class="monthly">
