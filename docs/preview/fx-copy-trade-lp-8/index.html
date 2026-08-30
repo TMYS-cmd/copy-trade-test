@@ -68,7 +68,39 @@ a{color:inherit}
   box-shadow:0 14px 42px rgba(98,90,250,.55),0 4px 14px rgba(61,123,253,.4);
 }
 .cta-btn small{display:block;font-size:12px;font-weight:500;opacity:.85;margin-top:2px}
+.cta-btn--line{
+  background:linear-gradient(90deg,#06c755 0%,#05b34c 100%);
+  box-shadow:0 8px 28px rgba(6,199,85,.45);
+}
+.cta-btn--line:hover{
+  box-shadow:0 14px 42px rgba(6,199,85,.6),0 4px 14px rgba(5,179,76,.45);
+}
 .cta-note{font-size:12.5px;color:var(--text-sub);margin-top:12px}
+
+/* ===== monthly rate banner ===== */
+.monthly{
+  display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 8px;
+  font-weight:900;line-height:1;margin-bottom:22px;
+}
+.monthly .label{font-size:clamp(22px,3vw,34px);color:#fff}
+.monthly .num{
+  font-size:clamp(74px,9.5vw,124px);letter-spacing:.01em;
+  background:linear-gradient(90deg,#ffd76e,#ffb94d);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 60px rgba(255,201,77,.30);
+}
+.monthly .unit{
+  font-size:clamp(38px,5vw,66px);
+  background:linear-gradient(90deg,#ffd76e,#ffb94d);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ===== hero strategy screenshot ===== */
+.hero-shot{
+  display:block;width:min(320px,100%);height:auto;margin:16px 0;
+  border-radius:14px;border:1px solid var(--card-border);
+  box-shadow:0 16px 44px rgba(3,10,24,.55);
+}
 
 /* ===== hero ===== */
 .hero{
@@ -385,18 +417,17 @@ footer .copy{text-align:center;font-size:11px;color:#5a6b85;margin-top:12px}
   <div class="container">
     <div class="hero-grid">
       <div>
-        <div class="hero-chips">
-          <span class="chip"><span class="dot"></span>HFM実績公開ストラテジー</span>
-          <span class="chip"><span class="dot"></span>通常口座で稼働</span>
-          <span class="chip--gold chip"><span class="dot"></span>パフォーマンス手数料0%</span>
+        <div class="monthly">
+          <span class="label">月利</span><span class="num">500<span class="unit">％</span></span><span class="label">達成！</span>
         </div>
         <h1>
           HFMの怪物コピートレード<br>
-          <span class="gold">（1,234.72%達成）</span>が<br>
+          <span class="gold">（1,234.72%達成）</span>
+          <img class="hero-shot" src="S__11083800.jpg" alt="HFM公開ストラテジー実績（累計利益率1,234.72%・最大ドローダウン17.33%）" width="1080" height="1343">
           <span class="em">「手数料完全0円」</span>のEAとして限定開放！
         </h1>
-        <p class="hero-sub">「通常口座 <span class="zero">×</span> 手数料0%」で利用可能に。</p>
-        <a class="cta-btn" href="https://lin.ee/Rj1dHmZ" target="_blank" rel="noopener">無料で口座開設する<small>EAの詳細・受取方法はこちら</small></a>
+        <p class="hero-sub">コピートレードではなく、<br><span class="gold-text">通常口座で稼働可能！</span></p>
+        <a class="cta-btn cta-btn--line" href="https://lin.ee/S0da02r" target="_blank" rel="noopener">無料で口座開設する<small>EAの詳細・受取方法はこちら</small></a>
         <p class="cta-note">※ FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。</p>
       </div>
       <div class="hero-card">
