@@ -338,6 +338,11 @@ footer{border-top:1px solid var(--gold-line);background:#080706;padding:70px 0 5
   transition:transform .35s ease,box-shadow .5s ease;
 }
 .cta-myfx:hover{transform:translateY(-2px);box-shadow:0 16px 48px rgba(212,175,55,.4)}
+/* スマホ: フレックス3分割をやめて1つの文章として中央揃えで自然に折り返す */
+@media(max-width:600px){
+  .cta-myfx{display:block;text-align:center;line-height:1.8;padding:16px 22px}
+  .cta-myfx .mfb{margin:0 4px}
+}
 
 /* ── LINE openchat green button ── */
 .btn-oc{
