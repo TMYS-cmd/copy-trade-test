@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T16:17:29.687220+00:00",
+  "updated_at": "2026-08-31T16:33:23.438539+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -438,7 +438,7 @@
     {
       "id": "lp-010",
       "slug": "fx-copy-trade-lp-5",
-      "status": "review",
+      "status": "approved",
       "variant": "beginner",
       "broker": "XM",
       "headline": "（そちらで考えて）",
