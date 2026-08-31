@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-30T13:58:18.548348+00:00",
+  "updated_at": "2026-08-31T14:06:03.670069+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -632,7 +632,7 @@
       "headline": "HFMの怪物コピートレードが「手数料完全0円」のEAとして限定開放！（1,234.72%達成）※実績スクリーンショット画像を挿入",
       "generated": true,
       "staged": false,
-      "approved_file": false,
+      "approved_file": true,
       "netlify_url": "",
       "spec": {
         "title": "HFMで累計利益率1,234.72%を記録したコピートレード",
