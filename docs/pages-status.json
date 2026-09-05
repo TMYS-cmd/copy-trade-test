@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-31T16:45:29.834036+00:00",
+  "updated_at": "2026-09-05T16:01:55.136912+00:00",
   "pages": [
     {
       "id": "lp-001",
@@ -265,18 +265,18 @@
       "status": "review",
       "variant": "intermediate",
       "broker": "",
-      "headline": "my fx bookのリアル口座履歴を完全公開",
-      "generated": false,
+      "headline": "【開始から21ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開",
+      "generated": true,
       "staged": false,
       "approved_file": false,
       "netlify_url": "",
       "spec": {
-        "title": "【開始から16ヶ月破綻なし】「日本最高峰」の戦略。",
+        "title": "【開始から21ヶ月破綻なし】「日本最高峰」の戦略。",
         "meta_description": "",
         "hero": {
           "cta_text": "公式LINEはこちら",
-          "headline": "my fx bookのリアル口座履歴を完全公開",
-          "subheadline": "有名海外トレーダーの取引を完全無料でコピー"
+          "headline": "【開始から21ヶ月破綻なし】「日本最高峰」の戦略。嘘偽りないmyfxbook全公開",
+          "subheadline": "FXは99％詐欺。1％の本物。（lp-010と同一コピー）"
         },
         "features": [],
         "faq": [],
@@ -285,7 +285,7 @@
           "regulated_note": "XMTradingはASIC・CySEC・IFSCの規制を受けています。",
           "risk_warning": "FX取引は元本割れのリスクがあります。投資は自己責任で行ってください。"
         },
-        "gemini_instructions": "フォント: Noto Sans JP\n参考: stripe.com スタイル\n- 背景: #0a2540（ダークネイビー）、アクセント: #625afa（紫）\n- ヒーロー: 斜めグラデーション（#0a2540→#1a1150）\n- badge/chipで証明要素を強調\n- 月次収益率バーチャート（JS生成）\n- 添付画像: assets/a.jpg, b.jpg, c.jpg, d.jpg\n",
+        "gemini_instructions": "コンテンツ: lp-010 (fx-copy-trade-lp-5) の文章・数値・訴求を変更せず流用（2026-08-27時点myfxbook実測値）。\nデザイン: 全面再設計。「AI生成LPに見えない」広告代理店品質のキャンペーンLP。\n- 中央揃え・左右対称・カードUI・4分割ダッシュボード・黒×金の禁止\n- 左右非対称のエディトリアルレイアウト、セクションごとに構成のリズムを変える\n- ブランドカラー: 墨 #16130e × 生成り #f2ede3 × 朱 #e8420f の3色（LINE緑・myfxbookオレンジは機能色のみ）\n- FV: +20,615.48% を極端に大きく、チャート画像は傾け・裁ち落としでデザイン要素化、破綻0回はハンコ風スタンプ\n- 月次収益率バーチャート（JS生成）、収益シミュレーター維持\n- フォント: Noto Sans JP、余白に強弱、文字サイズのヒエラルキー強調\n",
         "results_section": {
           "show": false
         }
@@ -438,7 +438,7 @@
     {
       "id": "lp-010",
       "slug": "fx-copy-trade-lp-5",
-      "status": "review",
+      "status": "approved",
       "variant": "beginner",
       "broker": "XM",
       "headline": "（そちらで考えて）",
