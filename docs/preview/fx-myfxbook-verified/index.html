@@ -124,14 +124,26 @@ em{font-style:normal;color:var(--red);font-weight:900}
   font-weight:900;font-size:.82rem;letter-spacing:.14em;
   padding:9px 0;
 }
+.ticker-track{display:inline-block;white-space:nowrap}
 .ticker span{display:inline-block;padding:0 2.2em}
 .ticker span+span{border-left:1px solid rgba(242,237,227,.4)}
+/* 携帯: 左→右へ流れ続けるマーキー（前半・後半が同一内容なのでシームレスにループ） */
+@media(max-width:600px){
+  .ticker-track{animation:tickerSlide 16s linear infinite}
+}
+@keyframes tickerSlide{
+  from{transform:translateX(-50%)}
+  to{transform:translateX(0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .ticker-track{animation:none}
+}
 
 /* ============================================================
    FV
    ============================================================ */
 .fv{
-  position:relative;min-height:92vh;overflow:hidden;
+  position:relative;overflow:hidden;
   background:
     radial-gradient(ellipse 70% 55% at 88% 8%,rgba(232,66,15,.14),transparent 60%),
     radial-gradient(ellipse 50% 45% at 4% 92%,rgba(232,66,15,.08),transparent 60%),
@@ -147,7 +159,7 @@ em{font-style:normal;color:var(--red);font-weight:900}
   transition:transform .3s ease,box-shadow .3s ease;
 }
 .fv-top .mfx-link:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.4)}
-.fv-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0 24px;align-items:start}
+.fv-grid{max-width:920px}
 
 .fv-alert{font-weight:900;line-height:1.4;margin-bottom:26px}
 .fv-alert .scam{
@@ -174,6 +186,8 @@ em{font-style:normal;color:var(--red);font-weight:900}
   font-size:.74rem;font-weight:700;letter-spacing:.3em;color:var(--mut-ink);margin-bottom:2px;
 }
 .fv-num .label b{color:var(--red);letter-spacing:.1em}
+.fv-num .pre{font-weight:900;font-size:clamp(17px,2vw,28px);color:var(--mut-ink);margin:6px 0 0}
+.fv-num .pre b{color:var(--paper)}
 .fv-num .n{
   font-weight:900;line-height:1.02;letter-spacing:-.035em;
   font-size:clamp(64px,9.6vw,168px);
@@ -188,43 +202,10 @@ em{font-style:normal;color:var(--red);font-weight:900}
 .fv-sub .s1 small{font-weight:700;font-size:.72em;color:var(--mut-ink);margin-left:8px}
 .fv-sub .s2{font-size:.86rem;font-weight:700;color:var(--mut-ink);letter-spacing:.08em}
 .fv-sub .s2 b{color:var(--paper);font-size:1.3em}
-.fv-foot{font-size:.7rem;color:var(--mut-ink);line-height:1.9;margin-top:14px;max-width:34em}
-.fv-foot a{color:var(--red);border-bottom:1px solid var(--red)}
 .fv-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:26px}
 .fv-note{font-size:.72rem;color:var(--mut-ink);letter-spacing:.06em;margin-top:12px}
 
-/* chart shot — tilted, bleeding off the right edge */
-.fv-shot{position:relative;margin-top:clamp(10px,4vh,40px)}
-.fv-shot .frame{
-  position:relative;transform:rotate(-1.6deg);
-  margin-right:calc(-6vw);
-  border:6px solid #fff;background:#fff;border-radius:4px;
-  box-shadow:24px 28px 60px rgba(0,0,0,.55);
-}
-.fv-shot .pin{
-  position:absolute;top:26%;right:7%;
-  width:52px;height:52px;border:3px solid var(--red);border-radius:50%;
-}
-.fv-shot .pin::after{
-  content:'2026.8.27';position:absolute;top:-30px;right:-6px;
-  background:var(--red);color:#fff;font-size:.62rem;font-weight:900;
-  letter-spacing:.08em;padding:3px 8px;border-radius:3px;white-space:nowrap;
-}
-.fv-shot .cap{
-  position:absolute;left:10px;bottom:-30px;
-  font-size:.7rem;color:var(--mut-ink);letter-spacing:.06em;
-}
-/* 破綻0回 hanko stamp */
-.stamp{
-  position:absolute;left:-26px;bottom:-42px;z-index:3;
-  width:118px;height:118px;border:4px solid var(--red);border-radius:50%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  color:var(--red);transform:rotate(-11deg);
-  background:rgba(22,19,14,.55);backdrop-filter:blur(2px);
-}
-.stamp .a{font-size:.9rem;font-weight:900;letter-spacing:.3em;margin-left:.3em}
-.stamp .b{font-size:2.1rem;font-weight:900;line-height:1.05}
-.stamp .c{font-size:.6rem;font-weight:700;letter-spacing:.2em;margin-left:.2em}
+/* (FVチャート画像・スタンプは削除済み) */
 
 /* ============================================================
    VIDEO — MT5履歴
@@ -273,9 +254,9 @@ em{font-style:normal;color:var(--red);font-weight:900}
 .perf-fig .from{font-weight:900;font-size:clamp(22px,2.6vw,34px);color:var(--mut)}
 .perf-fig .from b{font-size:1.8em;color:var(--ink);letter-spacing:-.02em}
 .perf-fig .arrow{
-  font-weight:900;color:var(--red);line-height:1;
-  font-size:clamp(40px,5vw,72px);margin:2px 0 0 clamp(30px,6vw,120px);
-  transform:rotate(12deg);display:inline-block;
+  font-weight:900;color:var(--red);line-height:1;display:block;
+  font-size:clamp(58px,7.5vw,116px);
+  margin:6px 0 6px clamp(40px,8vw,160px);
 }
 .perf-fig .to{
   font-weight:900;line-height:1;letter-spacing:-.03em;
@@ -309,7 +290,6 @@ em{font-style:normal;color:var(--red);font-weight:900}
 .proof-zoom .win{
   overflow:hidden;border:5px solid #fff;background:#fff;border-radius:4px;
   aspect-ratio:5/4;box-shadow:-20px 24px 54px rgba(0,0,0,.5);
-  transform:rotate(1.4deg);
 }
 .proof-zoom .win img{width:400%;max-width:none}
 .proof-zoom .mark{
@@ -319,7 +299,7 @@ em{font-style:normal;color:var(--red);font-weight:900}
 .proof-zoom .tag{
   position:absolute;top:-16px;right:8%;
   background:var(--red);color:#fff;font-size:.68rem;font-weight:900;
-  letter-spacing:.12em;padding:5px 12px;border-radius:3px;transform:rotate(1.4deg);
+  letter-spacing:.12em;padding:5px 12px;border-radius:3px;
 }
 .proof-zoom .cap{font-size:.7rem;color:var(--mut-ink);margin-top:26px;text-align:right}
 .proof-cta{margin-top:30px;display:flex;justify-content:flex-end}
@@ -388,17 +368,19 @@ em{font-style:normal;color:var(--red);font-weight:900}
 .rec-note .d{display:inline-block;width:9px;height:9px;margin-right:7px}
 .rec-note .d.p{background:var(--ink)}
 .rec-note .d.m{background:var(--red)}
-/* JS bar chart */
+/* JS bar chart — プラスは0ラインの上へ、マイナスは0ラインの下へ */
 .bars{
-  display:flex;align-items:flex-end;gap:clamp(2px,.6vw,8px);
-  height:300px;margin-top:56px;padding-bottom:64px;position:relative;
-  border-bottom:2px solid var(--ink);
+  display:flex;gap:clamp(2px,.6vw,8px);
+  height:320px;margin-top:56px;position:relative;
 }
-.bars .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative;height:100%}
-.bars .bar{width:100%;background:var(--ink)}
+.bars::before{ /* 0ライン */
+  content:'';position:absolute;left:0;right:0;bottom:18%;height:2px;background:var(--ink);
+}
+.bars .col{flex:1;position:relative;height:100%}
+.bars .bar{position:absolute;left:0;right:0;background:var(--ink)}
 .bars .col.neg .bar{background:var(--red)}
 .bars .val{
-  position:absolute;top:100%;margin-top:26px;
+  position:absolute;top:100%;margin-top:12px;left:50%;transform:translateX(-50%);
   font-size:.62rem;font-weight:700;color:var(--mut);
   writing-mode:vertical-rl;letter-spacing:.06em;white-space:nowrap;
 }
@@ -408,12 +390,13 @@ em{font-style:normal;color:var(--red);font-weight:900}
   font-size:.78rem;font-weight:900;color:var(--red);white-space:nowrap;
 }
 .bars .ym{
-  position:absolute;top:100%;margin-top:6px;font-size:.6rem;color:var(--mut);
+  position:absolute;top:100%;margin-top:-8px;left:50%;transform:translateX(-50%);
+  font-size:.6rem;color:var(--mut);
   white-space:nowrap;letter-spacing:.04em;
 }
 .rec-sum{
   display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 48px;
-  margin-top:80px;
+  margin-top:160px;
 }
 .rec-sum .item{font-weight:900}
 .rec-sum .item .v{font-size:clamp(38px,4.6vw,66px);letter-spacing:-.02em;line-height:1}
@@ -517,6 +500,7 @@ em{font-style:normal;color:var(--red);font-weight:900}
 .join-min{margin:36px 0 10px;line-height:1}
 .join-min .n{font-weight:900;font-size:clamp(64px,8vw,128px);letter-spacing:-.03em;color:var(--paper)}
 .join-min .n small{font-size:.32em;color:var(--red)}
+.join-min .n .sm{font-size:.32em;font-weight:900}
 .join-min .l{font-size:.74rem;font-weight:700;letter-spacing:.3em;color:var(--mut-ink);margin-top:8px}
 .join-facts{margin-top:30px;max-width:30em}
 .join-fact{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:16px 0;border-bottom:1px solid rgba(242,237,227,.16);font-size:.9rem}
@@ -562,9 +546,6 @@ footer{background:#0e0c08;padding:70px 0 60px;border-top:1px solid rgba(242,237,
    RESPONSIVE
    ============================================================ */
 @media(max-width:960px){
-  .fv-grid{grid-template-columns:1fr}
-  .fv-shot .frame{margin-right:calc(-8vw);margin-left:6vw}
-  .stamp{left:auto;right:14px;bottom:-34px;width:100px;height:100px}
   .video-wrap{grid-template-columns:1fr;justify-items:start}
   .video .vtx{writing-mode:horizontal-tb;letter-spacing:.3em}
   .video-frame{transform:rotate(0);margin-left:clamp(0px,8vw,60px)}
@@ -578,7 +559,8 @@ footer{background:#0e0c08;padding:70px 0 60px;border-top:1px solid rgba(242,237,
   .join-wrap{grid-template-columns:1fr;gap:50px}
 }
 @media(max-width:600px){
-  .fv{padding:40px 0 100px;min-height:auto}
+  .fv{padding:40px 0 84px}
+  .fv-top .mfx-link{flex-direction:column;gap:3px;padding:10px 18px;font-size:.72rem;line-height:1.5;text-align:center}
   .fv-num .n{font-size:clamp(52px,15.5vw,90px)}
   .fv h1 .big{font-size:clamp(28px,8vw,40px)}
   .fv-alert .real{font-size:clamp(21px,6.4vw,30px)}
@@ -591,10 +573,10 @@ footer{background:#0e0c08;padding:70px 0 60px;border-top:1px solid rgba(242,237,
   .why-row:nth-child(even) .k{order:0;text-align:left}
   .why-row:nth-child(even) .t{order:1}
   .why-row .k{font-size:clamp(38px,11vw,58px)}
-  .bars{height:220px;gap:2px}
+  .bars{height:230px;gap:2px}
   .bars .ym{display:none}
-  .bars .val{font-size:.56rem;margin-top:18px}
-  .rec-sum{gap:18px 30px}
+  .bars .val{font-size:.56rem;margin-top:8px}
+  .rec-sum{gap:18px 30px;margin-top:130px}
   .band{transform:rotate(0);margin:20px 0}
   .band-wrap{transform:none}
   .band .btn-line{width:100%}
@@ -610,7 +592,7 @@ footer{background:#0e0c08;padding:70px 0 60px;border-top:1px solid rgba(242,237,
 
 <!-- ═══ ticker ═══ -->
 <div class="ticker" aria-label="開始以来、ロスカットなし。">
-  <span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span>
+  <div class="ticker-track"><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span><span>開始以来、ロスカットなし。</span></div>
 </div>
 
 <!-- ═══ FV ═══ -->
@@ -629,33 +611,22 @@ footer{background:#0e0c08;padding:70px 0 60px;border-top:1px solid rgba(242,237,
           嘘偽りない<span class="hl">myfxbook全公開</span>
         </h1>
         <div class="fv-num">
-          <div class="label"><b>複利（増加）</b>COMPOUND GAIN</div>
-          <div class="n">+20,615<small>.48%</small></div>
+          <div class="label"><b>複利シミュレーション</b>2024.11 START</div>
+          <div class="pre"><b>複利なら</b> 10万円 →</div>
+          <div class="n">2,061<small>万円</small></div>
         </div>
         <div class="fv-sub">
+          <div class="s1">複利（増加）<span>+20,615.48%</span></div>
           <div class="s1">単利（絶対増加）<span>+1,248.65%</span><small>10万円 → 125万円</small></div>
           <div class="s2">運用期間 <b>21</b>ヶ月</div>
-          <div class="s2">複利なら 10万円 → <b>2,061</b>万円</div>
+          <div class="s2">破綻 <b>0</b>回</div>
         </div>
-        <p class="fv-foot">
-          全履歴は第三者機関 myfxbook にて公開中 ─
-          <a href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">実績ページを直接確認する</a><br>
-          ※2026年8月27日時点のmyfxbook公表値。過去の実績は将来の成果を保証するものではありません。
-        </p>
         <p style="margin-top:22px;font-size:.94rem;color:#d8d2c4">まずは、下記の「証拠」のすべてをあなたの目で直接確認してください。</p>
         <div class="fv-cta">
           <a class="btn-line" href="https://lin.ee/5Kfat8SS" target="_blank" rel="noopener"><span class="tag">LINE</span>公式LINEはこちら</a>
           <a class="btn-mfx" href="https://www.myfxbook.com/members/Tony_Bui/msc-supergold-pro/11949504" target="_blank" rel="noopener">2024年からの実績を<span class="mfb"><span class="d">my</span><span class="o">fx</span><span class="d">book</span></span>で確認する</a>
         </div>
         <p class="fv-note">参加希望・ご質問・お問い合わせは公式LINEへ</p>
-      </div>
-      <div class="fv-shot fd in">
-        <div class="frame">
-          <img src="assets/myfxbook-chart.jpg" alt="myfxbook 成長チャート 2024年11月〜2026年8月（増加 +20,615.48%）">
-          <span class="pin" aria-hidden="true"></span>
-          <span class="stamp" aria-label="破綻0回"><span class="a">破綻</span><span class="b">0回</span><span class="c">SINCE 2024.11</span></span>
-        </div>
-        <p class="cap">myfxbook 実績チャート（2024年11月〜2026年8月・増加 +20,615.48%）</p>
       </div>
     </div>
   </div>
@@ -701,7 +672,7 @@ footer{background:#0e0c08;padding:70px 0 60px;border-top:1px solid rgba(242,237,
       <div class="perf-fig fd">
         <div class="perf-start">COMPOUND SIMULATION ─ 2024.11 START</div>
         <div class="from"><b>10</b>万円</div>
-        <div class="arrow" aria-hidden="true">➜</div>
+        <div class="arrow" aria-hidden="true">↓</div>
         <div class="to">2,060<small>万円超</small></div>
       </div>
       <div class="perf-txt fd">
@@ -1010,7 +981,7 @@ footer{background:#0e0c08;padding:70px 0 60px;border-top:1px solid rgba(242,237,
         同じシステムを稼働する運用者とコミュニケーションをとることも可能です。
       </p>
       <div class="join-min">
-        <div class="n">約3<small>万円〜</small></div>
+        <div class="n"><span class="sm">約</span>3<small>万円〜</small></div>
         <div class="l">最低スタート資金</div>
       </div>
       <div class="join-facts">
@@ -1103,13 +1074,15 @@ footer{background:#0e0c08;padding:70px 0 60px;border-top:1px solid rgba(242,237,
   ];
   var MAX=118.46, box=document.getElementById('bars');
   if(!box)return;
+  /* 0ライン(下から18%)を境に、プラスは上へ・マイナスは下へ同一スケールで伸ばす */
   DATA.forEach(function(d,i){
     var col=document.createElement('div');
     col.className='col'+(d[1]<0?' neg':'');
-    var h=Math.max(3,Math.abs(d[1])/MAX*100);
+    var h=Math.max(2,Math.abs(d[1])/MAX*80);
+    var pos=d[1]>=0?('bottom:18%;height:'+h+'%'):('top:82%;height:'+h+'%');
     var pk=(d[1]===MAX)?'<span class="pk">+118.46%</span>':'';
     var ym=(i%4===0)?'<span class="ym">'+d[0]+'</span>':'';
-    col.innerHTML='<div class="bar" style="height:'+h+'%">'+pk+'</div>'+
+    col.innerHTML='<div class="bar" style="'+pos+'">'+pk+'</div>'+
       '<span class="val">'+(d[1]>0?'+':'')+d[1].toFixed(2)+'%'+(d[1]<0?'（損切り）':(i===DATA.length-1?'（8/27時点）':''))+'</span>'+ym;
     box.appendChild(col);
   });
